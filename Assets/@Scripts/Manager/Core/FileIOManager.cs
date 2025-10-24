@@ -82,10 +82,7 @@ namespace Manager.Core
 
             try
             {
-                using (StreamReader reader = new StreamReader(filePath, encoding))
-                {
-                    contents = reader.ReadToEnd();
-                }
+                contents = File.ReadAllText(filePath, encoding);
             }
             catch (Exception fileException)
             {
