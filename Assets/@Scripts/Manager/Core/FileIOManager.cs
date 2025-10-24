@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System;
 
 namespace Manager.Core
 {
@@ -11,5 +12,11 @@ namespace Manager.Core
         파일 생성/삭제
         파일 읽기/쓰기
         */
+
+        public static bool IsFileExist(string filePath)
+        {
+            return File.Exists(filePath);
+        }
+
     }
 }
