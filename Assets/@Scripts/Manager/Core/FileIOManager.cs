@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System;
+using UnityEditor;
 
 namespace Manager.Core
 {
@@ -18,5 +19,56 @@ namespace Manager.Core
             return File.Exists(filePath);
         }
 
+        public static bool DeleteFile(string filePath)
+        {
+            if (IsFileExist(filePath) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("File not found");
+#endif   
+                return false;
+            }
+
+            try
+            {
+                File.Delete(filePath);
+            }
+            catch (Exception fileException)
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"file delete failed by {fileException.Message}");
+#endif   
+                return false;
+            }
+            return true;
+        }
+
+        public static bool CreateFile(string filePath)
+        {
+            if (IsFileExist(filePath))
+            {
+#if UNITY_EDITOR
+                Debug.LogError("File already exists");
+#endif   
+                return false;
+            }
+
+            try
+            {
+                using (File.Create(filePath)) { }
+            }
+            catch (Exception fileException)
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"file create failed by {fileException.Message}");
+#endif   
+                return false;
+            }
+
+
+            return true;
+        }
     }
 }
+//assetdatabase써? 말어?
+//어차피 유니티에서 처리해주고, 에셋내부에 접근하는건 에디터 환경에서만이고, 이건 런타임에도 써야되니까, 그냥 systemio쓰죠
