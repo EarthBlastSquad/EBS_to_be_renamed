@@ -68,6 +68,64 @@ namespace Manager.Core
 
             return true;
         }
+
+        public static bool ReadFromFile(string filePath, out string contents, System.Text.Encoding encoding)
+        {
+            if (IsFileExist(filePath) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("File not found");
+#endif   
+                contents = string.Empty;
+                return false;
+            }
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath, encoding))
+                {
+                    contents = reader.ReadToEnd();
+                }
+            }
+            catch (Exception fileException)
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"file read failed by {fileException.Message}");
+#endif
+                contents = string.Empty;
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool WriteToFile(string filePath, string contents, bool resetFile, System.Text.Encoding encoding)
+        {
+            if (IsFileExist(filePath) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("File not found");
+#endif
+                return false;
+            }
+
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath,!resetFile, encoding))
+                {
+                    writer.Write(contents);
+                }
+            }
+            catch (Exception fileException)
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"file write failed by {fileException.Message}");
+#endif
+                return false;
+            }
+
+            return true;
+        }
     }
 }
 //assetdatabase써? 말어?
