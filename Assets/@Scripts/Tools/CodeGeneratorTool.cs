@@ -37,7 +37,7 @@ namespace Tools
             tester = tester.Replace('\r', '\n');
 
             if (string.IsNullOrEmpty(tester) ||
-                string.IsNullOrEmpty(templateType) || 
+                string.IsNullOrEmpty(templateType) ||
                 tester.Length <= _fileHeader.Length ||
                 !tester.StartsWith(_fileHeader, System.StringComparison.Ordinal) ||
                 tester[_fileHeader.Length] != '\n' ||
@@ -46,11 +46,13 @@ namespace Tools
                 return false;
             }
 
+
             if (string.Compare(tester, _fileHeader.Length + 1, templateType, 0, templateType.Length, StringComparison.Ordinal) != 0 ||
-            tester[_fileHeader.Length + templateType.Length] > ' ')//type check
+            tester[_fileHeader.Length + templateType.Length + 1] > ' ')//type check
             {
                 return false;
             }
+            
 
             return true;
         }
@@ -84,6 +86,11 @@ namespace Tools
 
             string[] tokens = template.Split(_regionSeperator);
 
+            for(int i = 1; i < tokens.Length; i++)
+            {
+                tokens[i] = tokens[i].Trim();
+            }
+
             if (tokens.Length % 2 == 0)
             {
 #if UNITY_EDITOR
@@ -96,19 +103,19 @@ namespace Tools
             {
                 if (tokens[i + 1].Contains(_classGenEntryPoint))
                 {
-                    _generatedCode.Append(tokens[i].Replace(_classGenEntryPoint, ""));
+                    _generatedCode.Append(tokens[i+1].Replace(_classGenEntryPoint, ""));
                 }
                 else
                 {
                     if (_templates.TryAdd(tokens[i], tokens[i + 1]) == false)
                     {
 #if UNITY_EDITOR
+
                         Debug.LogError("duplicated template key warning!");
 #endif
                     }
                 }
             }
-
             return true;
         }
 
