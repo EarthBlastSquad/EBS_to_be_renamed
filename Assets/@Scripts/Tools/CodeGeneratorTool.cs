@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Manager.Core;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using Utils;
@@ -61,7 +62,7 @@ namespace Tools
             _generatedCode.EnsureCapacity(initialStringCapacity);
             _preservePlaceHolder = preservePlaceHolder;
         }
-        
+
         public bool LoadTemplate(string templatePath, string templateType)
         {
             if (string.IsNullOrEmpty(templatePath) || string.IsNullOrEmpty(templateType))
@@ -74,8 +75,8 @@ namespace Tools
             {
                 return false;
             }
-            
-            if(IsItCorrectTemplate(template,templateType) ==false)
+
+            if (IsItCorrectTemplate(template, templateType) == false)
             {
                 return false;
             }
@@ -106,6 +107,51 @@ namespace Tools
 #endif
                     }
                 }
+            }
+
+            return true;
+        }
+        
+        public bool GenerateCodeFile(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+            {
+#if UNITY_EDITOR
+                Debug.LogError("path is null or empty");
+#endif
+                return false;
+            }
+            
+            if (FileIOManager.IsFileExist(filePath))
+            {
+#if UNITY_EDITOR
+                Debug.LogError("file already exist");
+#endif
+                return false;
+            }
+
+            if (_generatedCode.Length <= 0)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("code is empty");
+#endif
+                return false;
+            }
+
+            if (FileIOManager.CreateFile(filePath) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("file creation failed");
+#endif
+                return false;
+            }
+
+            if (FileIOManager.WriteToFile(filePath, _generatedCode.ToString(), true, Encoding.UTF8) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("file write failed");
+#endif
+                return false;
             }
             
             return true;
