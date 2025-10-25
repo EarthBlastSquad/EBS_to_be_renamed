@@ -111,7 +111,7 @@ namespace Tools
 
             return true;
         }
-        
+
         public bool GenerateCodeFile(string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
@@ -121,7 +121,7 @@ namespace Tools
 #endif
                 return false;
             }
-            
+
             if (FileIOManager.IsFileExist(filePath))
             {
 #if UNITY_EDITOR
@@ -153,7 +153,49 @@ namespace Tools
 #endif
                 return false;
             }
-            
+
+            return true;
+        }
+        
+        public bool ReplacePlaceHolderWith(string templateName, string placeHolder)
+        {
+            if (string.IsNullOrEmpty(templateName) || string.IsNullOrEmpty(placeHolder))
+            {
+#if UNITY_EDITOR
+                Debug.LogError("templateName or placeHolder are null or empty");
+#endif
+                return false;
+            }
+
+            if(_templates.ContainsKey(templateName) == false)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("template not found");
+#endif
+                return false;
+            }
+
+
+            int preserveIndex = 0;
+            string template = _templates[templateName];
+
+            while (true)
+            {
+                preserveIndex = _generatedCode.GetIndexOf(placeHolder, preserveIndex);
+                if(preserveIndex < 0)
+                {
+                    break;
+                }
+                _generatedCode.Remove(preserveIndex, placeHolder.Length);
+                _generatedCode.Insert(preserveIndex, template);
+                preserveIndex += template.Length;
+                if(_preservePlaceHolder)
+                {
+                    _generatedCode.Insert(preserveIndex, placeHolder);
+                    preserveIndex += placeHolder.Length;
+                }
+            }
+
             return true;
         }
     }
