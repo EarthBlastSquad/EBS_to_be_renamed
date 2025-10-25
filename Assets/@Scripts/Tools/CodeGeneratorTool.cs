@@ -9,7 +9,6 @@ namespace Tools
         private bool _preservePlaceHolder = true;
         private Dictionary<string, string> _templates = new Dictionary<string, string>();//key : key, value : template
 
-
         #region header
         private const string _fileHeader = "CODE_GENERATOR_HEADER";
         private const string _templateTypeKeyword = "template_type";
@@ -30,8 +29,15 @@ namespace Tools
         {
             return !string.IsNullOrEmpty(template) && template.Length > _fileHeader.Length && template.StartsWith(_fileHeader, System.StringComparison.Ordinal);
         }
-
         
+        public void ClearGenerator(int initialStringCapacity, bool preservePlaceHolder)
+        {
+            _templates.Clear();
+            _generatedCode.Clear();
+            _generatedCode.EnsureCapacity(initialStringCapacity);
+            _preservePlaceHolder = preservePlaceHolder;
+        }
+
 
     }
 }
