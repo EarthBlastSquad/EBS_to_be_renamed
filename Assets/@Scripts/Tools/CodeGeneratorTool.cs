@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Utils;
@@ -27,9 +28,28 @@ namespace Tools
             _preservePlaceHolder = preservePlaceHolder;
         }
 
-        public bool IsItCorrectTemplate(string template)
+        public bool IsItCorrectTemplate(string template, string templateType)
         {
-            return !string.IsNullOrEmpty(template) && template.Length > _fileHeader.Length && template.StartsWith(_fileHeader, System.StringComparison.Ordinal) && template.GetSubstringCount(_classGenEntryPoint) == 1;
+            string tester = template.Replace("\r\n", "\n");
+            tester = tester.Replace('\r', '\n');
+
+            if (string.IsNullOrEmpty(tester) ||
+                string.IsNullOrEmpty(templateType) || 
+                tester.Length <= _fileHeader.Length ||
+                !tester.StartsWith(_fileHeader, System.StringComparison.Ordinal) ||
+                tester[_fileHeader.Length] != '\n' ||
+            tester.GetSubstringCount(_classGenEntryPoint) != 1)//header and entry point check
+            {
+                return false;
+            }
+
+            if (string.Compare(tester, _fileHeader.Length + 1, templateType, 0, templateType.Length, StringComparison.Ordinal) != 0 ||
+            tester[_fileHeader.Length + templateType.Length] > ' ')//type check
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void ClearGenerator(int initialStringCapacity, bool preservePlaceHolder)
