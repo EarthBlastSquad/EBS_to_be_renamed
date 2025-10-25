@@ -26,6 +26,13 @@ namespace Tools
             _preservePlaceHolder = preservePlaceHolder;
         }
 
+        public bool IsItCorrectTemplate(string template)
+        {
+            return !string.IsNullOrEmpty(template) && template.Length > _fileHeader.Length && template.StartsWith(_fileHeader, System.StringComparison.Ordinal);
+        }
+
+        
+
     }
 }
 /*
