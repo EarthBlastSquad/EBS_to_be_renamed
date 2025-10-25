@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEngine;
 using Utils;
 
 namespace Tools
@@ -60,9 +62,54 @@ namespace Tools
             _preservePlaceHolder = preservePlaceHolder;
         }
         
+        public bool LoadTemplate(string templatePath, string templateType)
+        {
+            if (string.IsNullOrEmpty(templatePath) || string.IsNullOrEmpty(templateType))
+            {
+                return false;
+            }
+
+            string template;
+            if (Manager.Core.FileIOManager.ReadFromFile(templatePath, out template, Encoding.UTF8) == false)
+            {
+                return false;
+            }
+            
+            if(IsItCorrectTemplate(template,templateType) ==false)
+            {
+                return false;
+            }
 
 
+            string[] tokens = template.Split(_regionSeperator);
 
+            if (tokens.Length % 2 == 0)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("worng token count! toekn count must be %2 == 1");
+#endif
+                return false;
+            }
+
+            for (int i = 1; i < tokens.Length; i += 2)
+            {
+                if (tokens[i + 1].Contains(_classGenEntryPoint))
+                {
+                    _generatedCode.Append(tokens[i].Replace(_classGenEntryPoint, ""));
+                }
+                else
+                {
+                    if (_templates.TryAdd(tokens[i], tokens[i + 1]) == false)
+                    {
+#if UNITY_EDITOR
+                        Debug.LogError("duplicated template key warning!");
+#endif
+                    }
+                }
+            }
+            
+            return true;
+        }
     }
 }
 /*
@@ -91,6 +138,8 @@ public __[RET_TYPE]__ __[NAME]__(__[ARGS]__)
 {
 
 }
+__[REG_SEP]__
+entry
 __[REG_SEP]__
 __[ENTRY_POINT]__public class Test{}
 */
