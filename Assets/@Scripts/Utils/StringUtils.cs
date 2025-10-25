@@ -41,13 +41,13 @@ namespace Utils
                 return -1;
             }
             
-            for (int i = startIdx; i < target.Length - substring.Length; i++)
+            for (int i = startIdx; i <= target.Length - substring.Length; i++)
             {
                 int index = i;
                 bool compare = true;
-                for(int internalIndex = i, subIndex = 0; subIndex < substring.Length; internalIndex++, subIndex++)
+                for(int subIndex = 0; subIndex < substring.Length; subIndex++)
                 {
-                    if(target[internalIndex] != substring[subIndex])
+                    if(target[i + subIndex] != substring[subIndex])
                     {
                         compare = false;
                         break;
