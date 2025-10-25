@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using Utils;
 
 namespace Tools
 {
@@ -13,6 +14,7 @@ namespace Tools
         private const string _fileHeader = "CODE_GENERATOR_HEADER";
         private const string _templateTypeKeyword = "template_type";
         private const string _regionSeperator = "__[REG_SEP]__";
+        private const string _classGenEntryPoint = "__[ENTRY_POINT]__";
         #endregion
 
         public CodeGeneratorTool(int initialStringCapacity, bool preservePlaceHolder)
@@ -27,9 +29,9 @@ namespace Tools
 
         public bool IsItCorrectTemplate(string template)
         {
-            return !string.IsNullOrEmpty(template) && template.Length > _fileHeader.Length && template.StartsWith(_fileHeader, System.StringComparison.Ordinal);
+            return !string.IsNullOrEmpty(template) && template.Length > _fileHeader.Length && template.StartsWith(_fileHeader, System.StringComparison.Ordinal) && template.GetSubstringCount(_classGenEntryPoint) == 1;
         }
-        
+
         public void ClearGenerator(int initialStringCapacity, bool preservePlaceHolder)
         {
             _templates.Clear();
@@ -37,6 +39,8 @@ namespace Tools
             _generatedCode.EnsureCapacity(initialStringCapacity);
             _preservePlaceHolder = preservePlaceHolder;
         }
+        
+
 
 
     }
@@ -67,4 +71,6 @@ public __[RET_TYPE]__ __[NAME]__(__[ARGS]__)
 {
 
 }
+__[REG_SEP]__
+__[ENTRY_POINT]__public class Test{}
 */
