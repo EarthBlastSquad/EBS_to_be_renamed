@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Manager.Core;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using Utils;
 
@@ -52,7 +51,6 @@ namespace Tools
             {
                 return false;
             }
-            
 
             return true;
         }
@@ -163,7 +161,7 @@ namespace Tools
 
             return true;
         }
-        
+
         public bool ReplacePlaceHolderWith(string templateName, string placeHolder)
         {
             if (string.IsNullOrEmpty(templateName) || string.IsNullOrEmpty(placeHolder))
@@ -174,7 +172,7 @@ namespace Tools
                 return false;
             }
 
-            if(_templates.ContainsKey(templateName) == false)
+            if (_templates.ContainsKey(templateName) == false)
             {
 #if UNITY_EDITOR
                 Debug.LogError("template not found");
@@ -189,18 +187,33 @@ namespace Tools
             while (true)
             {
                 preserveIndex = _generatedCode.GetIndexOf(placeHolder, preserveIndex);
-                if(preserveIndex < 0)
+                if (preserveIndex < 0)
                 {
                     break;
                 }
                 _generatedCode.Remove(preserveIndex, placeHolder.Length);
                 _generatedCode.Insert(preserveIndex, template);
                 preserveIndex += template.Length;
-                if(_preservePlaceHolder)
+                if (_preservePlaceHolder)
                 {
                     _generatedCode.Insert(preserveIndex, placeHolder);
                     preserveIndex += placeHolder.Length;
                 }
+            }
+
+            return true;
+        }
+
+        public bool ClearPlaceholdersInCode(string[] customPlaceholders)
+        {
+            if (customPlaceholders is null || _generatedCode.Length <= 0)
+            {
+                return false;
+            }
+
+            foreach(var placeHolder in customPlaceholders)
+            {
+                _generatedCode.Replace(placeHolder, "");
             }
 
             return true;
