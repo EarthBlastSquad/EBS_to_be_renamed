@@ -1,3 +1,4 @@
+using Contents.Grid;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,6 +7,7 @@ namespace Controller
     public class GridController : MonoBehaviour
     {
         [SerializeField]
+        private string _tileName = "grid_cell_tile";
         private Tilemap _tileMap;
         private void Awake()
         {
@@ -16,7 +18,26 @@ namespace Controller
             }
         }
 
+        public bool SetupGridTiles(GridCellData[,] cellInfo)
+        {
+            int width = cellInfo.GetLength(0);
+            int height = cellInfo.GetLength(1);
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Tile tile = Manager.Managers.Instance.ResourceManager.Load<Tile>($"{_tileName}_{cellInfo[x, y].cellImgNumber}");
+                    if (tile is null)
+                    {
+                        Debug.LogError("tile not found");
+                        return false;
+                    }
+                    _tileMap.SetTile(new Vector3Int(x, y, 0), tile);
+                }
+            }
 
+            return true;
+        }
     }
 }
 //이번에는 딱 클릭하고 하이라이팅까지만
