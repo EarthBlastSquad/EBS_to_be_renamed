@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_GUID: c7806b619aaf4c0438932703effe5671
-  m_SerializeEntries: []
+  m_GUID: 8d04b229d5d17074ebd6cf7f3f0345c9
+  m_SerializeEntries:
+  - m_GUID: 2cd74b720a920154388daeefe3760d15
+    m_Address: Assets/@Resources/GOD/god.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
+  m_Settings: {fileID: 11400000, guid: 7e32347988dcb3141a8709258098eb92, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: fec12e8249bab64488e20dc9b8c00225, type: 2}
-    - {fileID: 11400000, guid: ab9d35dd81455cf499e2b40f618cef66, type: 2}
+    - {fileID: 11400000, guid: b741d48e11c8c6646ae849f1db61a340, type: 2}
+    - {fileID: 11400000, guid: f13f60350c747674e9c8ffd458016bc0, type: 2}
