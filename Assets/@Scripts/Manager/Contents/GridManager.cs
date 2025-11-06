@@ -1,6 +1,6 @@
 using Contents.Grid;
 using Controller;
-using Unity.VisualScripting.InputSystem;
+using InputHandler;
 using UnityEngine;
 using Utils.Defines;
 
@@ -27,6 +27,16 @@ namespace Manager.Contents
             {
                 Debug.LogError("grid controller not found in child");
             }
+
+            var gridInputHandler = GetComponent<GridInputHandler>();
+
+            if (gridInputHandler is null)
+            {
+                Debug.LogError("grid input handler not found");
+                return;
+            }
+
+            gridInputHandler.mouseUpGridEvent += GridMouseUpCallback;
         }
 
         public bool Init()
@@ -84,6 +94,19 @@ namespace Manager.Contents
 
             outPiece = _datas[pos.x, pos.y].nowHoldingPiece;
             return true;
+        }
+
+        private void GridMouseUpCallback(Vector3 mouseScreenPos)
+        {
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            Vector3Int mouseCellPos = _grid.WorldToCell(mouseWorldPos);
+            Vector2Int mouseCellPosVec2 = new Vector2Int(mouseCellPos.x, mouseCellPos.y);
+            if (IsItValidCellPos(mouseCellPosVec2) == false)
+            {
+                _lastSelectedPos = new Vector2Int(-1, -1);
+                return;
+            }
+            _lastSelectedPos = mouseCellPosVec2;
         }
     }
 
