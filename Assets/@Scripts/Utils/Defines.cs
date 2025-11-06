@@ -8,7 +8,8 @@ namespace Utils.Defines
     public enum SceneNames
     {
         Unknown = -1,
-        Title = 1,
+        TitleScene = 1,
+        LobbyScene = 2,
         Test = 60
     }
 

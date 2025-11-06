@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: c7806b619aaf4c0438932703effe5671
+  m_DefaultGroup: 8d04b229d5d17074ebd6cf7f3f0345c9
   m_currentHash:
     serializedVersion: 2
-    Hash: 59608a3d0d249a18c56ef748094966bf
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 48101c9349358a442bfeee22226a7561, type: 2}
+  - {fileID: 11400000, guid: 681ce104cdaac0f41ae26c456758d7cc, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -101,6 +102,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - TestResource
+    - PreLoad
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 859bcf21ff482464289d0088c3fc035d, type: 2}
@@ -110,7 +112,7 @@ MonoBehaviour:
     m_ClassName: 
   m_ActivePlayerDataBuilderIndex: 2
   m_DataBuilders:
-  - {fileID: 11400000, guid: ca6f0edf54b92fb44ab7122d30864f03, type: 2}
-  - {fileID: 11400000, guid: 6d33a2be343b68a4b9f7a0359a8cf8f6, type: 2}
-  - {fileID: 11400000, guid: 02bfd95f2eebfe44aa1d08ae330fbc6c, type: 2}
+  - {fileID: 11400000, guid: 90dce6e9a7a71494eae6389e81b32801, type: 2}
+  - {fileID: 11400000, guid: 4101edf3fc895714aa4674f2ae550c1a, type: 2}
+  - {fileID: 11400000, guid: eedc9e4544f95e240a6e16ad106ac69b, type: 2}
   m_ActiveProfileId: aa758e8ed3a63ea45a25c3f2a2248535
