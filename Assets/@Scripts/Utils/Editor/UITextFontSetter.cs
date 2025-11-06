@@ -7,7 +7,7 @@ namespace Utils.Editor
 {
     public class UITextFontSetter
     {
-        public const string PATH_FONT_UITEXT_SAMLIB = "Assets/@Resources/Prefabs/Fonts/sambli/SDSamliphopangcheTTFBasic SDF 1.asset";
+        public const string PATH_FONT_UITEXT_SAMLIB = "Assets/@Resources/ChosunCentennial_otf2/ChosunCentennial_otf SDF.asset";
 
         [MenuItem("Tools/FontChanger(현재 폰트를 교체합니다.)")]
         public static void ChageFontInUIText()
