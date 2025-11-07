@@ -16,7 +16,13 @@ MonoBehaviour:
   m_GUID: 8d04b229d5d17074ebd6cf7f3f0345c9
   m_SerializeEntries:
   - m_GUID: 2cd74b720a920154388daeefe3760d15
-    m_Address: Assets/@Resources/GOD/god.png
+    m_Address: god
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a419ef325ccd0a44943c571036f7505
+    m_Address: TowerData
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
