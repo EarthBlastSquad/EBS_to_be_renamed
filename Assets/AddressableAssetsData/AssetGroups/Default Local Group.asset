@@ -13,25 +13,31 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_GUID: 2fc0a587d7282f8448abfe701f673280
+  m_GUID: f5245ba4c5aa3284eb8ade3acd99829b
   m_SerializeEntries:
   - m_GUID: 5592869d771be6f44b12502b6b572864
-    m_Address: god2
+    m_Address: test_god_2
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PreLoad
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5638a16d8d4f727479d36d03cc98dcb7
-    m_Address: TowerData
+  - m_GUID: 9dd19248eb8315a4c8919ce59b66ffb4
+    m_Address: grid_cell_tile_0
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PreLoad
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a13d97144cdaca041b0c5b3ce2477530
+    m_Address: grid_cell_tile_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec3900868441c604b88d9e31fbfe8772
-    m_Address: god
+    m_Address: test_god
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PreLoad
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
