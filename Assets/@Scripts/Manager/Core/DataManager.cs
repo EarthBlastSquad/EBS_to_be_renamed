@@ -24,8 +24,6 @@ namespace Manager.Core
 
 
 
-
-
         }
         
         //솔직히, 이게 어떻게 가능한건지 아직 모르겠다

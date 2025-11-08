@@ -1,7 +1,16 @@
 {
-  "Datas": [
-    { "TowerId": 1, "TowerName": "Basic Tower" },
-    { "TowerId": 2, "TowerName": "Sniper Tower" },
-    { "TowerId": 3, "TowerName": "Flame Tower" }
+  "towers": [
+    {
+      "TowerId": 1,
+      "TowerName": "Basic Tower"
+    },
+    {
+      "TowerId": 2,
+      "TowerName": "Sniper Tower"
+    },
+    {
+      "TowerId": 3,
+      "TowerName": "Flame Tower"
+    }
   ]
 }

@@ -492,7 +492,7 @@ namespace Editor
             return sb.ToString();
         }
 
-        private string GetListVariableName(string className)
+        private string GetListVariableName(string className) //이러면 안될지도 모름;;
         {
             // WaveData -> waves
             // LevelData -> levels
