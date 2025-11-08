@@ -10,9 +10,9 @@ namespace Editor
 {
     public class DataLoaderGeneratorWindow : EditorWindow
     {
-        private string sourceFilePath = "Assets/@Scripts/Data/DataClasses.cs";
+        private string sourceFilePath = "Assets/@Scripts/Data/Datas.cs";
         private string outputDirectory = "Assets/@Scripts/Data/Loaders";
-        private string dataManagerOutputPath = "Assets/@Scripts/Manager/DataManager.cs";
+        private string dataManagerOutputPath = "Assets/@Scripts/Manager/Core/DataManager.cs";
         private Vector2 scrollPosition;
         private List<ClassInfo> detectedClasses = new List<ClassInfo>();
         private string previewCode = "";
@@ -313,7 +313,9 @@ namespace Editor
             sb.AppendLine("    {");
             sb.AppendLine($"        Dictionary<{keyType}, {classInfo.className}> dict = new Dictionary<{keyType}, {classInfo.className}>();");
             sb.AppendLine($"        foreach ({classInfo.className} data in {listVariableName})");
+            sb.AppendLine("        {");
             sb.AppendLine($"            dict.Add(data.{classInfo.keyField}, data);");
+            sb.AppendLine("        }");
             sb.AppendLine("        return dict;");
             sb.AppendLine("    }");
             sb.AppendLine("}");
@@ -338,7 +340,9 @@ namespace Editor
             sb.AppendLine("    {");
             sb.AppendLine($"        Dictionary<{keyType}, {classInfo.className}> dict = new Dictionary<{keyType}, {classInfo.className}>();");
             sb.AppendLine($"        foreach ({classInfo.className} data in {listVariableName})");
+            sb.AppendLine("        {");
             sb.AppendLine($"            dict.Add(data.{classInfo.keyField}, data);");
+            sb.AppendLine("        }");
             sb.AppendLine("        return dict;");
             sb.AppendLine("    }");
             sb.AppendLine("}");
@@ -370,10 +374,10 @@ namespace Editor
                 // 이미 존재하는지 확인
                 if (!existingContent.Contains($"{dicName} {{"))
                 {
-                    newDictionaries.AppendLine($"    public Dictionary<{keyType}, {classInfo.className}> {dicName} {{ get; private set; }} = new Dictionary<{keyType}, {classInfo.className}>();");
+                    newDictionaries.AppendLine($"       public Dictionary<{keyType}, {classInfo.className}> {dicName} {{ get; private set; }} = new Dictionary<{keyType}, {classInfo.className}>();");
                 }
 
-                string initCall = $"{dicName} = LoadJson<{loaderName}, {keyType}, {classInfo.className}>(\"{dataName}\").MakeDict();";
+                string initCall = $"    {dicName} = LoadJson<{loaderName}, {keyType}, {classInfo.className}>(\"{dataName}\").MakeDict();";
                 if (!existingContent.Contains(initCall))
                 {
                     newInitCalls.AppendLine($"        {initCall}");
@@ -488,7 +492,7 @@ namespace Editor
             return sb.ToString();
         }
 
-        private string GetListVariableName(string className)
+        private string GetListVariableName(string className) //이러면 안될지도 모름;;
         {
             // WaveData -> waves
             // LevelData -> levels
