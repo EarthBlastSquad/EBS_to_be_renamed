@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_GUID: 8d04b229d5d17074ebd6cf7f3f0345c9
+  m_GUID: 27a17e860498e8a42aa390ec4afc69a4
   m_SerializeEntries:
   - m_GUID: 2cd74b720a920154388daeefe3760d15
     m_Address: god

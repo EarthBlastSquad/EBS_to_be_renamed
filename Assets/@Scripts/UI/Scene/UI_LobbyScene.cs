@@ -67,7 +67,7 @@ namespace UI.Scene
         }
         protected void TestGetRandomJsons(PointerEventData _)
         {
-            this.GetComponentInChildren<TextMeshProUGUI>().text = $"{Managers.Instance.DataManager.TowerDic[1].TowerName}";
+            _.pointerPress.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{Managers.Instance.DataManager.TowerDic[1].TowerName}";
         }
         private void Awake()
         {
