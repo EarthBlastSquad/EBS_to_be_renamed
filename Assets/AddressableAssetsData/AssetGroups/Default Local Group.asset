@@ -15,11 +15,23 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f5245ba4c5aa3284eb8ade3acd99829b
   m_SerializeEntries:
+  - m_GUID: 14dcff71eb4078e47a9bd1dd038f9a13
+    m_Address: CellHighlighter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Uncategorized
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
     m_Address: test_god_2
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f823b29cb895d54ab8367933f6d9748
+    m_Address: ClickedCellHighlighter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Grid
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9dd19248eb8315a4c8919ce59b66ffb4
     m_Address: grid_cell_tile_0
