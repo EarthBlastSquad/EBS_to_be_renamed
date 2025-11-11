@@ -44,6 +44,7 @@ namespace Controller
             if (_clickedCellHighlighter is null)
             {
                 _clickedCellHighlighter = Manager.Managers.Instance.ResourceManager.Instantiate("ClickedCellHighlighter");
+                _clickedCellHighlighter.transform.SetParent(transform);
                 //null체킹 하려 했는데, 안해도 될듯?
             }
 
