@@ -103,9 +103,11 @@ namespace Manager.Contents
             Vector2Int mouseCellPosVec2 = new Vector2Int(mouseCellPos.x, mouseCellPos.y);
             if (IsItValidCellPos(mouseCellPosVec2) == false)
             {
+                _gridController.SetHighlightAt(new Vector3Int(-100, -100, 0));
                 _lastSelectedPos = new Vector2Int(-1, -1);
                 return;
             }
+            _gridController.SetHighlightAt(new Vector3Int(mouseCellPosVec2.x, mouseCellPosVec2.y,0));
             _lastSelectedPos = mouseCellPosVec2;
         }
     }
