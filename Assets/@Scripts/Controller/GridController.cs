@@ -51,6 +51,16 @@ namespace Controller
             _clickedCellHighlighter.transform.position = _tileMap.CellToWorld(pos);
             //좌표 체킹 생략
         }
+
+        public void PlacePieceAt(Vector3Int pos, Transform pieceTransform)
+        {
+            if (pieceTransform is null)
+            {
+                return;
+            }
+
+            pieceTransform.position = _tileMap.CellToWorld(pos);//좌표체킹은 manager에서 하고 넘어와서 검사 x
+        }
     }
 }
 //이번에는 딱 클릭하고 하이라이팅까지만
