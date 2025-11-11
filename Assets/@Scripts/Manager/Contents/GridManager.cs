@@ -56,6 +56,42 @@ namespace Manager.Contents
             return _isInit && Utils.AreaUtils.IsPointInSquareBoundary(Vector2Int.zero, new Vector2Int((int)MapMaxCellCnt.MAX_WIDTH - 1, (int)MapMaxCellCnt.MAX_HEIGHT - 1), pos);
         }
 
+        public bool CanPlacePiece(Vector2Int pos)
+        {
+            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+        }
+
+        public bool PlacePieceAt(Vector2Int pos, GameObject piece)
+        {
+            if (piece is null || CanPlacePiece(pos) == false)
+            {
+                return false;
+            }
+
+            _gridController.PlacePieceAt(new Vector3Int(pos.x, pos.y, 0), piece.transform);
+            piece.transform.SetParent(_grid.transform);
+            _datas[pos.x, pos.y].nowHoldingPiece = piece;
+
+            return true;
+        }
+        
+        public bool UnplacePieceAt(Vector2Int pos)
+        {
+            if (IsItLocked(pos)) // IsItLocked에서 IsItValidCellPos이미 검사중임
+            {
+                return false;
+            }
+
+            if (_datas[pos.x, pos.y].nowHoldingPiece is null)
+            {
+                return false;
+            }
+
+            _datas[pos.x, pos.y].nowHoldingPiece.transform.SetParent(null);
+            _datas[pos.x, pos.y].nowHoldingPiece = null;
+            return true;
+        }
+
         public Vector2Int GetLastSelectedPos()
         {
             return _lastSelectedPos;
