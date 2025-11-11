@@ -9,6 +9,7 @@ namespace Controller
         [SerializeField]
         private string _tileName = "grid_cell_tile";
         private Tilemap _tileMap;
+        private GameObject _clickedCellHighlighter;
         private void Awake()
         {
             _tileMap = GetComponent<Tilemap>();
@@ -17,7 +18,6 @@ namespace Controller
                 Debug.LogError("tilemap not found in grid");
             }
         }
-
         public bool SetupGridTiles(GridCellData[,] cellInfo)
         {
             int width = cellInfo.GetLength(0);
@@ -37,6 +37,18 @@ namespace Controller
             }
 
             return true;
+        }
+
+        public void SetHighlightAt(Vector3Int pos)
+        {
+            if (_clickedCellHighlighter is null)
+            {
+                _clickedCellHighlighter = Manager.Managers.Instance.ResourceManager.Instantiate("ClickedCellHighlighter");
+                //null체킹 하려 했는데, 안해도 될듯?
+            }
+
+            _clickedCellHighlighter.transform.position = _tileMap.CellToWorld(pos);
+            //좌표 체킹 생략
         }
     }
 }
