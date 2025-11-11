@@ -56,6 +56,11 @@ namespace Manager.Contents
             return _isInit && Utils.AreaUtils.IsPointInSquareBoundary(Vector2Int.zero, new Vector2Int((int)MapMaxCellCnt.MAX_WIDTH - 1, (int)MapMaxCellCnt.MAX_HEIGHT - 1), pos);
         }
 
+        public bool CanPlacePiece(Vector2Int pos)
+        {
+            return (IsItLocked(pos) == false) && (_datas[pos.x,pos.y].nowHoldingPiece is null); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+        }
+
         public Vector2Int GetLastSelectedPos()
         {
             return _lastSelectedPos;
