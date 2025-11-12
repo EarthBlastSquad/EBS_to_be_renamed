@@ -54,6 +54,16 @@ namespace Controller
             return true;
         }
 
+        public void SetLockedAreaShadowXPos(int xPos)
+        {
+            if (_lockedAreaShadow is null)
+            {
+                Debug.LogError("shadow not created");
+                return;
+            }
+            _lockedAreaShadow.transform.position = _tileMap.CellToWorld(new Vector3Int(xPos,0,0));
+        }
+
         public void SetHighlightAt(Vector3Int pos)
         {
             if (_clickedCellHighlighter is null)
