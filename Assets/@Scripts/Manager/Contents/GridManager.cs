@@ -46,6 +46,15 @@ namespace Manager.Contents
                 return false;
             }
             _datas = new GridCellData[(int)MapMaxCellCnt.MAX_WIDTH, (int)MapMaxCellCnt.MAX_HEIGHT];
+
+            for(int x = 0; x < (int)MapMaxCellCnt.MAX_WIDTH; x++)
+            {
+                for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    _datas[x, y].isLocked = true;
+                }
+            }
+
             _gridController.SetupGridTiles(_datas);
             _isInit = true;
             return true;
