@@ -137,6 +137,16 @@ namespace Manager.Contents
             return _lastSelectedPos;
         }
 
+        public int GetUnlockedAreaWidth()
+        {
+            return _lockedAreaStartIdx;
+        }
+
+        public int GetLockedAreaWidth()
+        {
+            return (int)MapMaxCellCnt.MAX_WIDTH - _lockedAreaStartIdx;
+        }
+
         public int GetCellImgNumAt(Vector2Int pos)
         {
             if (IsItValidCellPos(pos) == false)
