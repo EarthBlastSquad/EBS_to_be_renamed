@@ -146,7 +146,7 @@ namespace Manager.Contents
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             Vector3Int mouseCellPos = _grid.WorldToCell(mouseWorldPos);
             Vector2Int mouseCellPosVec2 = new Vector2Int(mouseCellPos.x, mouseCellPos.y);
-            if (IsItValidCellPos(mouseCellPosVec2) == false)
+            if (IsItValidCellPos(mouseCellPosVec2) == false || IsItLocked(mouseCellPosVec2))
             {
                 _gridController.SetHighlightAt(new Vector3Int(-100, -100, 0));
                 _lastSelectedPos = new Vector2Int(-1, -1);
