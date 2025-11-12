@@ -13,6 +13,7 @@ namespace Manager.Contents
         private GridCellData[,] _datas;
         private bool _isInit = false;
         private Vector2Int _lastSelectedPos;
+        private int _lockedAreaStartIdx = 0;
 
         private void Awake()
         {
@@ -83,7 +84,7 @@ namespace Manager.Contents
 
             return true;
         }
-        
+
         public bool UnplacePieceAt(Vector2Int pos)
         {
             if (IsItLocked(pos)) // IsItLocked에서 IsItValidCellPos이미 검사중임
@@ -99,6 +100,36 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece.transform.SetParent(null);
             _datas[pos.x, pos.y].nowHoldingPiece = null;
             return true;
+        }
+        
+        public void IncreaseUnlockedAreaToRight(int widthIncreasementRate)
+        {
+            if (widthIncreasementRate < 0)
+            {
+                Debug.LogError("늘릴 양은 음수가 될 수 없습니다");
+                return;
+            }
+
+            if (widthIncreasementRate + _lockedAreaStartIdx > (int)MapMaxCellCnt.MAX_WIDTH)
+            {
+                widthIncreasementRate = (int)MapMaxCellCnt.MAX_WIDTH - _lockedAreaStartIdx;
+            }
+            
+            if(widthIncreasementRate == 0)
+            {
+                return;
+            }
+
+            for(int x = _lockedAreaStartIdx; x < _lockedAreaStartIdx+widthIncreasementRate; x++)
+            {
+                for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    _datas[x, y].isLocked = false;
+                }
+            }
+
+            _lockedAreaStartIdx += widthIncreasementRate;
+            _gridController.SetLockedAreaShadowXPos(_lockedAreaStartIdx);
         }
 
         public Vector2Int GetLastSelectedPos()
