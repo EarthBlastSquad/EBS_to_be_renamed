@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 460d16d5f1784404cac2f3fa45b83a2d
+    m_Address: LockedAreaShadowSprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Uncategorized
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
     m_Address: test_god_2
     m_ReadOnly: 0
