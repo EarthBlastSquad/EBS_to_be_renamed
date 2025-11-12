@@ -10,6 +10,7 @@ namespace Controller
         private string _tileName = "grid_cell_tile";
         private Tilemap _tileMap;
         private GameObject _clickedCellHighlighter;
+        private GameObject _lockedAreaShadow;
         private void Awake()
         {
             _tileMap = GetComponent<Tilemap>();
@@ -18,6 +19,18 @@ namespace Controller
                 Debug.LogError("tilemap not found in grid");
             }
         }
+
+        private void SetupLockedShadows(int width, int height)
+        {
+            if (_lockedAreaShadow is null)
+            {
+                _lockedAreaShadow = Manager.Managers.Instance.ResourceManager.Instantiate("LockedAreaShadow", transform);
+            }
+            
+            _lockedAreaShadow.transform.localScale = new Vector3(width, height, 1);
+            _lockedAreaShadow.transform.position = _tileMap.CellToWorld(Vector3Int.zero);
+        }
+
         public bool SetupGridTiles(GridCellData[,] cellInfo)
         {
             int width = cellInfo.GetLength(0);
@@ -35,6 +48,8 @@ namespace Controller
                     _tileMap.SetTile(new Vector3Int(x, y, 0), tile);
                 }
             }
+
+            SetupLockedShadows(width, height);
 
             return true;
         }
