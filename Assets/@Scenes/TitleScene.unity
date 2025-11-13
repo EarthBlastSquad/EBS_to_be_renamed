@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 635117688}
   - component: {fileID: 635117687}
   m_Layer: 5
-  m_Name: Setting_0_Text_0
+  m_Name: Setting_0_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 841162086}
   - component: {fileID: 841162085}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: Slider_0_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 1141652132}
   - component: {fileID: 1141652131}
   m_Layer: 5
-  m_Name: StartButton_1
+  m_Name: StartButton_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1299588693}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: Slider_0_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 1430371462}
   - component: {fileID: 1430371463}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 1539506494}
   - component: {fileID: 1539506493}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Slider_0_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,7 +1024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1960794749}
   m_Layer: 5
-  m_Name: Handle Slide Area
+  m_Name: Slider_0_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 2043543007}
   - component: {fileID: 2043543006}
   m_Layer: 5
-  m_Name: Handle
+  m_Name: Slider_0_2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 2086027010}
   - component: {fileID: 2086027009}
   m_Layer: 5
-  m_Name: StartButton_1_Text_0
+  m_Name: StartButton_0_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

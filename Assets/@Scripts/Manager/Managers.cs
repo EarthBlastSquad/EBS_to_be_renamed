@@ -25,7 +25,10 @@ namespace Manager
         public Core.ObjectPoolManager ObjectPoolManager { get { return Instance?._poolMgr; } }
         public Core.DataManager DataManager { get { return Instance?._dataMgr; } }
         #endregion
-
+        #region Contents
+        private Contents.GameManager _gameMgr = new Contents.GameManager();
+        public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
+        #endregion
         private static void Init()
         {
             if (_sInstance is null)

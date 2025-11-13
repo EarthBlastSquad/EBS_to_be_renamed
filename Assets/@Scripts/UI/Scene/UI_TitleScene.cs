@@ -16,13 +16,13 @@ namespace UI.Scene
         #region Enum
         enum GameObjects
         {
-            Slider
+            Slider_0
         }
 
         enum Buttons
         {
             Setting_0,
-            StartButton_1
+            StartButton_0
         }
 
         enum Texts
@@ -42,14 +42,14 @@ namespace UI.Scene
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
 
-            GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = 0;
+            GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = 0;
 
-            GetButton((int)Buttons.StartButton_1).gameObject.BindUIEvent((_) =>
+            GetButton((int)Buttons.StartButton_0).gameObject.BindUIEvent((_) =>
             {
                 if (isPreload)
                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
             });
-            GetButton((int)Buttons.StartButton_1).gameObject.SetActive(false);
+            GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
             return true;
         }
@@ -60,16 +60,16 @@ namespace UI.Scene
         }
         private void Start()
         {
-            Managers.Instance.ResourceManager.LoadAsyncAllIn("PreLoad", (key, count, totalCount) =>
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("TestPreLoad", (key, count, totalCount) => //PreLoad를 "지우고" TestPreLoad를 만듬? 야!!!!!!!!!
             {
-                GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = (float)count / totalCount;
+                GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = (float)count / totalCount;
                 if (count == totalCount)
                 {
                     isPreload = true;
-                    GetButton((int)Buttons.StartButton_1).gameObject.SetActive(true);
+                    GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
                     GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
                     Managers.Instance.DataManager.Init();
-                    //Managers.Instance.GameManager.Init();
+                    Managers.Instance.GameManager.Init();
                     //Managers.Instance.TimeManager.Init(); //지금 생각할 게 아님
                     StartButtonAnimation();
                 }
