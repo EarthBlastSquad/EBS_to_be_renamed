@@ -13,6 +13,7 @@ namespace Manager.Contents
         private GridCellData[,] _datas;
         private bool _isInit = false;
         private Vector2Int _lastSelectedPos;
+        private int _lockedAreaStartIdx = 0;
 
         private void Awake()
         {
@@ -46,6 +47,15 @@ namespace Manager.Contents
                 return false;
             }
             _datas = new GridCellData[(int)MapMaxCellCnt.MAX_WIDTH, (int)MapMaxCellCnt.MAX_HEIGHT];
+
+            for(int x = 0; x < (int)MapMaxCellCnt.MAX_WIDTH; x++)
+            {
+                for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    _datas[x, y].isLocked = true;
+                }
+            }
+
             _gridController.SetupGridTiles(_datas);
             _isInit = true;
             return true;
@@ -74,7 +84,7 @@ namespace Manager.Contents
 
             return true;
         }
-        
+
         public bool UnplacePieceAt(Vector2Int pos)
         {
             if (IsItLocked(pos)) // IsItLocked에서 IsItValidCellPos이미 검사중임
@@ -91,10 +101,50 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece = null;
             return true;
         }
+        
+        public void IncreaseUnlockedAreaToRight(int widthIncreasementRate)
+        {
+            if (widthIncreasementRate < 0)
+            {
+                Debug.LogError("늘릴 양은 음수가 될 수 없습니다");
+                return;
+            }
+
+            if (widthIncreasementRate + _lockedAreaStartIdx > (int)MapMaxCellCnt.MAX_WIDTH)
+            {
+                widthIncreasementRate = (int)MapMaxCellCnt.MAX_WIDTH - _lockedAreaStartIdx;
+            }
+            
+            if(widthIncreasementRate == 0)
+            {
+                return;
+            }
+
+            for(int x = _lockedAreaStartIdx; x < _lockedAreaStartIdx+widthIncreasementRate; x++)
+            {
+                for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    _datas[x, y].isLocked = false;
+                }
+            }
+
+            _lockedAreaStartIdx += widthIncreasementRate;
+            _gridController.SetLockedAreaShadowXPos(_lockedAreaStartIdx);
+        }
 
         public Vector2Int GetLastSelectedPos()
         {
             return _lastSelectedPos;
+        }
+
+        public int GetUnlockedAreaWidth()
+        {
+            return _lockedAreaStartIdx;
+        }
+
+        public int GetLockedAreaWidth()
+        {
+            return (int)MapMaxCellCnt.MAX_WIDTH - _lockedAreaStartIdx;
         }
 
         public int GetCellImgNumAt(Vector2Int pos)
@@ -137,7 +187,7 @@ namespace Manager.Contents
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             Vector3Int mouseCellPos = _grid.WorldToCell(mouseWorldPos);
             Vector2Int mouseCellPosVec2 = new Vector2Int(mouseCellPos.x, mouseCellPos.y);
-            if (IsItValidCellPos(mouseCellPosVec2) == false)
+            if (IsItValidCellPos(mouseCellPosVec2) == false || IsItLocked(mouseCellPosVec2))
             {
                 _gridController.SetHighlightAt(new Vector3Int(-100, -100, 0));
                 _lastSelectedPos = new Vector2Int(-1, -1);

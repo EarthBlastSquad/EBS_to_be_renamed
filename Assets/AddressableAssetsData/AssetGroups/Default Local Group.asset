@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 460d16d5f1784404cac2f3fa45b83a2d
+    m_Address: LockedAreaShadowSprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Uncategorized
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
     m_Address: test_god_2
     m_ReadOnly: 0
@@ -32,6 +38,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestPreLoad
+  - m_GUID: 7dde1a92c9f4c8a4b8f10fdb78634cee
+    m_Address: LockedAreaShadow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Grid
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f823b29cb895d54ab8367933f6d9748
     m_Address: ClickedCellHighlighter
