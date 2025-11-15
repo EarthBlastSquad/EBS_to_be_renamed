@@ -13,7 +13,9 @@ namespace Manager.Contents
     {
         #region GameData
         public GameData _gameData = new GameData();
+
         public bool IsLoaded = false;
+        
         public List<Tower> OwnedTowers
         {
             get { return _gameData.OwnedTowers; }
@@ -32,6 +34,25 @@ namespace Manager.Contents
                 _gameData.EquippedTowers = value;
             }
         }
+        public bool SoundSet
+        {
+            get { return _gameData.SoundSet; }
+            set 
+            {
+                _gameData.SoundSet = value;
+                SaveGame();
+            }
+        }
+        public float SoundValue
+        {
+            get { return _gameData.SoundValue; }
+            set
+            {
+                _gameData.SoundValue = value;
+                SaveGame();
+            }
+        }
+
 #if UNITY_EDITOR
         private void GetTest()
         {
@@ -51,7 +72,7 @@ namespace Manager.Contents
                 return;
             }
 
-            SaveGame(); //Init()인 만큼 없을때 생성하게 하는 의도도 있음.
+            //SaveGame(); //Init()인 만큼 없을때 생성하게 하는 의도도 있음.
 
         }
         #region Save,Load
@@ -68,9 +89,14 @@ namespace Manager.Contents
             }
             if (File.Exists(_path)==false)
             {
-                return false;
+                GetTest();
+                SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
+#if UNITY_EDITOR
+            Debug.Log("불러왔다");
+            Debug.Log(OwnedTowers[0]);
+#endif
             for (int i = 0; i < OwnedTowers.Count; i++)
             {
                 if (OwnedTowers[i].IsEquipped==true)

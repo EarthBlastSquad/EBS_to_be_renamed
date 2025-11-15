@@ -3,8 +3,11 @@ using DG.Tweening;
 using Manager;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Utils;
@@ -16,13 +19,16 @@ namespace UI.Scene
         #region Enum
         enum GameObjects
         {
-            Slider_0
+            Slider_0,
+            SoundSlider_0
         }
 
         enum Buttons
         {
             Setting_0,
-            StartButton_0
+            StartButton_0,
+            SoundOnOff_0,
+            Back_0
         }
 
         enum Texts
@@ -47,13 +53,62 @@ namespace UI.Scene
             GetButton((int)Buttons.StartButton_0).gameObject.BindUIEvent((_) =>
             {
                 if (isPreload)
-                   Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+                   Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene); //이건 일회성으로 뭐 더 볼일 없기도 할 듯 하여
             });
+            GetButton((int)Buttons.Setting_0).gameObject.BindUIEvent(SettingMenu);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.BindUIEvent(OnOffVolume);
+            GetButton((int)Buttons.Back_0).gameObject.BindUIEvent(TitleMenu);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume, UIEventTypes.DRAG);
             GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
             return true;
         }
-
+        #region 팝업
+        protected void SettingMenu(PointerEventData _)
+        {
+            GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
+            GetText((int)Texts.Title_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(true);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(true);
+            GetButton((int)Buttons.Back_0).gameObject.SetActive(true);
+        }
+        protected void TitleMenu(PointerEventData _)
+        {
+            GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
+            GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+            GetText((int)Texts.Title_0).gameObject.SetActive(true);
+            GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
+        }
+        #endregion
+        #region 바인드용
+        protected void SetVolume(PointerEventData _)
+        {
+            Managers.Instance.GameManager.SoundValue = _.pointerDrag.transform.GetComponent<Slider>().value/15;
+            if(Managers.Instance.GameManager.SoundSet==false)
+            {
+                return;
+            }
+            Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+        }
+        protected void OnOffVolume(PointerEventData _)
+        {
+            Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
+            if (Managers.Instance.GameManager.SoundSet == false)
+            {
+                Managers.Instance.SoundManager.StopAll();
+            }
+            else
+            {
+                Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+            }
+        }
+        #endregion
         private void Awake()
         {
             Init();
@@ -70,8 +125,13 @@ namespace UI.Scene
                     GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
                     Managers.Instance.DataManager.Init();
                     Managers.Instance.GameManager.Init();
-                    //Managers.Instance.TimeManager.Init(); //지금 생각할 게 아님
+                    Managers.Instance.SoundManager.Init();
                     StartButtonAnimation();
+                    GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
+                    if (Managers.Instance.GameManager.SoundSet == true)
+                    {
+                        Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+                    }
                 }
             });
         }

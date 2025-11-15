@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dde5fec71c206cb409cde17190d64efb
+    m_Address: TestSound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec3900868441c604b88d9e31fbfe8772
     m_Address: test_god
     m_ReadOnly: 0
