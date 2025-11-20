@@ -7,7 +7,7 @@ namespace Manager.Core
 {
     public class DataManager
     {
-       public Dictionary<int, TowerData> TowerDic { get; private set; } = new Dictionary<int, TowerData>();
+       public Dictionary<int, TowerData> TowerDic { get; private set; } = new Dictionary<int, TowerData>(); //예시:Managers.Instance.DataManager.TowerDic[1].TowerName
 
 
 

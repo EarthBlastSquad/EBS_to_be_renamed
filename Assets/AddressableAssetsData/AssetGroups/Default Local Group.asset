@@ -33,6 +33,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5638a16d8d4f727479d36d03cc98dcb7
+    m_Address: TowerData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
   - m_GUID: 7dde1a92c9f4c8a4b8f10fdb78634cee
     m_Address: LockedAreaShadow
     m_ReadOnly: 0
@@ -53,6 +58,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a13d97144cdaca041b0c5b3ce2477530
     m_Address: grid_cell_tile_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dde5fec71c206cb409cde17190d64efb
+    m_Address: TestSound
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestPreLoad
