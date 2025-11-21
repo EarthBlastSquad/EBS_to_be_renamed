@@ -1,6 +1,7 @@
 using Contents.Grid;
 using Controller;
 using InputHandler;
+using System;
 using UnityEngine;
 using Utils.Defines;
 
@@ -14,6 +15,8 @@ namespace Manager.Contents
         private bool _isInit = false;
         private Vector2Int _lastSelectedPos;
         private int _lockedAreaStartIdx = 0;
+
+        public event Action<CellUpdateEventArgs> CellUpdateEvent;
 
         private void Awake()
         {
@@ -82,6 +85,8 @@ namespace Manager.Contents
             piece.transform.SetParent(_grid.transform);
             _datas[pos.x, pos.y].nowHoldingPiece = piece;
 
+            CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x,pos.y,0), false, true));
+
             return true;
         }
 
@@ -99,6 +104,9 @@ namespace Manager.Contents
 
             _datas[pos.x, pos.y].nowHoldingPiece.transform.SetParent(null);
             _datas[pos.x, pos.y].nowHoldingPiece = null;
+
+            CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x, pos.y, 0), true, false));
+
             return true;
         }
         
@@ -199,10 +207,3 @@ namespace Manager.Contents
     }
 
 }
-/*
-딱 이미지 셋업까지만
-
-lock tile관련은 다음 업데이트 때
-기물 설치도 다음 업데이트 때
-
-*/
