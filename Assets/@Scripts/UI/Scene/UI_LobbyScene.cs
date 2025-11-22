@@ -55,6 +55,7 @@ namespace UI.Scene
 
             GetButton((int)Buttons.InventoryOpen_0).gameObject.BindUIEvent(InventoryOpen);
             GetButton((int)Buttons.InventoryClose_0).gameObject.BindUIEvent(MainLobby);
+            GetButton((int)Buttons.GameStart_0).gameObject.BindUIEvent(GameStart);
             //SlotSet();
             //ItemSet();
             //GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(TestGetRandomJsons);
@@ -82,7 +83,10 @@ namespace UI.Scene
 
         }
         #endregion
-        
+        protected void GameStart(PointerEventData _)
+        {
+            Managers.Instance.SceneManagerEx.LoadScene(SceneNames.Test);
+        }
         private void Start()
         {
             
