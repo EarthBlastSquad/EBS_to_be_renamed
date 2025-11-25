@@ -12,7 +12,8 @@ namespace ObjectPool
 {
     public class UI_ItemInfPool : UIPopup
     {
-        public LinkedList<UnityEngine.UI.Button> Items=new LinkedList<UnityEngine.UI.Button>();
+        private LinkedList<UnityEngine.UI.Button> Items = new LinkedList<UnityEngine.UI.Button>();
+        private int _topIndex=0;
         enum GameObjects
         {
 
@@ -53,6 +54,7 @@ namespace ObjectPool
             BindText(typeof(Texts));
             Itemset();
             _uI_IP = GetComponentInParent<UI_InventoryPopup>();
+            _rectTransform= GetComponent<RectTransform>();
             return true;
         }
 
@@ -77,6 +79,48 @@ namespace ObjectPool
             _uI_IP.SelectedSlot.text = t.TowerData.TowerName;
         }
 
+        private RectTransform _rectTransform;
+        public void Slide(int sliderValue)
+        {
+            int newIndex = sliderValue;
+            int delta = newIndex - _topIndex;
+            if (delta == 0)
+            {
+                return;
+            }
+            _topIndex = newIndex;
+            _rectTransform.anchoredPosition += new Vector2(0, 150 * delta);
+            if (delta > 0)
+            {
+                int moveCount = 5 * delta;
+                for (int n = 0; n < moveCount; n++)
+                {
+                    UnityEngine.UI.Button btn = Items.First.Value;
+                    btn.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n]);
+                    btn.GetComponentInChildren<TextMeshProUGUI>().text = Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n].TowerData.TowerName;
+                    RectTransform rt = btn.GetComponent<RectTransform>();
+                    rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -450 - _rectTransform.anchoredPosition.y);
+                    Items.RemoveFirst();
+                    Items.AddLast(btn);
+                }
+            }
+            else
+            {
+                int moveCount = 5 * (-delta);
+                for (int n = moveCount - 1; n >= 0; n--)
+                {
+                    UnityEngine.UI.Button btn = Items.Last.Value;
+                    btn.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + n]);
+                    btn.GetComponentInChildren<TextMeshProUGUI>().text = Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + n].TowerData.TowerName;
+                    RectTransform rt = btn.GetComponent<RectTransform>();
+                    rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -_rectTransform.anchoredPosition.y);
+                    Items.RemoveLast();
+                    Items.AddFirst(btn);
+                }
+            }
+
+        }
+        
     }
 }
 
