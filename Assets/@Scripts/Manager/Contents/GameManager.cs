@@ -56,9 +56,11 @@ namespace Manager.Contents
 #if UNITY_EDITOR
         private void GetTest()
         {
-            GetTower(1);
-            GetTower(2);
-            GetTower(3);
+            for(int i=4;i<70;i++)
+            {
+                GetTower(i);
+            }
+
         }
 #endif
         public void Init()
@@ -83,7 +85,7 @@ namespace Manager.Contents
         }
         public bool LoadGame()
         {
-            if(IsLoaded==true)
+            if (IsLoaded==true)
             {
                 return false;
             }
