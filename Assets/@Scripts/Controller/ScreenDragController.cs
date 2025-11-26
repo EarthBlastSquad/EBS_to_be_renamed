@@ -26,6 +26,11 @@ namespace Controller
 
         private void Update()
         {
+            if (Manager.Managers.Instance.GameManager.IsGamePaused)
+            {
+                return;
+            }
+
             Vector3 nowCamPos = _cam.transform.position;
 
             if(nowCamPos.x < _screenLeftBoundary || nowCamPos.x > _screenRightBoundary)
