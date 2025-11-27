@@ -49,6 +49,7 @@ namespace Manager.Core
 
         public void SubscribeSceneUnloadedEvent(UnityAction<Scene> callback)
         {
+            SceneManager.sceneUnloaded -= callback;
             SceneManager.sceneUnloaded += callback;
         }
 
