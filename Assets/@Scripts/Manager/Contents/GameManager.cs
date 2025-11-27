@@ -175,5 +175,9 @@ namespace Manager.Contents
         //    return true;
         //} //얘처럼 json 파싱 만들기 겸+Init 최상단 return용도 flase으로 연계
         #endregion
+
+        #region GameStatus
+        public bool IsGamePaused { get; set; } = false;
+        #endregion
     }
 }

@@ -12,6 +12,10 @@ namespace InputHandler
 
         void Update()
         {
+            if(Manager.Managers.Instance.GameManager.IsGamePaused)
+            {
+                return; 
+            }
             //gamemanager에서 pause상태 읽어서 업데이트 정지하는 로직 짜기
             if (Input.GetMouseButtonDown(0))
             {
