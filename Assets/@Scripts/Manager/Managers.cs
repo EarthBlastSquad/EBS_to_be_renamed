@@ -27,7 +27,9 @@ namespace Manager
         #endregion
         #region Contents
         private Contents.GameManager _gameMgr = new Contents.GameManager();
+        private Contents.CurrencyManager _currencyMgr = new Contents.CurrencyManager();
         public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
+        public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
         #endregion
         private static void Init()
         {

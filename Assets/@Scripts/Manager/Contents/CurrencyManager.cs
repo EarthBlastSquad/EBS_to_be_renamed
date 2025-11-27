@@ -16,6 +16,7 @@ namespace Manager.Contents
             }
 
             _currency = currency;
+            OnCurrencyChangedEvent?.Invoke(_currency, currency);
         }
     }
 }
