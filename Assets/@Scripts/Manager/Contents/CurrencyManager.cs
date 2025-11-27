@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Manager.Contents
 {
@@ -7,6 +8,19 @@ namespace Manager.Contents
     {
         private int _currency = 0;
         public event Action<int,int> OnCurrencyChangedEvent;
+
+        public CurrencyManager()
+        {
+            Manager.Managers.Instance.SceneManagerEx.SubscribeSceneUnloadedEvent(OnSceneUnload);
+        }
+
+        private void OnSceneUnload(Scene scene)
+        {
+            if(scene.name == Utils.Defines.SceneNames.GameScene.ToString())
+            {
+                OnCurrencyChangedEvent = null;
+            }
+        }
 
         public void RestoreCurrency(int currency, Type callerType)
         {
