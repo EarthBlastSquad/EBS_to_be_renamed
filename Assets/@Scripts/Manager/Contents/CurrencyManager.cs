@@ -33,5 +33,20 @@ namespace Manager.Contents
 
             return amountToUse <= _currency;
         }
+
+        public bool UseCurrency(int amountToUse)
+        {
+            if(CanAfford(amountToUse) == false)
+            {
+#if DEBUG
+                Debug.LogError("입력한만큼 재화를 사용할 수 없습니다.");
+#endif
+                return false;
+            }
+
+            OnCurrencyChangedEvent?.Invoke(_currency,_currency-amountToUse);
+            _currency -= amountToUse;
+            return true;
+        }
     }
 }
