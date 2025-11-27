@@ -10,6 +10,7 @@ namespace Utils.Defines
         Unknown = -1,
         TitleScene = 1,
         LobbyScene = 2,
+        GameScene = 3,
         Test = 60
     }
 
