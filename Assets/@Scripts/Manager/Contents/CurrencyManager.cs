@@ -18,5 +18,7 @@ namespace Manager.Contents
             _currency = currency;
             OnCurrencyChangedEvent?.Invoke(_currency, currency);
         }
+
+        public int GetCurrency { get { return _currency; } }
     }
 }
