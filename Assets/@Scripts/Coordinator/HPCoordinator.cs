@@ -7,7 +7,7 @@ namespace Coordinator
     public class HPCoordinator : MonoBehaviour
     {
         private HPComponentModule _hpComponentModule;
-        public event Action<int, int> OnHPChanged;
+        public event Action<int, int, int> OnHPChanged;
         
         private void Awake()
         {
@@ -24,6 +24,30 @@ namespace Coordinator
         private void OnDestroy()
         {
             OnHPChanged = null;
+        }
+
+        public int GetMaxHP()
+        {
+            return _hpComponentModule.GetMaxHP();
+        }
+
+        public int GetHP()
+        {
+            return _hpComponentModule.GetHP();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            int oldHP = _hpComponentModule.GetHP();
+            _hpComponentModule.TakeDamage(damage);
+            OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
+        }
+
+        public void InitHP(int maxHp)
+        {
+            int oldHP = _hpComponentModule.GetHP();
+            _hpComponentModule.InitHP(maxHp);
+            OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
         }
     }
 }
