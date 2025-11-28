@@ -1,4 +1,3 @@
-using Manager.Contents;
 using System;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ namespace ComponentModule
     {
         private int _hp = 0;
 
-        public void RestoreHP(int hp, Type callerType)
+        public void RestoreHP(int hp)
         {
             _hp = hp;
         }
@@ -18,6 +17,9 @@ namespace ComponentModule
             return _hp; 
         }
 
-
+        public void ModifyHP(int deltaHP)
+        {
+            _hp += deltaHP;
+        }
     }
 }
