@@ -7,7 +7,9 @@ namespace Coordinator
     public class HPCoordinator : MonoBehaviour
     {
         private HPComponentModule _hpComponentModule;
+        private bool _isDead = false;
         public event Action<int, int, int> OnHPChanged;
+        public event Action OnDead;
         
         private void Awake()
         {
@@ -24,6 +26,7 @@ namespace Coordinator
         private void OnDestroy()
         {
             OnHPChanged = null;
+            OnDead = null;
         }
 
         public int GetMaxHP()
@@ -38,9 +41,20 @@ namespace Coordinator
 
         public void TakeDamage(int damage)
         {
+            if(_isDead)
+            {
+                return;
+            }
+
             int oldHP = _hpComponentModule.GetHP();
             _hpComponentModule.TakeDamage(damage);
             OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
+
+            if(_hpComponentModule.GetHP() <= 0)
+            {
+                _isDead = true;
+                OnDead?.Invoke();
+            }
         }
 
         public void InitHP(int maxHp)
@@ -48,6 +62,16 @@ namespace Coordinator
             int oldHP = _hpComponentModule.GetHP();
             _hpComponentModule.InitHP(maxHp);
             OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
+
+            if(_hpComponentModule.GetHP() > 0)
+            {
+                _isDead = false;
+            }
+        }
+
+        public bool IsDead()
+        {
+            return _isDead;
         }
     }
 }
