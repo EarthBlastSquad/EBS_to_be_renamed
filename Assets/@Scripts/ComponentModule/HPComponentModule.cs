@@ -12,5 +12,12 @@ namespace ComponentModule
         {
             _hp = hp;
         }
+
+        public int GetHP()
+        {
+            return _hp; 
+        }
+
+
     }
 }
