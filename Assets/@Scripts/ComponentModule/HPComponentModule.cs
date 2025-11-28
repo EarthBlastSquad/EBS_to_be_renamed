@@ -10,11 +10,6 @@ namespace ComponentModule
 
         public void RestoreHP(int hp, Type callerType)
         {
-            if (callerType != typeof(GameManager))
-            {
-                return;
-            }
-
             _hp = hp;
         }
     }
