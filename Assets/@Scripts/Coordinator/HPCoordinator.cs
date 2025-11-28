@@ -18,6 +18,12 @@ namespace Coordinator
                 Debug.LogError("hpComponentModule찾지 못함");
 #endif
             }
+
+        }
+
+        private void OnDestroy()
+        {
+            OnHPChanged = null;
         }
     }
 }
