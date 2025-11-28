@@ -17,5 +17,9 @@ namespace Data
         public float SoundValue = 15;
 
         #endregion
+
+        #region ¿Á»≠
+        public int Currency=666775;
+        #endregion
     }
 }

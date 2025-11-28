@@ -27,7 +27,9 @@ namespace Manager
         #endregion
         #region Contents
         private Contents.GameManager _gameMgr = new Contents.GameManager();
+        private Contents.CurrencyManager _currencyMgr;
         public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
+        public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
         #endregion
         private static void Init()
         {
@@ -41,9 +43,11 @@ namespace Manager
                 DontDestroyOnLoad(go);
                 _sInstance = go.GetOrAddComponent<Managers>();
                 _sInstance._soundMgr.Init();
+                _sInstance._currencyMgr = new Contents.CurrencyManager();
             }
 
             
+
         }
 
 
