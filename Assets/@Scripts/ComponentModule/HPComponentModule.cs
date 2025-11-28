@@ -17,9 +17,19 @@ namespace ComponentModule
             return _hp; 
         }
 
-        public void ModifyHP(int deltaHP)
+        public void TakeDamage(int damage)
         {
-            _hp += deltaHP;
+            if(damage < 0)
+            {
+                return;
+            }
+
+            _hp -= damage;
+
+            if(_hp < 0)
+            {
+                _hp = 0;
+            }
         }
     }
 }
