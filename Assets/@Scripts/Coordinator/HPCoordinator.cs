@@ -6,15 +6,15 @@ namespace Coordinator
 {
     public class HPCoordinator : MonoBehaviour
     {
-        private HPComponentModule _hpComponentModule;
+        private HPComponentModule _HPComponentModule;
         private bool _isDead = false;
         public event Action<int, int, int> OnHPChanged;
         public event Action OnDead;
         
         private void Awake()
         {
-            _hpComponentModule = GetComponent<HPComponentModule>();
-            if(_hpComponentModule is null)
+            _HPComponentModule = GetComponent<HPComponentModule>();
+            if(_HPComponentModule is null)
             {
 #if DEBUG
                 Debug.LogError("hpComponentModule찾지 못함");
@@ -31,12 +31,12 @@ namespace Coordinator
 
         public int GetMaxHP()
         {
-            return _hpComponentModule.GetMaxHP();
+            return _HPComponentModule.GetMaxHP();
         }
 
         public int GetHP()
         {
-            return _hpComponentModule.GetHP();
+            return _HPComponentModule.GetHP();
         }
 
         public void TakeDamage(int damage)
@@ -46,24 +46,24 @@ namespace Coordinator
                 return;
             }
 
-            int oldHP = _hpComponentModule.GetHP();
-            _hpComponentModule.TakeDamage(damage);
-            OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
+            int oldHP = _HPComponentModule.GetHP();
+            _HPComponentModule.TakeDamage(damage);
+            OnHPChanged?.Invoke(oldHP, _HPComponentModule.GetHP(), _HPComponentModule.GetMaxHP());
 
-            if(_hpComponentModule.GetHP() <= 0)
+            if(_HPComponentModule.GetHP() <= 0)
             {
                 _isDead = true;
                 OnDead?.Invoke();
             }
         }
 
-        public void InitHP(int maxHp)
+        public void InitHP(int maxHP)
         {
-            int oldHP = _hpComponentModule.GetHP();
-            _hpComponentModule.InitHP(maxHp);
-            OnHPChanged?.Invoke(oldHP, _hpComponentModule.GetHP(), _hpComponentModule.GetMaxHP());
+            int oldHP = _HPComponentModule.GetHP();
+            _HPComponentModule.InitHP(maxHP);
+            OnHPChanged?.Invoke(oldHP, _HPComponentModule.GetHP(), _HPComponentModule.GetMaxHP());
 
-            if(_hpComponentModule.GetHP() > 0)
+            if(_HPComponentModule.GetHP() > 0)
             {
                 _isDead = false;
             }

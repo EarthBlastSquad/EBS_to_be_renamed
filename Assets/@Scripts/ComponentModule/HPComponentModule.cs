@@ -5,12 +5,12 @@ namespace ComponentModule
 {
     public class HPComponentModule : MonoBehaviour
     {
-        private int _hp = 0;
+        private int _HP = 0;
         private int _maxHP = 0;
 
         public void InitHP(int maxHP)
         {
-            _hp = maxHP; 
+            _HP = maxHP; 
             _maxHP = maxHP;
         }
 
@@ -21,7 +21,7 @@ namespace ComponentModule
 
         public int GetHP()
         {
-            return _hp; 
+            return _HP; 
         }
 
         public void TakeDamage(int damage)
@@ -31,11 +31,11 @@ namespace ComponentModule
                 return;
             }
 
-            _hp -= damage;
+            _HP -= damage;
 
-            if(_hp < 0)
+            if(_HP < 0)
             {
-                _hp = 0;
+                _HP = 0;
             }
         }
     }
