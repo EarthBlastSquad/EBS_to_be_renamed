@@ -56,7 +56,8 @@ namespace Manager.Contents
 #if UNITY_EDITOR
         private void GetTest()
         {
-            for(int i=4;i<70;i++)
+            OwnedTowers.Clear();
+            for (int i=0;i<70;i++)
             {
                 GetTower(i);
             }
