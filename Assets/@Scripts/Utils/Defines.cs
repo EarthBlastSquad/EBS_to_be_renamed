@@ -66,4 +66,8 @@ namespace Utils.Defines
         UNPLACE = 2
     }
 
+    public enum ControlValue
+    {
+        INVALID = -666775
+    }
 }
