@@ -10,6 +10,11 @@ namespace DataStructure
         private ValueTuple<int,Vector2Int>[] _heap = new ValueTuple<int, Vector2Int>[127];
         private int _maxRank = 7;
         private int _idx=0;
+        
+        public void Clear()
+        {
+            _idx = 0;
+        }
 
         public bool IsItEmpty()
         {
