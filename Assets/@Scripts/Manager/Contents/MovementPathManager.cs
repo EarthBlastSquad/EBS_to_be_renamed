@@ -27,6 +27,15 @@ namespace Manager.Contents
             _steppableLayer = LayerMask.NameToLayer("SteppablePiece");
         }
 
+        public Vector2Int GetNextPos(Vector2Int pos)
+        {
+            if(_gridManager.IsItValidCellPos(pos) == false)
+            {
+                return new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID);
+            }
+            return _calculatedPath[pos.x, pos.y];
+        }
+
         public bool CanMoveTo(Vector2Int pos)
         {
             GameObject piece;
