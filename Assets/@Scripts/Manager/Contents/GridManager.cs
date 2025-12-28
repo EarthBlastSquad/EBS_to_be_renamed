@@ -2,6 +2,7 @@ using Contents.Grid;
 using Controller;
 using InputHandler;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Utils.Defines;
 
@@ -15,6 +16,7 @@ namespace Manager.Contents
         private bool _isInit = false;
         private Vector2Int _lastSelectedPos;
         private int _lockedAreaStartIdx = 0;
+        private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
 
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
 
@@ -41,8 +43,24 @@ namespace Manager.Contents
             }
 
             gridInputHandler.mouseUpGridEvent += GridMouseUpCallback;
+            _commandQueue.Clear();
         }
+        private void LateUpdate()
+        {
+            while (_commandQueue.Count > 0)
+            {
+                var arg = _commandQueue.Dequeue();
 
+                if(arg.command == PieceCommandTypes.PLACE)
+                {
+                    arg.commandStatusCallback?.Invoke(PlacePieceAt(arg.pos, arg.instance));
+                }
+                else if(arg.command == PieceCommandTypes.UNPLACE)
+                {
+                    arg.commandStatusCallback?.Invoke(UnplacePieceAt(arg.pos));
+                }
+            }
+        }
         public bool Init()
         {
             if (_isInit)
@@ -74,7 +92,12 @@ namespace Manager.Contents
             return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null); // IsItValidCellPos를 이미 IsItLocked에서 수행중
         }
 
-        public bool PlacePieceAt(Vector2Int pos, GameObject piece)
+        public void RequestPieceUpdate(PieceUpdateArgs args)
+        {
+            _commandQueue.Enqueue(args);
+        }
+
+        private bool PlacePieceAt(Vector2Int pos, GameObject piece)
         {
             if (piece is null || CanPlacePiece(pos) == false)
             {
@@ -90,7 +113,7 @@ namespace Manager.Contents
             return true;
         }
 
-        public bool UnplacePieceAt(Vector2Int pos)
+        private bool UnplacePieceAt(Vector2Int pos)
         {
             if (IsItLocked(pos)) // IsItLocked에서 IsItValidCellPos이미 검사중임
             {
