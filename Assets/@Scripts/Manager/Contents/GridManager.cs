@@ -210,6 +210,12 @@ namespace Manager.Contents
             }
 
             outPiece = _datas[pos.x, pos.y].nowHoldingPiece;
+
+            if(outPiece is null)
+            {
+                return false;
+            }
+
             return true;
         }
 
