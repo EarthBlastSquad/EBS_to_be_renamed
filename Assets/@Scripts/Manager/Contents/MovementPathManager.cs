@@ -15,6 +15,7 @@ namespace Manager.Contents
         private List<Vector2Int> _startPos = new List<Vector2Int>(4);
         private bool _dirty = false;
         private PriorityQueue _queue = new PriorityQueue();
+        private int _steppableLayer = 0;
 
         private void Start()
         {
@@ -23,6 +24,24 @@ namespace Manager.Contents
             {
                 Debug.LogError("그리드 매니저가 이 오브젝트에 없음");
             }
+            _steppableLayer = LayerMask.NameToLayer("SteppablePiece");
+        }
+
+        public bool CanMoveTo(Vector2Int pos)
+        {
+            GameObject piece;
+
+            if(_gridManager.IsItValidCellPos(pos) == false)
+            {
+                return false;
+            }
+
+            if(_gridManager.TryGetPlacedPiece(pos,out piece) == false)
+            {
+                return true; 
+            }
+
+            return piece.layer == _steppableLayer;
         }
 
     }
