@@ -60,4 +60,10 @@ namespace Utils.Defines
         MAX_HEIGHT = 6
     }
 
+    public enum PieceCommandTypes
+    {
+        PLACE   = 1,
+        UNPLACE = 2
+    }
+
 }
