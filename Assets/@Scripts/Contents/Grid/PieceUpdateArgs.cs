@@ -1,0 +1,12 @@
+using UnityEngine;
+using Utils.Defines;
+
+namespace Contents.Grid
+{
+    public struct PieceUpdateArgs
+    {
+        public PieceCommandTypes command;
+        public Vector2Int pos;
+        public GameObject prefab;
+    }
+}
