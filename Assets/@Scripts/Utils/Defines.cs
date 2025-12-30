@@ -68,6 +68,13 @@ namespace Utils.Defines
 
     public enum ControlValue
     {
-        INVALID = -666775
+        INVALID = -666775,
+        START = -666776
+    }
+
+    public enum Weights
+    {
+        PIECE = 750,
+        CAN_GO= 1
     }
 }
