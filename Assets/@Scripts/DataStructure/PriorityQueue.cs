@@ -7,7 +7,7 @@ namespace DataStructure
 {
     public class PriorityQueue
     {
-        private ValueTuple<int,Vector2Int>[] _heap = new ValueTuple<int, Vector2Int>[127];
+        private ValueTuple<int,Vector2Int,Vector2Int>[] _heap = new ValueTuple<int, Vector2Int, Vector2Int>[127];
         private int _maxRank = 7;
         private int _idx=0;
         
@@ -21,7 +21,7 @@ namespace DataStructure
             return _idx <= 0;
         }
 
-        public void Enqueue(int weight, Vector2Int pos)
+        public void Enqueue(int weight, Vector2Int startPos,Vector2Int targetPos)
         {
             if(_idx >= _heap.Length)
             {
@@ -29,7 +29,7 @@ namespace DataStructure
                 Array.Resize(ref _heap, (int)math.pow(2,_maxRank)-1);
             }
 
-            _heap[_idx] = ValueTuple.Create(weight, pos);
+            _heap[_idx] = ValueTuple.Create(weight, startPos,targetPos);
 
             int parent = _idx;
             int child = _idx;
@@ -50,12 +50,12 @@ namespace DataStructure
             _idx++;
         }
 
-        public ValueTuple<int,Vector2Int> Dequeue()
+        public ValueTuple<int,Vector2Int,Vector2Int> Dequeue()
         {
             if(_idx <= 0)
             {
                 Debug.LogError("empty heap");
-                return new ValueTuple<int, Vector2Int>((int)ControlValue.INVALID,new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID));
+                return ValueTuple.Create((int)ControlValue.INVALID,new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID), new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID));
             }
 
             _idx--;
