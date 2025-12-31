@@ -79,6 +79,7 @@ namespace Manager.Contents
 
             _gridController.SetupGridTiles(_datas);
             _isInit = true;
+            CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int((int)ControlValue.INVALID, (int)ControlValue.INVALID, (int)ControlValue.INVALID),false,false));
             return true;
         }
 
