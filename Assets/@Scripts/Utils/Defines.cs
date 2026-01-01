@@ -77,4 +77,12 @@ namespace Utils.Defines
         PIECE = 750,
         CAN_GO= 1
     }
+
+    public enum MovementReturnTypes
+    {
+        SUCCESS=1,
+        CANT_GO=2,
+        COOLDOWN_FAILED=3,
+        SUCCESS_AND_BLOCKED=4
+    }
 }
