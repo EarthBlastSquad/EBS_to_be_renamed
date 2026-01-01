@@ -60,4 +60,29 @@ namespace Utils.Defines
         MAX_HEIGHT = 6
     }
 
+    public enum PieceCommandTypes
+    {
+        PLACE   = 1,
+        UNPLACE = 2
+    }
+
+    public enum ControlValue
+    {
+        INVALID = -666775,
+        START = -666776
+    }
+
+    public enum Weights
+    {
+        PIECE = 750,
+        CAN_GO= 1
+    }
+
+    public enum MovementReturnTypes
+    {
+        SUCCESS=1,
+        CANT_GO=2,
+        COOLDOWN_FAILED=3,
+        SUCCESS_AND_BLOCKED=4
+    }
 }
