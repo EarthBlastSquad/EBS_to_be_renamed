@@ -46,4 +46,20 @@ namespace Data
         }
         public TowerData() { }
     }
+    [Serializable]
+    public class MonsterData
+    {
+        public int MonsterId;
+        public int MonsterSpeed;
+        public int MonsterHP;
+        //각종 파라미터들
+        public MonsterData(MonsterData original)
+        {
+            this.MonsterId = original.MonsterId;
+            this.MonsterSpeed = original.MonsterSpeed;
+            this.MonsterHP = original.MonsterHP;
+        }
+        public MonsterData() { }
+    }
+
 }
