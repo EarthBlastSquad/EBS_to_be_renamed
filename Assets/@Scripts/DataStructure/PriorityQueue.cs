@@ -54,7 +54,9 @@ namespace DataStructure
         {
             if(_idx <= 0)
             {
+#if UNITY_EDITOR
                 Debug.LogError("empty heap");
+#endif
                 return ValueTuple.Create((int)ControlValue.INVALID,new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID), new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID));
             }
 

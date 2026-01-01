@@ -25,7 +25,9 @@ namespace Manager.Contents
             _gridManager = GetComponent<GridManager>();
             if(_gridManager == null)
             {
+#if UNITY_EDITOR
                 Debug.LogError("그리드 매니저가 이 오브젝트에 없음");
+#endif
             }
             _steppableLayer = LayerMask.NameToLayer("SteppablePiece");
             _gridManager.CellUpdateEvent += RequestUpdatePath;

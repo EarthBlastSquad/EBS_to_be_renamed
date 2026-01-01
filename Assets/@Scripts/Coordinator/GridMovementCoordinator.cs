@@ -20,7 +20,9 @@ namespace Coordinator
 
             if( gridMgr is null || pathMgr is null )
             {
+#if UNITY_EDITOR
                 Debug.LogError("GridManager 또는 MovementPathManager가 존제하지 않습니다.");
+#endif
             }
 
             if((1 << LayerMask.NameToLayer("AirMobementMob")) == gameObject.layer)
