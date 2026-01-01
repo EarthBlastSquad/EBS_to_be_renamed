@@ -142,5 +142,15 @@ namespace Manager.Contents
             return piece.layer == _steppableLayer;
         }
 
+        public bool IsStartPoint(Vector2Int pos)
+        {
+            if(_gridManager.IsItValidCellPos(pos) == false)
+            {
+                return false; 
+            }
+
+            return _calculatedPath[pos.x, pos.y].x == (int)ControlValue.START;
+        }
+
     }
 }
