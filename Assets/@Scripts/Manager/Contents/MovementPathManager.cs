@@ -142,14 +142,9 @@ namespace Manager.Contents
             return piece.layer == _steppableLayer;
         }
 
-        public bool IsStartPoint(Vector2Int pos)
+        public bool CanMoveInAir(Vector2Int pos)
         {
-            if(_gridManager.IsItValidCellPos(pos) == false)
-            {
-                return false; 
-            }
-
-            return _calculatedPath[pos.x, pos.y].x == (int)ControlValue.START;
+            return _gridManager.IsItValidCellPos(pos) && _calculatedPath[pos.x, pos.y].x != (int)ControlValue.START && _calculatedPath[pos.x, pos.y].x != (int)ControlValue.INVALID;
         }
 
     }
