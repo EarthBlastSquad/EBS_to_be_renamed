@@ -18,15 +18,15 @@ namespace ComponentModule
             _gridPos = initialPos;
         }
 
-        public Vector2Int TryMove()
+        public bool TryMove(out Vector2Int outNextPos)
         {
-            Vector2Int next = _movementPathMgr.GetNextPos(_gridPos);
-            if(next.x == (int)ControlValue.INVALID)
+            outNextPos = _movementPathMgr.GetNextPos(_gridPos);
+            if(outNextPos.x == (int)ControlValue.INVALID || _movementPathMgr.CanMoveTo(outNextPos) == false)
             {
-                return new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID);
+                return false;
             }
-            _gridPos = next;
-            return next;
+            _gridPos = outNextPos;
+            return true;
         }
     }
 }
