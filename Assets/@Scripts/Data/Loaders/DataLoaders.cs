@@ -19,3 +19,20 @@ public class TowerDataLoader : ILoader<int, TowerData>
 }
 
 
+[Serializable]
+public class MonsterDataLoader : ILoader<int, MonsterData>
+{
+    public List<MonsterData> monsters = new List<MonsterData>();
+
+    public Dictionary<int, MonsterData> MakeDict()
+    {
+        Dictionary<int, MonsterData> dict = new Dictionary<int, MonsterData>();
+        foreach (MonsterData data in monsters)
+        {
+            dict.Add(data.MonsterId, data);
+        }
+        return dict;
+    }
+}
+
+
