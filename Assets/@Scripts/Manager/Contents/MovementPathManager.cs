@@ -14,7 +14,7 @@ namespace Manager.Contents
         //저장하는 데이터는 그 셀의 이전 셀의 좌표
         private Vector2Int[,] _calculatedPath = new Vector2Int[(int)MapMaxCellCnt.MAX_WIDTH, (int)MapMaxCellCnt.MAX_HEIGHT];//접근할 때  x,y 형태로 접근할 것
         private GridManager _gridManager = null;
-        private List<Vector2Int> _startPos = new List<Vector2Int>(4);
+        private List<Vector2Int> _startPos = new List<Vector2Int>(8);
         private bool _dirty = false;
         private PriorityQueue _queue = new PriorityQueue();
         private int _steppableLayer = 0;
@@ -30,8 +30,10 @@ namespace Manager.Contents
             _steppableLayer = LayerMask.NameToLayer("SteppablePiece");
             _gridManager.CellUpdateEvent += RequestUpdatePath;
 
-            //이거 시작좌표 넣어주는 방법 또 고안해야 될듯
-            _startPos.Add(new Vector2Int(0,0));
+            for (int i = 0; i < (int)MapMaxCellCnt.MAX_HEIGHT;i++)
+            {
+                _startPos.Add(new Vector2Int(0, i));
+            }
         }
 
         private void RequestUpdatePath(CellUpdateEventArgs arg)
@@ -50,7 +52,6 @@ namespace Manager.Contents
             Vector2Int nextVert = new Vector2Int(nextX, nextY);
             if(_gridManager.IsItValidCellPos(nextVert) == false)
             {
-                //Debug.Log($"inv {nextVert}, {Utils.AreaUtils.IsPointInSquareBoundary(Vector2Int.zero, new Vector2Int((int)MapMaxCellCnt.MAX_WIDTH - 1, (int)MapMaxCellCnt.MAX_HEIGHT - 1), nextVert)}");
                 return; 
             }
 
@@ -58,7 +59,6 @@ namespace Manager.Contents
             {
                 return;
             }
-
 
             int weight = (int)Weights.CAN_GO;
 
