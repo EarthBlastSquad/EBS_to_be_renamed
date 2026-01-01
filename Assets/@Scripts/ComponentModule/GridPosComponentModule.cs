@@ -4,14 +4,10 @@ using Utils.Defines;
 
 namespace ComponentModule
 {
-    public abstract class GridPosComponentModule : MonoBehaviour
+    public abstract class GridPosComponentModule
     {
         protected Vector2Int _gridPos;
         protected MovementPathManager _movementPathMgr;
-        private void Awake()
-        {
-            _movementPathMgr = FindAnyObjectByType<MovementPathManager>();
-        }
 
         public void Init(Vector2Int initialPos)
         {

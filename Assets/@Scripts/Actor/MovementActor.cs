@@ -3,17 +3,20 @@ using UnityEngine;
 
 namespace Actor
 {
-    public class MovementActor : MonoBehaviour
+    public class MovementActor
     {
         private GridManager _gridMgr;
+        private Transform _thisObj;
 
-        private void Awake()
+        public MovementActor(GridManager gridMgr, Transform thisObj)
         {
-            _gridMgr = FindAnyObjectByType<GridManager>();
+            _gridMgr = gridMgr;
+            _thisObj = thisObj;
         }
+
         public void Move(Vector2Int pos)
         {
-            _gridMgr.MoveTo(pos, gameObject.transform);
+            _gridMgr.MoveTo(pos, _thisObj);
         }
     }
 }

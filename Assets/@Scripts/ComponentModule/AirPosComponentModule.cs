@@ -1,3 +1,4 @@
+using Manager.Contents;
 using UnityEngine;
 using Utils.Defines;
 
@@ -5,6 +6,10 @@ namespace ComponentModule
 {
     public class AirPosComponentModule : GridPosComponentModule
     {
+        public AirPosComponentModule(MovementPathManager movementPathMgr)
+        {
+            _movementPathMgr = movementPathMgr;
+        }
         public override MovementReturnTypes TryMove(out Vector2Int outNextPos)
         {
             outNextPos = _gridPos;

@@ -1,5 +1,6 @@
 using Actor;
 using ComponentModule;
+using Manager.Contents;
 using UnityEngine;
 using Utils.Defines;
 
@@ -14,13 +15,24 @@ namespace Coordinator
 
         private void Awake()
         {
-            //getoradd로 할지 상의 필요
-            _posMoudle = GetComponent<GridPosComponentModule>();
-            _actor = GetComponent<MovementActor>();
-            if( _posMoudle is null || _actor is null)
+            var gridMgr = FindAnyObjectByType<GridManager>();
+            var pathMgr = FindAnyObjectByType<MovementPathManager>();
+
+            if( gridMgr is null || pathMgr is null )
             {
-                Debug.LogError("GridPosComponentModule 또는 MovementActor또는 그들을 상속받은 클래스가 없습니다");
+                Debug.LogError("GridManager 또는 MovementPathManager가 존제하지 않습니다.");
             }
+
+            if((1 << LayerMask.NameToLayer("AirMobementMob")) == gameObject.layer)
+            {
+                _posMoudle = new AirPosComponentModule(pathMgr);
+            }
+            else
+            {
+                _posMoudle = new GroundPosComponentModule(pathMgr);
+            }
+
+            _actor = new MovementActor(gridMgr, gameObject.transform);
         }
 
         public void Init(float speed, Vector2Int initialPos)
