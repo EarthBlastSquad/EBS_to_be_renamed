@@ -1,3 +1,4 @@
+using Manager.Contents;
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
@@ -28,8 +29,10 @@ namespace Manager
         #region Contents
         private Contents.GameManager _gameMgr = new Contents.GameManager();
         private Contents.CurrencyManager _currencyMgr;
+        private Contents.TimerManager _timerMgr;
         public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
         public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
+        public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }
         #endregion
         private static void Init()
         {
@@ -41,19 +44,19 @@ namespace Manager
                     go = new GameObject("@Managers");
                 }
                 DontDestroyOnLoad(go);
+                
                 _sInstance = go.GetOrAddComponent<Managers>();
+                _sInstance._timerMgr = go.GetOrAddComponent<TimerManager>();
                 _sInstance._soundMgr.Init();
                 _sInstance._currencyMgr = new Contents.CurrencyManager();
             }
-
-            
 
         }
 
 
         public void ClearManagers()
         {
-            
+            _timerMgr.Cleanup();
             _uiMgr.Clear();
             _poolMgr.Clear();
             _soundMgr.Clear();
