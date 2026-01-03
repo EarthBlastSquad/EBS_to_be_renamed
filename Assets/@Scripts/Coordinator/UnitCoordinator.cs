@@ -21,5 +21,15 @@ namespace Coordinator
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
         }
+
+        public int GetID()
+        {
+            return _id; 
+        }
+
+        public bool IsDead()
+        {
+            return _hpCoordinaotr.IsDead();
+        }
     }
 }
