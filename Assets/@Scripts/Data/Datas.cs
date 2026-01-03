@@ -52,12 +52,14 @@ namespace Data
         public int MonsterId;
         public int MonsterSpeed;
         public int MonsterHP;
+        public string PrefabName;
         //각종 파라미터들
         public MonsterData(MonsterData original)
         {
             this.MonsterId = original.MonsterId;
             this.MonsterSpeed = original.MonsterSpeed;
             this.MonsterHP = original.MonsterHP;
+            this.PrefabName = original.PrefabName;
         }
         public MonsterData() { }
     }
