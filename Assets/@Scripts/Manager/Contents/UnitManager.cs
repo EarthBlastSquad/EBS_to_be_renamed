@@ -23,6 +23,11 @@ namespace Manager.Contents
 
         private void Update()
         {
+            if(Managers.Instance.GameManager.IsGamePaused)
+            {
+                return; 
+            }
+
             for (int i = 0; i < _unitCoordinators.Count; i++)
             {
                 if (_unitCoordinators[i].IsDead())
@@ -35,7 +40,12 @@ namespace Manager.Contents
 
         private void LateUpdate()
         {
-            if(_deadFlag)
+            if (Managers.Instance.GameManager.IsGamePaused)
+            {
+                return;
+            }
+
+            if (_deadFlag)
             {
                 for(int i = _unitCoordinators.Count-1;  i >= 0; i--)
                 {
