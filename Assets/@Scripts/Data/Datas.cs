@@ -62,4 +62,20 @@ namespace Data
         public MonsterData() { }
     }
 
+    [Serializable]
+    public class WaveData
+    {
+        public int WaveTimeLimit;
+        public int WaveIdx;
+        public List<int> MobIDs;
+
+        //각종 파라미터들
+        public WaveData(WaveData original)
+        {
+            WaveTimeLimit = original.WaveTimeLimit;
+            WaveIdx = original.WaveIdx;
+            MobIDs = original.MobIDs;
+        }
+        public WaveData() { }
+    }
 }

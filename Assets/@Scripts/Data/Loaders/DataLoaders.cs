@@ -36,3 +36,20 @@ public class MonsterDataLoader : ILoader<int, MonsterData>
 }
 
 
+[Serializable]
+public class WaveDataLoader : ILoader<int, WaveData>
+{
+    public List<WaveData> waves = new List<WaveData>();
+
+    public Dictionary<int, WaveData> MakeDict()
+    {
+        Dictionary<int, WaveData> dict = new Dictionary<int, WaveData>();
+        foreach (WaveData data in waves)
+        {
+            dict.Add(data.WaveIdx, data);
+        }
+        return dict;
+    }
+}
+
+
