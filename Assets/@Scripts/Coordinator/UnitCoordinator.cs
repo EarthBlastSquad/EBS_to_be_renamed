@@ -7,18 +7,18 @@ namespace Coordinator
 {
     public class UnitCoordinator : MonoBehaviour
     {
-        private HPCoordinator _hpCoordinaotr;
+        private HPCoordinator _hpCoordinator;
         private GridMovementCoordinator _gridMovementCoordinator;
         private int _id;
         private void Awake()
         {
-            _hpCoordinaotr = gameObject.GetOrAddComponent<HPCoordinator>();
+            _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
         }
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            _hpCoordinaotr.InitHP(data.MonsterHP);
+            _hpCoordinator.InitHP(data.MonsterHP);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
         }
@@ -30,7 +30,7 @@ namespace Coordinator
 
         public bool IsDead()
         {
-            return _hpCoordinaotr.IsDead();
+            return _hpCoordinator.IsDead();
         }
 
         public void Act()
@@ -43,8 +43,8 @@ namespace Coordinator
 
         public void SubscribeOnDead(Action onDeadCallback)
         {
-            _hpCoordinaotr.OnDead -= onDeadCallback;
-            _hpCoordinaotr.OnDead += onDeadCallback;
+            _hpCoordinator.OnDead -= onDeadCallback;
+            _hpCoordinator.OnDead += onDeadCallback;
         }
     }
 }
