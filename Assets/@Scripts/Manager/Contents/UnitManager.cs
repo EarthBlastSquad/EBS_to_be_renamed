@@ -8,9 +8,13 @@ namespace Manager.Contents
     {
         private List<UnitCoordinator> _unitCoordinators = new List<UnitCoordinator>(128);
         private Queue<UnitCoordinator> _unitBuffer = new Queue<UnitCoordinator>(8);
-
+        private bool _deadFlag = false;
         
 
+        private void OnUnitDead()
+        {
+            _deadFlag = true;
+        }
 
         public void AddUnit(UnitCoordinator unit)
         {
@@ -31,9 +35,25 @@ namespace Manager.Contents
 
         private void LateUpdate()
         {
+            if(_deadFlag)
+            {
+                for(int i = _unitCoordinators.Count-1;  i >= 0; i--)
+                {
+                    if (_unitCoordinators[i].IsDead())
+                    {
+                        Managers.Instance.ResourceManager.Destroy(_unitCoordinators[i].gameObject);
+                        _unitCoordinators.RemoveAt(i);
+                    }
+                }
+
+                _deadFlag = false;
+            }
+
             while(_unitBuffer.Count > 0)
             {
-                _unitCoordinators.Add(_unitBuffer.Dequeue());
+                var tmp = _unitBuffer.Dequeue();
+                tmp.SubscribeOnDead(OnUnitDead);
+                _unitCoordinators.Add(tmp);
             }
         }
 

@@ -1,4 +1,5 @@
 using Data;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -38,6 +39,12 @@ namespace Coordinator
             {
                 //여기에 공격 로직 작성할 것. 아직 공격 담당 클래스 작성 안됨
             }
+        }
+
+        public void SubscribeOnDead(Action onDeadCallback)
+        {
+            _hpCoordinaotr.OnDead -= onDeadCallback;
+            _hpCoordinaotr.OnDead += onDeadCallback;
         }
     }
 }
