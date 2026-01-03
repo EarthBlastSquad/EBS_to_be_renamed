@@ -31,5 +31,13 @@ namespace Coordinator
         {
             return _hpCoordinaotr.IsDead();
         }
+
+        public void Act()
+        {
+            if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO)
+            {
+                //여기에 공격 로직 작성할 것. 아직 공격 담당 클래스 작성 안됨
+            }
+        }
     }
 }
