@@ -7,6 +7,8 @@ namespace Manager.Core
 {
     public class DataManager
     {
+       public Dictionary<int, WaveData> WaveDic { get; private set; } = new Dictionary<int, WaveData>();
+
         public Dictionary<int, MonsterData> MonsterDic { get; private set; } = new Dictionary<int, MonsterData>();
 
         public Dictionary<int, TowerData> TowerDic { get; private set; } = new Dictionary<int, TowerData>(); //예시:Managers.Instance.DataManager.TowerDic[1].TowerName
@@ -20,6 +22,8 @@ namespace Manager.Core
         //이제 데이터 클래스 만들고, 그거 dict들 저장해야지
         public void Init()
         {
+            WaveDic = LoadJson<WaveDataLoader, int, WaveData>("WaveData").MakeDict();
+
             MonsterDic = LoadJson<MonsterDataLoader, int, MonsterData>("MonsterData").MakeDict();
 
             TowerDic = LoadJson<TowerDataLoader, int, TowerData>("TowerData").MakeDict(); //<???DataLoader, int, ???Data>("Json 경로")
