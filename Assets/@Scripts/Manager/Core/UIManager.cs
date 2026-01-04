@@ -22,10 +22,10 @@ namespace Manager.Core
         {
             if (_uiRoot == null)
             {
-                _uiRoot = GameObject.Find("@UI_Root");
+                _uiRoot = GameObject.Find("@UIRoot");
                 if (_uiRoot == null)
                 {
-                    _uiRoot = new GameObject { name = "@UI_Root" };
+                    _uiRoot = new GameObject { name = "@UIRoot" };
                 }
             }
         }

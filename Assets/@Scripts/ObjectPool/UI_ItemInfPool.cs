@@ -53,8 +53,8 @@ namespace ObjectPool
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
             Itemset();
+            _uI_IP = GetComponentInParent<UI_InventoryPopup>();
             _rectTransform= GetComponent<RectTransform>();
-            _uI_IP = transform.parent.GetComponent<UI_InventoryPopup>();
             return true;
         }
 
@@ -75,13 +75,8 @@ namespace ObjectPool
         protected void SelectItem(PointerEventData _)
         {
             Contents.Tower.Tower t = _.pointerPress.GetComponent<ItemCell>().ICTower;
-            if (t is null)
-            {
-                return;
-            }
-            _uI_IP.OpenTDP(t);
-            //Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, t);
-            //_uI_IP.SelectedSlot.text = t.TowerData.TowerName;
+            Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, t);
+            _uI_IP.SelectedSlot.text = t.TowerData.TowerName;
         }
 
         private RectTransform _rectTransform;

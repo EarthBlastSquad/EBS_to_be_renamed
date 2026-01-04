@@ -15,9 +15,7 @@ namespace UI.Popup
         enum GameObjects
         {
             Slider_0,
-            Inventorys_0,
-            TowerDataPopUp_0,
-            Background_0
+            Inventorys_0
         }
         enum Buttons
         {
@@ -80,17 +78,6 @@ namespace UI.Popup
         }
 
         #endregion
-        public void OpenTDP(Contents.Tower.Tower t)
-        {
-            GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(true);
-            GetObject((int)GameObjects.Background_0).SetActive(true);
-            GetObject((int)GameObjects.TowerDataPopUp_0).GetComponent<UI_TowerDataPopup>().OpenTowerData(t);
-        }
-        public void CloseTDP()
-        {
-            GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(false);
-            GetObject((int)GameObjects.Background_0).SetActive(false);
-        }
     }
 }
 

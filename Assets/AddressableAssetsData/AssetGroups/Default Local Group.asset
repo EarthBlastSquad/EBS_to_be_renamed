@@ -19,14 +19,12 @@ MonoBehaviour:
     m_Address: CellHighlighter
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 460d16d5f1784404cac2f3fa45b83a2d
     m_Address: LockedAreaShadowSprite
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
@@ -46,14 +44,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Grid
-    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f823b29cb895d54ab8367933f6d9748
     m_Address: ClickedCellHighlighter
     m_ReadOnly: 0
     m_SerializedLabels:
     - Grid
-    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9dd19248eb8315a4c8919ce59b66ffb4
     m_Address: grid_cell_tile_0
