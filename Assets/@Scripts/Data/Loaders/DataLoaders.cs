@@ -46,7 +46,7 @@ public class WaveDataLoader : ILoader<int, WaveData>
         Dictionary<int, WaveData> dict = new Dictionary<int, WaveData>();
         foreach (WaveData data in waves)
         {
-            dict.Add(data.WaveIdx, data);
+            dict.Add(data.WaveTimeLimit, data);
         }
         return dict;
     }
