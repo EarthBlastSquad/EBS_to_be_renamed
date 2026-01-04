@@ -25,7 +25,7 @@ namespace Coordinator
 #endif
             }
 
-            if((1 << LayerMask.NameToLayer("AirMobementMob")) == gameObject.layer)
+            if(LayerMask.NameToLayer("AirMovementMob") == gameObject.layer)
             {
                 _posMoudle = new AirPosComponentModule(pathMgr);
             }
