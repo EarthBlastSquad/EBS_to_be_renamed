@@ -38,11 +38,13 @@ namespace Data
     {
         public int TowerId;
         public string TowerName;
+        public string TowerDescription;
         //각종 파라미터들
         public TowerData(TowerData original)
         {
             this.TowerId = original.TowerId;
             this.TowerName= original.TowerName;
+            this.TowerDescription= original.TowerDescription;
         }
         public TowerData() { }
     }
