@@ -1,0 +1,16 @@
+{
+  "monsters": [
+    {
+      "MonsterId": -666775,
+      "MonsterSpeed": 1,
+      "MonsterHP": 1,
+      "PrefabName": "TestGroundMob"
+    },
+    {
+      "MonsterId": -666776,
+      "MonsterSpeed": 1,
+      "MonsterHP": 1,
+      "PrefabName": "TestAirMob"
+    }
+  ]
+}

@@ -10,32 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: JSONDatas
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
-  m_GUID: f5245ba4c5aa3284eb8ade3acd99829b
+  m_GroupName: JSONDatas
+  m_GUID: eb0492d5785b5984b9c3fd4f77ef5ed2
   m_SerializeEntries:
-  - m_GUID: 5592869d771be6f44b12502b6b572864
-    m_Address: test_god_2
+  - m_GUID: 45b71102baa4e174688c527e2ce993a0
+    m_Address: MonsterData
     m_ReadOnly: 0
     m_SerializedLabels:
+    - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dde5fec71c206cb409cde17190d64efb
-    m_Address: TestSound
+  - m_GUID: 5638a16d8d4f727479d36d03cc98dcb7
+    m_Address: TowerData
     m_ReadOnly: 0
     m_SerializedLabels:
+    - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ec3900868441c604b88d9e31fbfe8772
-    m_Address: test_god
+  - m_GUID: 80a84b3d9d4a124439e8a6bbf4d350fd
+    m_Address: WaveData
     m_ReadOnly: 0
     m_SerializedLabels:
+    - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: fec12e8249bab64488e20dc9b8c00225, type: 2}
-    - {fileID: 11400000, guid: ab9d35dd81455cf499e2b40f618cef66, type: 2}
+    - {fileID: 11400000, guid: ae8445fb7d1e3fa4a9ad9f51b45be92c, type: 2}
+    - {fileID: 11400000, guid: 066caaeb4d607ba4983ec26ec08f5882, type: 2}
