@@ -30,6 +30,8 @@ namespace Manager.Core
             }
         }
 
+        public bool IsPopupUIOn { get; private set; } = false;
+
         public void SetCanvas(GameObject go, bool sort = true, int sortOrder = 0, bool isToast = false)
         {
             Canvas canvas = go.GetOrAddComponent<Canvas>();
@@ -124,6 +126,7 @@ namespace Manager.Core
             go.transform.SetParent(_uiRoot.transform);
 
             //RefreshTimeScale();
+            IsPopupUIOn = true;
 
             return popup;
         }
@@ -132,6 +135,7 @@ namespace Manager.Core
         {
             if (_uiPopupStack.Count == 0)
             {
+                IsPopupUIOn = false;
                 return;
             }
 
@@ -149,6 +153,7 @@ namespace Manager.Core
         {
             if (_uiPopupStack.Count == 0)
             {
+                IsPopupUIOn = false;
                 return;
             }
 

@@ -1,3 +1,4 @@
+using Manager;
 using System;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace InputHandler
 
         void Update()
         {
-            if(Manager.Managers.Instance.GameManager.IsGamePaused)
+            if(Managers.Instance.UIManager.IsPopupUIOn || Manager.Managers.Instance.GameManager.IsGamePaused)
             {
                 return; 
             }
