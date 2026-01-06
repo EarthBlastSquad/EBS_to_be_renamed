@@ -7,7 +7,7 @@ namespace Manager.Contents
     public class CurrencyManager
     {
         private int _currency = 0;
-        public event Action<int,int> OnCurrencyChangedEvent;
+        public event Action<int, int> OnCurrencyChangedEvent;
 
         public CurrencyManager()
         {
@@ -16,7 +16,7 @@ namespace Manager.Contents
 
         private void OnSceneUnload(Scene scene)
         {
-            if(scene.name == Utils.Defines.SceneNames.GameScene.ToString())
+            if (scene.name == Utils.Defines.SceneNames.GameScene.ToString())
             {
                 OnCurrencyChangedEvent = null;
             }
@@ -24,7 +24,7 @@ namespace Manager.Contents
 
         public void RestoreCurrency(int currency, Type callerType)
         {
-            if(callerType != typeof(GameManager))
+            if (callerType != typeof(GameManager))
             {
                 return;
             }
@@ -37,7 +37,7 @@ namespace Manager.Contents
 
         public bool CanAfford(int amountToUse)
         {
-            if(amountToUse < 0)
+            if (amountToUse < 0)
             {
 #if DEBUG
                 Debug.LogError("사용할 재화는 음수가 될 수 없습니다");
@@ -50,7 +50,7 @@ namespace Manager.Contents
 
         public bool UseCurrency(int amountToUse)
         {
-            if(CanAfford(amountToUse) == false)
+            if (CanAfford(amountToUse) == false)
             {
 #if DEBUG
                 Debug.LogError("입력한만큼 재화를 사용할 수 없습니다.");
@@ -58,9 +58,15 @@ namespace Manager.Contents
                 return false;
             }
 
-            OnCurrencyChangedEvent?.Invoke(_currency,_currency-amountToUse);
+            OnCurrencyChangedEvent?.Invoke(_currency, _currency - amountToUse);
             _currency -= amountToUse;
             return true;
+        }
+
+        public void AddCurrency(int amountToAdd)
+        {
+            OnCurrencyChangedEvent?.Invoke(_currency, _currency + amountToAdd);
+            _currency += amountToAdd;
         }
     }
 }
