@@ -38,13 +38,17 @@ namespace Data
     {
         public int TowerId;
         public string TowerName;
+        public int TowerHP;
+        public int DemendedCurrency;
         public string TowerDescription;
         //각종 파라미터들
         public TowerData(TowerData original)
         {
             this.TowerId = original.TowerId;
-            this.TowerName= original.TowerName;
-            this.TowerDescription= original.TowerDescription;
+            this.TowerName = original.TowerName;
+            this.TowerDescription = original.TowerDescription;
+            this.DemendedCurrency = original.DemendedCurrency;
+            this.TowerHP = original.TowerHP;
         }
         public TowerData() { }
     }
@@ -52,9 +56,10 @@ namespace Data
     public class MonsterData
     {
         public int MonsterId;
-        public int MonsterSpeed;
+        public float MonsterSpeed;
         public int MonsterHP;
         public string PrefabName;
+        public int RewardCurrency;
         //각종 파라미터들
         public MonsterData(MonsterData original)
         {
@@ -62,6 +67,7 @@ namespace Data
             this.MonsterSpeed = original.MonsterSpeed;
             this.MonsterHP = original.MonsterHP;
             this.PrefabName = original.PrefabName;
+            this.RewardCurrency = original.RewardCurrency;
         }
         public MonsterData() { }
     }
@@ -72,7 +78,6 @@ namespace Data
         public int WaveTimeLimit;
         public int WaveIdx;
         public int MobSpawnRate;
-        public int AreaUnlockXSize;
         public List<int> MobIDs;
 
         //각종 파라미터들
@@ -82,8 +87,26 @@ namespace Data
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
-            AreaUnlockXSize = original.AreaUnlockXSize;
         }
         public WaveData() { }
+    }
+
+    [Serializable]
+    public class AreaUnlockData
+    {
+        public int IDX;
+        public int DemendedCurrency;
+        public int UnlockXSize;
+        public int NextUnlockData;
+
+        public AreaUnlockData(AreaUnlockData original)
+        {
+            this.IDX = original.IDX;
+            this.DemendedCurrency = original.DemendedCurrency;
+            this.UnlockXSize = original.UnlockXSize;
+            this.NextUnlockData = original.NextUnlockData;
+        }
+
+        public AreaUnlockData() { }
     }
 }

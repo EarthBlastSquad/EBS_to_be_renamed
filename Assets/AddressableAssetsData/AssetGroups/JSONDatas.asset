@@ -36,6 +36,13 @@ MonoBehaviour:
     - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a7397e181b0c684f973789eafde8e8c
+    m_Address: AreaUnlockData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - JSONDatas
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
