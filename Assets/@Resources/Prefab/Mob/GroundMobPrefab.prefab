@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2929946716559588392}
   - component: {fileID: 8426591023382643536}
   m_Layer: 7
-  m_Name: TestGroundMob
+  m_Name: GroundMobPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

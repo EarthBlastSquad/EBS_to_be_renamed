@@ -60,8 +60,13 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 505c2ac44008faa4d9a5af6e311dfd29, type: 2}
+  - {fileID: 11400000, guid: 2e6482ed4875f4746920d2504c5377b0, type: 2}
   - {fileID: 11400000, guid: b81ea61b013281647acd7664b44b2e8c, type: 2}
+  - {fileID: 11400000, guid: 9e86c5705042f924885ec8b2ba570ef5, type: 2}
+  - {fileID: 11400000, guid: 5c5aaf401a81f4e41b0ce2175671b501, type: 2}
   - {fileID: 11400000, guid: dffb155f1fb4ecf46a927ee663a7d9bc, type: 2}
+  - {fileID: 11400000, guid: a677fc792205b3945af73c00ba2f6620, type: 2}
   - {fileID: 11400000, guid: 398b9dad769fb1446a36c274f7f5eb83, type: 2}
   - {fileID: 11400000, guid: 7df3c9bb27a7af54ba4f0bd04109987d, type: 2}
   - {fileID: 11400000, guid: 48101c9349358a442bfeee22226a7561, type: 2}
@@ -110,6 +115,10 @@ MonoBehaviour:
     - Diagnostics
     - Mobs
     - JSONDatas
+    - Tower
+    - Effect
+    - AttackObject
+    - Sound
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 859bcf21ff482464289d0088c3fc035d, type: 2}

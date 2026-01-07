@@ -70,3 +70,20 @@ public class AreaUnlockDataLoader : ILoader<int, AreaUnlockData>
 }
 
 
+[Serializable]
+public class SkillDataLoader : ILoader<int, SkillData>
+{
+    public List<SkillData> skills = new List<SkillData>();
+
+    public Dictionary<int, SkillData> MakeDict()
+    {
+        Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
+        foreach (SkillData data in skills)
+        {
+            dict.Add(data.SkillID, data);
+        }
+        return dict;
+    }
+}
+
+
