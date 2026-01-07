@@ -62,6 +62,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 505c2ac44008faa4d9a5af6e311dfd29, type: 2}
   - {fileID: 11400000, guid: 2e6482ed4875f4746920d2504c5377b0, type: 2}
+  - {fileID: 11400000, guid: 749ad6c2e63f4c34083de8930c0b5db2, type: 2}
   - {fileID: 11400000, guid: b81ea61b013281647acd7664b44b2e8c, type: 2}
   - {fileID: 11400000, guid: 9e86c5705042f924885ec8b2ba570ef5, type: 2}
   - {fileID: 11400000, guid: 5c5aaf401a81f4e41b0ce2175671b501, type: 2}
@@ -119,6 +120,7 @@ MonoBehaviour:
     - Effect
     - AttackObject
     - Sound
+    - UI
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 859bcf21ff482464289d0088c3fc035d, type: 2}
