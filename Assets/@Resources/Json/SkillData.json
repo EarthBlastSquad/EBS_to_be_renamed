@@ -1,0 +1,61 @@
+{
+  "skills": [
+    {
+      "SkillID": -666775,
+      "AttackPos": [
+        {
+          "x": 1,
+          "y": 0
+        }
+      ],
+      "Damage": 1,
+      "Cooldown": 1,
+      "AttackableLayers": [ 6, 7 ],
+      "CanAttackMultiple": true,
+      "SpeedPerCell": 0.2,
+      "SFXName": "TestSFX",
+      "AttackEffectName": "TestAttackEffect",
+      "AttackObjectImgName": "TestAttackObjectImg",
+      "PrefabName": "AttackObjectPrefab",
+      "SkillDescription" : "this is test skill1"
+    },
+    {
+      "SkillID": -6667751,
+      "AttackPos": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "Damage": 1,
+      "Cooldown": 1,
+      "AttackableLayers": [ 8, 9 ],
+      "CanAttackMultiple": true,
+      "SpeedPerCell": 0.2,
+      "SFXName": "TestSFX2",
+      "AttackEffectName": "TestAttackEffect2",
+      "AttackObjectImgName": "TestAttackObjectImg2",
+      "PrefabName": "AttackObjectPrefab",
+      "SkillDescription": "this is test skill2"
+    },
+    {
+      "SkillID": -6667752,
+      "AttackPos": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "Damage": 1,
+      "Cooldown": 1,
+      "AttackableLayers": [ 8, 9 ],
+      "CanAttackMultiple": true,
+      "SpeedPerCell": 0.2,
+      "SFXName": "TestSFX3",
+      "AttackEffectName": "TestAttackEffect3",
+      "AttackObjectImgName": "TestAttackObjectImg3",
+      "PrefabName": "AttackObjectPrefab",
+      "SkillDescription": "this is test skill3"
+    }
+  ]
+}

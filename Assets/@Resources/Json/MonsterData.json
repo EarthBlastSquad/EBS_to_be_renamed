@@ -4,13 +4,19 @@
       "MonsterId": -666775,
       "MonsterSpeed": 1,
       "MonsterHP": 1,
-      "PrefabName": "TestGroundMob"
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "TestGroundMob",
+      "RewardCurrency": 66,
+      "SkillID": -6667751
     },
     {
       "MonsterId": -666776,
       "MonsterSpeed": 1,
       "MonsterHP": 1,
-      "PrefabName": "TestAirMob"
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "TestAirMob",
+      "RewardCurrency": 66,
+      "SkillID": -6667752
     }
   ]
 }

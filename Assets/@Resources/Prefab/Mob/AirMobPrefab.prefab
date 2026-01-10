@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3747632396636397757}
   - component: {fileID: 6398117902865185788}
   m_Layer: 6
-  m_Name: TestAirMob
+  m_Name: AirMobPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

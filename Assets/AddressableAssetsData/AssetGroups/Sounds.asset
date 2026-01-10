@@ -10,28 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Mobs
+  m_Name: Sounds
   m_EditorClassIdentifier: 
-  m_GroupName: Mobs
-  m_GUID: a51171d5f407f5f4aada4c9dde3898e7
+  m_GroupName: Sounds
+  m_GUID: 5fc8a7903726d8b44a3eb078c30993a6
   m_SerializeEntries:
-  - m_GUID: 09d7fe4269329f74ca3059d66c459c3a
-    m_Address: AirMobPrefab
+  - m_GUID: dde5fec71c206cb409cde17190d64efb
+    m_Address: TestSound
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Mobs
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0f7bfd922c3c67f45a79d3670b95a877
-    m_Address: GroundMobPrefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Mobs
+    - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3444d581bb142284ea31937403997f5e, type: 2}
-    - {fileID: 11400000, guid: 8adee9c7c326a9d4b86efc6ce1da51da, type: 2}
+    - {fileID: 11400000, guid: f3b1cc81a5ef44143918e094bb752c57, type: 2}
+    - {fileID: 11400000, guid: e5ed5c314cbbbe146a2f0ec92b8b7da6, type: 2}

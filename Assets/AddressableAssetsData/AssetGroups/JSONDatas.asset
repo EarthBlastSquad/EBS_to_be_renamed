@@ -29,8 +29,22 @@ MonoBehaviour:
     - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72ae0c7ab7954e14bab94da14511326e
+    m_Address: SkillData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - JSONDatas
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80a84b3d9d4a124439e8a6bbf4d350fd
     m_Address: WaveData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - JSONDatas
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a7397e181b0c684f973789eafde8e8c
+    m_Address: AreaUnlockData
     m_ReadOnly: 0
     m_SerializedLabels:
     - JSONDatas

@@ -38,13 +38,23 @@ namespace Data
     {
         public int TowerId;
         public string TowerName;
+        public string PrefabName;
+        public string TowerImgName;
+        public int TowerHP;
+        public int DemendedCurrency;
         public string TowerDescription;
+        public SkillData SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
         {
             this.TowerId = original.TowerId;
-            this.TowerName= original.TowerName;
-            this.TowerDescription= original.TowerDescription;
+            this.TowerName = original.TowerName;
+            this.TowerImgName = original.TowerImgName;
+            this.PrefabName = original.PrefabName;
+            this.TowerDescription = original.TowerDescription;
+            this.DemendedCurrency = original.DemendedCurrency;
+            this.TowerHP = original.TowerHP;
+            this.SkillId = original.SkillId;
         }
         public TowerData() { }
     }
@@ -52,9 +62,12 @@ namespace Data
     public class MonsterData
     {
         public int MonsterId;
-        public int MonsterSpeed;
+        public float MonsterSpeed;
         public int MonsterHP;
         public string PrefabName;
+        public string MonsterImgName;
+        public int RewardCurrency;
+        public SkillData SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
         {
@@ -62,6 +75,9 @@ namespace Data
             this.MonsterSpeed = original.MonsterSpeed;
             this.MonsterHP = original.MonsterHP;
             this.PrefabName = original.PrefabName;
+            this.MonsterImgName = original.MonsterImgName;
+            this.RewardCurrency = original.RewardCurrency;
+            this.SkillID = original.SkillID;
         }
         public MonsterData() { }
     }
@@ -69,10 +85,9 @@ namespace Data
     [Serializable]
     public class WaveData
     {
-        public int WaveTimeLimit;
         public int WaveIdx;
+        public int WaveTimeLimit;
         public int MobSpawnRate;
-        public int AreaUnlockXSize;
         public List<int> MobIDs;
 
         //각종 파라미터들
@@ -82,8 +97,61 @@ namespace Data
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
-            AreaUnlockXSize = original.AreaUnlockXSize;
         }
         public WaveData() { }
+    }
+
+    [Serializable]
+    public class AreaUnlockData
+    {
+        public int IDX;
+        public int DemendedCurrency;
+        public int UnlockXSize;
+        public int NextUnlockData;
+
+        public AreaUnlockData(AreaUnlockData original)
+        {
+            this.IDX = original.IDX;
+            this.DemendedCurrency = original.DemendedCurrency;
+            this.UnlockXSize = original.UnlockXSize;
+            this.NextUnlockData = original.NextUnlockData;
+        }
+
+        public AreaUnlockData() { }
+    }
+
+    [Serializable]
+    public class SkillData
+    {
+        public int SkillID;
+        public List<Vector2Int> AttackPos;
+        public int Damage;
+        public float Cooldown;
+        public List<int> AttackableLayers;
+        public bool CanAttackMultiple;
+        public float SpeedPerCell;
+        public string SFXName;
+        public string AttackEffectName;
+        public string AttackObjectImgName;
+        public string PrefabName;
+        public string SkillDescription;
+
+        public SkillData(SkillData original)
+        {
+            this.SkillID = original.SkillID;
+            this.AttackPos = original.AttackPos;
+            this.Damage = original.Damage;
+            this.Cooldown = original.Cooldown;
+            this.AttackableLayers = original.AttackableLayers;
+            this.CanAttackMultiple = original.CanAttackMultiple;
+            this.SpeedPerCell = original.SpeedPerCell;
+            this.SFXName = original.SFXName;
+            this.AttackEffectName = original.AttackEffectName;
+            this.AttackObjectImgName = original.AttackObjectImgName;
+            this.PrefabName = original.PrefabName;
+            this.SkillDescription = original.SkillDescription;
+        }
+
+        public SkillData() { }
     }
 }

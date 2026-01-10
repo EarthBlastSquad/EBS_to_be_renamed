@@ -46,7 +46,41 @@ public class WaveDataLoader : ILoader<int, WaveData>
         Dictionary<int, WaveData> dict = new Dictionary<int, WaveData>();
         foreach (WaveData data in waves)
         {
-            dict.Add(data.WaveTimeLimit, data);
+            dict.Add(data.WaveIdx, data);
+        }
+        return dict;
+    }
+}
+
+
+[Serializable]
+public class AreaUnlockDataLoader : ILoader<int, AreaUnlockData>
+{
+    public List<AreaUnlockData> areaunlocks = new List<AreaUnlockData>();
+
+    public Dictionary<int, AreaUnlockData> MakeDict()
+    {
+        Dictionary<int, AreaUnlockData> dict = new Dictionary<int, AreaUnlockData>();
+        foreach (AreaUnlockData data in areaunlocks)
+        {
+            dict.Add(data.IDX, data);
+        }
+        return dict;
+    }
+}
+
+
+[Serializable]
+public class SkillDataLoader : ILoader<int, SkillData>
+{
+    public List<SkillData> skills = new List<SkillData>();
+
+    public Dictionary<int, SkillData> MakeDict()
+    {
+        Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
+        foreach (SkillData data in skills)
+        {
+            dict.Add(data.SkillID, data);
         }
         return dict;
     }
