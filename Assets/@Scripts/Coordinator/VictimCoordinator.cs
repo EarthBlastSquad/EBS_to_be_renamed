@@ -20,5 +20,20 @@ namespace Coordinator
             _cooldown.InitCooldown(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
         }
+
+        public bool CanAttack()
+        {
+            return _cooldown.IsCooldownEnded() && (_hpCoordinator.IsDead() == false);
+        }
+
+        public void StartCooldown()
+        {
+            _cooldown.StartCooldown(); 
+        }
+
+        public void TakeDamage(int damage)
+        {
+            _hpCoordinator.TakeDamage(damage);
+        }
     }
 }
