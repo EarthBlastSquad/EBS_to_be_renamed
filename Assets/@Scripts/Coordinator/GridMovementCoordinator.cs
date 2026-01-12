@@ -39,6 +39,7 @@ namespace Coordinator
 
             _actor = new MovementActor(_gridMgr, gameObject.transform);
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
+            gameObject.GetOrAddComponent<HPCoordinator>().OnDead += OnDead;
         }
 
         public void Init(float speed, Vector2Int initialPos)
@@ -47,6 +48,11 @@ namespace Coordinator
             _lastCalledTime = Time.time;
             _posMoudle.Init(initialPos);
             _actor.Move(initialPos);
+        }
+
+        private void OnDead()
+        {
+            _gridMgr.UnplaceMobAt(_posMoudle.GetNowPos(), _victim);
         }
 
         public MovementReturnTypes Move()
@@ -67,7 +73,7 @@ namespace Coordinator
 
             _actor.Move(pos);
 
-            _gridMgr.UnplaceMobAt(oldPos,_victim);
+            _gridMgr.UnplaceMobAt(oldPos,_victim);//방어로직의 필요성이 아직 없다
             _gridMgr.PlaceMobAt(pos,_victim);
 
             return retType;
