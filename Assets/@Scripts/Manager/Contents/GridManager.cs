@@ -92,7 +92,7 @@ namespace Manager.Contents
 
         public bool CanPlacePiece(Vector2Int pos)
         {
-            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 0); // IsItValidCellPos를 이미 IsItLocked에서 수행중
         }
 
         public bool MoveTo(Vector2Int pos, Transform target)
