@@ -11,5 +11,7 @@ namespace Coordinator
         {
             _skillData = skillData;
         }
+
+        public abstract bool Act(VictimCoordinator victim);
     }
 }
