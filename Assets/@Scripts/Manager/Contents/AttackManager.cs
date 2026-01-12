@@ -15,5 +15,9 @@ namespace Manager.Contents
             _queue.Clear();
         }
 
+        public void RequestAttack(ValueTuple<BaseSkillCoordinator, VictimCoordinator, VictimType> arg)
+        {
+            _queue.Enqueue(arg);
+        }
     }
 }
