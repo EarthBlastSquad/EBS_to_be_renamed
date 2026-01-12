@@ -37,6 +37,7 @@ namespace Data
     public class TowerData
     {
         public int TowerId;
+        public float InvincibilityTime;
         public string TowerName;
         public string PrefabName;
         public string TowerImgName;
@@ -48,6 +49,7 @@ namespace Data
         public TowerData(TowerData original)
         {
             this.TowerId = original.TowerId;
+            this.InvincibilityTime = original.InvincibilityTime;
             this.TowerName = original.TowerName;
             this.TowerImgName = original.TowerImgName;
             this.PrefabName = original.PrefabName;
@@ -62,6 +64,7 @@ namespace Data
     public class MonsterData
     {
         public int MonsterId;
+        public float InvincibilityTime;
         public float MonsterSpeed;
         public int MonsterHP;
         public string PrefabName;
@@ -72,6 +75,7 @@ namespace Data
         public MonsterData(MonsterData original)
         {
             this.MonsterId = original.MonsterId;
+            this.InvincibilityTime = original.InvincibilityTime;
             this.MonsterSpeed = original.MonsterSpeed;
             this.MonsterHP = original.MonsterHP;
             this.PrefabName = original.PrefabName;
