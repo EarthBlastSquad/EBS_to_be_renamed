@@ -1,5 +1,6 @@
 using Contents.Grid;
 using Controller;
+using Coordinator;
 using DG.Tweening.Core.Easing;
 using InputHandler;
 using System;
@@ -230,6 +231,19 @@ namespace Manager.Contents
                 return false;
             }
 
+            return true;
+        }
+
+        public bool TryGetReadonlyVictimList(Vector2Int pos, out IReadOnlyList<VictimCoordinator> outList)
+        {
+            outList = null;
+
+            if(IsItValidCellPos(pos) == false)
+            {
+                return false;
+            }
+
+            outList = _datas[pos.x, pos.y].victimList;
             return true;
         }
 
