@@ -75,6 +75,7 @@ namespace Manager.Contents
                 for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
                 {
                     _datas[x, y].isLocked = true;
+                    _datas[x, y].victimList = new List<Coordinator.VictimCoordinator>(8);
                 }
             }
 
