@@ -19,7 +19,7 @@ namespace Manager.Contents
         private Vector2Int _lastSelectedPos;
         private int _lockedAreaStartIdx = 0;
         private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
-
+        private int _airMovementMobLayer;
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
 
         private void Awake()
@@ -46,6 +46,7 @@ namespace Manager.Contents
 
             gridInputHandler.mouseUpGridEvent += GridMouseUpCallback;
             _commandQueue.Clear();
+            _airMovementMobLayer = LayerMask.NameToLayer("AirMovementMob");
         }
         private void LateUpdate()
         {
@@ -144,6 +145,30 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece = null;
 
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x, pos.y, 0), true, false));
+
+            return true;
+        }
+
+        public bool PlaceMobAt(Vector2Int pos, VictimCoordinator mob)//생각해보니까, 공중몹도 있었지
+        {
+            if(IsItValidCellPos(pos) == false || (_datas[pos.x, pos.y].nowHoldingPiece is not null && mob.gameObject.layer != _airMovementMobLayer) || mob is null)
+            {
+                return false;
+            }
+
+            _datas[pos.x,pos.y].victimList.Add(mob);
+
+            return true;
+        }
+
+        public bool UnplaceMobAt(Vector2Int pos, VictimCoordinator target)
+        {
+            if (IsItValidCellPos(pos) == false || target is null)
+            {
+                return false;
+            }
+
+            _datas[pos.x, pos.y].victimList.RemoveAll(victim => victim == target);
 
             return true;
         }
