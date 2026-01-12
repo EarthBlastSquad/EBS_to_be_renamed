@@ -85,4 +85,10 @@ namespace Utils.Defines
         COOLDOWN_FAILED=3,
         SUCCESS_AND_BLOCKED=4
     }
+
+    public enum VictimType
+    {
+        PIECE = 1,
+        MOB = 2
+    }
 }
