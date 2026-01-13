@@ -1,4 +1,5 @@
 using ComponentModule;
+using Contents.Grid;
 using Data;
 using Manager;
 using Manager.Contents;
@@ -24,6 +25,7 @@ namespace Coordinator
         {
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
+            SubscribeOnDead(OnDead);
         }
 
         public void Init(TowerData data, Vector2Int facing, Vector2Int placedPos)
@@ -68,6 +70,11 @@ namespace Coordinator
             }
 
             return false;
+        }
+
+        private void OnDead()
+        {
+            _gridManager.RequestPieceUpdate(new PieceUpdateArgs() { command = Utils.Defines.PieceCommandTypes.UNPLACE, commandStatusCallback = null, instance = null, pos = _placedPos});
         }
 
         public bool IsDead()
