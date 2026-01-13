@@ -28,8 +28,7 @@ namespace Manager.Contents
 
             tmp = _cooldownObjects[_idx];
 
-            tmp.InitCooldown(cooldownTime);
-            tmp.Index = _idx;
+            tmp.InitCooldown(cooldownTime,_idx);
             _idx++;
             return tmp;
         }
@@ -48,8 +47,8 @@ namespace Manager.Contents
             _cooldownObjects[module.Index] = last;
 
             last.Index = module.Index;
-            module.Index = -1;
 
+            module.DeinitCooldown();
         }
 
         public void Compact()
