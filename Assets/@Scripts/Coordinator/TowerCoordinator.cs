@@ -31,7 +31,25 @@ namespace Coordinator
             _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP);
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
             _placedPos = placedPos;
+            _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
         }
+
+        private void OnDisable()
+        {
+            Managers.Instance.CooldownManager.ReturnModule(_module);
+        }
+
+        public void Act()
+        {
+            if(_isAttackState && _module.IsCooldownEnded())
+            {
+                //공격 로직 짜기
+
+                _module.StartCooldown();
+            }
+        }
+
+
 
         public void UpdateState()
         {
