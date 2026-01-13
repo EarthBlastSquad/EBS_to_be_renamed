@@ -9,16 +9,18 @@ namespace Coordinator
     {
         private HPCoordinator _hpCoordinator;
         private GridMovementCoordinator _gridMovementCoordinator;
+        private VictimCoordinator _victim;
         private int _id;
         private void Awake()
         {
             _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
+            _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
         }
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            _hpCoordinator.InitHP(data.MonsterHP);
+            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
         }
