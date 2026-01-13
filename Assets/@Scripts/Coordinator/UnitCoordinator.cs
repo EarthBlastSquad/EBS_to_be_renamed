@@ -1,4 +1,6 @@
+using ComponentModule;
 using Data;
+using Manager;
 using System;
 using UnityEngine;
 using Utils;
@@ -10,6 +12,9 @@ namespace Coordinator
         private HPCoordinator _hpCoordinator;
         private GridMovementCoordinator _gridMovementCoordinator;
         private VictimCoordinator _victim;
+        private CooldownComponentModule _module;
+        private MonsterData _monsterData;
+        private SkillData _skillData;
         private int _id;
         private void Awake()
         {
@@ -23,6 +28,13 @@ namespace Coordinator
             _victim.InitVictim(data.InvincibilityTime, data.MonsterHP);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
+            _monsterData = data;
+            _skillData = Managers.Instance.DataManager.SkillDic[data.SkillID];
+        }
+
+        private void OnDisable()
+        {
+            
         }
 
         public int GetID()
