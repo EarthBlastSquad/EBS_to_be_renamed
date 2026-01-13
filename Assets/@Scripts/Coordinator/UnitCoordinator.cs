@@ -50,10 +50,19 @@ namespace Coordinator
 
         public void Act()
         {
-            if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO)
+            if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
                 //여기에 공격 로직 작성할 것. 아직 공격 담당 클래스 작성 안됨
+
+                _module.StartCooldown();
             }
+        }
+
+        private void GetFacing(ref Vector2Int next)
+        {
+            var now = _gridMovementCoordinator.GetNowPos();
+            next.x = next.x < now.x ? -1 : 1;
+            next.y = next.y < now.y ? -1 : 1;
         }
 
         public void SubscribeOnDead(Action onDeadCallback)
