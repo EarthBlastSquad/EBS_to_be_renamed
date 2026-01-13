@@ -30,11 +30,12 @@ namespace Coordinator
             _id = data.MonsterId;
             _monsterData = data;
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillID];
+            _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
         }
 
         private void OnDisable()
         {
-            
+            Managers.Instance.CooldownManager.ReturnModule(_module);
         }
 
         public int GetID()
