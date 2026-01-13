@@ -1,5 +1,6 @@
 using ComponentModule;
 using Manager;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -47,6 +48,17 @@ namespace Coordinator
         public void TakeDamage(int damage)
         {
             _hpCoordinator.TakeDamage(damage);
+        }
+
+        public bool IsDead()
+        {
+            return _hpCoordinator.IsDead(); 
+        }
+
+        public void SubscribeOnDead(Action onDeadCallback)
+        {
+            _hpCoordinator.OnDead -= onDeadCallback;
+            _hpCoordinator.OnDead += onDeadCallback;
         }
     }
 }

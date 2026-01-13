@@ -2,6 +2,7 @@ using ComponentModule;
 using Data;
 using Manager;
 using Manager.Contents;
+using System;
 using UnityEngine;
 using Utils;
 
@@ -67,6 +68,16 @@ namespace Coordinator
             }
 
             return false;
+        }
+
+        public bool IsDead()
+        {
+            return _victimCoordinator.IsDead();
+        }
+
+        public void SubscribeOnDead(Action onDeadCallback)
+        {
+            _victimCoordinator.SubscribeOnDead(onDeadCallback);
         }
     }
 }

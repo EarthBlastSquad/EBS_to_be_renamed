@@ -9,7 +9,6 @@ namespace Coordinator
 {
     public class UnitCoordinator : MonoBehaviour
     {
-        private HPCoordinator _hpCoordinator;
         private GridMovementCoordinator _gridMovementCoordinator;
         private VictimCoordinator _victim;
         private CooldownComponentModule _module;
@@ -18,7 +17,6 @@ namespace Coordinator
         private int _id;
         private void Awake()
         {
-            _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
         }
@@ -45,7 +43,7 @@ namespace Coordinator
 
         public bool IsDead()
         {
-            return _hpCoordinator.IsDead();
+            return _victim.IsDead();
         }
 
         public void Act()
@@ -67,8 +65,7 @@ namespace Coordinator
 
         public void SubscribeOnDead(Action onDeadCallback)
         {
-            _hpCoordinator.OnDead -= onDeadCallback;
-            _hpCoordinator.OnDead += onDeadCallback;
+            _victim.SubscribeOnDead(onDeadCallback);
         }
     }
 }
