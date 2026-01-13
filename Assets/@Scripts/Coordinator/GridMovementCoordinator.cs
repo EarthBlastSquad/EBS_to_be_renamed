@@ -47,6 +47,11 @@ namespace Coordinator
             return _posMoudle.GetNextPos();
         }
 
+        public Vector2Int GetNowPos()
+        {
+            return _posMoudle.GetNowPos();
+        }
+
         public void Init(float speed, Vector2Int initialPos)
         {
             _movementSpeed = speed;
