@@ -3,11 +3,13 @@ using UnityEngine;
 
 namespace ComponentModule
 {
-    public class CooldownComponentModule : MonoBehaviour
+    public class CooldownComponentModule
     {
         private float _cooldownTime=0;
         private float _accumulatedTime=0;
         private bool _isCooldownEnded;
+
+        public int Index { get; set; }
 
         public void InitCooldown(float cooldownTime)
         {
@@ -27,14 +29,14 @@ namespace ComponentModule
             return _isCooldownEnded; 
         }
 
-        private void Update()
+        public void Tick(float dt)
         {
-            if(Managers.Instance.GameManager.IsGamePaused || _accumulatedTime <= 0)
+            if(_isCooldownEnded)
             {
                 return;
             }
 
-            _accumulatedTime -= Time.deltaTime;
+            _accumulatedTime -= dt;
 
             if(_accumulatedTime <= 0)
             {

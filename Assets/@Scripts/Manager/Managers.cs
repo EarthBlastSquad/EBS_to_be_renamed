@@ -30,9 +30,11 @@ namespace Manager
         private Contents.GameManager _gameMgr = new Contents.GameManager();
         private Contents.CurrencyManager _currencyMgr;
         private Contents.TimerManager _timerMgr;
+        private Contents.CooldownManager _cooldownMgr;
         public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
         public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
         public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }
+        public Contents.CooldownManager CooldownManager { get { return Instance?._cooldownMgr; } }
         #endregion
         private static void Init()
         {
@@ -47,6 +49,7 @@ namespace Manager
                 
                 _sInstance = go.GetOrAddComponent<Managers>();
                 _sInstance._timerMgr = go.GetOrAddComponent<TimerManager>();
+                _sInstance._cooldownMgr = go.GetOrAddComponent<CooldownManager>();
                 _sInstance._soundMgr.Init();
                 _sInstance._currencyMgr = new Contents.CurrencyManager();
             }

@@ -1,4 +1,5 @@
 using ComponentModule;
+using Manager;
 using UnityEngine;
 using Utils;
 
@@ -11,13 +12,25 @@ namespace Coordinator
 
         private void Awake()
         {
-            _cooldown = gameObject.GetOrAddComponent<CooldownComponentModule>();
             _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
+            _hpCoordinator.OnDead += OnDead;
+        }
+
+        private void OnDead()
+        {
+            Managers.Instance.CooldownManager.ReturnModule(_cooldown);
+            _cooldown = null;
+        }
+
+        private void OnDestroy()
+        {
+            Managers.Instance.CooldownManager.ReturnModule(_cooldown);
+            _cooldown = null;
         }
 
         public void InitVictim(float invincibilityTime, int maxHP)
         {
-            _cooldown.InitCooldown(invincibilityTime);
+            _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
         }
 
