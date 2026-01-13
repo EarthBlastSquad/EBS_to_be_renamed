@@ -10,6 +10,12 @@ namespace ComponentModule
         {
             _movementPathMgr = movementPathMgr;
         }
+
+        public override Vector2Int GetNextPos()
+        {
+            return new Vector2Int(_gridPos.x-1, _gridPos.y);
+        }
+
         public override MovementReturnTypes TryMove(out Vector2Int outNextPos)
         {
             outNextPos = _gridPos;

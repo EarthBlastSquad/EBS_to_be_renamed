@@ -42,6 +42,11 @@ namespace Coordinator
             gameObject.GetOrAddComponent<HPCoordinator>().OnDead += OnDead;
         }
 
+        public Vector2Int GetNextPos()
+        {
+            return _posMoudle.GetNextPos();
+        }
+
         public void Init(float speed, Vector2Int initialPos)
         {
             _movementSpeed = speed;

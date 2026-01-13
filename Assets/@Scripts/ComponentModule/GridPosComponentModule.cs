@@ -19,6 +19,8 @@ namespace ComponentModule
             return _gridPos; 
         }
 
+        public abstract Vector2Int GetNextPos();
+
         public abstract MovementReturnTypes TryMove(out Vector2Int outNextPos);
     }
 }
