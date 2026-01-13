@@ -44,7 +44,7 @@ namespace Data
         public int TowerHP;
         public int DemendedCurrency;
         public string TowerDescription;
-        public SkillData SkillId;
+        public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
         {
@@ -70,7 +70,7 @@ namespace Data
         public string PrefabName;
         public string MonsterImgName;
         public int RewardCurrency;
-        public SkillData SkillID;
+        public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
         {
