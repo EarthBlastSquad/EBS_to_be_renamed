@@ -35,6 +35,7 @@ namespace Coordinator
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
+            GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.TowerImgName);
         }
 
         private void OnDisable()
