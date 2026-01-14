@@ -22,6 +22,10 @@ namespace Coordinator
         {
             return (_attackableLayers & bitmaskedLayer) != 0;
         }
+        public bool CanAttackMultiple()
+        {
+            return _skillData.CanAttackMultiple;
+        }
 
         public abstract bool Act(VictimCoordinator victim);
     }
