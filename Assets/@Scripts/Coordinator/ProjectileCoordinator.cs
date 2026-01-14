@@ -3,7 +3,6 @@ using ComponentModule;
 using Data;
 using Manager;
 using Manager.Contents;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
@@ -13,7 +12,6 @@ namespace Coordinator
     public class ProjectileCoordinator : MonoBehaviour
     {
         private IReadOnlyList<VictimCoordinator> _victims;
-        private VictimCoordinator _victimTower;//이거는 나중에 성능 보고 합쳐보도록 하죠
         private ProjectilePosComponentModule _posModule = new ProjectilePosComponentModule();
         private ProjectileMovementActor _actor;
         private BaseSkillCoordinator _skill;
@@ -30,10 +28,9 @@ namespace Coordinator
             _actor = gameObject.GetOrAddComponent<ProjectileMovementActor>();
         }
 
-        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos, IReadOnlyList<VictimCoordinator> victims, VictimCoordinator victim, AttackManager attackMgr)
+        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr)
         {
             _victims = victims;
-            _victimTower = victim;
             _posModule.Init(startPos, endPos, data.SpeedPerCell*(gridCnt.x + gridCnt.y));
             _actor.Init(Managers.Instance.ResourceManager.Load<Sprite>(data.AttackEffectName), Managers.Instance.ResourceManager.Load<Sprite>(data.AttackObjectImgName));//이부분은 런타임 성능이 너무 떨어진다 싶으면 그때 캐싱으로 바꿔보죠
             _accumulatedTime = 0;
@@ -49,19 +46,18 @@ namespace Coordinator
 
             if(result == Utils.Defines.MovementReturnTypes.CANT_GO)
             {
-                for (int i = 0; i < _victims.Count; i++)
+                for(int i = 0; i < _victims.Count; i++)
                 {
-                    if (_skill.CanAttack( 1 << _victims[i].gameObject.layer))
+                    if (_skill.CanAttack(1 << _victims[i].gameObject.layer) == false)
                     {
-                        _attackMgr.RequestAttack((_skill,_victims[i]));
+                        continue;
                     }
-                }
-                
-                if(_victimTower is not null)
-                {
-                    if(_skill.CanAttack(1 << _victimTower.gameObject.layer))
+
+                    _attackMgr.RequestAttack((_skill, _victims[i]));
+
+                    if(_skill.CanAttackMultiple() == false)
                     {
-                        _attackMgr.RequestAttack(new ValueTuple<BaseSkillCoordinator, VictimCoordinator>(_skill, _victimTower));
+                        return;
                     }
                 }
             }
