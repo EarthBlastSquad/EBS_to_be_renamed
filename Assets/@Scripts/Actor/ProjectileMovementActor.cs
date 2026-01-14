@@ -13,9 +13,10 @@ namespace Actor
             _renderer = GetComponent<SpriteRenderer>();
         }
 
-        public void Init(Sprite arrivedImg)
+        public void Init(Sprite arrivedImg, Sprite initialImg)
         {
             _arrivedImg = arrivedImg;
+            _renderer.sprite = initialImg;
         }
 
         public void Move(Vector3 pos, MovementReturnTypes result)
