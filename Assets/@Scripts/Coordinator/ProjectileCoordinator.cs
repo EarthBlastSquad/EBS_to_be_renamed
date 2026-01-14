@@ -3,6 +3,7 @@ using ComponentModule;
 using Data;
 using Manager;
 using Manager.Contents;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
@@ -17,6 +18,11 @@ namespace Coordinator
         private BaseSkillCoordinator _skill;
         private float _accumulatedTime = 0;
         private AttackManager _attackMgr;
+        private float _totalTime = 0;
+        private bool _isArrived = false;
+        private float _delayTime = 1;
+        public event Action OnProjectileArrived;
+        
 
         private void Awake()
         {
@@ -28,10 +34,14 @@ namespace Coordinator
             _actor = gameObject.GetOrAddComponent<ProjectileMovementActor>();
         }
 
-        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr)
+        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr, float delayTime)
         {
+            _delayTime = delayTime;
+            _isArrived = false;
+            OnProjectileArrived = null;
             _victims = victims;
-            _posModule.Init(startPos, endPos, data.SpeedPerCell*(gridCnt.x + gridCnt.y));
+            _totalTime = data.SpeedPerCell * (gridCnt.x + gridCnt.y);
+            _posModule.Init(startPos, endPos, _totalTime);
             _actor.Init(Managers.Instance.ResourceManager.Load<Sprite>(data.AttackEffectName), Managers.Instance.ResourceManager.Load<Sprite>(data.AttackObjectImgName));//이부분은 런타임 성능이 너무 떨어진다 싶으면 그때 캐싱으로 바꿔보죠
             _accumulatedTime = 0;
             _attackMgr = attackMgr;
@@ -40,6 +50,17 @@ namespace Coordinator
         public void Act(float dt)
         {
             _accumulatedTime += dt;
+
+            if(_isArrived)
+            {
+                if(_accumulatedTime >= _totalTime)
+                {
+                    OnProjectileArrived?.Invoke();
+                }
+
+                return;
+            }
+
             Vector3 pos;
             var result = _posModule.GetPos(_accumulatedTime, out pos);
             _actor.Move(pos, result);
@@ -57,6 +78,8 @@ namespace Coordinator
 
                     if(_skill.CanAttackMultiple() == false)
                     {
+                        _isArrived = true;
+                        _totalTime += _delayTime;
                         return;
                     }
                 }
