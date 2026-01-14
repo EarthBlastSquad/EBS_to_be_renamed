@@ -6,6 +6,7 @@ using InputHandler;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Utils;
 using Utils.Defines;
 
@@ -13,6 +14,7 @@ namespace Manager.Contents
 {
     public class GridManager : MonoBehaviour
     {
+        private Tilemap _tilemap;
         private GridController _gridController;
         private Grid _grid;
         private GridCellData[,] _datas;
@@ -28,9 +30,10 @@ namespace Manager.Contents
         {
             _nullVictim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _grid = GetComponent<Grid>();
-            if (_grid is null)
+            _tilemap = GetComponentInChildren<Tilemap>();
+            if (_grid is null || _tilemap is null)
             {
-                Debug.LogError("grid not found in grid");
+                Debug.LogError("grid or tilemap not found in grid");
             }
 
             _gridController = GetComponentInChildren<GridController>();
@@ -99,6 +102,11 @@ namespace Manager.Contents
         public bool CanPlacePiece(Vector2Int pos)
         {
             return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 1); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+        }
+
+        public Vector3 GetWorldPos(Vector2Int gridPos, int z)
+        {
+            return _tilemap.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, z));
         }
 
         public bool MoveTo(Vector2Int pos, Transform target)
