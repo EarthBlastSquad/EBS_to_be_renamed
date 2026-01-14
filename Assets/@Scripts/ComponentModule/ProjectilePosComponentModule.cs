@@ -10,11 +10,11 @@ namespace ComponentModule
         private Vector3 _endPos;
         private float _totalTime;
 
-        public void Init(Vector2Int start, Vector2Int end, float zPos, float speedPerTile)
+        public void Init(Vector3 start, Vector3 end, float totalTime)
         {
-            _totalTime = speedPerTile*(math.abs(start.x - end.x) + math.abs(start.y - end.y));
-            _startPos = new Vector3(start.x, start.y, zPos);
-            _endPos = new Vector3(end.x, end.y, zPos);
+            _startPos = start;
+            _endPos = end;
+            _totalTime = totalTime;
         }
 
         public MovementReturnTypes GetPos(float accumulatedTime, out Vector3 pos)
