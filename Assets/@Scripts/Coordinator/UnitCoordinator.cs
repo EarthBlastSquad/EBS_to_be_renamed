@@ -29,6 +29,7 @@ namespace Coordinator
             _monsterData = data;
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillID];
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
+            GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.MonsterImgName);
         }
 
         private void OnDisable()
