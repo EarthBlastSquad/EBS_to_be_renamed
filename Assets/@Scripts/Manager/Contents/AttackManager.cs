@@ -8,14 +8,14 @@ namespace Manager.Contents
 {
     public class AttackManager : MonoBehaviour
     {
-        private Queue<ValueTuple<BaseSkillCoordinator, VictimCoordinator, VictimType>> _queue = new Queue<(BaseSkillCoordinator, VictimCoordinator, VictimType)>(64);
+        private Queue<ValueTuple<BaseSkillCoordinator, VictimCoordinator>> _queue = new Queue<(BaseSkillCoordinator, VictimCoordinator)>(64);
 
         public void InitQueue()
         {
             _queue.Clear();
         }
 
-        public void RequestAttack(ValueTuple<BaseSkillCoordinator, VictimCoordinator, VictimType> arg)
+        public void RequestAttack(ValueTuple<BaseSkillCoordinator, VictimCoordinator> arg)
         {
             _queue.Enqueue(arg);
         }
