@@ -1,5 +1,6 @@
 using Contents.Grid;
 using Controller;
+using Coordinator;
 using DG.Tweening.Core.Easing;
 using InputHandler;
 using System;
@@ -18,7 +19,7 @@ namespace Manager.Contents
         private Vector2Int _lastSelectedPos;
         private int _lockedAreaStartIdx = 0;
         private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
-
+        private int _airMovementMobLayer;
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
 
         private void Awake()
@@ -45,6 +46,7 @@ namespace Manager.Contents
 
             gridInputHandler.mouseUpGridEvent += GridMouseUpCallback;
             _commandQueue.Clear();
+            _airMovementMobLayer = LayerMask.NameToLayer("AirMovementMob");
         }
         private void LateUpdate()
         {
@@ -75,6 +77,7 @@ namespace Manager.Contents
                 for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
                 {
                     _datas[x, y].isLocked = true;
+                    _datas[x, y].victimList = new List<Coordinator.VictimCoordinator>(8);
                 }
             }
 
@@ -91,7 +94,7 @@ namespace Manager.Contents
 
         public bool CanPlacePiece(Vector2Int pos)
         {
-            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 0); // IsItValidCellPos를 이미 IsItLocked에서 수행중
         }
 
         public bool MoveTo(Vector2Int pos, Transform target)
@@ -142,6 +145,30 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece = null;
 
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x, pos.y, 0), true, false));
+
+            return true;
+        }
+
+        public bool PlaceMobAt(Vector2Int pos, VictimCoordinator mob)//생각해보니까, 공중몹도 있었지
+        {
+            if(IsItValidCellPos(pos) == false || (_datas[pos.x, pos.y].nowHoldingPiece is not null && mob.gameObject.layer != _airMovementMobLayer) || mob is null)
+            {
+                return false;
+            }
+
+            _datas[pos.x,pos.y].victimList.Add(mob);
+
+            return true;
+        }
+
+        public bool UnplaceMobAt(Vector2Int pos, VictimCoordinator target)
+        {
+            if (IsItValidCellPos(pos) == false || target is null)
+            {
+                return false;
+            }
+
+            _datas[pos.x, pos.y].victimList.RemoveAll(victim => victim == target);
 
             return true;
         }
@@ -229,6 +256,19 @@ namespace Manager.Contents
                 return false;
             }
 
+            return true;
+        }
+
+        public bool TryGetReadonlyVictimList(Vector2Int pos, out IReadOnlyList<VictimCoordinator> outList)
+        {
+            outList = null;
+
+            if(IsItValidCellPos(pos) == false)
+            {
+                return false;
+            }
+
+            outList = _datas[pos.x, pos.y].victimList;
             return true;
         }
 
