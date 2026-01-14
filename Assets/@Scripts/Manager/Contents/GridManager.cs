@@ -6,6 +6,7 @@ using InputHandler;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 using Utils.Defines;
 
 namespace Manager.Contents
@@ -21,9 +22,11 @@ namespace Manager.Contents
         private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
         private int _airMovementMobLayer;
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
+        private VictimCoordinator _nullVictim;
 
         private void Awake()
         {
+            _nullVictim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _grid = GetComponent<Grid>();
             if (_grid is null)
             {
@@ -78,6 +81,7 @@ namespace Manager.Contents
                 {
                     _datas[x, y].isLocked = true;
                     _datas[x, y].victimList = new List<Coordinator.VictimCoordinator>(8);
+                    _datas[x, y].victimList.Add(_nullVictim);
                 }
             }
 
@@ -94,7 +98,7 @@ namespace Manager.Contents
 
         public bool CanPlacePiece(Vector2Int pos)
         {
-            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 0); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 1); // IsItValidCellPos를 이미 IsItLocked에서 수행중
         }
 
         public bool MoveTo(Vector2Int pos, Transform target)
@@ -119,6 +123,11 @@ namespace Manager.Contents
             {
                 return false;
             }
+            VictimCoordinator victim = piece.GetComponent<VictimCoordinator>();
+#if UNITY_EDITOR
+            Debug.LogError("타워가 victimcoordinator를 가지지 않음");
+#endif
+            _datas[pos.x, pos.y].victimList[0] = victim;
 
             _gridController.PlacePieceAt(new Vector3Int(pos.x, pos.y, 0), piece.transform);
             piece.transform.SetParent(_grid.transform);
@@ -145,6 +154,7 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece = null;
 
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x, pos.y, 0), true, false));
+            _datas[pos.x, pos.y].victimList[0] = _nullVictim;
 
             return true;
         }
