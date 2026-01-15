@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7407909560026410057}
   - component: {fileID: 2929946716559588392}
   - component: {fileID: 8426591023382643536}
+  - component: {fileID: 8327108752009572897}
   m_Layer: 7
   m_Name: GroundMobPrefab
   m_TagString: Untagged
@@ -137,5 +138,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84b48cfa676ed7e49ba83523adbdf7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8327108752009572897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987432545533977832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4196614387cb2ef4eb9a2d4d743d112c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
