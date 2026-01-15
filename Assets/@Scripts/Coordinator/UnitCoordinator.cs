@@ -1,6 +1,7 @@
 using ComponentModule;
 using Data;
 using Manager;
+using Manager.Contents;
 using System;
 using UnityEngine;
 using Utils;
@@ -14,11 +15,13 @@ namespace Coordinator
         private CooldownComponentModule _module;
         private MonsterData _monsterData;
         private SkillData _skillData;
+        private ProjectileManager _projMgr;
         private int _id;
         private void Awake()
         {
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
+            _projMgr = FindAnyObjectByType<ProjectileManager>();
         }
 
         public void Init(MonsterData data, Vector2Int initialPos)
@@ -51,7 +54,14 @@ namespace Coordinator
         {
             if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
-                //여기에 공격 로직 작성할 것. 아직 공격 담당 클래스 작성 안됨
+
+                Vector2Int facing = _gridMovementCoordinator.GetNextPos();
+                GetFacing(ref facing);
+                for(int i = 0; i < _skillData.AttackPos.Count; i++)
+                {
+                    Vector2Int nowPos = _gridMovementCoordinator.GetNowPos();
+                    _projMgr.CreateProjectile(_skillData,nowPos, nowPos + (_skillData.AttackPos[i]*facing));
+                }
 
                 _module.StartCooldown();
             }

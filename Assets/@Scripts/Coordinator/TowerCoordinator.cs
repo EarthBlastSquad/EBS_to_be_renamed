@@ -5,6 +5,7 @@ using Manager;
 using Manager.Contents;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 using Utils;
 
 namespace Coordinator
@@ -17,6 +18,7 @@ namespace Coordinator
         private VictimCoordinator _victimCoordinator;
         private Vector2Int _facing;
         private GridManager _gridManager;
+        private ProjectileManager _projMgr;
         private bool _isAttackState = false;
 
         private Vector2Int _placedPos; //이건 GridPosComponentModule로 처리하까도 생각했는데, 나중에 생각해보죠. 근데, 그건 이동시스템을 위해 만든건데, 이동시스템이 아직 없으니까 넣는건 너무 섯부른 판단일듯
@@ -25,6 +27,7 @@ namespace Coordinator
         {
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
+            _projMgr = FindAnyObjectByType<ProjectileManager>();
             SubscribeOnDead(OnDead);
         }
 
@@ -47,7 +50,10 @@ namespace Coordinator
         {
             if(_isAttackState && _module.IsCooldownEnded())
             {
-                //공격 로직 짜기
+                for (int i = 0; i < _skillData.AttackPos.Count; i++)
+                {
+                    _projMgr.CreateProjectile(_skillData, _placedPos, _placedPos + (_skillData.AttackPos[i] * _facing));
+                }
 
                 _module.StartCooldown();
             }

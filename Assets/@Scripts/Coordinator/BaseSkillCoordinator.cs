@@ -5,8 +5,8 @@ namespace Coordinator
 {
     public abstract class BaseSkillCoordinator : MonoBehaviour
     {
-        private SkillData _skillData;
-        private int _attackableLayers;
+        protected SkillData _skillData;
+        protected int _attackableLayers;
 
         public void Init(SkillData skillData)
         {
