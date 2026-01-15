@@ -24,6 +24,7 @@ namespace Manager.Contents
         private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
         private int _airMovementMobLayer;
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
+        public event Action OnMobMovementEvent;
         private VictimCoordinator _nullVictim;
 
         private void Awake()
@@ -179,6 +180,7 @@ namespace Manager.Contents
             }
 
             _datas[pos.x,pos.y].victimList.Add(mob);
+            OnMobMovementEvent?.Invoke();
 
             return true;
         }
@@ -191,6 +193,7 @@ namespace Manager.Contents
             }
 
             _datas[pos.x, pos.y].victimList.RemoveAll(victim => victim == target);
+            OnMobMovementEvent?.Invoke();
 
             return true;
         }

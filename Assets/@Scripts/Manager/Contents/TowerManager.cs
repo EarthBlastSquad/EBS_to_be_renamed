@@ -10,10 +10,17 @@ namespace Manager.Contents
         private Queue<TowerCoordinator> _towerBuffer = new Queue<TowerCoordinator>(8);
         private bool _deadFlag = false;
         private GridManager _gridMgr;
+        private bool _rangeDirty = false;
 
         private void Awake()
         {
             _gridMgr = FindAnyObjectByType<GridManager>();
+            _gridMgr.OnMobMovementEvent += OnMobMove;
+        }
+
+        private void OnMobMove()
+        {
+            _rangeDirty = true;
         }
 
         private void OnTowerDead()
@@ -39,8 +46,15 @@ namespace Manager.Contents
                 {
                     continue;
                 }
+
+                if (_rangeDirty)
+                {
+                    _towerCoordinators[i].UpdateState();
+                }
+
                 _towerCoordinators[i].Act();
             }
+            _rangeDirty = false;
         }
 
         private void LateUpdate()
