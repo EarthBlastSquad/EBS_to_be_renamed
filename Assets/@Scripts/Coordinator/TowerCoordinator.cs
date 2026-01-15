@@ -48,6 +48,10 @@ namespace Coordinator
 
         public void Act()
         {
+            if(_module is null)
+            {
+                return;
+            }
             if(_isAttackState && _module.IsCooldownEnded())
             {
                 for (int i = 0; i < _skillData.AttackPos.Count; i++)

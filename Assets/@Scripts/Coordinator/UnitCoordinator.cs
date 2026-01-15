@@ -52,6 +52,10 @@ namespace Coordinator
 
         public void Act()
         {
+            if(_module is null)
+            {
+                return;
+            }
             if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
 
