@@ -56,6 +56,7 @@ namespace Coordinator
                 if(_accumulatedTime >= _totalTime)
                 {
                     OnProjectileArrived?.Invoke();
+                    enabled = false;
                 }
 
                 return;
