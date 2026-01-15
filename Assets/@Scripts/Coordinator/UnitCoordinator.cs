@@ -1,6 +1,7 @@
 using ComponentModule;
 using Data;
 using Manager;
+using Manager.Contents;
 using System;
 using UnityEngine;
 using Utils;
@@ -14,11 +15,14 @@ namespace Coordinator
         private CooldownComponentModule _module;
         private MonsterData _monsterData;
         private SkillData _skillData;
+        private ProjectileManager _projMgr;
         private int _id;
+        private int _attackableLayer = 0;
         private void Awake()
         {
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
+            _projMgr = FindAnyObjectByType<ProjectileManager>();
         }
 
         public void Init(MonsterData data, Vector2Int initialPos)
@@ -30,6 +34,11 @@ namespace Coordinator
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillID];
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.MonsterImgName);
+            _attackableLayer = 0;
+            for(int i =0; i < _skillData.AttackableLayers.Count; i++)
+            {
+                _attackableLayer |= _skillData.AttackableLayers[i];
+            }
         }
 
         private void OnDisable()
@@ -49,11 +58,38 @@ namespace Coordinator
 
         public void Act()
         {
+            if(_module is null)
+            {
+                return;
+            }
             if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
-                //여기에 공격 로직 작성할 것. 아직 공격 담당 클래스 작성 안됨
+                Vector2Int nowPos = _gridMovementCoordinator.GetNowPos();
+                Vector2Int facing = _gridMovementCoordinator.GetNextPos();
+                GetFacing(ref facing);
+                bool res = false;
+                for(int i = 0; i < _skillData.AttackPos.Count; i++)
+                {
+                    Vector2Int endPos = nowPos + (_skillData.AttackPos[i] * facing);
+                    //if (_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
+                    if ((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
+                    {
+                        continue;
+                    }
 
-                _module.StartCooldown();
+                    _projMgr.CreateProjectile(_skillData,nowPos, endPos);
+                    res = true;
+
+                    if(_skillData.CanAttackMultiple == false)
+                    {
+                        break;
+                    }
+                }
+
+                if(res)
+                {
+                    _module.StartCooldown();
+                }
             }
         }
 

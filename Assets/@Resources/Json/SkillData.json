@@ -9,52 +9,68 @@
         }
       ],
       "Damage": 1,
-      "Cooldown": 1,
+      "Cooldown": 5 ,
       "AttackableLayers": [ 6, 7 ],
       "CanAttackMultiple": true,
       "SpeedPerCell": 0.2,
       "SFXName": "TestSFX",
-      "AttackEffectName": "TestAttackEffect",
-      "AttackObjectImgName": "TestAttackObjectImg",
-      "PrefabName": "AttackObjectPrefab",
-      "SkillDescription" : "this is test skill1"
+      "AttackEffectName": "sprite_god_1",
+      "AttackObjectImgName": "sprite_god_2",
+      "PrefabName": "TestAttack",
+      "SkillDescription": "this is test skill1"
     },
     {
       "SkillID": -6667751,
       "AttackPos": [
         {
-          "x": 0,
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
           "y": 0
+        },
+        {
+          "x": 1,
+          "y": -1
         }
       ],
       "Damage": 1,
-      "Cooldown": 1,
+      "Cooldown": 4,
       "AttackableLayers": [ 8, 9 ],
       "CanAttackMultiple": true,
-      "SpeedPerCell": 0.2,
+      "SpeedPerCell": 1,
       "SFXName": "TestSFX2",
-      "AttackEffectName": "TestAttackEffect2",
-      "AttackObjectImgName": "TestAttackObjectImg2",
-      "PrefabName": "AttackObjectPrefab",
+      "AttackEffectName": "sprite_god_1",
+      "AttackObjectImgName": "sprite_god_2",
+      "PrefabName": "TestAttack",
       "SkillDescription": "this is test skill2"
     },
     {
       "SkillID": -6667752,
       "AttackPos": [
         {
-          "x": 0,
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
           "y": 0
+        },
+        {
+          "x": 1,
+          "y": -1
         }
       ],
       "Damage": 1,
-      "Cooldown": 1,
+      "Cooldown": 4,
       "AttackableLayers": [ 8, 9 ],
-      "CanAttackMultiple": true,
-      "SpeedPerCell": 0.2,
+      "CanAttackMultiple": false,
+      "SpeedPerCell": 1,
       "SFXName": "TestSFX3",
-      "AttackEffectName": "TestAttackEffect3",
-      "AttackObjectImgName": "TestAttackObjectImg3",
-      "PrefabName": "AttackObjectPrefab",
+      "AttackEffectName": "sprite_god_1",
+      "AttackObjectImgName": "sprite_god_2",
+      "PrefabName": "TestAttack",
       "SkillDescription": "this is test skill3"
     }
   ]

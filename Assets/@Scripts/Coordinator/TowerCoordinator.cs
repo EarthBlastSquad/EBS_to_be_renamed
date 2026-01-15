@@ -5,6 +5,7 @@ using Manager;
 using Manager.Contents;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 using Utils;
 
 namespace Coordinator
@@ -17,14 +18,16 @@ namespace Coordinator
         private VictimCoordinator _victimCoordinator;
         private Vector2Int _facing;
         private GridManager _gridManager;
+        private ProjectileManager _projMgr;
         private bool _isAttackState = false;
-
+        private int _attackableLayer = 0;
         private Vector2Int _placedPos; //이건 GridPosComponentModule로 처리하까도 생각했는데, 나중에 생각해보죠. 근데, 그건 이동시스템을 위해 만든건데, 이동시스템이 아직 없으니까 넣는건 너무 섯부른 판단일듯
 
         private void Awake()
         {
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
+            _projMgr = FindAnyObjectByType<ProjectileManager>();
             SubscribeOnDead(OnDead);
         }
 
@@ -36,6 +39,12 @@ namespace Coordinator
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.TowerImgName);
+            _attackableLayer = 0;
+
+            for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
+            {
+                _attackableLayer |= _skillData.AttackableLayers[i];
+            }
         }
 
         private void OnDisable()
@@ -45,11 +54,36 @@ namespace Coordinator
 
         public void Act()
         {
+            if(_module is null)
+            {
+                return;
+            }
             if(_isAttackState && _module.IsCooldownEnded())
             {
-                //공격 로직 짜기
+                bool res = false;
+                for (int i = 0; i < _skillData.AttackPos.Count; i++)
+                {
+                    Vector2Int endPos = _placedPos + (_skillData.AttackPos[i] * _facing);
 
-                _module.StartCooldown();
+                    //if(_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
+                    if((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
+                    {
+                        continue;
+                    }
+
+                    _projMgr.CreateProjectile(_skillData, _placedPos, endPos);
+                    res = true;
+
+                    if(_skillData.CanAttackMultiple == false)
+                    {
+                        break;
+                    }
+                }
+
+                if(res)
+                {
+                    _module.StartCooldown();
+                }
             }
         }
 
@@ -64,7 +98,7 @@ namespace Coordinator
         {
             for(int i = 0; i < _skillData.AttackPos.Count; i++)
             {
-                if (_gridManager.TryGetReadonlyVictimList(_placedPos + (_skillData.AttackPos[i]*_facing), out var list) && list.Count > 0)
+                if (_gridManager.TryGetReadonlyVictimList(_placedPos + (_skillData.AttackPos[i]*_facing), out var list) && list.Count > 1)
                 {
                     return true;
                 }

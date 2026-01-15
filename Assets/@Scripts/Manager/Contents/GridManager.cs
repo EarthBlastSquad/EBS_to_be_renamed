@@ -6,12 +6,15 @@ using InputHandler;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using Utils;
 using Utils.Defines;
 
 namespace Manager.Contents
 {
     public class GridManager : MonoBehaviour
     {
+        private Tilemap _tilemap;
         private GridController _gridController;
         private Grid _grid;
         private GridCellData[,] _datas;
@@ -21,13 +24,17 @@ namespace Manager.Contents
         private Queue<PieceUpdateArgs> _commandQueue = new Queue<PieceUpdateArgs>();
         private int _airMovementMobLayer;
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
+        public event Action OnMobMovementEvent;
+        private VictimCoordinator _nullVictim;
 
         private void Awake()
         {
+            _nullVictim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _grid = GetComponent<Grid>();
-            if (_grid is null)
+            _tilemap = GetComponentInChildren<Tilemap>();
+            if (_grid is null || _tilemap is null)
             {
-                Debug.LogError("grid not found in grid");
+                Debug.LogError("grid or tilemap not found in grid");
             }
 
             _gridController = GetComponentInChildren<GridController>();
@@ -56,11 +63,13 @@ namespace Manager.Contents
 
                 if(arg.command == PieceCommandTypes.PLACE)
                 {
-                    arg.commandStatusCallback?.Invoke(PlacePieceAt(arg.pos, arg.instance));
+                    var res = PlacePieceAt(arg.pos, arg.instance);
+                    arg.commandStatusCallback?.Invoke(res);
                 }
                 else if(arg.command == PieceCommandTypes.UNPLACE)
                 {
-                    arg.commandStatusCallback?.Invoke(UnplacePieceAt(arg.pos));
+                    var res = UnplacePieceAt(arg.pos);
+                    arg.commandStatusCallback?.Invoke(res);
                 }
             }
         }
@@ -78,6 +87,7 @@ namespace Manager.Contents
                 {
                     _datas[x, y].isLocked = true;
                     _datas[x, y].victimList = new List<Coordinator.VictimCoordinator>(8);
+                    _datas[x, y].victimList.Add(_nullVictim);
                 }
             }
 
@@ -94,7 +104,12 @@ namespace Manager.Contents
 
         public bool CanPlacePiece(Vector2Int pos)
         {
-            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 0); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+            return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 1); // IsItValidCellPos를 이미 IsItLocked에서 수행중
+        }
+
+        public Vector3 GetWorldPos(Vector2Int gridPos, int z)
+        {
+            return _tilemap.CellToWorld(new Vector3Int(gridPos.x, gridPos.y, z));
         }
 
         public bool MoveTo(Vector2Int pos, Transform target)
@@ -119,6 +134,14 @@ namespace Manager.Contents
             {
                 return false;
             }
+            VictimCoordinator victim = piece.GetComponent<VictimCoordinator>();
+#if UNITY_EDITOR
+            if (victim is null)
+            {
+                Debug.LogError("타워가 victimcoordinator를 가지지 않음");
+            }
+#endif
+            _datas[pos.x, pos.y].victimList[0] = victim;
 
             _gridController.PlacePieceAt(new Vector3Int(pos.x, pos.y, 0), piece.transform);
             piece.transform.SetParent(_grid.transform);
@@ -135,7 +158,6 @@ namespace Manager.Contents
             {
                 return false;
             }
-
             if (_datas[pos.x, pos.y].nowHoldingPiece is null)
             {
                 return false;
@@ -145,6 +167,7 @@ namespace Manager.Contents
             _datas[pos.x, pos.y].nowHoldingPiece = null;
 
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int(pos.x, pos.y, 0), true, false));
+            _datas[pos.x, pos.y].victimList[0] = _nullVictim;
 
             return true;
         }
@@ -157,6 +180,7 @@ namespace Manager.Contents
             }
 
             _datas[pos.x,pos.y].victimList.Add(mob);
+            OnMobMovementEvent?.Invoke();
 
             return true;
         }
@@ -169,6 +193,7 @@ namespace Manager.Contents
             }
 
             _datas[pos.x, pos.y].victimList.RemoveAll(victim => victim == target);
+            OnMobMovementEvent?.Invoke();
 
             return true;
         }

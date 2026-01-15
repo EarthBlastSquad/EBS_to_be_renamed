@@ -37,12 +37,19 @@ namespace Coordinator
 
         public bool CanAttack()
         {
+            if(_cooldown is null)
+            {
+                return false;
+            }
             return _cooldown.IsCooldownEnded() && (_hpCoordinator.IsDead() == false);
         }
 
         public void StartCooldown()
         {
-            _cooldown.StartCooldown(); 
+            if(_cooldown is not null)
+            {
+                _cooldown.StartCooldown();
+            }
         }
 
         public void TakeDamage(int damage)

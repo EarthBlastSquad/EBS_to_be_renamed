@@ -8,14 +8,14 @@ namespace Manager.Contents
 {
     public class AttackManager : MonoBehaviour
     {
-        private Queue<ValueTuple<BaseSkillCoordinator, VictimCoordinator, VictimType>> _queue = new Queue<(BaseSkillCoordinator, VictimCoordinator, VictimType)>(64);
+        private Queue<ValueTuple<BaseSkillCoordinator, VictimCoordinator>> _queue = new Queue<(BaseSkillCoordinator, VictimCoordinator)>(64);
 
         public void InitQueue()
         {
             _queue.Clear();
         }
 
-        public void RequestAttack(ValueTuple<BaseSkillCoordinator, VictimCoordinator, VictimType> arg)
+        public void RequestAttack(ValueTuple<BaseSkillCoordinator, VictimCoordinator> arg)
         {
             _queue.Enqueue(arg);
         }
@@ -36,7 +36,10 @@ namespace Manager.Contents
                     continue;
                 }
 
-                request.Item1.Act(request.Item2);//딱 공격만 하고, 체력 까임에 따른 이벤트는 각자가 알아서 처리할 것
+                if(request.Item2.CanAttack())
+                {
+                    request.Item1.Act(request.Item2);//딱 공격만 하고, 체력 까임에 따른 이벤트는 각자가 알아서 처리할 것
+                }
             }
         }
     }
