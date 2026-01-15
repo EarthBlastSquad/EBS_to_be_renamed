@@ -4,10 +4,12 @@
       "TowerId": -666775,
       "TowerName": "Test Tower",
       "PrefabName": "TowerPrefab",
-      "TowerImgName" : "TestTowerSprite",
-      "TowerHP": 66,
+      "TowerImgName": "sprite_god_2",
+      "InvincibilityTime": 0,
+      "TowerHP": 3,
       "DemendedCurrency": 67,
       "TowerDescription": "테스트용 타워",
-      "SkillId" :  -666775
+      "SkillId": -666775
     }
+  ]
 }
