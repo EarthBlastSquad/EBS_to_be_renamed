@@ -70,7 +70,7 @@ namespace Coordinator
         {
             for(int i = 0; i < _skillData.AttackPos.Count; i++)
             {
-                if (_gridManager.TryGetReadonlyVictimList(_placedPos + (_skillData.AttackPos[i]*_facing), out var list) && list.Count > 0)
+                if (_gridManager.TryGetReadonlyVictimList(_placedPos + (_skillData.AttackPos[i]*_facing), out var list) && list.Count > 1)
                 {
                     return true;
                 }
