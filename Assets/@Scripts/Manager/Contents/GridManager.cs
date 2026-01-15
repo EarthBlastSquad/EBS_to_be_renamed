@@ -133,7 +133,10 @@ namespace Manager.Contents
             }
             VictimCoordinator victim = piece.GetComponent<VictimCoordinator>();
 #if UNITY_EDITOR
-            Debug.LogError("타워가 victimcoordinator를 가지지 않음");
+            if (victim is null)
+            {
+                Debug.LogError("타워가 victimcoordinator를 가지지 않음");
+            }
 #endif
             _datas[pos.x, pos.y].victimList[0] = victim;
 
