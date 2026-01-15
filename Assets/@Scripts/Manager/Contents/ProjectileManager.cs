@@ -37,6 +37,25 @@ namespace Manager.Contents
             _dirty = true;
         }
 
+        public bool IsTargetIn(int attackableMask, Vector2Int end)
+        {
+            IReadOnlyList<VictimCoordinator> victims;
+            if (_gridManager.TryGetReadonlyVictimList(end, out victims) == false)
+            {
+                return false;
+            }
+
+            for(int i = 0;  i < victims.Count; i++)
+            {
+                if ((victims[i].gameObject.layer & attackableMask) != 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void CreateProjectile(SkillData skillData,Vector2Int start, Vector2Int end)
         {
             IReadOnlyList<VictimCoordinator> victims;

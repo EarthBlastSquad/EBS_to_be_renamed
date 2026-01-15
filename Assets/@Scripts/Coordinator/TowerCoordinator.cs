@@ -20,7 +20,7 @@ namespace Coordinator
         private GridManager _gridManager;
         private ProjectileManager _projMgr;
         private bool _isAttackState = false;
-
+        private int _attackableLayer = 0;
         private Vector2Int _placedPos; //이건 GridPosComponentModule로 처리하까도 생각했는데, 나중에 생각해보죠. 근데, 그건 이동시스템을 위해 만든건데, 이동시스템이 아직 없으니까 넣는건 너무 섯부른 판단일듯
 
         private void Awake()
@@ -39,6 +39,12 @@ namespace Coordinator
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.TowerImgName);
+            _attackableLayer = 0;
+
+            for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
+            {
+                _attackableLayer |= _skillData.AttackableLayers[i];
+            }
         }
 
         private void OnDisable()
@@ -54,12 +60,30 @@ namespace Coordinator
             }
             if(_isAttackState && _module.IsCooldownEnded())
             {
+                bool res = false;
                 for (int i = 0; i < _skillData.AttackPos.Count; i++)
                 {
-                    _projMgr.CreateProjectile(_skillData, _placedPos, _placedPos + (_skillData.AttackPos[i] * _facing));
+                    Vector2Int endPos = _placedPos + (_skillData.AttackPos[i] * _facing);
+
+                    //if(_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
+                    if((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
+                    {
+                        continue;
+                    }
+
+                    _projMgr.CreateProjectile(_skillData, _placedPos, endPos);
+                    res = true;
+
+                    if(_skillData.CanAttackMultiple == false)
+                    {
+                        break;
+                    }
                 }
 
-                _module.StartCooldown();
+                if(res)
+                {
+                    _module.StartCooldown();
+                }
             }
         }
 

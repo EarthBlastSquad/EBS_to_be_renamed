@@ -68,7 +68,6 @@ namespace Manager.Contents
             {
                 for (int i = _towerCoordinators.Count - 1; i >= 0; i--)
                 {
-                    Debug.Log("rem");
                     if (_towerCoordinators[i].IsDead())
                     {
                         Managers.Instance.ResourceManager.Destroy(_towerCoordinators[i].gameObject);
