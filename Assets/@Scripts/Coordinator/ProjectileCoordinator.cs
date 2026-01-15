@@ -29,13 +29,17 @@ namespace Coordinator
             _skill = GetComponent<BaseSkillCoordinator>();
 
 #if UNITY_EDITOR
-            Debug.LogError("스킬이 없습니다.");
+            if(_skill is null)
+            {
+                Debug.LogError("스킬이 없습니다.");
+            }
 #endif
             _actor = gameObject.GetOrAddComponent<ProjectileMovementActor>();
         }
 
         public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr, float delayTime)
         {
+            enabled = true;
             _delayTime = delayTime;
             _isArrived = false;
             OnProjectileArrived = null;
@@ -68,7 +72,9 @@ namespace Coordinator
 
             if(result == Utils.Defines.MovementReturnTypes.CANT_GO)
             {
-                for(int i = 0; i < _victims.Count; i++)
+                _isArrived = true;
+                _totalTime += _delayTime;
+                for (int i = 0; i < _victims.Count; i++)
                 {
                     if (_skill.CanAttack(1 << _victims[i].gameObject.layer) == false)
                     {
@@ -79,9 +85,7 @@ namespace Coordinator
 
                     if(_skill.CanAttackMultiple() == false)
                     {
-                        _isArrived = true;
-                        _totalTime += _delayTime;
-                        return;
+                        break;
                     }
                 }
             }
