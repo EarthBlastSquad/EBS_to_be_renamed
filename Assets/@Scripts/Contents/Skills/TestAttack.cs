@@ -8,6 +8,7 @@ namespace Contents.Skills
         public override bool Act(VictimCoordinator victim)
         {
             victim.TakeDamage(_skillData.Damage);
+            victim.StartCooldown();
             return true;
         }
     }
