@@ -62,11 +62,13 @@ namespace Manager.Contents
 
                 if(arg.command == PieceCommandTypes.PLACE)
                 {
-                    arg.commandStatusCallback?.Invoke(PlacePieceAt(arg.pos, arg.instance));
+                    var res = PlacePieceAt(arg.pos, arg.instance);
+                    arg.commandStatusCallback?.Invoke(res);
                 }
                 else if(arg.command == PieceCommandTypes.UNPLACE)
                 {
-                    arg.commandStatusCallback?.Invoke(UnplacePieceAt(arg.pos));
+                    var res = UnplacePieceAt(arg.pos);
+                    arg.commandStatusCallback?.Invoke(res);
                 }
             }
         }
@@ -155,7 +157,6 @@ namespace Manager.Contents
             {
                 return false;
             }
-
             if (_datas[pos.x, pos.y].nowHoldingPiece is null)
             {
                 return false;
