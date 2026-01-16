@@ -133,6 +133,7 @@ namespace Data
         public int PrevIdx;
         public int NextIdx;
         public int WaveIdx;
+        public int TotalWaveCnt;
         public string StageName;
         public string StageDescription;
 
@@ -142,6 +143,7 @@ namespace Data
             PrevIdx = original.PrevIdx;
             NextIdx = original.NextIdx;
             WaveIdx = original.WaveIdx;
+            TotalWaveCnt = original.TotalWaveCnt;
             StageName = original.StageName;
             StageDescription = original.StageDescription;
         }
