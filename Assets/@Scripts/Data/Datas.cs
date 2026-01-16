@@ -44,6 +44,7 @@ namespace Data
         public int TowerHP;
         public int DemendedCurrency;
         public string TowerDescription;
+        public string HitSound;
         public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
@@ -56,6 +57,7 @@ namespace Data
             this.TowerDescription = original.TowerDescription;
             this.DemendedCurrency = original.DemendedCurrency;
             this.TowerHP = original.TowerHP;
+            this.HitSound = original.HitSound;
             this.SkillId = original.SkillId;
         }
         public TowerData() { }
@@ -70,6 +72,7 @@ namespace Data
         public string PrefabName;
         public string MonsterImgName;
         public int RewardCurrency;
+        public string HitSound;
         public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
@@ -81,6 +84,7 @@ namespace Data
             this.PrefabName = original.PrefabName;
             this.MonsterImgName = original.MonsterImgName;
             this.RewardCurrency = original.RewardCurrency;
+            this.HitSound = original.HitSound;
             this.SkillID = original.SkillID;
         }
         public MonsterData() { }
@@ -163,6 +167,7 @@ namespace Data
         public List<int> AttackableLayers;
         public bool CanAttackMultiple;
         public float SpeedPerCell;
+        public string FiringSFX;
         public string SFXName;
         public string AttackEffectName;
         public string AttackObjectImgName;
@@ -178,6 +183,7 @@ namespace Data
             this.AttackableLayers = original.AttackableLayers;
             this.CanAttackMultiple = original.CanAttackMultiple;
             this.SpeedPerCell = original.SpeedPerCell;
+            this.FiringSFX = original.FiringSFX;
             this.SFXName = original.SFXName;
             this.AttackEffectName = original.AttackEffectName;
             this.AttackObjectImgName = original.AttackObjectImgName;
