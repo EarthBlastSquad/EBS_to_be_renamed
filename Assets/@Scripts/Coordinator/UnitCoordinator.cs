@@ -23,6 +23,12 @@ namespace Coordinator
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
+            
+        }
+
+        private void Start()
+        {
+            SubscribeOnDead(OnDead);
         }
 
         public void Init(MonsterData data, Vector2Int initialPos)
@@ -39,6 +45,11 @@ namespace Coordinator
             {
                 _attackableLayer |= _skillData.AttackableLayers[i];
             }
+        }
+
+        private void OnDead()
+        {
+            Managers.Instance.CurrencyManager.AddCurrency(_monsterData.RewardCurrency);
         }
 
         private void OnDisable()

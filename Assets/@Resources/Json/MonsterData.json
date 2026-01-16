@@ -3,7 +3,7 @@
     {
       "MonsterId": -666775,
       "MonsterSpeed": 0.1,
-      "InvincibilityTime": 30,
+      "InvincibilityTime": 1,
       "MonsterHP": 2,
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "sprite_god_1",
