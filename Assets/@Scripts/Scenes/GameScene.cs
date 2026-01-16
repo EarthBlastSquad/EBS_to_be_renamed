@@ -51,6 +51,7 @@ namespace Scenes
 
         private void Start()
         {
+            FindAnyObjectByType<AreaUnlockManager>().Init(Managers.Instance.DataManager.AreaUnlockDic[Managers.Instance.StageManager.GetNowStageData().AreaUnlockIdx]);
             _gridMgr.Init();
             Managers.Instance.TimerManager.StartTimer(OnSecondEnd, _waveMgr.GetNowWaveData().WaveTimeLimit, 1f);
             OnWaveChanged?.Invoke(_waveMgr.GetNowWaveData());
