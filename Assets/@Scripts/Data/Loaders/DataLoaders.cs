@@ -71,6 +71,23 @@ public class AreaUnlockDataLoader : ILoader<int, AreaUnlockData>
 
 
 [Serializable]
+public class StageDataLoader : ILoader<int, StageData>
+{
+    public List<StageData> stages = new List<StageData>();
+
+    public Dictionary<int, StageData> MakeDict()
+    {
+        Dictionary<int, StageData> dict = new Dictionary<int, StageData>();
+        foreach (StageData data in stages)
+        {
+            dict.Add(data.StageIdx, data);
+        }
+        return dict;
+    }
+}
+
+
+[Serializable]
 public class SkillDataLoader : ILoader<int, SkillData>
 {
     public List<SkillData> skills = new List<SkillData>();

@@ -27,10 +27,12 @@ namespace Manager
         public Core.DataManager DataManager { get { return Instance?._dataMgr; } }
         #endregion
         #region Contents
+        private Contents.StageManager _stageMgr = new Contents.StageManager();
         private Contents.GameManager _gameMgr = new Contents.GameManager();
         private Contents.CurrencyManager _currencyMgr;
         private Contents.TimerManager _timerMgr;
         private Contents.CooldownManager _cooldownMgr;
+        public Contents.StageManager StageManager { get { return Instance?._stageMgr; }  }
         public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
         public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
         public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }

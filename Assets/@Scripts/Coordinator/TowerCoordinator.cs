@@ -4,6 +4,7 @@ using Data;
 using Manager;
 using Manager.Contents;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 using Utils;
@@ -33,6 +34,7 @@ namespace Coordinator
 
         public void Init(TowerData data, Vector2Int facing, Vector2Int placedPos)
         {
+            _data = data;
             _facing = facing;
             _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP);
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
@@ -45,6 +47,22 @@ namespace Coordinator
             {
                 _attackableLayer |= _skillData.AttackableLayers[i];
             }
+        }
+
+        public void RetrieveTower()
+        {
+            Managers.Instance.CurrencyManager.AddCurrency(_data.DemendedCurrency);
+            _victimCoordinator.TakeDamage(_data.TowerHP);
+        }
+
+
+        /// <summary>
+        /// 공격 가능한 위치(attackPos), 설치된 위치(placedPos), 보는 방향(facing)
+        /// </summary>
+        /// <returns></returns>
+        public ValueTuple<IReadOnlyList<Vector2Int>, Vector2Int, Vector2Int> GetAttackRangeArgs()
+        {
+            return (_skillData.AttackPos, _placedPos, _facing);
         }
 
         private void OnDisable()

@@ -1,6 +1,9 @@
+using Contents.Grid;
 using Coordinator;
+using Data;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils.Defines;
 
 namespace Manager.Contents
 {
@@ -26,6 +29,48 @@ namespace Manager.Contents
         private void OnTowerDead()
         {
             _deadFlag = true;
+        }
+
+        public bool RetrieveTower(Vector2Int pos)
+        {
+            if(_gridMgr.TryGetPlacedPiece(pos,out var tower))
+            {
+                tower.GetComponent<TowerCoordinator>().RetrieveTower();
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool PlaceTower(TowerData towerData, Vector2Int pos, Vector2Int facing)
+        {
+            if(towerData is null || _gridMgr.CanPlacePiece(pos) == false)
+            {
+                return false;
+            }
+
+            if(Managers.Instance.CurrencyManager.CanAfford(towerData.DemendedCurrency) == false)
+            {
+                return false; 
+            }
+
+            GameObject go = Managers.Instance.ResourceManager.Instantiate(towerData.PrefabName, pooling: true);
+
+            if(go is null)
+            {
+                return false; 
+            }
+
+            TowerCoordinator tower = go.GetComponent<TowerCoordinator>();
+
+            tower.Init(towerData, facing, pos);
+
+            _gridMgr.RequestPieceUpdate(new PieceUpdateArgs() { command=PieceCommandTypes.PLACE, instance=go, pos = pos, commandStatusCallback=null});
+
+            AddTower(tower);
+
+            return true;
         }
 
         public void AddTower(TowerCoordinator Tower)

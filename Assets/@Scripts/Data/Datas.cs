@@ -92,6 +92,7 @@ namespace Data
         public int WaveIdx;
         public int WaveTimeLimit;
         public int MobSpawnRate;
+        public int NextWaveIdx;
         public List<int> MobIDs;
 
         //각종 파라미터들
@@ -101,6 +102,7 @@ namespace Data
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
+            NextWaveIdx = original.NextWaveIdx;
         }
         public WaveData() { }
     }
@@ -122,6 +124,31 @@ namespace Data
         }
 
         public AreaUnlockData() { }
+    }
+
+    [Serializable]
+    public class StageData
+    {
+        public int StageIdx;
+        public int PrevIdx;
+        public int NextIdx;
+        public int WaveIdx;
+        public int TotalWaveCnt;
+        public string StageName;
+        public string StageDescription;
+
+        public StageData(StageData original)
+        {
+            StageIdx = original.StageIdx;
+            PrevIdx = original.PrevIdx;
+            NextIdx = original.NextIdx;
+            WaveIdx = original.WaveIdx;
+            TotalWaveCnt = original.TotalWaveCnt;
+            StageName = original.StageName;
+            StageDescription = original.StageDescription;
+        }
+
+        public StageData() { }
     }
 
     [Serializable]
