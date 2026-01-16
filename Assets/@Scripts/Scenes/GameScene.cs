@@ -22,6 +22,7 @@ namespace Scenes
                 return;
             }
             Managers.Instance.TimerManager.StartTimer(OnSecondEnd,_waveMgr.GetNowWaveData().WaveTimeLimit, 1f);
+            OnWaveChanged?.Invoke(_waveMgr.GetNowWaveData());
         }
 
         protected override void Init()
