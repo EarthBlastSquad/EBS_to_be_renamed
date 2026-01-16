@@ -11,6 +11,12 @@ namespace Manager.Contents
         private bool _deadFlag = false;
         
 
+
+        public int GetNowUnitCnt()
+        {
+            return _unitCoordinators.Count; 
+        }
+
         private void OnUnitDead()
         {
             _deadFlag = true;
