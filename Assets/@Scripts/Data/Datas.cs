@@ -127,6 +127,29 @@ namespace Data
     }
 
     [Serializable]
+    public class StageData
+    {
+        public int StageIdx;
+        public int PrevIdx;
+        public int NextIdx;
+        public int WaveIdx;
+        public string StageName;
+        public string StageDescription;
+
+        public StageData(StageData original)
+        {
+            StageIdx = original.StageIdx;
+            PrevIdx = original.PrevIdx;
+            NextIdx = original.NextIdx;
+            WaveIdx = original.WaveIdx;
+            StageName = original.StageName;
+            StageDescription = original.StageDescription;
+        }
+
+        public StageData() { }
+    }
+
+    [Serializable]
     public class SkillData
     {
         public int SkillID;
