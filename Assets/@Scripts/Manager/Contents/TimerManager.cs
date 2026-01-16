@@ -33,7 +33,7 @@ namespace Manager.Contents
 
         private void Update()
         {
-            if(_onTimerEnd is null || Managers.Instance.GameManager.IsGamePaused)
+            if(Managers.Instance.GameManager.IsGamePaused)//_onTimerEnd is null || 
             { 
                 return;
             }
