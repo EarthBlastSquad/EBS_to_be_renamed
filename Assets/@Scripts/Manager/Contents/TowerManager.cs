@@ -31,6 +31,18 @@ namespace Manager.Contents
             _deadFlag = true;
         }
 
+        public bool RetrieveTower(Vector2Int pos)
+        {
+            if(_gridMgr.TryGetPlacedPiece(pos,out var tower))
+            {
+                tower.GetComponent<TowerCoordinator>().RetrieveTower();
+
+                return true;
+            }
+
+            return false;
+        }
+
         public bool PlaceTower(TowerData towerData, Vector2Int pos, Vector2Int facing)
         {
             if(towerData is null || _gridMgr.CanPlacePiece(pos) == false)
