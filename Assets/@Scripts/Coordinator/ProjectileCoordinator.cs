@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
+using Utils.Defines;
 
 namespace Coordinator
 {
@@ -21,6 +22,7 @@ namespace Coordinator
         private float _totalTime = 0;
         private bool _isArrived = false;
         private float _delayTime = 1;
+        private SkillData _data;
         public event Action OnProjectileArrived;
         
 
@@ -39,6 +41,7 @@ namespace Coordinator
 
         public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr, float delayTime)
         {
+            _data = data;
             enabled = true;
             _delayTime = delayTime;
             _isArrived = false;
@@ -75,6 +78,7 @@ namespace Coordinator
             {
                 _isArrived = true;
                 _totalTime += _delayTime;
+                Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, _data.SFXName, false);
                 for (int i = 0; i < _victims.Count; i++)
                 {
                     if (_skill.CanAttack(1 << _victims[i].gameObject.layer) == false)

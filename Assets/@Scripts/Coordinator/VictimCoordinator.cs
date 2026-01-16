@@ -10,6 +10,7 @@ namespace Coordinator
     {
         private CooldownComponentModule _cooldown;
         private HPCoordinator _hpCoordinator;
+        private string _hitSFXName;
 
         private void Awake()
         {
@@ -29,8 +30,9 @@ namespace Coordinator
             _cooldown = null;
         }
 
-        public void InitVictim(float invincibilityTime, int maxHP)
+        public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName)
         {
+            _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
         }
@@ -54,6 +56,7 @@ namespace Coordinator
 
         public void TakeDamage(int damage)
         {
+            Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.EFFECT_0, _hitSFXName, false);
             _hpCoordinator.TakeDamage(damage);
         }
 
