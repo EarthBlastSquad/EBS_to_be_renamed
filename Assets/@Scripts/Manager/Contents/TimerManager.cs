@@ -51,7 +51,7 @@ namespace Manager.Contents
             {
                 OnSecondChanged?.Invoke(_totalTime, _time);
                 _onTimerEnd?.Invoke();
-                _onTimerEnd = null;
+                //_onTimerEnd = null; //어차피 시작마다 콜백 줘야하는데, 굳이 여기서 초기화 할 필요 없음 <- 사용하는 장소 보면 더더욱. CleanUp도 있으니까, 이 부분은 굳이 있을 필요 없음
             }
         }
     }
