@@ -92,6 +92,7 @@ namespace Data
         public int WaveIdx;
         public int WaveTimeLimit;
         public int MobSpawnRate;
+        public int NextWaveIdx;
         public List<int> MobIDs;
 
         //각종 파라미터들
@@ -101,6 +102,7 @@ namespace Data
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
+            NextWaveIdx = original.NextWaveIdx;
         }
         public WaveData() { }
     }
