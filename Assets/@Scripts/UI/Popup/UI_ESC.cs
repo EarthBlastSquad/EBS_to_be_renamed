@@ -37,6 +37,7 @@ namespace UI.Popup
 
         protected void Exit(PointerEventData _)
         {
+            _ugs.ESCClose();
             Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
         }
     }

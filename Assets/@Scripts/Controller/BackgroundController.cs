@@ -24,7 +24,12 @@ namespace Controller
         private void LateUpdate()
         {
             Transform t;
-            if (_camera.transform.position.x - _lastX >= 20.32602f)
+            float clf = _camera.transform.position.x - _lastX;
+            if (-20.32602f < clf&& clf < 20.32602f)
+            {
+                return;
+            }
+            else if (clf >= 20.32602f)
             {
                 t = _backgrounds.First.Value;
                 t.transform.position += new Vector3(60.97806f, 0, 0);
@@ -32,7 +37,7 @@ namespace Controller
                 _backgrounds.AddLast(t);
                 _lastX += 20.32602f;
             }
-            else if (_camera.transform.position.x - _lastX <= -20.32602f)
+            else
             {
                 t = _backgrounds.Last.Value;
                 t.transform.position -= new Vector3(60.97806f, 0, 0);

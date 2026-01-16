@@ -108,7 +108,7 @@ namespace UI.Scene
             }
             else if(_gm.TryGetPlacedPiece(_gm.GetLastSelectedPos(),out GameObject outTower)&&outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
             {
-                
+                _tm.RetrieveTower(_gm.GetLastSelectedPos());
             }
             else
             {
