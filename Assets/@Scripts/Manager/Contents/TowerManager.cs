@@ -65,6 +65,7 @@ namespace Manager.Contents
             TowerCoordinator tower = go.GetComponent<TowerCoordinator>();
 
             tower.Init(towerData, facing, pos);
+            Managers.Instance.CurrencyManager.UseCurrency(towerData.DemendedCurrency);
 
             _gridMgr.RequestPieceUpdate(new PieceUpdateArgs() { command=PieceCommandTypes.PLACE, instance=go, pos = pos, commandStatusCallback=null});
 

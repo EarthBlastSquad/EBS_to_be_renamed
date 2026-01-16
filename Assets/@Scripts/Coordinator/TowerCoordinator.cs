@@ -29,6 +29,11 @@ namespace Coordinator
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
+            
+        }
+
+        private void Start()
+        {
             SubscribeOnDead(OnDead);
         }
 

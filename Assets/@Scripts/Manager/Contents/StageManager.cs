@@ -28,6 +28,11 @@ namespace Manager.Contents
             return _nowStage.NextIdx == (int)ControlValue.INVALID;
         }
 
+        public StageData GetNowStageData()
+        {
+            return _nowStage; 
+        }
+
         public bool TryGetNextStage()
         {
             if(DoesReachedRightEnd())
