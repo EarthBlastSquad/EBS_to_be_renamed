@@ -2,19 +2,20 @@
   "monsters": [
     {
       "MonsterId": -666775,
-      "MonsterSpeed": 1,
-      "MonsterHP": 1,
+      "MonsterSpeed": 0.1,
+      "InvincibilityTime": 30,
+      "MonsterHP": 2,
       "PrefabName": "GroundMobPrefab",
-      "MonsterImgName": "TestGroundMob",
+      "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
       "SkillID": -6667751
     },
     {
       "MonsterId": -666776,
-      "MonsterSpeed": 1,
+      "MonsterSpeed": 0.1,
       "MonsterHP": 1,
       "PrefabName": "AirMobPrefab",
-      "MonsterImgName": "TestAirMob",
+      "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
       "SkillID": -6667752
     }

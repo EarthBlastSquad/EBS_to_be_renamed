@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: AttackObject
   m_GUID: d945f43b5676c2f4bac56fade6595e00
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: b14bb62bc6e2ec54193352f5c96d6971
+    m_Address: TestAttack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackObject
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:

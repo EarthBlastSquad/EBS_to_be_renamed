@@ -71,7 +71,7 @@ namespace Controller.Spawner
             }
         }
 
-        private void OnWaveChanged(WaveData waveData)
+        public void OnWaveChanged(WaveData waveData)
         {
             _accumulatedTime = 0;
             _mobIDs = waveData.MobIDs;

@@ -1,8 +1,14 @@
 {
   "areaunlocks": [
     {
-      "IDX": -666775,
-      "DemendedCurrency": 1,
+      "IDX": -6667751,
+      "DemendedCurrency": 5,
+      "UnlockXSize": 10,
+      "NextUnlockData": -6667752
+    },
+    {
+      "IDX": -6667752,
+      "DemendedCurrency": 5,
       "UnlockXSize": 10,
       "NextUnlockData": -666775
     }

@@ -37,17 +37,19 @@ namespace Data
     public class TowerData
     {
         public int TowerId;
+        public float InvincibilityTime;
         public string TowerName;
         public string PrefabName;
         public string TowerImgName;
         public int TowerHP;
         public int DemendedCurrency;
         public string TowerDescription;
-        public SkillData SkillId;
+        public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
         {
             this.TowerId = original.TowerId;
+            this.InvincibilityTime = original.InvincibilityTime;
             this.TowerName = original.TowerName;
             this.TowerImgName = original.TowerImgName;
             this.PrefabName = original.PrefabName;
@@ -62,16 +64,18 @@ namespace Data
     public class MonsterData
     {
         public int MonsterId;
+        public float InvincibilityTime;
         public float MonsterSpeed;
         public int MonsterHP;
         public string PrefabName;
         public string MonsterImgName;
         public int RewardCurrency;
-        public SkillData SkillID;
+        public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
         {
             this.MonsterId = original.MonsterId;
+            this.InvincibilityTime = original.InvincibilityTime;
             this.MonsterSpeed = original.MonsterSpeed;
             this.MonsterHP = original.MonsterHP;
             this.PrefabName = original.PrefabName;
@@ -88,6 +92,7 @@ namespace Data
         public int WaveIdx;
         public int WaveTimeLimit;
         public int MobSpawnRate;
+        public int NextWaveIdx;
         public List<int> MobIDs;
 
         //각종 파라미터들
@@ -97,6 +102,7 @@ namespace Data
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
+            NextWaveIdx = original.NextWaveIdx;
         }
         public WaveData() { }
     }
@@ -118,6 +124,31 @@ namespace Data
         }
 
         public AreaUnlockData() { }
+    }
+
+    [Serializable]
+    public class StageData
+    {
+        public int StageIdx;
+        public int PrevIdx;
+        public int NextIdx;
+        public int WaveIdx;
+        public int TotalWaveCnt;
+        public string StageName;
+        public string StageDescription;
+
+        public StageData(StageData original)
+        {
+            StageIdx = original.StageIdx;
+            PrevIdx = original.PrevIdx;
+            NextIdx = original.NextIdx;
+            WaveIdx = original.WaveIdx;
+            TotalWaveCnt = original.TotalWaveCnt;
+            StageName = original.StageName;
+            StageDescription = original.StageDescription;
+        }
+
+        public StageData() { }
     }
 
     [Serializable]

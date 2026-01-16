@@ -4,7 +4,8 @@
       "WaveTimeLimit": 5,
       "WaveIdx": -666775,
       "MobSpawnRate": 5,
-      "MobIDs" :  [-666775,-666776]
+      "NextWaveIdx" : -666775,
+      "MobIDs": [ -666775, -666776 ]
     }
   ]
 }
