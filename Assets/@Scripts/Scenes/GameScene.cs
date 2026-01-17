@@ -3,6 +3,7 @@ using Manager;
 using Manager.Contents;
 using System;
 using UnityEngine;
+using Utils.Defines;
 
 namespace Scenes
 {
@@ -10,9 +11,30 @@ namespace Scenes
     {
 
         public Action<WaveData> OnWaveChanged;
+        public Action<GameEndType> OnGameEnd;
 
         private WaveManager _waveMgr;
         private GridManager _gridMgr;
+        private UnitManager _unitMgr;
+
+        private void CheckWinCondition()
+        {
+            if(_waveMgr.DoesReachedEnd() && _unitMgr.GetNowUnitCnt() <= 0)
+            {
+                OnGameEnd?.Invoke(GameEndType.WIN);
+            }
+        }
+
+        private void CheckLoseCondition()
+        {
+            for(int i = 0; i < (int)MapMaxCellCnt.MAX_HEIGHT; i++)
+            {
+                if(_gridMgr.TryGetReadonlyVictimList(new Vector2Int(0,i), out var victimList) && victimList.Count > 1)
+                {
+                    OnGameEnd?.Invoke(GameEndType.LOSE);
+                }
+            }
+        }
 
         public void OnSecondEnd()
         {
@@ -31,12 +53,13 @@ namespace Scenes
             SceneType = Utils.Defines.SceneNames.GameScene;
             _waveMgr = FindAnyObjectByType<WaveManager>();
             _gridMgr = FindAnyObjectByType<GridManager>();
+            _unitMgr = FindAnyObjectByType<UnitManager>();
 
 #if UNITY_EDITOR
 
-            if(_waveMgr is null ||  _gridMgr is null)
+            if(_waveMgr is null ||  _gridMgr is null || _unitMgr is null)
             {
-                Debug.LogError("웨이브 매니저 또는 그리드 매니저가 없음");
+                Debug.LogError("웨이브 매니저 또는 그리드 매니저 또는 유닛 매니저가 없음");
             }
 #endif
 
@@ -52,6 +75,8 @@ namespace Scenes
 
         private void Start()
         {
+            _unitMgr.OnUnitDeadEvent += CheckWinCondition;
+            _gridMgr.OnMobMovementEvent += CheckLoseCondition;
             FindAnyObjectByType<AreaUnlockManager>().Init(Managers.Instance.DataManager.AreaUnlockDic[Managers.Instance.StageManager.GetNowStageData().AreaUnlockIdx]);
             _gridMgr.Init();
             Managers.Instance.TimerManager.StartTimer(OnSecondEnd, _waveMgr.GetNowWaveData().WaveTimeLimit, 1f);

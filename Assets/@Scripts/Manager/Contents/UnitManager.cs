@@ -1,4 +1,5 @@
 using Coordinator;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,13 @@ namespace Manager.Contents
         private List<UnitCoordinator> _unitCoordinators = new List<UnitCoordinator>(128);
         private Queue<UnitCoordinator> _unitBuffer = new Queue<UnitCoordinator>(8);
         private bool _deadFlag = false;
-        
+        public event Action OnUnitDeadEvent;
+
+
+        public int GetNowUnitCnt()
+        {
+            return _unitCoordinators.Count + _unitBuffer.Count; 
+        }
 
         private void OnUnitDead()
         {
@@ -56,6 +63,7 @@ namespace Manager.Contents
                     }
                 }
 
+                OnUnitDeadEvent?.Invoke();
                 _deadFlag = false;
             }
 

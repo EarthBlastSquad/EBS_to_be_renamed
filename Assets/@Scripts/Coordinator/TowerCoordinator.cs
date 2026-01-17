@@ -32,6 +32,11 @@ namespace Coordinator
             
         }
 
+        public ValueTuple<TowerData, int, SkillData> GetData()
+        {
+            return (_data, _victimCoordinator.GetHP(), _skillData);
+        }
+
         private void Start()
         {
             SubscribeOnDead(OnDead);
@@ -41,7 +46,7 @@ namespace Coordinator
         {
             _data = data;
             _facing = facing;
-            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP);
+            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound);
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);

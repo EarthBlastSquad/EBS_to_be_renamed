@@ -3,23 +3,30 @@
     {
       "WaveTimeLimit": 5,
       "WaveIdx": -6667750,
-      "MobSpawnRate": 5,
+      "MobSpawnRate": 3,
       "NextWaveIdx": -6667751,
-      "MobIDs": [ -666775, -666776 ]
+      "MobIDs": [ -666775 ]
     },
     {
-      "WaveTimeLimit": 6,
+      "WaveTimeLimit": 2,
       "WaveIdx": -6667751,
-      "MobSpawnRate": 6,
+      "MobSpawnRate": 10,
       "NextWaveIdx": -6667752,
       "MobIDs": [ -666775, -666776 ]
     },
     {
-      "WaveTimeLimit": 7,
+      "WaveTimeLimit": 2,
       "WaveIdx": -6667752,
-      "MobSpawnRate": 7,
-      "NextWaveIdx": -666775,
+      "MobSpawnRate": 10,
+      "NextWaveIdx": -6667753,
       "MobIDs": [ -666775, -666776 ]
+    },
+    {
+      "WaveTimeLimit": 666775,
+      "WaveIdx": -6667753,
+      "MobSpawnRate": 666775,
+      "NextWaveIdx": -666775,
+      "MobIDs": []
     }
 
   ]

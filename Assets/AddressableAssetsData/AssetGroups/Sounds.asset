@@ -15,6 +15,34 @@ MonoBehaviour:
   m_GroupName: Sounds
   m_GUID: 5fc8a7903726d8b44a3eb078c30993a6
   m_SerializeEntries:
+  - m_GUID: 0f235eb990819b34d9ea044e57b5aa4d
+    m_Address: Fire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4cec7bf1c90e91746ac8618e92d8695f
+    m_Address: MonsterAttack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 965fea5441bb42f47b5e97948dbc414a
+    m_Address: Pop
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1c96c4b35d8e544e8e0d0a3e3b701c7
+    m_Address: Attack2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dde5fec71c206cb409cde17190d64efb
     m_Address: TestSound
     m_ReadOnly: 0

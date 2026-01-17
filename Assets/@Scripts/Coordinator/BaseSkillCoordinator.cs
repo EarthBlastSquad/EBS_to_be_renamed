@@ -1,5 +1,7 @@
 using Data;
+using Manager;
 using UnityEngine;
+using Utils.Defines;
 
 namespace Coordinator
 {
@@ -16,6 +18,8 @@ namespace Coordinator
             {
                 _attackableLayers |= (1<<_skillData.AttackableLayers[i]);
             }
+
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_1, _skillData.FiringSFX, false);
         }
 
         public bool CanAttack(int bitmaskedLayer)

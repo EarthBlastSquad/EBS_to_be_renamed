@@ -8,6 +8,7 @@
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
+      "HitSound": "MonsterAttack",
       "SkillID": -6667751
     },
     {
@@ -17,6 +18,7 @@
       "PrefabName": "AirMobPrefab",
       "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
+      "HitSound": "MonsterAttack",
       "SkillID": -6667752
     }
   ]

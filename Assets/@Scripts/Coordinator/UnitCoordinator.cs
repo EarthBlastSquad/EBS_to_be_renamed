@@ -33,7 +33,7 @@ namespace Coordinator
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP);
+            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
             _monsterData = data;

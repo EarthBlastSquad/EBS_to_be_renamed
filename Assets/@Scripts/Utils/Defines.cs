@@ -91,4 +91,11 @@ namespace Utils.Defines
         PIECE = 1,
         MOB = 2
     }
+
+    public enum GameEndType
+    {
+        WIN = 1,
+        LOSE =2,
+        SHUT_DOWN=3
+    }
 }
