@@ -64,15 +64,19 @@ namespace UI.Scene
             GridInputHandler gh = FindAnyObjectByType<GridInputHandler>();
             gh.mouseUpSubscriberEvent -= ShopUI;
             gh.mouseUpSubscriberEvent += ShopUI;
+            Managers.Instance.TimerManager.OnSecondChanged -= TimerUI;
+            Managers.Instance.TimerManager.OnSecondChanged += TimerUI;
 
             GetObject((int)GameObjects.Panel_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.ESC_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.Shop_0).gameObject.SetActive(false);
+
 #if UNITY_EDITOR
             Managers.Instance.CurrencyManager.AddCurrency(0404);
 #endif
             _gm = FindAnyObjectByType<GridManager>();
             _tm = FindAnyObjectByType<TowerManager>();
+
             return true;
         }
         #region ÆË¾÷
@@ -118,20 +122,15 @@ namespace UI.Scene
 
         #region Å¸ÀÌ¸Ó
         private int _m=0, _s=0;
-        private float _time = 0;
-        private void Update()
+
+        protected void TimerUI(float totaltime, float time)
         {
-            _time += Time.deltaTime;
-            TimerUI();
-        }
-        protected void TimerUI()
-        {
-            _m = (int)_time / 60;
-            if(_s== (int)_time % 60)
+            _m = (int)totaltime / 60;
+            if(_s== (int)totaltime % 60)
             {
                 return;
             }
-            _s = (int)_time % 60;
+            _s = (int)totaltime % 60;
 
             GetText((int)Texts.Timer_0).text = $"{(_m / 10 == 0 ? "0" : "")}{_m}:{(_s/10==0 ? "0" : "")}{_s}";
         }
