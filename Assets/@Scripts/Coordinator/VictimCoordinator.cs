@@ -65,6 +65,10 @@ namespace Coordinator
             return _hpCoordinator.IsDead(); 
         }
 
+        public int GetHP()
+        {
+            return _hpCoordinator.GetHP(); 
+        }
         public void SubscribeOnDead(Action onDeadCallback)
         {
             _hpCoordinator.OnDead -= onDeadCallback;

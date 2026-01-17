@@ -32,6 +32,11 @@ namespace Coordinator
             
         }
 
+        public ValueTuple<TowerData, int, SkillData> GetData()
+        {
+            return (_data, _victimCoordinator.GetHP(), _skillData);
+        }
+
         private void Start()
         {
             SubscribeOnDead(OnDead);
