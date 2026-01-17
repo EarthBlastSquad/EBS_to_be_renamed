@@ -1,0 +1,44 @@
+using Contents.Tower;
+using Manager;
+using UI.Scene;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using Utils;
+using Utils.Defines;
+namespace UI.Popup
+{
+    public class UI_ESC : UIPopup
+    {
+        private UI_GameScene _ugs;
+        enum Buttons
+        {
+            Back_0,
+            Exit_0
+        }
+        public override bool Init()
+        {
+            if (base.Init() == false)
+                return false;
+            BindButton(typeof(Buttons));
+            _ugs=transform.parent.GetComponent<UI_GameScene>();
+            GetButton((int)Buttons.Back_0).gameObject.BindUIEvent(Back);
+            GetButton((int)Buttons.Exit_0).gameObject.BindUIEvent(Exit);
+            return true;
+        }
+        private void Awake()
+        {
+            Init();
+        }
+        protected void Back(PointerEventData _)
+        {
+            _ugs.ESCClose();
+        }
+
+        protected void Exit(PointerEventData _)
+        {
+            _ugs.ESCClose();
+            Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+        }
+    }
+}
