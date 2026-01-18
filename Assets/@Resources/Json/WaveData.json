@@ -2,6 +2,7 @@
   "waves": [
     {
       "WaveTimeLimit": 5,
+      "WaveNumber": 1,
       "WaveIdx": -6667750,
       "MobSpawnRate": 3,
       "NextWaveIdx": -6667751,
@@ -9,6 +10,7 @@
     },
     {
       "WaveTimeLimit": 2,
+      "WaveNumber": 2,
       "WaveIdx": -6667751,
       "MobSpawnRate": 10,
       "NextWaveIdx": -6667752,
@@ -16,6 +18,7 @@
     },
     {
       "WaveTimeLimit": 2,
+      "WaveNumber": 3,
       "WaveIdx": -6667752,
       "MobSpawnRate": 10,
       "NextWaveIdx": -6667753,
@@ -23,6 +26,7 @@
     },
     {
       "WaveTimeLimit": 666775,
+      "WaveNumber": 3,
       "WaveIdx": -6667753,
       "MobSpawnRate": 666775,
       "NextWaveIdx": -666775,

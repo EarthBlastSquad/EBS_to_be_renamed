@@ -94,6 +94,7 @@ namespace Data
     public class WaveData
     {
         public int WaveIdx;
+        public int WaveNumber;
         public int WaveTimeLimit;
         public int MobSpawnRate;
         public int NextWaveIdx;
@@ -103,6 +104,7 @@ namespace Data
         public WaveData(WaveData original)
         {
             WaveTimeLimit = original.WaveTimeLimit;
+            WaveNumber = original.WaveNumber;
             WaveIdx = original.WaveIdx;
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
