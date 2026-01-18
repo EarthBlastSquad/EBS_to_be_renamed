@@ -1,6 +1,7 @@
 using Contents.Tower;
 using Data;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -51,6 +52,23 @@ namespace Manager.Contents
                 _gameData.SoundValue = value;
                 SaveGame();
             }
+        }
+
+        
+        public bool TryGetClearData(int stageIdx, out ValueTuple<int,bool>  clearData)
+        {
+            if(_gameData.StageClearData.TryGetValue(stageIdx,out clearData))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void SetClearData(int stageIdx, ValueTuple<int,bool> clearData)
+        {
+            _gameData.StageClearData[stageIdx] = clearData;
+            SaveGame();
         }
 
 #if UNITY_EDITOR
