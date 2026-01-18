@@ -17,11 +17,34 @@ namespace Scenes
         private GridManager _gridMgr;
         private UnitManager _unitMgr;
 
+        private void SaveClearData(bool isCleared)
+        {
+            int stageIdx = Managers.Instance.StageManager.GetNowStageData().StageIdx;
+            if (isCleared)
+            {
+                Managers.Instance.GameManager.SetClearData(stageIdx, (666775,true));
+                return;
+            }
+
+            int reachedWave = _waveMgr.GetNowWaveData().WaveNumber;
+            if(Managers.Instance.GameManager.TryGetClearData(stageIdx, out var data))
+            {
+                if(data.Item1 >= reachedWave)
+                {
+                    return;
+                }
+            }
+
+            Managers.Instance.GameManager.SetClearData(stageIdx, (reachedWave,false));
+            
+        }
+
         private void CheckWinCondition()
         {
             if(_waveMgr.DoesReachedEnd() && _unitMgr.GetNowUnitCnt() <= 0)
             {
                 OnGameEnd?.Invoke(GameEndType.WIN);
+                SaveClearData(true);
             }
         }
 
@@ -32,6 +55,8 @@ namespace Scenes
                 if(_gridMgr.TryGetReadonlyVictimList(new Vector2Int(0,i), out var victimList) && victimList.Count > 1)
                 {
                     OnGameEnd?.Invoke(GameEndType.LOSE);
+                    SaveClearData(false);
+                    return;
                 }
             }
         }
