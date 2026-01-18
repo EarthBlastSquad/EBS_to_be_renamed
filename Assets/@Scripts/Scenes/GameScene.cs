@@ -27,7 +27,7 @@ namespace Scenes
             }
 
             int reachedWave = _waveMgr.GetNowWaveData().WaveNumber;
-            if(Managers.Instance.GameManager.TryGetClearData(Managers.Instance.StageManager.GetNowStageData().StageIdx, out var data))
+            if(Managers.Instance.GameManager.TryGetClearData(stageIdx, out var data))
             {
                 if(data.Item1 >= reachedWave)
                 {
