@@ -25,6 +25,14 @@ namespace Utils.Defines
         MAX_CHANNELS = 6,
         UNKNOWN = -1
     }
+
+    public enum Facing
+    {
+        RIGHT = 0,
+        UP = 90,
+        LEFT = 180,
+        DOWN = 270
+    }
     public enum SoundChannelTypes
     {
         BGM = SoundChannels.BGM_0,
