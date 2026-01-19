@@ -54,15 +54,15 @@ namespace UI.Popup
 
         protected void Slot0(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[0], _sv, new Vector2Int(1, 0));
+            _tm.PlaceTower(_towerData[0], _sv, Facing.RIGHT);
         }
         protected void Slot1(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[1], _sv, new Vector2Int(1, 0));
+            _tm.PlaceTower(_towerData[1], _sv, Facing.RIGHT);
         }
         protected void Slot2(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[2], _sv, new Vector2Int(1, 0));
+            _tm.PlaceTower(_towerData[2], _sv, Facing.RIGHT);
         }
 
 
