@@ -5,6 +5,7 @@ using Manager.Contents;
 using System;
 using UnityEngine;
 using Utils;
+using Utils.Defines;
 
 namespace Coordinator
 {
@@ -76,12 +77,12 @@ namespace Coordinator
             if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
                 Vector2Int nowPos = _gridMovementCoordinator.GetNowPos();
-                Vector2Int facing = _gridMovementCoordinator.GetNextPos();
-                GetFacing(ref facing);
+                var facing = GetFacing(_gridMovementCoordinator.GetNextPos());
                 bool res = false;
                 for(int i = 0; i < _skillData.AttackPos.Count; i++)
                 {
-                    Vector2Int endPos = nowPos + (_skillData.AttackPos[i] * facing);
+                    Vector2Int endPos = nowPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], facing);
+                    //Vector2Int endPos = nowPos + (_skillData.AttackPos[i] * facing);
                     //if (_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
                     if ((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
                     {
@@ -104,11 +105,26 @@ namespace Coordinator
             }
         }
 
-        private void GetFacing(ref Vector2Int next)
+        private Facing GetFacing(Vector2Int next)
         {
             var now = _gridMovementCoordinator.GetNowPos();
-            next.x = next.x < now.x ? -1 : 1;
-            next.y = next.y < now.y ? -1 : 1;
+
+            if(next.y < now.y)
+            {
+                return Facing.DOWN;
+            }
+            
+            if(next.y > now.y)
+            {
+                return Facing.UP; 
+            }
+
+            if(next.x < now.x)
+            {
+                return Facing.LEFT;
+            }
+
+            return Facing.RIGHT;
         }
 
         public void SubscribeOnDead(Action onDeadCallback)

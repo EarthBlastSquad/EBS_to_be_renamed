@@ -43,7 +43,7 @@ namespace Manager.Contents
             return false;
         }
 
-        public bool PlaceTower(TowerData towerData, Vector2Int pos, Vector2Int facing)
+        public bool PlaceTower(TowerData towerData, Vector2Int pos, Facing facing)
         {
             if(towerData is null || _gridMgr.CanPlacePiece(pos) == false)
             {

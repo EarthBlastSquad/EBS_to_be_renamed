@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils.Defines;
 
 namespace Utils
 {
@@ -17,6 +18,27 @@ namespace Utils
             }
 
             return true;
-        }   
+        } 
+        
+        public static Vector2Int CalculateRotation(Vector2Int pos, Facing rotation)
+        {
+
+            if(rotation == Facing.UP)
+            {
+                return new Vector2Int(-pos.y, pos.x);
+            }
+
+            if(rotation == Facing.LEFT)
+            {
+                return -pos;
+            }
+
+            if(rotation == Facing.DOWN)
+            {
+                return new Vector2Int(pos.y, -pos.x);
+            }
+
+            return pos;
+        }
     }
 }

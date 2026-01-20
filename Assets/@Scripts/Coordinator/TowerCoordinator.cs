@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 using Utils;
+using Utils.Defines;
 
 namespace Coordinator
 {
@@ -17,7 +18,7 @@ namespace Coordinator
         private TowerData _data;
         private CooldownComponentModule _module;
         private VictimCoordinator _victimCoordinator;
-        private Vector2Int _facing;
+        private Facing _facing;
         private GridManager _gridManager;
         private ProjectileManager _projMgr;
         private bool _isAttackState = false;
@@ -42,7 +43,7 @@ namespace Coordinator
             SubscribeOnDead(OnDead);
         }
 
-        public void Init(TowerData data, Vector2Int facing, Vector2Int placedPos)
+        public void Init(TowerData data, Facing facing, Vector2Int placedPos)
         {
             _data = data;
             _facing = facing;
@@ -70,7 +71,7 @@ namespace Coordinator
         /// 공격 가능한 위치(attackPos), 설치된 위치(placedPos), 보는 방향(facing)
         /// </summary>
         /// <returns></returns>
-        public ValueTuple<IReadOnlyList<Vector2Int>, Vector2Int, Vector2Int> GetAttackRangeArgs()
+        public ValueTuple<IReadOnlyList<Vector2Int>, Vector2Int, Facing> GetAttackRangeArgs()
         {
             return (_skillData.AttackPos, _placedPos, _facing);
         }
@@ -91,7 +92,7 @@ namespace Coordinator
                 bool res = false;
                 for (int i = 0; i < _skillData.AttackPos.Count; i++)
                 {
-                    Vector2Int endPos = _placedPos + (_skillData.AttackPos[i] * _facing);
+                    Vector2Int endPos = _placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i],_facing);
 
                     //if(_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
                     if((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
@@ -126,7 +127,7 @@ namespace Coordinator
         {
             for(int i = 0; i < _skillData.AttackPos.Count; i++)
             {
-                if (_gridManager.TryGetReadonlyVictimList(_placedPos + (_skillData.AttackPos[i]*_facing), out var list) && list.Count > 1)
+                if (_gridManager.TryGetReadonlyVictimList(_placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], _facing), out var list) && list.Count > 1)
                 {
                     return true;
                 }
