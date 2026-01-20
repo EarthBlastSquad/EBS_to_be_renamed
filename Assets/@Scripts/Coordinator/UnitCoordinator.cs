@@ -1,3 +1,4 @@
+using Actor;
 using ComponentModule;
 using Data;
 using Manager;
@@ -19,11 +20,14 @@ namespace Coordinator
         private ProjectileManager _projMgr;
         private int _id;
         private int _attackableLayer = 0;
+        private LookActor _lookActor;
+        private Facing _facing;
         private void Awake()
         {
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
+            _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
             
         }
 
@@ -74,14 +78,23 @@ namespace Coordinator
             {
                 return;
             }
-            if(_gridMovementCoordinator.Move() == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
+            
+            var movResult = _gridMovementCoordinator.Move();
+
+            if(movResult == MovementReturnTypes.SUCCESS || movResult == MovementReturnTypes.SUCCESS_AND_BLOCKED)
+            {
+                var facing = GetFacing(_gridMovementCoordinator.GetNextPos());
+                _lookActor.Look(facing);
+                _facing = facing;
+            }
+            else if (movResult == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
             {
                 Vector2Int nowPos = _gridMovementCoordinator.GetNowPos();
-                var facing = GetFacing(_gridMovementCoordinator.GetNextPos());
+                
                 bool res = false;
                 for(int i = 0; i < _skillData.AttackPos.Count; i++)
                 {
-                    Vector2Int endPos = nowPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], facing);
+                    Vector2Int endPos = nowPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], _facing);
                     //Vector2Int endPos = nowPos + (_skillData.AttackPos[i] * facing);
                     //if (_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
                     if ((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
