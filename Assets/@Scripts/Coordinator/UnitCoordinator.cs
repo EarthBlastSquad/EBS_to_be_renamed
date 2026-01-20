@@ -1,3 +1,4 @@
+using Actor;
 using ComponentModule;
 using Data;
 using Manager;
@@ -19,11 +20,13 @@ namespace Coordinator
         private ProjectileManager _projMgr;
         private int _id;
         private int _attackableLayer = 0;
+        private LookActor _lookActor;
         private void Awake()
         {
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
+            _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
             
         }
 

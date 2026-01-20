@@ -1,3 +1,4 @@
+using Actor;
 using ComponentModule;
 using Contents.Grid;
 using Data;
@@ -24,12 +25,14 @@ namespace Coordinator
         private bool _isAttackState = false;
         private int _attackableLayer = 0;
         private Vector2Int _placedPos; //이건 GridPosComponentModule로 처리하까도 생각했는데, 나중에 생각해보죠. 근데, 그건 이동시스템을 위해 만든건데, 이동시스템이 아직 없으니까 넣는건 너무 섯부른 판단일듯
+        private LookActor _lookActor;
 
         private void Awake()
         {
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
+            _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
             
         }
 
