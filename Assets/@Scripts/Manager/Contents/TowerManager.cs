@@ -67,7 +67,7 @@ namespace Manager.Contents
             tower.Init(towerData, facing, pos);
             Managers.Instance.CurrencyManager.UseCurrency(towerData.DemendedCurrency);
 
-            _gridMgr.RequestPieceUpdate(new PieceUpdateArgs() { command=PieceCommandTypes.PLACE, instance=go, pos = pos, commandStatusCallback=null});
+            _gridMgr.RequestPieceUpdate(new PieceUpdateArgs() { command=PieceCommandTypes.PLACE, instance=go, pos = pos, commandStatusCallback=tower.OnPlaced});
 
             AddTower(tower);
 

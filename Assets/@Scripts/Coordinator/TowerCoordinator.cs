@@ -36,6 +36,14 @@ namespace Coordinator
             
         }
 
+        public void OnPlaced(bool result)
+        {
+            if(result)
+            {
+                _lookActor.Look(_facing);
+            }
+        }
+
         public ValueTuple<TowerData, int, SkillData> GetData()
         {
             return (_data, _victimCoordinator.GetHP(), _skillData);
@@ -60,7 +68,7 @@ namespace Coordinator
             for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
             {
                 _attackableLayer |= _skillData.AttackableLayers[i];
-            }
+            } 
         }
 
         public void RetrieveTower()
