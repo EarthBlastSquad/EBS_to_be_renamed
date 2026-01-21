@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Effect
   m_GUID: 847e9b2dd2b18464aa6d70f3207e185b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1185ac07d05e47b498a1a48811b668f2
+    m_Address: CrackEffectPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
