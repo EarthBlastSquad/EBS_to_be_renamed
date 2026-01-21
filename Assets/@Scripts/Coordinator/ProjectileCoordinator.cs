@@ -5,6 +5,7 @@ using Manager;
 using Manager.Contents;
 using System;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
 using Utils.Defines;
@@ -49,7 +50,7 @@ namespace Coordinator
             _victims = victims;
             _totalTime = data.SpeedPerCell * (gridCnt.x + gridCnt.y);
             _posModule.Init(startPos, endPos, _totalTime);
-            _actor.Init(Managers.Instance.ResourceManager.Load<Sprite>(data.AttackEffectName), Managers.Instance.ResourceManager.Load<Sprite>(data.AttackObjectImgName));//이부분은 런타임 성능이 너무 떨어진다 싶으면 그때 캐싱으로 바꿔보죠
+            _actor.Init(Managers.Instance.ResourceManager.Load<AnimatorController>(data.AttackEffectName));//이부분은 런타임 성능이 너무 떨어진다 싶으면 그때 캐싱으로 바꿔보죠
             _accumulatedTime = 0;
             _attackMgr = attackMgr;
             _skill.Init(data);
