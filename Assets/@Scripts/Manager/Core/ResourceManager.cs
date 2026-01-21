@@ -100,9 +100,13 @@ namespace Manager.Core
         {
             foreach (var target in _resources)
             {
-                _loadStatus[target.Key] = false;
                 Addressables.Release(target.Value.Item2);//객체로 넣어도, 내부에서 핸들로 변환해줌
                 //나중에 assets로 바꾸면, 그때는 핸들도 따로 저장해야지
+            }
+
+            foreach(var key in _loadStatus.Keys)
+            {
+                _loadStatus[key] = false;
             }
 
             _resources.Clear();
