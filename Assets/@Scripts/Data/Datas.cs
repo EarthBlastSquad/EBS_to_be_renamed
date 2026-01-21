@@ -46,6 +46,7 @@ namespace Data
         public int DemendedCurrency;
         public string TowerDescription;
         public string HitSound;
+        public string AnimationClipName;
         public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
@@ -60,6 +61,7 @@ namespace Data
             this.DemendedCurrency = original.DemendedCurrency;
             this.TowerHP = original.TowerHP;
             this.HitSound = original.HitSound;
+            this.AnimationClipName = original.AnimationClipName;
             this.SkillId = original.SkillId;
         }
         public TowerData() { }
@@ -75,6 +77,7 @@ namespace Data
         public string MonsterImgName;
         public int RewardCurrency;
         public string HitSound;
+        public string AnimationClipName;
         public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
@@ -87,6 +90,7 @@ namespace Data
             this.MonsterImgName = original.MonsterImgName;
             this.RewardCurrency = original.RewardCurrency;
             this.HitSound = original.HitSound;
+            this.AnimationClipName = original.AnimationClipName;
             this.SkillID = original.SkillID;
         }
         public MonsterData() { }
