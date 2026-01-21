@@ -1,7 +1,7 @@
 using Manager;
 using UnityEngine;
 
-namespace CrackActor
+namespace Actor
 {
     public class CrackActor
     {
