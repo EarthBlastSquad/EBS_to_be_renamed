@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6292594709652360047}
   - component: {fileID: 6563990612148715733}
   - component: {fileID: 7190335127285699350}
+  - component: {fileID: 2218287865129418917}
   m_Layer: 0
   m_Name: TestAttack
   m_TagString: Untagged
@@ -126,3 +127,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be26beea9ba9374794863b718f3ebc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2218287865129418917
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6259484063224290501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
