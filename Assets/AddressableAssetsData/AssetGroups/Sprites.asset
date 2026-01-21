@@ -15,10 +15,31 @@ MonoBehaviour:
   m_GroupName: Sprites
   m_GUID: 670d5bc17fc668d4a92b7d3b61ffa1f8
   m_SerializeEntries:
+  - m_GUID: 01af29ba3ac7fbb41b6a98a0f43b13fd
+    m_Address: crack_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2944581aad558d74c96656ee676aef2b
     m_Address: test_god_3
     m_ReadOnly: 0
     m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
+    m_Address: crack_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41705f0a61293204dbeb50573ad3dbce
+    m_Address: crack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 452a9bc46f73b5a409f86bb74718a9a5
@@ -49,6 +70,20 @@ MonoBehaviour:
     m_Address: test_god
     m_ReadOnly: 0
     m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f36a876e99b7c9e4f9d3e06a075ce9ff
+    m_Address: crack_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f94f96791516b744398ec6c9bd92f409
+    m_Address: crack_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
