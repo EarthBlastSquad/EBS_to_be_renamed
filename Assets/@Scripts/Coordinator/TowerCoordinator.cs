@@ -26,6 +26,7 @@ namespace Coordinator
         private int _attackableLayer = 0;
         private Vector2Int _placedPos; //이건 GridPosComponentModule로 처리하까도 생각했는데, 나중에 생각해보죠. 근데, 그건 이동시스템을 위해 만든건데, 이동시스템이 아직 없으니까 넣는건 너무 섯부른 판단일듯
         private LookActor _lookActor;
+        private CrackCoordinator _crackCoordinator;
 
         private void Awake()
         {
@@ -33,7 +34,7 @@ namespace Coordinator
             _gridManager = FindAnyObjectByType<GridManager>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
             _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
-            
+            _crackCoordinator = GetComponentInChildren<CrackCoordinator>();
         }
 
         public void OnPlaced(bool result)
@@ -64,6 +65,7 @@ namespace Coordinator
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.TowerImgName);
             _attackableLayer = 0;
+            _crackCoordinator.Init(data.TowerHP, data.CrackSpriteNameBase);
 
             for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
             {
