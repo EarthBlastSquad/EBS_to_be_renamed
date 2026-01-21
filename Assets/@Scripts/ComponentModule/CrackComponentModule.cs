@@ -2,14 +2,14 @@ namespace ComponentModule
 {
     public class CrackComponentModule
     {
-        private int _stageIdx = 0;
+        private int _stageIdx = -1;
         private int _stageStep = 0;
         private int _nextStageThreshold = 0;
         public void Init(int maxHP)
         {
             _stageStep = maxHP / 6;
             _nextStageThreshold = maxHP - _stageStep;
-            _stageIdx = 0;
+            _stageIdx = -1;
         }
 
         public bool UpdateStage(int nowHP)
