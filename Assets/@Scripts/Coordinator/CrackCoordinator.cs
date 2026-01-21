@@ -15,6 +15,13 @@ namespace Coordinator
             _actor = new CrackActor(GetComponent<SpriteRenderer>());
         }
 
+        private void Start()
+        {
+            var hpCoord = GetComponentInParent<HPCoordinator>();
+            hpCoord.OnHPChanged -= OnHPChanged;
+            hpCoord.OnHPChanged += OnHPChanged;
+        }
+
         public void Init(int maxHP, string crackSpriteNameBase)
         {
             _nowIdx = -1;
@@ -22,7 +29,7 @@ namespace Coordinator
             _actor.Init(crackSpriteNameBase, _nowIdx);
         }
 
-        public void OnHPChanged(int oldHP, int newHP, int maxHP)
+        private void OnHPChanged(int oldHP, int newHP, int maxHP)
         {
             if(_module.UpdateStage(newHP))
             {
