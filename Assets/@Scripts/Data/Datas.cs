@@ -41,6 +41,7 @@ namespace Data
         public string TowerName;
         public string PrefabName;
         public string TowerImgName;
+        public string CrackSpriteNameBase;
         public int TowerHP;
         public int DemendedCurrency;
         public string TowerDescription;
@@ -53,6 +54,7 @@ namespace Data
             this.InvincibilityTime = original.InvincibilityTime;
             this.TowerName = original.TowerName;
             this.TowerImgName = original.TowerImgName;
+            this.CrackSpriteNameBase = original.CrackSpriteNameBase;
             this.PrefabName = original.PrefabName;
             this.TowerDescription = original.TowerDescription;
             this.DemendedCurrency = original.DemendedCurrency;

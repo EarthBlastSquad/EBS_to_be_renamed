@@ -5,6 +5,7 @@
       "TowerName": "Test Tower",
       "PrefabName": "TowerPrefab",
       "TowerImgName": "sprite_god_2",
+      "CrackSpriteNameBase": "crack_",
       "InvincibilityTime": 0,
       "TowerHP": 3,
       "DemendedCurrency": 67,
