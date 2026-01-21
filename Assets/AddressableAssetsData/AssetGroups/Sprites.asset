@@ -22,12 +22,6 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2944581aad558d74c96656ee676aef2b
-    m_Address: test_god_3
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
     m_Address: crack_2
     m_ReadOnly: 0
@@ -50,12 +44,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
     m_Address: test_god_2
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e5cb6f3f1d0ad5045859ce2969d44378
-    m_Address: test_god_4
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestPreLoad
