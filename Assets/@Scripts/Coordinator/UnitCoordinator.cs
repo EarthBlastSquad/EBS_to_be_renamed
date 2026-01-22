@@ -91,7 +91,7 @@ namespace Coordinator
             if(movResult == MovementReturnTypes.SUCCESS || movResult == MovementReturnTypes.SUCCESS_AND_BLOCKED)
             {
                 var facing = GetFacing(_gridMovementCoordinator.GetNextPos());
-                _lookActor.Look(facing);
+                _victim.SetCalibrationPos(_lookActor.Look(facing));
                 _facing = facing;
             }
             else if (movResult == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())

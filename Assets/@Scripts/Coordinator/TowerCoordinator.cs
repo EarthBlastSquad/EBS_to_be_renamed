@@ -44,7 +44,7 @@ namespace Coordinator
         {
             if(result)
             {
-                _lookActor.Look(_facing);
+                _victimCoordinator.SetCalibrationPos(_lookActor.Look(_facing));
             }
         }
 

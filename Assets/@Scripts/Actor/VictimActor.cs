@@ -10,15 +10,13 @@ namespace Actor
     {
         private ParticleSystem _particleSystem;
         private Animator _anim;
-        private Transform _transform;
         public VictimActor(Animator anim)
         {
             _anim = anim;
         }
 
-        public void Init(AnimatorOverrideController controller, ParticleSystem deadParticle, Transform transform)
+        public void Init(AnimatorOverrideController controller, ParticleSystem deadParticle)
         {
-            _transform = transform;
             deadParticle?.Clear();
             _particleSystem = deadParticle;
             _anim.runtimeAnimatorController = controller;
@@ -34,9 +32,9 @@ namespace Actor
             _anim.SetTrigger("Hit");
         }
 
-        public void ShowDieEffect()
+        public void ShowDieEffect(Vector3 pos)
         {
-            _particleSystem.transform.position = _transform.position;
+            _particleSystem.transform.position = pos;
             _particleSystem.Play();
             _particleSystem.gameObject.GetOrAddComponent<DelayedDestroy>().DestroyAfter(_particleSystem.main.duration);
             _anim.SetTrigger("Die");

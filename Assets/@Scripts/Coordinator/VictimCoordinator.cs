@@ -13,6 +13,7 @@ namespace Coordinator
         private HPCoordinator _hpCoordinator;
         private string _hitSFXName;
         private VictimActor _actor;
+        private Vector2Int _calibrationPos;
 
         private void Awake()
         {
@@ -21,11 +22,16 @@ namespace Coordinator
             _hpCoordinator.OnDead += OnDead;
         }
 
+        public void SetCalibrationPos(Vector2Int calibrationPos)
+        {
+            _calibrationPos = calibrationPos; 
+        }
+
         private void OnDead()
         {
             Managers.Instance.CooldownManager.ReturnModule(_cooldown);
             _cooldown = null;
-            _actor.ShowDieEffect();
+            _actor.ShowDieEffect(new Vector3(transform.position.x - _calibrationPos.x, transform.position.y - _calibrationPos.y, transform.position.z));
             _actor.OnDead();
         }
 
@@ -38,7 +44,7 @@ namespace Coordinator
         public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName, AnimatorOverrideController animController, string deadParticleName)
         {
             ParticleSystem ps = Managers.Instance.ResourceManager.Instantiate(deadParticleName,pooling:true).GetComponent<ParticleSystem>();
-            _actor.Init(animController, ps, transform);
+            _actor.Init(animController, ps);
             _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
