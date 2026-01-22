@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3747632396636397757}
   - component: {fileID: 6398117902865185788}
   - component: {fileID: -4967238902684508500}
+  - component: {fileID: -3667582546443454714}
   m_Layer: 6
   m_Name: AirMobPrefab
   m_TagString: Untagged
@@ -152,3 +153,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196614387cb2ef4eb9a2d4d743d112c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-3667582546443454714
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442225489920482243}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

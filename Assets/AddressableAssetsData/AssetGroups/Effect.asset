@@ -22,7 +22,7 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 744fc4c73d8d4bc47b91d407cc09e3e9
+  - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
     m_Address: TestAttackAnimController
     m_ReadOnly: 0
     m_SerializedLabels:
