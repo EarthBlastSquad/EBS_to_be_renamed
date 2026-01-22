@@ -1,12 +1,11 @@
-using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Actor
 {
-    public class VictimActor
+    public class AttackActor
     {
         private Animator _anim;
-        public VictimActor(Animator anim)
+        public AttackActor(Animator anim)
         {
             _anim = anim;
         }
@@ -18,12 +17,7 @@ namespace Actor
 
         public void ShowAttackEffect()
         {
-            _anim.SetTrigger("Hit");
-        }
-
-        public void ShowDieEffect()
-        {
-            _anim.SetTrigger("Die");
+            _anim.SetTrigger("Attack");
         }
     }
 }
