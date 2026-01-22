@@ -5,15 +5,19 @@ namespace Actor
 {
     public class VictimActor
     {
+        private ParticleSystem _particleSystem;
         private Animator _anim;
         public VictimActor(Animator anim)
         {
             _anim = anim;
         }
 
-        public void Init(AnimatorOverrideController controller)
+        public void Init(AnimatorOverrideController controller, ParticleSystem deadParticle)
         {
+            deadParticle?.Clear();
+            _particleSystem = deadParticle;
             _anim.runtimeAnimatorController = controller;
+
         }
 
         public void ShowAttackEffect()
@@ -23,6 +27,7 @@ namespace Actor
 
         public void ShowDieEffect()
         {
+            _particleSystem.Play();
             _anim.SetTrigger("Die");
         }
     }
