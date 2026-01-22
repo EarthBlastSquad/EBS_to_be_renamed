@@ -42,7 +42,7 @@ namespace Coordinator
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName);
+            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimatorControllerName);
             _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound, animController);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;

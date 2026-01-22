@@ -60,7 +60,7 @@ namespace Coordinator
 
         public void Init(TowerData data, Facing facing, Vector2Int placedPos)
         {
-            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName);
+            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimatorControllerName);
             _data = data;
             _facing = facing;
             _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound, animController);

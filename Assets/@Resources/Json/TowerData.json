@@ -11,7 +11,7 @@
       "DemendedCurrency": 67,
       "TowerDescription": "테스트용 타워",
       "HitSound": "Attack2",
-      "AnimationClipName": "TestEntityAnimController",
+      "AnimatorControllerName": "TestEntityAnimController",
       "SkillId": -666775
     }
   ]

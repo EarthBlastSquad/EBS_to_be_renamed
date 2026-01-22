@@ -46,7 +46,7 @@ namespace Data
         public int DemendedCurrency;
         public string TowerDescription;
         public string HitSound;
-        public string AnimationClipName;
+        public string AnimatorControllerName;
         public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
@@ -61,7 +61,7 @@ namespace Data
             this.DemendedCurrency = original.DemendedCurrency;
             this.TowerHP = original.TowerHP;
             this.HitSound = original.HitSound;
-            this.AnimationClipName = original.AnimationClipName;
+            this.AnimatorControllerName = original.AnimatorControllerName;
             this.SkillId = original.SkillId;
         }
         public TowerData() { }
@@ -77,7 +77,7 @@ namespace Data
         public string MonsterImgName;
         public int RewardCurrency;
         public string HitSound;
-        public string AnimationClipName;
+        public string AnimatorControllerName;
         public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
@@ -90,7 +90,7 @@ namespace Data
             this.MonsterImgName = original.MonsterImgName;
             this.RewardCurrency = original.RewardCurrency;
             this.HitSound = original.HitSound;
-            this.AnimationClipName = original.AnimationClipName;
+            this.AnimatorControllerName = original.AnimatorControllerName;
             this.SkillID = original.SkillID;
         }
         public MonsterData() { }
@@ -177,7 +177,7 @@ namespace Data
         public float SpeedPerCell;
         public string FiringSFX;
         public string SFXName;
-        public string AttackEffectName;
+        public string SkillAnimationControllerName;
         public string AttackObjectImgName;
         public string PrefabName;
         public string SkillDescription;
@@ -193,7 +193,7 @@ namespace Data
             this.SpeedPerCell = original.SpeedPerCell;
             this.FiringSFX = original.FiringSFX;
             this.SFXName = original.SFXName;
-            this.AttackEffectName = original.AttackEffectName;
+            this.SkillAnimationControllerName = original.SkillAnimationControllerName;
             this.AttackObjectImgName = original.AttackObjectImgName;
             this.PrefabName = original.PrefabName;
             this.SkillDescription = original.SkillDescription;
