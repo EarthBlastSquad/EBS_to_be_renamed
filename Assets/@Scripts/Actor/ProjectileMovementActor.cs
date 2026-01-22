@@ -13,7 +13,7 @@ namespace Actor
             _anim = GetComponent<Animator>();
         }
 
-        public void Init(AnimatorController controller)
+        public void Init(AnimatorOverrideController controller)
         {
             _anim.runtimeAnimatorController = controller;
         }
