@@ -11,6 +11,7 @@ namespace Utils.Defines
         TitleScene = 1,
         LobbyScene = 2,
         GameScene = 3,
+        EndingScene = 4,
         Test = 60
     }
 
