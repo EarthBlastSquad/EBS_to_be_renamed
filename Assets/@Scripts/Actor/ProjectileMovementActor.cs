@@ -9,13 +9,14 @@ namespace Actor
         private Animator _anim;
         private ParticleSystem _launchPS;
         private ParticleSystem _boomPS;
+        private Vector3 _end;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
         }
 
-        public void Init(AnimatorOverrideController controller, string launchPSName, string boomPSName)
+        public void Init(AnimatorOverrideController controller, string launchPSName, string boomPSName, Vector3 start, Vector3 end)
         {
             if(_launchPS is null)
             {
@@ -26,6 +27,8 @@ namespace Actor
             {
                 _boomPS = Managers.Instance.ResourceManager.Instantiate(boomPSName,pooling:true).GetComponent<ParticleSystem>();
             }
+            _launchPS.transform.position = start;
+            _end = end;
             _boomPS.Clear();
             _launchPS.Clear();
             _launchPS.Play();
@@ -37,6 +40,7 @@ namespace Actor
             if(result == MovementReturnTypes.CANT_GO)
             {
                 //_renderer.sprite = _arrivedImg;
+                _boomPS.transform.position = _end;
                 _boomPS.Play();
                 _anim.SetTrigger("Boom");
                 transform.rotation = Quaternion.identity;
