@@ -7,11 +7,12 @@
       "TowerImgName": "sprite_god_2",
       "CrackSpriteNameBase": "crack_",
       "InvincibilityTime": 0,
-      "TowerHP": 3,
+      "TowerHP": 2,
       "DemendedCurrency": 67,
       "TowerDescription": "테스트용 타워",
       "HitSound": "Attack2",
       "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
       "SkillId": -666775
     }
   ]

@@ -18,6 +18,8 @@
       "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
+      "SkillLaunchParticleName": "TestLaunchParticle",
+      "SkillBOOMParticleName": "TestBoomParticle",
       "SkillDescription": "this is test skill1"
     },
     {
@@ -46,6 +48,8 @@
       "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
+      "SkillLaunchParticleName": "TestLaunchParticle",
+      "SkillBOOMParticleName": "TestBoomParticle",
       "SkillDescription": "this is test skill2"
     },
     {
@@ -74,6 +78,8 @@
       "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
+      "SkillLaunchParticleName": "TestLaunchParticle",
+      "SkillBOOMParticleName": "TestBoomParticle",
       "SkillDescription": "this is test skill3"
     }
   ]

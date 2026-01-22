@@ -22,6 +22,13 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 356e6a39592ba5146b7caf3cd2fc1af9
+    m_Address: TestBoomParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40477d72b6bc4ac4792a4ffed904877a
     m_Address: TestEntityAnimController
     m_ReadOnly: 0
@@ -31,6 +38,20 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
     m_Address: TestAttackAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5bdb0fce6aa146469503f14f01ac738
+    m_Address: TestDeadParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9bbd44ef7099204bac35ac981d6f0de
+    m_Address: TestLaunchParticle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect

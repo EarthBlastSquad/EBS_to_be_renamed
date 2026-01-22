@@ -10,6 +10,7 @@
       "RewardCurrency": 66,
       "HitSound": "MonsterAttack",
       "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
       "SkillID": -6667751
     },
     {
@@ -21,6 +22,7 @@
       "RewardCurrency": 66,
       "HitSound": "MonsterAttack",
       "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
       "SkillID": -6667752
     }
   ]
