@@ -1,6 +1,8 @@
 using Manager;
 using UnityEditor.Animations;
 using UnityEngine;
+using Utils;
+using Utils.Callback;
 
 namespace Actor
 {
@@ -24,7 +26,6 @@ namespace Actor
 
         public void OnDead()
         {
-            Managers.Instance.ResourceManager.Destroy(_particleSystem.gameObject);
             _particleSystem = null;
         }
 
@@ -37,6 +38,7 @@ namespace Actor
         {
             _particleSystem.transform.position = _transform.position;
             _particleSystem.Play();
+            _particleSystem.gameObject.GetOrAddComponent<DelayedDestroy>().DestroyAfter(_particleSystem.main.duration);
             _anim.SetTrigger("Die");
         }
     }
