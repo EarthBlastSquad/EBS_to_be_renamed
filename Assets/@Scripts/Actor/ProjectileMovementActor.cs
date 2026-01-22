@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using Utils.Defines;
 
@@ -5,25 +6,24 @@ namespace Actor
 {
     public class ProjectileMovementActor : MonoBehaviour
     {
-        private Sprite _arrivedImg;
-        private SpriteRenderer _renderer;
+        private Animator _anim;
 
         private void Awake()
         {
-            _renderer = GetComponent<SpriteRenderer>();
+            _anim = GetComponent<Animator>();
         }
 
-        public void Init(Sprite arrivedImg, Sprite initialImg)
+        public void Init(AnimatorOverrideController controller)
         {
-            _arrivedImg = arrivedImg;
-            _renderer.sprite = initialImg;
+            _anim.runtimeAnimatorController = controller;
         }
 
         public void Move(Vector3 pos, MovementReturnTypes result)
         {
             if(result == MovementReturnTypes.CANT_GO)
             {
-                _renderer.sprite = _arrivedImg;
+                //_renderer.sprite = _arrivedImg;
+                _anim.SetTrigger("Boom");
                 transform.rotation = Quaternion.identity;
                 return;
             }

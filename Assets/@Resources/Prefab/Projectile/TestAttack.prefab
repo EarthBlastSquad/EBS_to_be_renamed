@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6292594709652360047}
   - component: {fileID: 6563990612148715733}
   - component: {fileID: 7190335127285699350}
+  - component: {fileID: 2218287865129418917}
   m_Layer: 0
   m_Name: TestAttack
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8847438596461239639, guid: 2944581aad558d74c96656ee676aef2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 452a9bc46f73b5a409f86bb74718a9a5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,3 +127,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be26beea9ba9374794863b718f3ebc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2218287865129418917
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6259484063224290501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

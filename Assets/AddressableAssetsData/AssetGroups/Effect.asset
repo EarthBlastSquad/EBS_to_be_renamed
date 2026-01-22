@@ -22,6 +22,20 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40477d72b6bc4ac4792a4ffed904877a
+    m_Address: TestEntityAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
+    m_Address: TestAttackAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:

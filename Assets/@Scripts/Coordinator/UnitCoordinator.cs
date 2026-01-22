@@ -22,12 +22,16 @@ namespace Coordinator
         private int _attackableLayer = 0;
         private LookActor _lookActor;
         private Facing _facing;
+        private AttackActor _attackActor;
+
         private void Awake()
         {
+            Animator anim = GetComponent<Animator>();
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridMovementCoordinator = gameObject.GetOrAddComponent<GridMovementCoordinator>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
             _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
+            _attackActor = new AttackActor(anim);
             
         }
 
@@ -38,7 +42,8 @@ namespace Coordinator
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound);
+            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimatorControllerName);
+            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound, animController);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
             _monsterData = data;
@@ -46,6 +51,8 @@ namespace Coordinator
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.MonsterImgName);
             _attackableLayer = 0;
+            _attackActor.Init(animController);
+
             for(int i =0; i < _skillData.AttackableLayers.Count; i++)
             {
                 _attackableLayer |= _skillData.AttackableLayers[i];
@@ -103,6 +110,7 @@ namespace Coordinator
                     }
 
                     _projMgr.CreateProjectile(_skillData,nowPos, endPos);
+                    _attackActor.ShowAttackEffect();
                     res = true;
 
                     if(_skillData.CanAttackMultiple == false)

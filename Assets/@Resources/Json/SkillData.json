@@ -15,7 +15,7 @@
       "SpeedPerCell": 0.2,
       "SFXName": "Fire",
       "FiringSFX": "Pop",
-      "AttackEffectName": "sprite_god_1",
+      "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
       "SkillDescription": "this is test skill1"
@@ -43,7 +43,7 @@
       "SpeedPerCell": 1,
       "SFXName": "Fire",
       "FiringSFX": "Pop",
-      "AttackEffectName": "sprite_god_1",
+      "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
       "SkillDescription": "this is test skill2"
@@ -71,7 +71,7 @@
       "SpeedPerCell": 1,
       "SFXName": "Fire",
       "FiringSFX": "Pop",
-      "AttackEffectName": "sprite_god_1",
+      "SkillAnimationControllerName": "TestAttackAnimController",
       "AttackObjectImgName": "sprite_god_2",
       "PrefabName": "TestAttack",
       "SkillDescription": "this is test skill3"
