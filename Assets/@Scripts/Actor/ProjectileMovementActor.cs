@@ -1,4 +1,4 @@
-using UnityEditor.Animations;
+using Manager;
 using UnityEngine;
 using Utils.Defines;
 
@@ -7,14 +7,28 @@ namespace Actor
     public class ProjectileMovementActor : MonoBehaviour
     {
         private Animator _anim;
+        private ParticleSystem _launchPS;
+        private ParticleSystem _boomPS;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
         }
 
-        public void Init(AnimatorOverrideController controller)
+        public void Init(AnimatorOverrideController controller, string launchPSName, string boomPSName)
         {
+            if(_launchPS is null)
+            {
+                _launchPS = Managers.Instance.ResourceManager.Load<GameObject>(launchPSName).GetComponent<ParticleSystem>();
+            }
+
+            if(_boomPS is null)
+            {
+                _boomPS = Managers.Instance.ResourceManager.Load<GameObject>(boomPSName).GetComponent<ParticleSystem>();
+            }
+            _boomPS.Clear();
+            _launchPS.Clear();
+            _launchPS.Play();
             _anim.runtimeAnimatorController = controller;
         }
 
