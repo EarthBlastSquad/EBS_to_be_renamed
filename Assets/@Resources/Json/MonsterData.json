@@ -9,6 +9,7 @@
       "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
       "HitSound": "MonsterAttack",
+      "AnimationClipName": "TestEntityAnimController",
       "SkillID": -6667751
     },
     {
@@ -19,6 +20,7 @@
       "MonsterImgName": "sprite_god_1",
       "RewardCurrency": 66,
       "HitSound": "MonsterAttack",
+      "AnimationClipName": "TestEntityAnimController",
       "SkillID": -6667752
     }
   ]
