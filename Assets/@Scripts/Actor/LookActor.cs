@@ -5,25 +5,22 @@ namespace Actor
 {
     public class LookActor
     {
-        private SpriteRenderer _renderer;
         private Transform _transform;
-        public LookActor(SpriteRenderer renderer, Transform transform)
+        public LookActor(Transform transform)
         {
-            _renderer = renderer;
             _transform = transform;
         }
 
         public void Look(Facing facing)
         {
-            _renderer.flipX = false;
-            _renderer.flipY = false;
             _transform.rotation = Quaternion.identity;
             var pos = _transform.position;
 
             if(facing == Facing.LEFT)
             {
-                _renderer.flipX= true;
+                _transform.Rotate(new Vector3(0,0,(float)facing));
                 pos.x += 1;
+                pos.y += 1;
             }
             else if(facing == Facing.UP)
             {
