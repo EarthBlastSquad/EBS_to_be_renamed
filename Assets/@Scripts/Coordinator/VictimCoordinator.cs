@@ -26,6 +26,7 @@ namespace Coordinator
             Managers.Instance.CooldownManager.ReturnModule(_cooldown);
             _cooldown = null;
             _actor.ShowDieEffect();
+            _actor.OnDead();
         }
 
         private void OnDestroy()
@@ -36,15 +37,8 @@ namespace Coordinator
 
         public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName, AnimatorOverrideController animController, string deadParticleName)
         {
-            GameObject particle = Managers.Instance.ResourceManager.Load<GameObject>(deadParticleName);
-            ParticleSystem ps=null;
-
-            if(particle is not null)
-            {
-                ps = particle.GetComponent<ParticleSystem>();
-            }
-
-            _actor.Init(animController, ps);
+            ParticleSystem ps = Managers.Instance.ResourceManager.Load<GameObject>(deadParticleName).GetComponent<ParticleSystem>();
+            _actor.Init(animController, ps, transform);
             _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
