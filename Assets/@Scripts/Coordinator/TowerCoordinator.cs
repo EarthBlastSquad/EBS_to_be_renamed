@@ -60,16 +60,17 @@ namespace Coordinator
 
         public void Init(TowerData data, Facing facing, Vector2Int placedPos)
         {
+            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName);
             _data = data;
             _facing = facing;
-            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound);
+            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound, animController);
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.TowerImgName);
             _attackableLayer = 0;
             _crackCoordinator.Init(data.TowerHP, data.CrackSpriteNameBase);
-            _attackActor.Init(Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName));
+            _attackActor.Init(animController);
 
             for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
             {

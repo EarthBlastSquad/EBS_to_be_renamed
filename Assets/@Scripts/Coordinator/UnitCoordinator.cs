@@ -42,7 +42,8 @@ namespace Coordinator
 
         public void Init(MonsterData data, Vector2Int initialPos)
         {
-            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound);
+            var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName);
+            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound, animController);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
             _monsterData = data;
@@ -50,7 +51,7 @@ namespace Coordinator
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);
             GetComponent<SpriteRenderer>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(data.MonsterImgName);
             _attackableLayer = 0;
-            _attackActor.Init(Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimationClipName));
+            _attackActor.Init(animController);
 
             for(int i =0; i < _skillData.AttackableLayers.Count; i++)
             {

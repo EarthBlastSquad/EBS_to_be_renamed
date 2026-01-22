@@ -1,3 +1,4 @@
+using Actor;
 using ComponentModule;
 using Manager;
 using System;
@@ -11,9 +12,11 @@ namespace Coordinator
         private CooldownComponentModule _cooldown;
         private HPCoordinator _hpCoordinator;
         private string _hitSFXName;
+        private VictimActor _actor;
 
         private void Awake()
         {
+            _actor = new VictimActor(GetComponent<Animator>());
             _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
             _hpCoordinator.OnDead += OnDead;
         }
@@ -22,6 +25,7 @@ namespace Coordinator
         {
             Managers.Instance.CooldownManager.ReturnModule(_cooldown);
             _cooldown = null;
+            _actor.ShowDieEffect();
         }
 
         private void OnDestroy()
@@ -30,8 +34,9 @@ namespace Coordinator
             _cooldown = null;
         }
 
-        public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName)
+        public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName, AnimatorOverrideController animController)
         {
+            _actor.Init(animController);
             _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
@@ -58,6 +63,7 @@ namespace Coordinator
         {
             Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.EFFECT_0, _hitSFXName, false);
             _hpCoordinator.TakeDamage(damage);
+            _actor.ShowAttackEffect();
         }
 
         public bool IsDead()
