@@ -37,6 +37,7 @@ namespace Actor
             if(result == MovementReturnTypes.CANT_GO)
             {
                 //_renderer.sprite = _arrivedImg;
+                _boomPS.Play();
                 _anim.SetTrigger("Boom");
                 transform.rotation = Quaternion.identity;
                 return;
