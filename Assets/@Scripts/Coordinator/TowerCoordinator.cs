@@ -35,7 +35,7 @@ namespace Coordinator
             _victimCoordinator = gameObject.GetOrAddComponent<VictimCoordinator>();
             _gridManager = FindAnyObjectByType<GridManager>();
             _projMgr = FindAnyObjectByType<ProjectileManager>();
-            _lookActor = new LookActor(GetComponent<SpriteRenderer>(), transform);
+            _lookActor = new LookActor(transform);
             _crackCoordinator = GetComponentInChildren<CrackCoordinator>();
             _attackActor = new AttackActor(anim);
         }
