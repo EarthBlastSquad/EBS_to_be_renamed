@@ -47,6 +47,7 @@ namespace Data
         public string TowerDescription;
         public string HitSound;
         public string AnimatorControllerName;
+        public string DeadParticleName;
         public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
@@ -62,6 +63,7 @@ namespace Data
             this.TowerHP = original.TowerHP;
             this.HitSound = original.HitSound;
             this.AnimatorControllerName = original.AnimatorControllerName;
+            this.DeadParticleName = original.DeadParticleName;
             this.SkillId = original.SkillId;
         }
         public TowerData() { }
@@ -78,6 +80,7 @@ namespace Data
         public int RewardCurrency;
         public string HitSound;
         public string AnimatorControllerName;
+        public string DeadParticleName;
         public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
@@ -91,6 +94,7 @@ namespace Data
             this.RewardCurrency = original.RewardCurrency;
             this.HitSound = original.HitSound;
             this.AnimatorControllerName = original.AnimatorControllerName;
+            this.DeadParticleName= original.DeadParticleName;
             this.SkillID = original.SkillID;
         }
         public MonsterData() { }
@@ -180,6 +184,8 @@ namespace Data
         public string SkillAnimationControllerName;
         public string AttackObjectImgName;
         public string PrefabName;
+        public string SkillBOOMParticleName;
+        public string SkillLaunchParticleName;
         public string SkillDescription;
 
         public SkillData(SkillData original)
@@ -196,6 +202,8 @@ namespace Data
             this.SkillAnimationControllerName = original.SkillAnimationControllerName;
             this.AttackObjectImgName = original.AttackObjectImgName;
             this.PrefabName = original.PrefabName;
+            this.SkillBOOMParticleName = original.SkillBOOMParticleName;
+            this.SkillLaunchParticleName = original.SkillLaunchParticleName;
             this.SkillDescription = original.SkillDescription;
         }
 

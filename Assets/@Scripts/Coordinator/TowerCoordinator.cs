@@ -44,7 +44,7 @@ namespace Coordinator
         {
             if(result)
             {
-                _lookActor.Look(_facing);
+                _victimCoordinator.SetCalibrationPos(_lookActor.Look(_facing));
             }
         }
 
@@ -63,7 +63,7 @@ namespace Coordinator
             var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimatorControllerName);
             _data = data;
             _facing = facing;
-            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound, animController);
+            _victimCoordinator.InitVictim(data.InvincibilityTime, data.TowerHP, data.HitSound, animController, data.DeadParticleName);
             _skillData = Managers.Instance.DataManager.SkillDic[data.SkillId];
             _placedPos = placedPos;
             _module = Managers.Instance.CooldownManager.GetCooldownModule(_skillData.Cooldown);

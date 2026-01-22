@@ -43,7 +43,7 @@ namespace Coordinator
         public void Init(MonsterData data, Vector2Int initialPos)
         {
             var animController = Managers.Instance.ResourceManager.Load<AnimatorOverrideController>(data.AnimatorControllerName);
-            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound, animController);
+            _victim.InitVictim(data.InvincibilityTime, data.MonsterHP, data.HitSound, animController, data.DeadParticleName);
             _gridMovementCoordinator.Init(data.MonsterSpeed,initialPos);
             _id = data.MonsterId;
             _monsterData = data;
@@ -91,7 +91,7 @@ namespace Coordinator
             if(movResult == MovementReturnTypes.SUCCESS || movResult == MovementReturnTypes.SUCCESS_AND_BLOCKED)
             {
                 var facing = GetFacing(_gridMovementCoordinator.GetNextPos());
-                _lookActor.Look(facing);
+                _victim.SetCalibrationPos(_lookActor.Look(facing));
                 _facing = facing;
             }
             else if (movResult == Utils.Defines.MovementReturnTypes.CANT_GO && _module.IsCooldownEnded())
