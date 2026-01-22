@@ -19,12 +19,12 @@ namespace Actor
         {
             if(_launchPS is null)
             {
-                _launchPS = Managers.Instance.ResourceManager.Load<GameObject>(launchPSName).GetComponent<ParticleSystem>();
+                _launchPS = Managers.Instance.ResourceManager.Instantiate(launchPSName,pooling:true).GetComponent<ParticleSystem>();
             }
 
             if(_boomPS is null)
             {
-                _boomPS = Managers.Instance.ResourceManager.Load<GameObject>(boomPSName).GetComponent<ParticleSystem>();
+                _boomPS = Managers.Instance.ResourceManager.Instantiate(boomPSName,pooling:true).GetComponent<ParticleSystem>();
             }
             _boomPS.Clear();
             _launchPS.Clear();

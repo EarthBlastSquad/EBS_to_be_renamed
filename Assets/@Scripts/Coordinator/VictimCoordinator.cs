@@ -37,7 +37,7 @@ namespace Coordinator
 
         public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName, AnimatorOverrideController animController, string deadParticleName)
         {
-            ParticleSystem ps = Managers.Instance.ResourceManager.Load<GameObject>(deadParticleName).GetComponent<ParticleSystem>();
+            ParticleSystem ps = Managers.Instance.ResourceManager.Instantiate(deadParticleName,pooling:true).GetComponent<ParticleSystem>();
             _actor.Init(animController, ps, transform);
             _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
