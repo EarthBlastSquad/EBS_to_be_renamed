@@ -107,4 +107,12 @@ namespace Utils.Defines
         LOSE =2,
         SHUT_DOWN=3
     }
+
+    public enum  EndingContentType
+    {
+        TYPE_TEXT=1,
+        TYPE_SOUND=2,
+        TYPE_IMAGE=4,
+        TYPE_INVALID=-666775
+    }
 }
