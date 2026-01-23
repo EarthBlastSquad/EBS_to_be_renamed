@@ -11,6 +11,7 @@ namespace Utils.Defines
         TitleScene = 1,
         LobbyScene = 2,
         GameScene = 3,
+        EndingScene = 4,
         Test = 60
     }
 
@@ -105,5 +106,13 @@ namespace Utils.Defines
         WIN = 1,
         LOSE =2,
         SHUT_DOWN=3
+    }
+
+    public enum  EndingContentType
+    {
+        TYPE_TEXT=1,
+        TYPE_SOUND=2,
+        TYPE_IMAGE=4,
+        TYPE_INVALID=-666775
     }
 }

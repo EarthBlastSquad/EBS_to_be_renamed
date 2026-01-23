@@ -7,6 +7,8 @@
       "WaveIdx": -6667750,
       "AreaUnlockIdx": -6667751,
       "StageName": "BCK",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
       "StageDescription": "OUR"
     }
   ]

@@ -46,6 +46,8 @@ namespace Data
         public int DemendedCurrency;
         public string TowerDescription;
         public string HitSound;
+        public string AnimatorControllerName;
+        public string DeadParticleName;
         public int SkillId;
         //각종 파라미터들
         public TowerData(TowerData original)
@@ -60,6 +62,8 @@ namespace Data
             this.DemendedCurrency = original.DemendedCurrency;
             this.TowerHP = original.TowerHP;
             this.HitSound = original.HitSound;
+            this.AnimatorControllerName = original.AnimatorControllerName;
+            this.DeadParticleName = original.DeadParticleName;
             this.SkillId = original.SkillId;
         }
         public TowerData() { }
@@ -75,6 +79,8 @@ namespace Data
         public string MonsterImgName;
         public int RewardCurrency;
         public string HitSound;
+        public string AnimatorControllerName;
+        public string DeadParticleName;
         public int SkillID;
         //각종 파라미터들
         public MonsterData(MonsterData original)
@@ -87,6 +93,8 @@ namespace Data
             this.MonsterImgName = original.MonsterImgName;
             this.RewardCurrency = original.RewardCurrency;
             this.HitSound = original.HitSound;
+            this.AnimatorControllerName = original.AnimatorControllerName;
+            this.DeadParticleName= original.DeadParticleName;
             this.SkillID = original.SkillID;
         }
         public MonsterData() { }
@@ -144,6 +152,8 @@ namespace Data
         public int AreaUnlockIdx;
         public int TotalWaveCnt;
         public string StageName;
+        public int GoodEndingDataIdx;
+        public int BadEndingDataIdx;
         public string StageDescription;
 
         public StageData(StageData original)
@@ -155,10 +165,31 @@ namespace Data
             AreaUnlockIdx = original.AreaUnlockIdx;
             TotalWaveCnt = original.TotalWaveCnt;
             StageName = original.StageName;
+            GoodEndingDataIdx = original.GoodEndingDataIdx;
+            BadEndingDataIdx = original.BadEndingDataIdx;
             StageDescription = original.StageDescription;
         }
 
         public StageData() { }
+    }
+
+    [Serializable]
+    public class EndingData
+    {
+        public int EndingIdx;
+        public string BGMName;
+        public string TextTypeSFX;
+        public List<string> Contents;
+
+        public EndingData(EndingData original)
+        {
+            EndingIdx = original.EndingIdx;
+            BGMName = original.BGMName;
+            TextTypeSFX = original.TextTypeSFX;
+            Contents = original.Contents;
+        }
+
+        public EndingData() { }
     }
 
     [Serializable]
@@ -173,9 +204,11 @@ namespace Data
         public float SpeedPerCell;
         public string FiringSFX;
         public string SFXName;
-        public string AttackEffectName;
+        public string SkillAnimationControllerName;
         public string AttackObjectImgName;
         public string PrefabName;
+        public string SkillBOOMParticleName;
+        public string SkillLaunchParticleName;
         public string SkillDescription;
 
         public SkillData(SkillData original)
@@ -189,9 +222,11 @@ namespace Data
             this.SpeedPerCell = original.SpeedPerCell;
             this.FiringSFX = original.FiringSFX;
             this.SFXName = original.SFXName;
-            this.AttackEffectName = original.AttackEffectName;
+            this.SkillAnimationControllerName = original.SkillAnimationControllerName;
             this.AttackObjectImgName = original.AttackObjectImgName;
             this.PrefabName = original.PrefabName;
+            this.SkillBOOMParticleName = original.SkillBOOMParticleName;
+            this.SkillLaunchParticleName = original.SkillLaunchParticleName;
             this.SkillDescription = original.SkillDescription;
         }
 

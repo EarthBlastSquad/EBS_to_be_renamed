@@ -1,3 +1,4 @@
+using Actor;
 using ComponentModule;
 using Manager;
 using System;
@@ -11,17 +12,27 @@ namespace Coordinator
         private CooldownComponentModule _cooldown;
         private HPCoordinator _hpCoordinator;
         private string _hitSFXName;
+        private VictimActor _actor;
+        private Vector2Int _calibrationPos;
 
         private void Awake()
         {
+            _actor = new VictimActor(GetComponent<Animator>());
             _hpCoordinator = gameObject.GetOrAddComponent<HPCoordinator>();
             _hpCoordinator.OnDead += OnDead;
+        }
+
+        public void SetCalibrationPos(Vector2Int calibrationPos)
+        {
+            _calibrationPos = calibrationPos; 
         }
 
         private void OnDead()
         {
             Managers.Instance.CooldownManager.ReturnModule(_cooldown);
             _cooldown = null;
+            _actor.ShowDieEffect(new Vector3(transform.position.x - _calibrationPos.x, transform.position.y - _calibrationPos.y, transform.position.z));
+            _actor.OnDead();
         }
 
         private void OnDestroy()
@@ -30,8 +41,10 @@ namespace Coordinator
             _cooldown = null;
         }
 
-        public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName)
+        public void InitVictim(float invincibilityTime, int maxHP,string hitSFXName, AnimatorOverrideController animController, string deadParticleName)
         {
+            ParticleSystem ps = Managers.Instance.ResourceManager.Instantiate(deadParticleName,pooling:true).GetComponent<ParticleSystem>();
+            _actor.Init(animController, ps);
             _hitSFXName= hitSFXName;
             _cooldown = Managers.Instance.CooldownManager.GetCooldownModule(invincibilityTime);
             _hpCoordinator.InitHP(maxHP);
@@ -58,6 +71,7 @@ namespace Coordinator
         {
             Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.EFFECT_0, _hitSFXName, false);
             _hpCoordinator.TakeDamage(damage);
+            _actor.ShowAttackEffect();
         }
 
         public bool IsDead()
