@@ -20,10 +20,10 @@ namespace Manager.Contents
         private int _steppableLayer = 0;
         private Vector2Int _invalidVector = new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID);
 
-        private void Start()
+        private void Awake()
         {
             _gridManager = GetComponent<GridManager>();
-            if(_gridManager == null)
+            if (_gridManager == null)
             {
 #if UNITY_EDITOR
                 Debug.LogError("그리드 매니저가 이 오브젝트에 없음");
@@ -32,7 +32,7 @@ namespace Manager.Contents
             _steppableLayer = LayerMask.NameToLayer("SteppablePiece");
             _gridManager.CellUpdateEvent += RequestUpdatePath;
 
-            for (int i = 0; i < (int)MapMaxCellCnt.MAX_HEIGHT;i++)
+            for (int i = 0; i < (int)MapMaxCellCnt.MAX_HEIGHT; i++)
             {
                 _startPos.Add(new Vector2Int(0, i));
             }
