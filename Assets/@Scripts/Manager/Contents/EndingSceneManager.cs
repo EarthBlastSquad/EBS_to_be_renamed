@@ -13,13 +13,9 @@ namespace Manager.Contents
 
         private void Start()
         {
-            bool isCleared = false;
             StageData stage = Managers.Instance.StageManager.GetNowStageData();
-            if (Managers.Instance.GameManager.TryGetClearData(stage.StageIdx, out var clearData))
-            {
-                isCleared = clearData.Item2;
-            }
-
+            var lastStatus = Managers.Instance.GameManager.LastGameEndStatus;
+            bool isCleared = lastStatus.Item2;
 
             if(isCleared)
             {

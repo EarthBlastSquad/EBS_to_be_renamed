@@ -82,6 +82,7 @@ namespace Scenes
             _waveMgr = FindAnyObjectByType<WaveManager>();
             _gridMgr = FindAnyObjectByType<GridManager>();
             _unitMgr = FindAnyObjectByType<UnitManager>();
+            Managers.Instance.GameManager.LastGameEndStatus = ((int)ControlValue.INVALID, false);
 
 #if UNITY_EDITOR
 
