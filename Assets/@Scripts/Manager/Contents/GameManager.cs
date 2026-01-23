@@ -7,6 +7,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils.Defines;
 
 namespace Manager.Contents
 {
@@ -54,6 +55,14 @@ namespace Manager.Contents
             }
         }
 
+        private ValueTuple<int, bool> _lastGameEndStatus=((int)ControlValue.INVALID,false);
+
+        public ValueTuple<int, bool> LastGameEndStatus
+        {
+            get { return _lastGameEndStatus; }
+            set { _lastGameEndStatus = value; }
+        }
+
         
         public bool TryGetClearData(int stageIdx, out ValueTuple<int,bool>  clearData)
         {
@@ -68,6 +77,7 @@ namespace Manager.Contents
         public void SetClearData(int stageIdx, ValueTuple<int,bool> clearData)
         {
             _gameData.StageClearData[stageIdx] = clearData;
+            LastGameEndStatus = clearData;
             SaveGame();
         }
 
