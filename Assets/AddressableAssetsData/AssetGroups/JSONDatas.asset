@@ -29,6 +29,13 @@ MonoBehaviour:
     - JSONDatas
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66cb29dbb77d21f439423bcccc44a3be
+    m_Address: EndingData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - JSONDatas
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 72ae0c7ab7954e14bab94da14511326e
     m_Address: SkillData
     m_ReadOnly: 0
