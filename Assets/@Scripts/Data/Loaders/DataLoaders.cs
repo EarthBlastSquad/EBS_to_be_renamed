@@ -88,6 +88,23 @@ public class StageDataLoader : ILoader<int, StageData>
 
 
 [Serializable]
+public class EndingDataLoader : ILoader<int, EndingData>
+{
+    public List<EndingData> endings = new List<EndingData>();
+
+    public Dictionary<int, EndingData> MakeDict()
+    {
+        Dictionary<int, EndingData> dict = new Dictionary<int, EndingData>();
+        foreach (EndingData data in endings)
+        {
+            dict.Add(data.EndingIdx, data);
+        }
+        return dict;
+    }
+}
+
+
+[Serializable]
 public class SkillDataLoader : ILoader<int, SkillData>
 {
     public List<SkillData> skills = new List<SkillData>();

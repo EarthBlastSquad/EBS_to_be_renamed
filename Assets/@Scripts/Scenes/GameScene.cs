@@ -3,6 +3,7 @@ using Manager;
 using Manager.Contents;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utils.Defines;
 
 namespace Scenes
@@ -45,6 +46,7 @@ namespace Scenes
             {
                 OnGameEnd?.Invoke(GameEndType.WIN);
                 SaveClearData(true);
+                Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
             }
         }
 
@@ -56,6 +58,7 @@ namespace Scenes
                 {
                     OnGameEnd?.Invoke(GameEndType.LOSE);
                     SaveClearData(false);
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
                     return;
                 }
             }
