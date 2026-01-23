@@ -152,6 +152,8 @@ namespace Data
         public int AreaUnlockIdx;
         public int TotalWaveCnt;
         public string StageName;
+        public int GoodEndingDataIdx;
+        public int BadEndingDataIdx;
         public string StageDescription;
 
         public StageData(StageData original)
@@ -163,10 +165,31 @@ namespace Data
             AreaUnlockIdx = original.AreaUnlockIdx;
             TotalWaveCnt = original.TotalWaveCnt;
             StageName = original.StageName;
+            GoodEndingDataIdx = original.GoodEndingDataIdx;
+            BadEndingDataIdx = original.BadEndingDataIdx;
             StageDescription = original.StageDescription;
         }
 
         public StageData() { }
+    }
+
+    [Serializable]
+    public class EndingData
+    {
+        public int EndingIdx;
+        public string BGMName;
+        public string TextTypeSFX;
+        public List<string> Contents;
+
+        public EndingData(EndingData original)
+        {
+            EndingIdx = original.EndingIdx;
+            BGMName = original.BGMName;
+            TextTypeSFX = original.TextTypeSFX;
+            Contents = original.Contents;
+        }
+
+        public EndingData() { }
     }
 
     [Serializable]

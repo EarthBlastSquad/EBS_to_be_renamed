@@ -1,0 +1,16 @@
+{
+  "endings": [
+    {
+      "EndingIdx": -6667750,
+      "BGMName": "TestEndingBGM",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": ["B","C","K","__play__","TestEndingSFX","__load__","TestEndingIMG"]
+    },
+    {
+      "EndingIdx": -6667751,
+      "BGMName": "TestEndingBGM",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": ["D","H","W","__play__","TestEndingSFX","__load__","TestEndingIMG"]
+    }
+  ]
+}
