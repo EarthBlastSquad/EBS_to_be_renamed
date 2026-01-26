@@ -1,9 +1,12 @@
 using Contents.Tower;
 using Data;
 using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -106,6 +109,67 @@ namespace Manager.Contents
             //SaveGame(); //Init()인 만큼 없을때 생성하게 하는 의도도 있음.
 
         }
+        private void TowerFetch()
+        {
+            foreach (Tower t in OwnedTowers)
+            {
+#if UNITY_EDITOR
+                Debug.Log(t.TowerData.TowerName);
+#endif
+                if (Managers.Instance.DataManager.TowerDic.TryGetValue(t.TowerData.TowerId, out TowerData td)==true)
+                {
+#if UNITY_EDITOR
+                    Debug.Log("패치");
+#endif
+                    var tFields = t.TowerData.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    var tProps = t.TowerData.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                    var dFields = td.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    var dProps = td.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                    foreach (var tf in tFields)
+                    {
+                        foreach (var df in dFields)
+                        {
+                            if (tf.Name == df.Name && tf.FieldType == df.FieldType)
+                            {
+                                tf.SetValue(t.TowerData, df.GetValue(td));
+                                for(int i=0; i<EquippedTowers.Count();i++)
+                                {
+                                    if (EquippedTowers[i].key==t.key)
+                                    {
+                                        EquippedTowers[i] = t;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    foreach (var tp in tProps)
+                    {
+                        if (tp.CanWrite)
+                        {
+                            foreach (var dp in dProps)
+                            {
+
+                                if (dp.CanRead && tp.Name == dp.Name && tp.PropertyType == dp.PropertyType)
+                                {
+                                    tp.SetValue(t.TowerData, dp.GetValue(td));
+                                    for (int i = 0; i < EquippedTowers.Count(); i++)
+                                    {
+                                        if (EquippedTowers[i].key == t.key)
+                                        {
+                                            EquippedTowers[i] = t;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #region Save,Load
         private string _path; //SaveData.Json은 Addressables로 관리하는게 아님
         public void SaveGame()
@@ -121,11 +185,14 @@ namespace Manager.Contents
             }
             if (File.Exists(_path)==false)
             {
+#if UNITY_EDITOR
                 GetTest();
+#endif
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
             Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
+            TowerFetch();
 #if UNITY_EDITOR
             Debug.Log("불러왔다");
             Debug.Log(OwnedTowers[0]);
@@ -140,6 +207,7 @@ namespace Manager.Contents
             } //보유 타워 중 장착되었나? 로 체크하는 구조
 
             IsLoaded = true;
+            SaveGame();
             return true;
         }
         #endregion
@@ -206,7 +274,7 @@ namespace Manager.Contents
         //    IsLoaded = true;
         //    return true;
         //} //얘처럼 json 파싱 만들기 겸+Init 최상단 return용도 flase으로 연계
-        #endregion
+#endregion
 
         #region GameStatus
         public bool IsGamePaused { get; set; } = false;
