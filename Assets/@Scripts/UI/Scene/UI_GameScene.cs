@@ -5,6 +5,7 @@ using InputHandler;
 using Manager;
 using Manager.Contents;
 using Scenes;
+using UI.Popup;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,8 @@ namespace UI.Scene
         private GameScene _gs;
         private GridManager _gm;
         private TowerManager _tm;
+        private UI_Shop _uis;
+        private AreaUnlockManager _aum;
         #region Enum
         enum GameObjects
         {
@@ -28,7 +31,8 @@ namespace UI.Scene
 
         enum Buttons
         {
-            Pause_0
+            Pause_0,
+            Unlock_0
         }
 
         enum Texts
@@ -38,10 +42,9 @@ namespace UI.Scene
             BCK_0
         }
 
-        enum Images
-        {
-            Background_0
-        }
+        //enum Images
+        //{
+        //}
         #endregion
 
         public override bool Init()
@@ -52,7 +55,7 @@ namespace UI.Scene
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
-            BindImage(typeof(Images));
+            //BindImage(typeof(Images));
 
             _gs = GameObject.Find("GameScene").GetComponent<GameScene>();
             _gs.OnWaveChanged -= WaveUI;
@@ -60,6 +63,7 @@ namespace UI.Scene
             Managers.Instance.CurrencyManager.OnCurrencyChangedEvent -= CurrencyUI;
             Managers.Instance.CurrencyManager.OnCurrencyChangedEvent += CurrencyUI;
             GetButton((int)Buttons.Pause_0).gameObject.BindUIEvent(PauseButton);
+            GetButton((int)Buttons.Unlock_0).gameObject.BindUIEvent(UnlickButton);
 
             GridInputHandler gh = FindAnyObjectByType<GridInputHandler>();
             gh.mouseUpSubscriberEvent -= ShopUI;
@@ -70,13 +74,15 @@ namespace UI.Scene
             GetObject((int)GameObjects.Panel_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.ESC_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.Shop_0).gameObject.SetActive(false);
-
+            GetButton((int)Buttons.Unlock_0).gameObject.SetActive(true);
 #if UNITY_EDITOR
             Managers.Instance.CurrencyManager.AddCurrency(0404);
+            Debug.Log(GetButton((int)Buttons.Pause_0).gameObject.name);
 #endif
             _gm = FindAnyObjectByType<GridManager>();
             _tm = FindAnyObjectByType<TowerManager>();
-
+            _uis = GetObject((int)GameObjects.Shop_0).GetComponent<UI_Shop>();
+            _aum = FindAnyObjectByType<AreaUnlockManager>();
             return true;
         }
         #region 팝업
@@ -92,6 +98,14 @@ namespace UI.Scene
 
         }
 
+        protected void UnlickButton(PointerEventData _)
+        {
+            if(_aum.TryUnlock())
+            {
+                GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
+            }
+        }
+
         protected void WaveUI(WaveData wd)
         {
             GetText((int)Texts.Waves_0).text = $"{wd.WaveIdx}/10 Waves";
@@ -104,19 +118,25 @@ namespace UI.Scene
 
         protected void ShopUI(Vector3 _)
         {
-            if (_gm.GetLastSelectedPos() == new Vector2(-1, -1))
+            Vector2Int p = _gm.GetLastSelectedPos();
+            if (p == new Vector2(-1, -1))
             {
-                
-                GetObject((int)GameObjects.Shop_0).gameObject.SetActive(false);
+                _uis.CheckButton(_);
                 return;
             }
-            else if(_gm.TryGetPlacedPiece(_gm.GetLastSelectedPos(),out GameObject outTower)&&outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
+            else if (_gm.TryGetPlacedPiece(p, out GameObject outTower) && outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
             {
-                _tm.RetrieveTower(_gm.GetLastSelectedPos());
+                _tm.RetrieveTower(p);//삭제대신정보창
+            }
+            else if (_uis.ShopOpen == true&&_uis._sv==p)
+            {
+                _uis.ChangeFacing();
             }
             else
             {
+                _uis.Set(p);
                 GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
+                _uis.ShopOpen = true;
             }
         }
 
@@ -125,21 +145,18 @@ namespace UI.Scene
 
         protected void TimerUI(float totaltime, float time)
         {
-            _m = (int)totaltime / 60;
-            if(_s== (int)totaltime % 60)
+            int i=(int)(time-totaltime);
+            if(_s== i % 60)
             {
                 return;
             }
-            _s = (int)totaltime % 60;
+            _m = i / 60;
+            _s = i % 60;
 
             GetText((int)Texts.Timer_0).text = $"{(_m / 10 == 0 ? "0" : "")}{_m}:{(_s/10==0 ? "0" : "")}{_s}";
         }
         #endregion
         #endregion
-        private void Awake()
-        {
-            Init();
-        }
 
         public void ESCClose()
         {

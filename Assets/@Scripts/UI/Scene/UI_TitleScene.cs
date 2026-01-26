@@ -123,9 +123,10 @@ namespace UI.Scene
                     isPreload = true;
                     GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
                     GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+                    Managers.Instance.DataManager.Init();
                     Managers.Instance.GameManager.Init();
                     Managers.Instance.SoundManager.Init();
-                    Managers.Instance.DataManager.Init();
+
                     StartButtonAnimation();
                     GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
                     if (Managers.Instance.GameManager.SoundSet == true)

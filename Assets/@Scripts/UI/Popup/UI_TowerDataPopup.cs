@@ -42,7 +42,7 @@ namespace UI.Popup
             if(_tower is not null)
             {
                 GetText((int)Texts.TowerName_0).text = _tower.TowerData.TowerName;
-                //GetText((int)Texts.TowerAtk_0).text = t.TowerData.TowerAtk;
+                GetText((int)Texts.TowerAtk_0).text = Managers.Instance.DataManager.SkillDic[_tower.TowerData.SkillId].Damage.ToString();
                 GetText((int)Texts.TowerDescription_0).text = _tower.TowerData.TowerDescription;
             }
             return true;
@@ -52,7 +52,8 @@ namespace UI.Popup
         {
             _tower = t;
             GetText((int)Texts.TowerName_0).text = t.TowerData.TowerName;
-            //GetText((int)Texts.TowerAtk_0).text = t.TowerData.TowerAtk;
+            GetImage((int)Images.TowerImage_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(t.TowerData.TowerImgName);
+            GetText((int)Texts.TowerAtk_0).text = $"°ø°Ý·Â : {Managers.Instance.DataManager.SkillDic[_tower.TowerData.SkillId].Damage}";
             GetText((int)Texts.TowerDescription_0).text=t.TowerData.TowerDescription;
         }
 

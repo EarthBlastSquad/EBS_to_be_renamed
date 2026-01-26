@@ -1,4 +1,6 @@
+using Controller;
 using Data;
+using DG.Tweening;
 using InputHandler;
 using Manager;
 using Manager.Contents;
@@ -14,6 +16,8 @@ namespace UI.Popup
 
     public class UI_Shop : UIPopup
     {
+        public bool ShopOpen = false;
+
         enum Buttons
         {
             Slot_0, 
@@ -35,34 +39,107 @@ namespace UI.Popup
             GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent(Slot1);
             GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(Slot2);
             _tm =FindAnyObjectByType<TowerManager>();
-            _gm= FindAnyObjectByType<GridManager>();
-
+            _selectTower = GameObject.Find("SelectTower").transform.GetChild(0).GetComponent<SpriteRenderer>();
+            g = FindAnyObjectByType<GridController>();
             return true;
         }
         private void Awake()
         {
             Init();
         }
-        private void OnEnable()
-        {
-            _sv=_gm.GetLastSelectedPos();
-        }
-        private Vector2Int _sv;
+
+        public Vector2Int _sv { get; private set; }
         private TowerData[] _towerData=new TowerData[3];
         private TowerManager _tm;
-        private GridManager _gm;
+        private Facing _facing;
+        private SpriteRenderer _selectTower;
+        private GridController g;
 
+        public void CheckButton(Vector3 _)
+        {
+            bool b = false;
+            for (int i = 0; i < 3; i++)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(GetButton((int)Buttons.Slot_0 + i).GetComponent<RectTransform>(), _))
+                {
+                    b = true;
+                }
+            }
+            if(b==false)
+            {
+                ShopOpen = false;
+                CloseSR();
+                gameObject.SetActive(false);
+            }
+        }    
+        public void ChangeFacing()
+        {
+            _facing = (Facing)(((int)_facing + 90) % 360);
+            _selectTower.transform.parent.DOKill();
+            _selectTower.transform.parent.DORotate(Vector3.forward * 90f, 0.1f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
+        }
+        private void Arrows()
+        {
+
+        }
+        public void Set(Vector2Int p)
+        {
+            _sv = p;
+            _selectTower.transform.parent.gameObject.SetActive(true);
+            g.PlacePieceAt(new Vector3Int(p.x, p.y, 0), _selectTower.transform.parent);
+            _selectTower.transform.parent.position += new Vector3(0.5f, 0.5f, 0);
+            if (ShopOpen == false)
+            {
+                _facing = Facing.RIGHT;
+                _s = Slots.None;
+                _selectTower.transform.parent.rotation = Quaternion.identity;
+                _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
+
+            }
+        }
+        public void CloseSR()
+        {
+            _selectTower.transform.parent.DOKill();
+            _selectTower.transform.parent.gameObject.SetActive(false);
+        }
+        enum Slots 
+        {
+            None,
+            Slot0,
+            Slot1,
+            Slot2,
+            //그 뭐냐 벽? 그거 추가예정
+        }
+        private Slots _s=Slots.None;
         protected void Slot0(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[0], _sv, Facing.RIGHT);
+            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[0].TowerImgName);
+            if(_s==Slots.Slot0)
+            {
+                _tm.PlaceTower(_towerData[0], _sv, _facing);
+                ShopOpen = false;
+            }
+            _s=Slots.Slot0;
         }
         protected void Slot1(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[1], _sv, Facing.RIGHT);
+            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[1].TowerImgName);
+            if(_s==Slots.Slot1)
+            {
+                _tm.PlaceTower(_towerData[1], _sv, Facing.RIGHT);
+                ShopOpen = false;
+            }
+            _s = Slots.Slot1;
         }
         protected void Slot2(PointerEventData _)
         {
-            _tm.PlaceTower(_towerData[2], _sv, Facing.RIGHT);
+            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
+            if(_s==Slots.Slot2)
+            {
+                _tm.PlaceTower(_towerData[2], _sv, Facing.RIGHT);
+                ShopOpen = false;
+            }
+            _s = Slots.Slot2;
         }
 
 

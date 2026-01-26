@@ -10,6 +10,28 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "OUR"
+    },
+    {
+      "StageIdx": -6667751,
+      "PrevIdx": -666775,
+      "NextIdx": -666775,
+      "WaveIdx": -6667750,
+      "AreaUnlockIdx": -6667752,
+      "StageName": "LYS",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "LYS♥BCK"
+    },
+    {
+      "StageIdx": -6667752,
+      "PrevIdx": -666775,
+      "NextIdx": -666775,
+      "WaveIdx": -6667750,
+      "AreaUnlockIdx": -6667753,
+      "StageName": "KDH",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "RUO"
     }
   ]
 }
