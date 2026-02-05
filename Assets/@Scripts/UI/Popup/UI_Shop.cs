@@ -4,6 +4,7 @@ using DG.Tweening;
 using InputHandler;
 using Manager;
 using Manager.Contents;
+using ObjectPool;
 using TMPro;
 using UI.Scene;
 using UnityEngine;
@@ -41,6 +42,7 @@ namespace UI.Popup
             _tm =FindAnyObjectByType<TowerManager>();
             _selectTower = GameObject.Find("SelectTower").transform.GetChild(0).GetComponent<SpriteRenderer>();
             g = FindAnyObjectByType<GridController>();
+            _rp = FindAnyObjectByType<RangePreview>();
             return true;
         }
         private void Awake()
@@ -54,6 +56,7 @@ namespace UI.Popup
         private Facing _facing;
         private SpriteRenderer _selectTower;
         private GridController g;
+        private RangePreview _rp;
 
         public void CheckButton(Vector3 _)
         {
@@ -69,6 +72,7 @@ namespace UI.Popup
             {
                 ShopOpen = false;
                 CloseSR();
+                _rp.Hide();
                 gameObject.SetActive(false);
             }
         }    
@@ -77,6 +81,10 @@ namespace UI.Popup
             _facing = (Facing)(((int)_facing + 90) % 360);
             _selectTower.transform.parent.DOKill();
             _selectTower.transform.parent.DORotate(Vector3.forward * 90f, 0.1f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
+            if(Managers.Instance.DataManager.SkillDic.TryGetValue(_towerData[(int)_s].SkillId, out SkillData sd)==true)
+            {
+                _rp.ShowAttackRange(sd.AttackPos, _sv, _facing);
+            }
         }
         private void Arrows()
         {
@@ -96,6 +104,10 @@ namespace UI.Popup
                 _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
 
             }
+            else
+            {
+                _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[1].SkillId].AttackPos, _sv, _facing);
+            }
         }
         public void CloseSR()
         {
@@ -104,41 +116,56 @@ namespace UI.Popup
         }
         enum Slots 
         {
-            None,
-            Slot0,
-            Slot1,
-            Slot2,
+            None=-675,
+            Slot0=0,
+            Slot1=1,
+            Slot2=2,
             //그 뭐냐 벽? 그거 추가예정
         }
         private Slots _s=Slots.None;
         protected void Slot0(PointerEventData _)
         {
+            _rp.Hide();
             _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[0].TowerImgName);
-            if(_s==Slots.Slot0)
+            if (_s==Slots.Slot0)
             {
                 _tm.PlaceTower(_towerData[0], _sv, _facing);
                 ShopOpen = false;
+                _s = Slots.None;
+                gameObject.SetActive(false);
+                return;
             }
-            _s=Slots.Slot0;
+            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[0].SkillId].AttackPos, _sv, _facing);
+            _s =Slots.Slot0;
         }
         protected void Slot1(PointerEventData _)
         {
+            _rp.Hide();
             _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[1].TowerImgName);
-            if(_s==Slots.Slot1)
+            if (_s==Slots.Slot1)
             {
-                _tm.PlaceTower(_towerData[1], _sv, Facing.RIGHT);
+                _tm.PlaceTower(_towerData[1], _sv, _facing);
                 ShopOpen = false;
+                _s = Slots.None;
+                gameObject.SetActive(false);
+                return;
             }
+            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[1].SkillId].AttackPos, _sv, _facing);
             _s = Slots.Slot1;
         }
         protected void Slot2(PointerEventData _)
         {
+            _rp.Hide();
             _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
-            if(_s==Slots.Slot2)
+            if (_s==Slots.Slot2)
             {
-                _tm.PlaceTower(_towerData[2], _sv, Facing.RIGHT);
+                _tm.PlaceTower(_towerData[2], _sv, _facing);
                 ShopOpen = false;
+                _s = Slots.None;
+                gameObject.SetActive(false);
+                return;
             }
+            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[2].SkillId].AttackPos, _sv, _facing);
             _s = Slots.Slot2;
         }
 
