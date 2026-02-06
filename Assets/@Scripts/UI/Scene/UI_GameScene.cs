@@ -7,11 +7,10 @@ using Manager.Contents;
 using ObjectPool;
 using Scenes;
 using UI.Popup;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Utils;
-using static UnityEditor.PlayerSettings;
 
 namespace UI.Scene
 {
@@ -23,6 +22,7 @@ namespace UI.Scene
         private UI_TowerDatasMini _uitdm;
         private AreaUnlockManager _aum;
         private RangePreview _rp;
+
         #region Enum
         enum GameObjects
         {
@@ -88,8 +88,19 @@ namespace UI.Scene
             _uitdm = GetObject((int)GameObjects.TowerDatas_0).GetComponent<UI_TowerDatasMini>();
             _aum = FindAnyObjectByType<AreaUnlockManager>();
             _rp= FindAnyObjectByType<RangePreview>();
+            _hpBar = GameObject.Find("HPBar").GetComponentInChildren<Slider>();
+
             return true;
         }
+
+        #region HPBar
+        private Slider _hpBar;
+
+        public void SetHP(int c, int m)
+        {
+            _hpBar.value = Mathf.Clamp01(c / m);
+        }
+        #endregion
         #region 팝업
 
         #endregion
@@ -128,10 +139,13 @@ namespace UI.Scene
             {
                 GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
                 _uis.CheckButton(_);
+                _hpBar.transform.parent.gameObject.SetActive(false);
                 return;
             }
             else if (_gm.TryGetPlacedPiece(p, out GameObject outTower) && outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
             {
+                _uis.CheckButton(_);
+
                 var pos = tc.GetAttackRangeArgs();
 #if UNITY_EDITOR
                 Debug.Log("사거리  표시 중?");
@@ -142,6 +156,9 @@ namespace UI.Scene
                 var datas=tc.GetData();
                 //_tm.RetrieveTower(p);//삭제대신정보창
                 _uitdm.Set(datas.Item1.TowerName,datas.Item3.Damage,datas.Item3.Cooldown,p);
+                _hpBar.transform.parent.gameObject.SetActive(true);
+                SetHP(datas.Item2,datas.Item1.TowerHP);
+                _hpBar.transform.parent.position=outTower.transform.position;
             }
             else if (_uis.ShopOpen == true&&_uis._sv==p)
             {
@@ -151,7 +168,6 @@ namespace UI.Scene
             else
             {
                 GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
-                _rp.Hide();
                 _uis.Set(p);
                 GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
                 _uis.ShopOpen = true;
