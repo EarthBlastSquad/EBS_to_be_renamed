@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils.Defines;
@@ -188,11 +187,33 @@ namespace Manager.Contents
 #if UNITY_EDITOR
                 GetTest();
 #endif
+                OwnedTowers.Clear();
+                for (int i = 1; i < 6; i++)
+                {
+                    GetTower(i);
+                }
+                EquippedTowers =new Tower[3]{ new Tower(1), new Tower(2), new Tower(3) };
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
             Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
-            TowerFetch();
+            //TowerFetch();
+            if(OwnedTowers.Count()<Managers.Instance.DataManager.TowerDic.Count())
+            {
+                OwnedTowers.Clear();
+                for(int i=1; i<6;i++)
+                {
+                    GetTower(i);
+                }
+                if (EquippedTowers.Count() < 3)
+                {
+                    EquippedTowers = new Tower[3];
+                    for (int i = 0; i < 3; i++)
+                    {
+                        EquippedTowers[i] = new Tower(-1);
+                    }
+                }
+            }
 #if UNITY_EDITOR
             Debug.Log("불러왔다");
             Debug.Log(OwnedTowers[0]);

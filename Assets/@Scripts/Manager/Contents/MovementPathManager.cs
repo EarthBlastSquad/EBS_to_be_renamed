@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils.Defines;
-using static UnityEditor.PlayerSettings;
 
 namespace Manager.Contents
 {

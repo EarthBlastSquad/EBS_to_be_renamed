@@ -31,7 +31,142 @@
       "MobSpawnRate": 666775,
       "NextWaveIdx": -666775,
       "MobIDs": []
+    },
+    {
+      "WaveTimeLimit": 0,
+      "WaveNumber": 0,
+      "WaveIdx": 0,
+      "MobSpawnRate": 0,
+      "NextWaveIdx": 1,
+      "MobIDs": []
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 1,
+      "WaveIdx": 1,
+      "MobSpawnRate": 6,
+      "NextWaveIdx": 2,
+      "MobIDs": [ 0 ]
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 1,
+      "WaveIdx": 2,
+      "MobSpawnRate": 6,
+      "NextWaveIdx": 3,
+      "MobIDs": [ 0 ]
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 1,
+      "WaveIdx": 3,
+      "MobSpawnRate": 3,
+      "NextWaveIdx": 4,
+      "MobIDs": [ 2 ]
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 2,
+      "WaveIdx": 4,
+      "MobSpawnRate": 5,
+      "NextWaveIdx": 5,
+      "MobIDs": [ 3 ]
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 3,
+      "WaveIdx": 5,
+      "MobSpawnRate": 5,
+      "NextWaveIdx": 6,
+      "MobIDs": [ 3 ]
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 3,
+      "WaveIdx": 6,
+      "MobSpawnRate": 2.5,
+      "NextWaveIdx": 7,
+      "MobIDs": [ 4 ]
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 4,
+      "WaveIdx": 7,
+      "MobSpawnRate": 1.5,
+      "NextWaveIdx": 8,
+      "MobIDs": [ 0, 2, 3, 4 ]
+    },
+    {
+      "WaveTimeLimit": 45,
+      "WaveNumber": 5,
+      "WaveIdx": 8,
+      "MobSpawnRate": 2.25,
+      "NextWaveIdx": 9,
+      "MobIDs": [ 5 ]
+    },
+    {
+      "WaveTimeLimit": 45,
+      "WaveNumber": 6,
+      "WaveIdx": 9,
+      "MobSpawnRate": 0.75,
+      "NextWaveIdx": 10,
+      "MobIDs": [ 0, 1, 2 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 10,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 11,
+      "MobIDs": [ 0, 1 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 11,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 12,
+      "MobIDs": [ 2 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 12,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 13,
+      "MobIDs": [ 0, 1, 2 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 13,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 14,
+      "MobIDs": [ 3 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 14,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 15,
+      "MobIDs": [ 4 ]
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 15,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 16,
+      "MobIDs": [ 5 ]
+    },
+    {
+      "WaveTimeLimit": 666,
+      "WaveNumber": 9,
+      "WaveIdx": 16,
+      "MobSpawnRate": 666,
+      "NextWaveIdx": 0,
+      "MobIDs": [ 6 ]
     }
-
   ]
 }

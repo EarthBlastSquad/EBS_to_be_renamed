@@ -11,6 +11,12 @@
       "DemendedCurrency": 5,
       "UnlockXSize": 10,
       "NextUnlockData": -666775
+    },
+    {
+      "IDX": 0,
+      "DemendedCurrency": 100,
+      "UnlockXSize": 10,
+      "NextUnlockData": 0
     }
   ]
 }
