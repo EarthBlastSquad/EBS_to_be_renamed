@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Data;
 using Manager.Core;
 using Newtonsoft.Json;
@@ -283,3 +284,4 @@ namespace Editor
         }
     }
 }
+#endif

@@ -7,7 +7,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -19,7 +18,7 @@ namespace UI.Scene
 {
     public class UI_LobbyScene : UIScene
     {
-        private int _stageIdx = -6667750;
+        private int _stageIdx = 0;
 
         #region Enum
         enum GameObjects
@@ -112,7 +111,7 @@ namespace UI.Scene
         {
             if(++_stageIdx> Managers.Instance.DataManager.StageDic.Count)
             {
-                //_stageIdx = 0;
+                _stageIdx = 0;
             }
             GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
@@ -121,7 +120,7 @@ namespace UI.Scene
         {
             if(--_stageIdx<0)
             {
-                //_stageIdx = Managers.Instance.DataManager.StageDic.Count;
+                _stageIdx = Managers.Instance.DataManager.StageDic.Count;
             }
             GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;

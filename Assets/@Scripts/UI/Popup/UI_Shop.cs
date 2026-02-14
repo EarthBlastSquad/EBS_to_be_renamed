@@ -1,12 +1,10 @@
 using Controller;
 using Data;
 using DG.Tweening;
-using InputHandler;
 using Manager;
 using Manager.Contents;
 using ObjectPool;
 using TMPro;
-using UI.Scene;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -40,7 +38,7 @@ namespace UI.Popup
             GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent(Slot1);
             GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(Slot2);
             _tm =FindAnyObjectByType<TowerManager>();
-            _selectTower = GameObject.Find("SelectTower").transform.GetChild(0).GetComponent<SpriteRenderer>();
+            _selectTower = GameObject.Find("SelectTower").transform.GetComponentInChildren<SpriteRenderer>();
             g = FindAnyObjectByType<GridController>();
             _rp = FindAnyObjectByType<RangePreview>();
             return true;

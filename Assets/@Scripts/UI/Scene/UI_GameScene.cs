@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Utils;
+using Utils.Defines;
 
 namespace UI.Scene
 {
@@ -49,7 +50,6 @@ namespace UI.Scene
         //{
         //}
         #endregion
-
         public override bool Init()
         {
             if (base.Init() == false)
@@ -80,9 +80,11 @@ namespace UI.Scene
             GetObject((int)GameObjects.TowerDatas_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Unlock_0).gameObject.SetActive(true);
 #if UNITY_EDITOR
-            Managers.Instance.CurrencyManager.AddCurrency(0404);
             Debug.Log(GetButton((int)Buttons.Pause_0).gameObject.name);
+            Time.timeScale = 10f;
+            Debug.Log("°¡¼Ó");
 #endif
+            Managers.Instance.CurrencyManager.AddCurrency(0500);
             _gm = FindAnyObjectByType<GridManager>();
             _uis = GetObject((int)GameObjects.Shop_0).GetComponent<UI_Shop>();
             _uitdm = GetObject((int)GameObjects.TowerDatas_0).GetComponent<UI_TowerDatasMini>();
@@ -124,7 +126,7 @@ namespace UI.Scene
 
         protected void WaveUI(WaveData wd)
         {
-            GetText((int)Texts.Waves_0).text = $"{wd.WaveIdx}/10 Waves";
+            GetText((int)Texts.Waves_0).text = $"{wd.WaveIdx}/9 Waves";
         }
 
         protected void CurrencyUI(int c, int cc)
@@ -199,9 +201,7 @@ namespace UI.Scene
             Time.timeScale = 1;
             Manager.Managers.Instance.GameManager.IsGamePaused = false;
         }
-#if UNITY_EDITOR
 
-#endif
 
     }
 }

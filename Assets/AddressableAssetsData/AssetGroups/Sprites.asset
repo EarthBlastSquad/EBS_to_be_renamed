@@ -22,6 +22,41 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0416001d8a6a18a449f431dd4881d434
+    m_Address: sprite_tower_single_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0955be6a02fa5624ca87b8e1ee4886d7
+    m_Address: sprite_mob_boss_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e2ad15c1fb9a6e4085b8b1c3fa1dd04
+    m_Address: sprite_trap_single_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f189ac99cc6f974289a3979db855a42
+    m_Address: sprite_tower_range_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27a6c86e9a838b94d94c1fc38372c2eb
+    m_Address: sprite_mob_flying_none_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
     m_Address: crack_2
     m_ReadOnly: 0
@@ -42,10 +77,81 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47d4fb9d947632f419db5f6e8fcd43c4
+    m_Address: sprite_mob_single_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51dcdf234ec7d8842bed0222ef61429c
+    m_Address: sprite_tower_range_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53a4bc6df3086814a9d1d22844814911
+    m_Address: sprite_mob_flying_single_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5592869d771be6f44b12502b6b572864
     m_Address: test_god_2
     m_ReadOnly: 0
     m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6991e8845d0d62c46a5f25e190dcb353
+    m_Address: sprite_mob_range_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fb662011fb78ab4d9511e0d1f4ea6b0
+    m_Address: sprite_trap_range_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f7d3c45c85f8d34c853be640d140531
+    m_Address: TestEndingIMG
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95782622c4b8dba458163ccff551ba94
+    m_Address: sprite_attack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackObject
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b80f2d91c4c13314388456324edb1844
+    m_Address: sprite_wall_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2999f2669bc3cc49909c7921ed6ab50
+    m_Address: sprite_mob_flying_range_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e917e1fb293686c4d9a75349e7e17b9d
+    m_Address: sprite_mob_single_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eb63ad94d9f7cb34b96d7f8741b45716

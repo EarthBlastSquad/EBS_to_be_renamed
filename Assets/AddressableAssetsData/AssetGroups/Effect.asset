@@ -43,6 +43,13 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 744fc4c73d8d4bc47b91d407cc09e3e9
+    m_Address: AttackAnimControllerBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b5bdb0fce6aa146469503f14f01ac738
     m_Address: TestDeadParticle
     m_ReadOnly: 0

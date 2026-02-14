@@ -137,15 +137,6 @@ namespace UI.Scene
             });
         }
 
-#if UNITY_EDITOR
-        private void Update()
-        {
-            if (Input.GetKeyUp(KeyCode.F1))
-            {
-                Managers.Instance.UIManager.ShowToast("test");
-            }
-        }
-#endif
         void StartButtonAnimation()
         {
             GetText((int)Texts.Title_0).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();

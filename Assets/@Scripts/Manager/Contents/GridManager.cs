@@ -38,6 +38,9 @@ namespace Manager.Contents
             }
 
             _gridController = GetComponentInChildren<GridController>();
+#if UNITY_EDITOR
+            Debug.Log("GM");
+#endif
             if (_gridController is null)
             {
                 Debug.LogError("grid controller not found in child");
@@ -90,7 +93,9 @@ namespace Manager.Contents
                     _datas[x, y].victimList.Add(_nullVictim);
                 }
             }
-
+#if UNITY_EDITOR
+            Debug.Log(_gridController.name);
+#endif
             _gridController.SetupGridTiles(_datas);
             _isInit = true;
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int((int)ControlValue.INVALID, (int)ControlValue.INVALID, (int)ControlValue.INVALID),false,false));

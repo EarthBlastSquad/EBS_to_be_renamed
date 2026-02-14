@@ -24,6 +24,90 @@
       "AnimatorControllerName": "TestEntityAnimController",
       "DeadParticleName": "TestDeadParticle",
       "SkillID": -6667752
+    },
+    {
+      "MonsterId": 0,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 5,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "sprite_mob_single_1",
+      "RewardCurrency": 41,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -1
+    },
+    {
+      "MonsterId": 1,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 10,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "sprite_mob_single_2",
+      "RewardCurrency": 67,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -2
+    },
+    {
+      "MonsterId": 2,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 6,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "sprite_mob_range_2",
+      "RewardCurrency": 48,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -3
+    },
+    {
+      "MonsterId": 3,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 4,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "sprite_mob_flying_single_1",
+      "RewardCurrency": 51,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -4
+    },
+    {
+      "MonsterId": 4,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 3,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "sprite_mob_flying_range_1",
+      "RewardCurrency": 48,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -5
+    },
+    {
+      "MonsterId": 5,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 4,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "sprite_mob_flying_none_1",
+      "RewardCurrency": 16,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": 0
+    },
+    {
+      "MonsterId": 6,
+      "MonsterSpeed": 1,
+      "MonsterHP": 41,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "sprite_mob_boss_1",
+      "RewardCurrency": 155,
+      "HitSound": "MonsterAttack",
+      "AnimatorControllerName": "TestEntityAnimController",
+      "DeadParticleName": "TestDeadParticle",
+      "SkillID": -6
     }
   ]
 }

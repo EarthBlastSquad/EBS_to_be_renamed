@@ -32,6 +32,17 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "RUO"
+    },
+    {
+      "StageIdx": 0,
+      "PrevIdx": 0,
+      "NextIdx": 0,
+      "WaveIdx": 0,
+      "AreaUnlockIdx": 0,
+      "StageName": "Stage 0",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "Tutorial"
     }
   ]
 }

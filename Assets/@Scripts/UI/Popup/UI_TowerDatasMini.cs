@@ -2,6 +2,7 @@ using Manager.Contents;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
+using Utils.Defines;
 
 namespace UI.Popup
 {

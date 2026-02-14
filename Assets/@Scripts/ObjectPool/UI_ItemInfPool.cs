@@ -1,4 +1,6 @@
 using Manager;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UI;
 using UI.Popup;
@@ -6,14 +8,15 @@ using UI.Popup.Cell;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
-using System.Collections.Generic;
+using Utils.Defines;
 
 namespace ObjectPool
 {
     public class UI_ItemInfPool : UIPopup
     {
         private LinkedList<UnityEngine.UI.Button> Items = new LinkedList<UnityEngine.UI.Button>();
-        private int _topIndex=0;
+        private int _topIndex = 0;
+
         enum GameObjects
         {
 
@@ -60,7 +63,14 @@ namespace ObjectPool
 
         private void Itemset()
         {
-            for (int i = 0; i < 20; i++) //3으로 써놨지만 ui의 인피니티 풀 개수로 들어갈 예정
+            int end = 20;
+            int c = Manager.Managers.Instance.GameManager.OwnedTowers.Count();
+            if (c<20)
+            {
+                end = c;
+                transform.parent.GetComponentInChildren<UnityEngine.UI.Slider>().maxValue = end / 9;
+            }
+            for (int i = 0; i < end; i++) //3으로 써놨지만 ui의 인피니티 풀 개수로 들어갈 예정
             {
                 UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Inventory_0_0);
                 b.gameObject.BindUIEvent(SelectItem);
@@ -69,6 +79,10 @@ namespace ObjectPool
                 //GetButton(i + (int)Buttons.Item_0).tag = $"{i}";
                 b.transform.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[i]);
                 Items.AddLast(b);
+            }
+            for(int j=end;j<20;j++)
+            {
+                GetButton(j + (int)Buttons.Inventory_0_0).gameObject.SetActive(false);
             }
         }
         private UI_InventoryPopup _uI_IP;

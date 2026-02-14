@@ -46,17 +46,23 @@ namespace UI.Popup
 
         private void Slotset()
         {
-            for (int i = 0; i < 3; i++)
+            int i = 0;
+            foreach (Contents.Tower.Tower t in Manager.Managers.Instance.GameManager.EquippedTowers)
             {
-                UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Slot_0);
+                UnityEngine.UI.Button b = GetButton(i++ + (int)Buttons.Slot_0);
                 b.gameObject.BindUIEvent(SelectSlot);
                 b.GetComponent<SlotCell>().Init();
-                if (Manager.Managers.Instance.GameManager.EquippedTowers[i] is default(Contents.Tower.Tower))
+
+                string s;
+                if(t.TowerData==null)
                 {
-                    continue;
+                    s = "";
                 }
-                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{Manager.Managers.Instance.GameManager.EquippedTowers[i].TowerData.TowerName}";
-               
+                else
+                {
+                    s = t.TowerData.TowerName;
+                }
+                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{s}";
             }
         }
         #endregion

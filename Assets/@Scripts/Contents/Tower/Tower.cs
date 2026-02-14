@@ -13,9 +13,9 @@ namespace Contents.Tower
         {
 
         }
-        public Tower(int k=0)
+        public Tower(int k=-1)
         {
-            if(k==0)
+            if(k==-1)
             {
 #if UNITY_EDITOR
                 Debug.Log("?");

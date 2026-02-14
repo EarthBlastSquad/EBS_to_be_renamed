@@ -39,6 +39,9 @@ public class GridCalcTest : MonoBehaviour
     {
         if(to == end)
         {
+#if UNITY_EDITOR
+            Debug.Log("GCT");
+#endif
             mgr.Init();
         }
     }

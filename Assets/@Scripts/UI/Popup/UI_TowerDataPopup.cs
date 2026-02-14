@@ -7,6 +7,7 @@ using UI.Popup.Cell;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
+using Utils.Defines;
 
 namespace UI.Popup
 {

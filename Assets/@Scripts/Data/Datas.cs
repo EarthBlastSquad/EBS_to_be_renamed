@@ -106,7 +106,7 @@ namespace Data
         public int WaveIdx;
         public int WaveNumber;
         public int WaveTimeLimit;
-        public int MobSpawnRate;
+        public float MobSpawnRate;
         public int NextWaveIdx;
         public List<int> MobIDs;
 

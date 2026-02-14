@@ -4,13 +4,13 @@
       "EndingIdx": -6667750,
       "BGMName": "TestEndingBGM",
       "TextTypeSFX": "TestTypeBGM",
-      "Contents": ["B","C","K","__play__","TestEndingSFX","__load__","TestEndingIMG"]
+      "Contents": ["B","C","K","__play__","TestSound","__load__","TestEndingIMG","TEST"]
     },
     {
       "EndingIdx": -6667751,
       "BGMName": "TestEndingBGM",
       "TextTypeSFX": "TestTypeBGM",
-      "Contents": ["D","H","W","__play__","TestEndingSFX","__load__","TestEndingIMG"]
+      "Contents": [ "D", "H", "W", "__play__", "TestSound", "__load__", "TestEndingIMG", "TEST" ]
     }
   ]
 }
