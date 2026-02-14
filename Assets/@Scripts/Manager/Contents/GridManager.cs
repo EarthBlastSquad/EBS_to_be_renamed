@@ -229,6 +229,7 @@ namespace Manager.Contents
                 }
             }
 
+            _gridController.DeltaLockedAreaShadowXScale(-widthIncreasementRate);
             _lockedAreaStartIdx += widthIncreasementRate;
             _gridController.SetLockedAreaShadowXPos(_lockedAreaStartIdx);
         }

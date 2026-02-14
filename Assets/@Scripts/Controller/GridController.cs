@@ -64,6 +64,13 @@ namespace Controller
             _lockedAreaShadow.transform.position = _tileMap.CellToWorld(new Vector3Int(xPos,0,0));
         }
 
+        public void DeltaLockedAreaShadowXScale(int xLen)
+        {
+            var scale = _lockedAreaShadow.transform.localScale;
+            scale.x += xLen;
+            _lockedAreaShadow.transform.localScale = scale;
+        }
+
         public void SetHighlightAt(Vector3Int pos)
         {
             if (_clickedCellHighlighter is null)
