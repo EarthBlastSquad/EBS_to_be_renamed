@@ -6,6 +6,7 @@ using Manager;
 using Manager.Contents;
 using ObjectPool;
 using Scenes;
+using TMPro;
 using UI.Popup;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -79,11 +80,7 @@ namespace UI.Scene
             GetObject((int)GameObjects.Shop_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.TowerDatas_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Unlock_0).gameObject.SetActive(true);
-#if UNITY_EDITOR
-            Debug.Log(GetButton((int)Buttons.Pause_0).gameObject.name);
-            Time.timeScale = 10f;
-            Debug.Log("°¡¼Ó");
-#endif
+
             Managers.Instance.CurrencyManager.AddCurrency(0500);
             _gm = FindAnyObjectByType<GridManager>();
             _uis = GetObject((int)GameObjects.Shop_0).GetComponent<UI_Shop>();
@@ -91,16 +88,17 @@ namespace UI.Scene
             _aum = FindAnyObjectByType<AreaUnlockManager>();
             _rp= FindAnyObjectByType<RangePreview>();
             _hpBar = GameObject.Find("HPBar").GetComponentInChildren<Slider>();
-
+            _hpBarText = _hpBar.GetComponentInChildren<TextMeshProUGUI>();
             return true;
         }
 
         #region HPBar
         private Slider _hpBar;
-
+        private TextMeshProUGUI _hpBarText;
         public void SetHP(int c, int m)
         {
             _hpBar.value = Mathf.Clamp01(c / m);
+            _hpBarText.text = c.ToString();
         }
         #endregion
         #region ÆË¾÷
@@ -126,7 +124,7 @@ namespace UI.Scene
 
         protected void WaveUI(WaveData wd)
         {
-            GetText((int)Texts.Waves_0).text = $"{wd.WaveIdx}/9 Waves";
+            GetText((int)Texts.Waves_0).text = $"{wd.WaveNumber}/9 Waves";
         }
 
         protected void CurrencyUI(int c, int cc)
@@ -160,12 +158,7 @@ namespace UI.Scene
                 _uitdm.Set(datas.Item1.TowerName,datas.Item3.Damage,datas.Item3.Cooldown,p);
                 _hpBar.transform.parent.gameObject.SetActive(true);
                 SetHP(datas.Item2,datas.Item1.TowerHP);
-                _hpBar.transform.parent.position=outTower.transform.position;
-            }
-            else if (_uis.ShopOpen == true&&_uis._sv==p)
-            {
-                GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
-                _uis.ChangeFacing();
+                _hpBar.transform.parent.position= ((Vector3Int)(p-new Vector2Int(6,3)));
             }
             else
             {

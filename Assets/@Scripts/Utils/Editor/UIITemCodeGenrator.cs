@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
@@ -459,3 +460,4 @@ using static Define;
 ";
     }
 }
+#endif
