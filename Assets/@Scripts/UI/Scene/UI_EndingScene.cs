@@ -1,12 +1,9 @@
-using Data;
 using DG.Tweening;
 using Manager;
 using Manager.Contents;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
 
@@ -17,6 +14,11 @@ namespace UI.Scene
     {
         private TextMeshProUGUI _textBar;
         private EndingSceneManager _esm;
+
+        private Tween _tween;
+        private int _total;
+        private string _currentText;
+
         #region Enum
         enum GameObjects
         {
@@ -63,7 +65,11 @@ namespace UI.Scene
                     GetContents();
                     break;
                 case EndingContentType.TYPE_TEXT:
-                    _textBar.text=s;
+                    _textBar.text = s;
+                    _textBar.maxVisibleCharacters = 0;
+                    _total = s.Length;
+                    _tween?.Kill();
+                    _tween = DOTween.To(() => _textBar.maxVisibleCharacters,x => _textBar.maxVisibleCharacters = x,_total, _total * 0.05f).SetEase(Ease.Linear); //함수화 해둘 이유가 없는거라 람다씀
                     break;
                 case EndingContentType.TYPE_SOUND:
                     Managers.Instance.SoundManager.Play(0, s, true, Managers.Instance.GameManager.SoundValue);
@@ -80,6 +86,12 @@ namespace UI.Scene
         #region 바인드용
         protected void NextText(PointerEventData _)
         {
+            if (_tween != null && _tween.IsPlaying())
+            {
+                _tween.Kill();
+                _textBar.maxVisibleCharacters = _total;
+                return;
+            }
             GetContents();
         }
         #endregion
