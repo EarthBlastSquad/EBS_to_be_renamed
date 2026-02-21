@@ -15,8 +15,50 @@ MonoBehaviour:
   m_GroupName: Sounds
   m_GUID: 5fc8a7903726d8b44a3eb078c30993a6
   m_SerializeEntries:
+  - m_GUID: 009afab28a613a740879b9c04bfa5acd
+    m_Address: Laser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f235eb990819b34d9ea044e57b5aa4d
     m_Address: Fire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fa78258fa64dba4682b09a830fbc604
+    m_Address: Absorb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28eee349159cba74cb938145d96fb802
+    m_Address: BalloonBurst
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ac0cc3263c6ae54a8ae16b99a6bc89b
+    m_Address: Slash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b271226d138058408a74ee93230bb10
+    m_Address: Arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c2204601935fea42b5703f9f594f3de
+    m_Address: ArmorHit
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
@@ -29,8 +71,71 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fe6a2feac81f9f4183dca18bc0fdff1
+    m_Address: ArrowTwang
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a589cd8282b9a34a92917c4865c222d
+    m_Address: GrapGravel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6de0efd65d8b05344ac45be4b717183e
+    m_Address: BalloonAirOut
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8010662a37c4fd54fa3e7ea8095ab646
+    m_Address: FistPunch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8528f98b77af6964597fe0b558db7c20
+    m_Address: SlapInTheFace
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 936e4f4c87c683d408d9c39fdc54f676
+    m_Address: ObjectFallSoft
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 965fea5441bb42f47b5e97948dbc414a
     m_Address: Pop
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3b78379bee326f439ef7cdcf40c7387
+    m_Address: PoofOfSmoke
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae06ea363c4773148bd3bfc33776ad9e
+    m_Address: Explosion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7af889bd15dde74786fa6870f12e37c
+    m_Address: SmallCrackShatterSound
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
@@ -43,8 +148,29 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dac8d93eeaaa8c64782b5509fcde78cd
+    m_Address: NullSound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dde5fec71c206cb409cde17190d64efb
     m_Address: TestSound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddf89eceeda157843aaa852721ca119f
+    m_Address: StonesFalling
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f32ff04a3e84fb6459e3aaf79def3c4d
+    m_Address: HammerSmash
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
