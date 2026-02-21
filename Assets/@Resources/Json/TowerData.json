@@ -25,9 +25,9 @@
       "TowerHP": 11,
       "DemendedCurrency": 33,
       "TowerDescription": "벽",
-      "HitSound": "Attack2",
+      "HitSound": "SmallCrackShatterSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "StoneDustParticle",
       "SkillId": 0
     },
     {
@@ -40,9 +40,9 @@
       "TowerHP": 4,
       "DemendedCurrency": 42,
       "TowerDescription": "단일 함정",
-      "HitSound": "Attack2",
+      "HitSound": "NullSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "NullParticle",
       "SkillId": 1
     },
     {
@@ -55,9 +55,9 @@
       "TowerHP": 4,
       "DemendedCurrency": 53,
       "TowerDescription": "범위 함정",
-      "HitSound": "Attack2",
+      "HitSound": "NullSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "NullParticle",
       "SkillId": 2
     },
     {
@@ -70,9 +70,9 @@
       "TowerHP": 6,
       "DemendedCurrency": 77,
       "TowerDescription": "단일 타워",
-      "HitSound": "Attack2",
+      "HitSound": "SmallCrackShatterSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "StoneDustParticle",
       "SkillId": 3
     },
     {
@@ -85,9 +85,9 @@
       "TowerHP": 7,
       "DemendedCurrency": 61,
       "TowerDescription": "범위 타워",
-      "HitSound": "Attack2",
+      "HitSound": "SmallCrackShatterSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "StoneDustParticle",
       "SkillId": 4
     },
     {
@@ -100,9 +100,9 @@
       "TowerHP": 4,
       "DemendedCurrency": 54,
       "TowerDescription": "범위 타워",
-      "HitSound": "Attack2",
+      "HitSound": "SmallCrackShatterSound",
       "AnimatorControllerName": "TestEntityAnimController",
-      "DeadParticleName": "TestDeadParticle",
+      "DeadParticleName": "StoneDustParticle",
       "SkillId": 5
     }
   ]

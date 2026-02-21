@@ -36,6 +36,13 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fb92bf9161b2134e90eb8859f1c6534
+    m_Address: EntityAnimControllerBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1185ac07d05e47b498a1a48811b668f2
     m_Address: CrackEffectPrefab
     m_ReadOnly: 0
@@ -80,6 +87,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 744fc4c73d8d4bc47b91d407cc09e3e9
     m_Address: AttackAnimControllerBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dce54751f1983640b44a7695a74c2ab
+    m_Address: StoneDustParticle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect

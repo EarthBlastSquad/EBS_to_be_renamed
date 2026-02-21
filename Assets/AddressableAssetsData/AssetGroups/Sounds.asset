@@ -57,6 +57,13 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c2204601935fea42b5703f9f594f3de
+    m_Address: ArmorHit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4cec7bf1c90e91746ac8618e92d8695f
     m_Address: MonsterAttack
     m_ReadOnly: 0
@@ -136,6 +143,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1c96c4b35d8e544e8e0d0a3e3b701c7
     m_Address: Attack2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dac8d93eeaaa8c64782b5509fcde78cd
+    m_Address: NullSound
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
