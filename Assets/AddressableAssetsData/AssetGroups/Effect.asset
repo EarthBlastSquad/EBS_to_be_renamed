@@ -15,6 +15,27 @@ MonoBehaviour:
   m_GroupName: Effect
   m_GUID: 847e9b2dd2b18464aa6d70f3207e185b
   m_SerializeEntries:
+  - m_GUID: 06bcd71f1e8f4c14b9e11a0d2a9911db
+    m_Address: MagicParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0db097f809721fc4fbadebb24e297e6d
+    m_Address: NullParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fb8d703cf0d8b74488cb48b87bb81a6
+    m_Address: PoisonCloudParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1185ac07d05e47b498a1a48811b668f2
     m_Address: CrackEffectPrefab
     m_ReadOnly: 0
@@ -36,6 +57,20 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41ef4e346e66b2747816f2cbe65ed3dd
+    m_Address: HPDrainParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d202d3299302df4d820338d332c113e
+    m_Address: ExplosionParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
     m_Address: TestAttackAnimController
     m_ReadOnly: 0
@@ -50,6 +85,27 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 818327bbb5c1769428fcc5c97729b908
+    m_Address: YellowSparkParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 867c83a66402f8b4bb81c9a7a9a0771b
+    m_Address: DustParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab7e05622041d2242ab7ffd118426d2d
+    m_Address: BurningParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b5bdb0fce6aa146469503f14f01ac738
     m_Address: TestDeadParticle
     m_ReadOnly: 0
@@ -59,6 +115,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9bbd44ef7099204bac35ac981d6f0de
     m_Address: TestLaunchParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0d1ca534bca74246aa1e8699a543733
+    m_Address: UniversalParticle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
