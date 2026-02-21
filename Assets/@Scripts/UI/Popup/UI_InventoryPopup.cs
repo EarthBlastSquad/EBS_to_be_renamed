@@ -1,10 +1,7 @@
 using Manager;
 using ObjectPool;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using TMPro;
 using UI.Popup.Cell;
-using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
 
@@ -29,7 +26,10 @@ namespace UI.Popup
         {
 
         }
-
+        private void Awake()
+        {
+            Init();
+        }
         public override bool Init()
         {
             if(base.Init()==false)
@@ -38,7 +38,7 @@ namespace UI.Popup
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
             Slotset();
-            GetObject((int)GameObjects.Slider_0).BindUIEvent(SlideInventory, Utils.Defines.UIEventTypes.DRAG);
+            GetObject((int)GameObjects.Slider_0).BindUIEvent((_)=>SlideInventory(GetObject((int)GameObjects.Slider_0).GetComponent<UnityEngine.UI.Slider>(),_), Utils.Defines.UIEventTypes.DRAG);
             _infPool=GetObject((int)GameObjects.Inventorys_0).GetComponent<UI_ItemInfPool>();
             return true;
         }
@@ -49,12 +49,14 @@ namespace UI.Popup
             int i = 0;
             foreach (Contents.Tower.Tower t in Manager.Managers.Instance.GameManager.EquippedTowers)
             {
-                UnityEngine.UI.Button b = GetButton(i++ + (int)Buttons.Slot_0);
-                b.gameObject.BindUIEvent(SelectSlot);
+                int j = i++ + (int)Buttons.Slot_0;
+                UnityEngine.UI.Button b = GetButton(j);
+                TextMeshProUGUI tmpt = b.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                b.gameObject.BindUIEvent((_)=>SelectSlot((sbyte)j,tmpt,_));
                 b.GetComponent<SlotCell>().Init();
 
                 string s;
-                if(t.TowerData==null)
+                if(t.key == -1)
                 {
                     s = "";
                 }
@@ -62,7 +64,7 @@ namespace UI.Popup
                 {
                     s = t.TowerData.TowerName;
                 }
-                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{s}";
+                tmpt.text = $"{s}";
             }
         }
         #endregion
@@ -72,16 +74,15 @@ namespace UI.Popup
 
         
         public sbyte SelectedSlotIndex { get; private set; }
-        protected void SelectSlot(PointerEventData _)
+        protected void SelectSlot(sbyte index, TextMeshProUGUI t, PointerEventData _)
         {
-            SelectedSlot = _.pointerPress.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            SelectedSlotIndex = _.pointerPress.GetComponent<SlotCell>().SlotIndex;
+            SelectedSlot = t;
+            SelectedSlotIndex = index;
             SelectedSlot.text = "";
         }
 
-        protected void SlideInventory(PointerEventData _)
+        protected void SlideInventory(UnityEngine.UI.Slider slider,PointerEventData _)
         {
-            UnityEngine.UI.Slider slider = _.pointerPress.GetComponent<UnityEngine.UI.Slider>();
             _infPool.Slide((int)slider.value);
         }
 

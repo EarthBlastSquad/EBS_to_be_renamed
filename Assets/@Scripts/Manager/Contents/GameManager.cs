@@ -19,29 +19,27 @@ namespace Manager.Contents
         public GameData _gameData = new GameData();
 
         public bool IsLoaded = false;
-        
+
         public List<Tower> OwnedTowers
         {
-            get { return _gameData.OwnedTowers; }
-            set
-            {
-                _gameData.OwnedTowers = value;
-                //갱신이 빈번하게 발생하여 렉 발생, Sorting시 무한루프 발생으로 인하여 주석처리
-                //EquipInfoChanged?.Invoke();
-            }
-        }
+            get;
+            private set;
+            //{
+            //    _gameData.OwnedTowers = value;
+            //    //갱신이 빈번하게 발생하여 렉 발생, Sorting시 무한루프 발생으로 인하여 주석처리
+            //    //EquipInfoChanged?.Invoke();
+            //}
+
+        } = new List<Tower>();
         public Tower[] EquippedTowers
         {
-            get { return _gameData.EquippedTowers; }
-            set
-            {
-                _gameData.EquippedTowers = value;
-            }
-        }
+            get;
+            private set;
+        } = new Tower[3];
         public bool SoundSet
         {
             get { return _gameData.SoundSet; }
-            set 
+            set
             {
                 _gameData.SoundSet = value;
                 SaveGame();
@@ -57,7 +55,7 @@ namespace Manager.Contents
             }
         }
 
-        private ValueTuple<int, bool> _lastGameEndStatus=((int)ControlValue.INVALID,false);
+        private ValueTuple<int, bool> _lastGameEndStatus = ((int)ControlValue.INVALID, false);
 
         public ValueTuple<int, bool> LastGameEndStatus
         {
@@ -65,10 +63,10 @@ namespace Manager.Contents
             set { _lastGameEndStatus = value; }
         }
 
-        
-        public bool TryGetClearData(int stageIdx, out ValueTuple<int,bool>  clearData)
+
+        public bool TryGetClearData(int stageIdx, out ValueTuple<int, bool> clearData)
         {
-            if(_gameData.StageClearData.TryGetValue(stageIdx,out clearData))
+            if (_gameData.StageClearData.TryGetValue(stageIdx, out clearData))
             {
                 return true;
             }
@@ -76,7 +74,7 @@ namespace Manager.Contents
             return false;
         }
 
-        public void SetClearData(int stageIdx, ValueTuple<int,bool> clearData)
+        public void SetClearData(int stageIdx, ValueTuple<int, bool> clearData)
         {
             _gameData.StageClearData[stageIdx] = clearData;
             LastGameEndStatus = clearData;
@@ -87,7 +85,7 @@ namespace Manager.Contents
         private void GetTest()
         {
             OwnedTowers.Clear();
-            for (int i=0;i<70;i++)
+            for (int i = 0; i < 70; i++)
             {
                 GetTower(i);
             }
@@ -100,7 +98,7 @@ namespace Manager.Contents
 #if UNITY_EDITOR
             //GetTest(); //나중에 떼야됨
 #endif
-            if (LoadGame()==false)
+            if (LoadGame() == false)
             {
                 return;
             }
@@ -115,7 +113,7 @@ namespace Manager.Contents
 #if UNITY_EDITOR
                 Debug.Log(t.TowerData.TowerName);
 #endif
-                if (Managers.Instance.DataManager.TowerDic.TryGetValue(t.TowerData.TowerId, out TowerData td)==true)
+                if (Managers.Instance.DataManager.TowerDic.TryGetValue(t.TowerData.TowerId, out TowerData td) == true)
                 {
 #if UNITY_EDITOR
                     Debug.Log("패치");
@@ -133,9 +131,9 @@ namespace Manager.Contents
                             if (tf.Name == df.Name && tf.FieldType == df.FieldType)
                             {
                                 tf.SetValue(t.TowerData, df.GetValue(td));
-                                for(int i=0; i<EquippedTowers.Count();i++)
+                                for (int i = 0; i < EquippedTowers.Count(); i++)
                                 {
-                                    if (EquippedTowers[i].key==t.key)
+                                    if (EquippedTowers[i].key == t.key)
                                     {
                                         EquippedTowers[i] = t;
                                     }
@@ -178,30 +176,35 @@ namespace Manager.Contents
         }
         public bool LoadGame()
         {
-            if (IsLoaded==true)
+            if (IsLoaded == true)
             {
                 return false;
             }
-            if (File.Exists(_path)==false)
+            if (File.Exists(_path) == false)
             {
-#if UNITY_EDITOR
-                GetTest();
-#endif
                 OwnedTowers.Clear();
+                _gameData.OwnedTowers.Clear();
                 for (int i = 1; i < 6; i++)
                 {
                     GetTower(i);
                 }
-                EquippedTowers =new Tower[3]{ new Tower(1), new Tower(2), new Tower(3) };
+                EquippedTowers = new Tower[3] { new Tower(1), new Tower(2), new Tower(3) };
+                EquippedTowers[0].Slot = 0;
+                EquippedTowers[1].Slot = 1;
+                EquippedTowers[2].Slot = 2;
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
             Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
             //TowerFetch();
-            if(OwnedTowers.Count()<Managers.Instance.DataManager.TowerDic.Count())
+            if (OwnedTowers.Count() < Managers.Instance.DataManager.TowerDic.Count())
             {
+#if UNITY_EDITOR
+                Debug.Log("패치");
+#endif
                 OwnedTowers.Clear();
-                for(int i=1; i<6;i++)
+                _gameData.OwnedTowers.Clear();
+                for (int i = 1; i < 6; i++)
                 {
                     GetTower(i);
                 }
@@ -211,7 +214,9 @@ namespace Manager.Contents
                     for (int i = 0; i < 3; i++)
                     {
                         EquippedTowers[i] = new Tower(-1);
+                        EquippedTowers[i].Slot = (sbyte)i;
                     }
+                    _gameData.EquippedTowers = new int[3] { -1, -1, -1 };
                 }
             }
 #if UNITY_EDITOR
@@ -219,11 +224,13 @@ namespace Manager.Contents
             Debug.Log(OwnedTowers[0]);
             Debug.Log(Manager.Managers.Instance.CurrencyManager.GetCurrency);
 #endif
-            for (int i = 0; i < OwnedTowers.Count; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if (OwnedTowers[i].IsEquipped==true)
+                if (_gameData.EquippedTowers[i] != -1)
                 {
-                    EquipTower(OwnedTowers[i].Slot, OwnedTowers[i]);
+
+                    EquipTower((sbyte)i, OwnedTowers[i]);
+
                 }
             } //보유 타워 중 장착되었나? 로 체크하는 구조
 
@@ -233,14 +240,17 @@ namespace Manager.Contents
         }
         #endregion
         #region Inventory
-        public void EquipTower(sbyte index = -1, Tower t=null)
+        public void EquipTower(sbyte index, Tower t)
         {
-            if(index==-1 || t==null)
+            if (index == -1 || t == null)
             {
                 return;
             }
             //슬롯에 저장
             EquippedTowers[index] = t;
+            EquippedTowers[index].Slot = index;
+            _gameData.EquippedTowers[index] = t.TowerData.TowerId;
+            t.IsEquipped = true;
             SaveGame();
         }
         public void UnEquipItem(Tower equipment)
@@ -248,21 +258,27 @@ namespace Manager.Contents
             if (EquippedTowers[equipment.Slot] == equipment)
             {
                 equipment.IsEquipped = false;
-                EquippedTowers[equipment.Slot]=default(Tower);
+                EquippedTowers[equipment.Slot] = default(Tower);
+                _gameData.EquippedTowers[equipment.Slot] = EquippedTowers[equipment.Slot].TowerData.TowerId;
                 equipment.Slot = -1;
-
+                equipment.IsEquipped = false;
             }
             SaveGame();
             //장비 해제 관련 이벤트 추가할거 있으면 말하고
         }
-        public void GetTower(int towerID=-1) //enum을 안 쓰고 하길래 그대로 일단 구조는 따라함, 딱히 갓챠나 그런건 우선순위에 없어서 void로 해둠
+        public void GetTower(int towerID = -1) //enum을 안 쓰고 하길래 그대로 일단 구조는 따라함, 딱히 갓챠나 그런건 우선순위에 없어서 void로 해둠
         {
-            if (towerID==-1)
+            if (towerID == -1)
             {
                 return;
             }
             Tower t = new Tower(towerID);
+            if (t.TowerData is null)
+            {
+                return;
+            }
             OwnedTowers.Add(t);
+            _gameData.OwnedTowers.Add(towerID);
             SaveGame();
         }
         #endregion
@@ -295,10 +311,11 @@ namespace Manager.Contents
         //    IsLoaded = true;
         //    return true;
         //} //얘처럼 json 파싱 만들기 겸+Init 최상단 return용도 flase으로 연계
-#endregion
+        #endregion
 
         #region GameStatus
         public bool IsGamePaused { get; set; } = false;
+        public bool IsDragging { get; set; } = false;
         #endregion
     }
 }

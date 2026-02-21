@@ -1,12 +1,15 @@
 using Controller;
 using Data;
 using DG.Tweening;
+using InputHandler;
 using Manager;
 using Manager.Contents;
 using ObjectPool;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
@@ -19,9 +22,9 @@ namespace UI.Popup
 
         enum Buttons
         {
-            Slot_0, 
-            Slot_1, 
-            Slot_2
+            Slot_0=0, 
+            Slot_1=1, 
+            Slot_2=2
         }
         public override bool Init()
         {
@@ -36,9 +39,12 @@ namespace UI.Popup
                 _images[i]= GetButton((int)Buttons.Slot_0 + i).GetComponent<Image>();
             }
 
-            GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(Slot0);
-            GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent(Slot1);
-            GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(Slot2);
+            GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_0, _),UIEventTypes.POINTER_DOWN);
+            GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_1, _), UIEventTypes.POINTER_DOWN);
+            GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_2, _), UIEventTypes.POINTER_DOWN);
+            GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
+            GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
+            GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
             _tm =FindAnyObjectByType<TowerManager>();
             _selectTower = GameObject.Find("SelectTower").transform.GetComponentInChildren<SpriteRenderer>();
             _uiSelectTower = GameObject.Find("UI_SelectTower").GetComponent<RectTransform>();
@@ -47,8 +53,15 @@ namespace UI.Popup
             _uiSelectTower.gameObject.GetChild<Button>("Rotate_0").gameObject.BindUIEvent(ChangeFacing);
             _uiSelectTower.gameObject.GetChild<Button>("Cancel_0").gameObject.BindUIEvent(Cancel);
 
-            g = FindAnyObjectByType<GridController>();
+            _gc = FindAnyObjectByType<GridController>();
             _rp = FindAnyObjectByType<RangePreview>();
+            _gh = FindAnyObjectByType<GridInputHandler>();
+            _g = _gh.GetComponent<Grid>();
+
+            _sprites[0] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[0].TowerImgName);
+            _sprites[1] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[1].TowerImgName);
+            _sprites[2] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
+
             return true;
         }
         private void Awake()
@@ -62,9 +75,13 @@ namespace UI.Popup
         private Facing _facing;
         private SpriteRenderer _selectTower;
         private RectTransform _uiSelectTower;
-        private GridController g;
+        private GridController _gc;
+        private Grid _g;
         private RangePreview _rp;
-
+        private GridInputHandler _gh;
+        private bool _isPointerDown;
+        private float _pressTime, _dragThresholdTime = 0.3f;
+        private Vector3Int _wp;
         public void CheckButton(Vector3 _)
         {
             bool b = false;
@@ -115,19 +132,29 @@ namespace UI.Popup
         {
 
         }
-        public void Set(Vector2Int p)
+        public void Set(Vector2Int p,Vector3 _)
         {
             _sv = p;
             _selectTower.transform.parent.gameObject.SetActive(true);
-            g.PlacePieceAt(new Vector3Int(p.x, p.y, 0), _selectTower.transform.parent);
+            _gc.PlacePieceAt(new Vector3Int(p.x, p.y, 0), _selectTower.transform.parent);
             _selectTower.transform.parent.position += new Vector3(0.5f, 0.5f, 0);
-            _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f, 0);
+            float posY = 0.8f;
+            if(_.y>Screen.height * 0.5f)
+            {
+                posY = -0.8f;
+            }
+            _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f+posY, 0);
             if (ShopOpen == false)
             {
                 _selectTower.transform.parent.rotation = Quaternion.identity;
                 _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
                 SelectedSlot();
-                _uiSelectTower.gameObject.SetActive(false);
+                _uiSelectTower.gameObject.SetActive(true);
+                if (_s == Slots.None)
+                {
+                    return;
+                }
+                _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId].AttackPos, _sv, _facing);
             }
             else
             {
@@ -153,45 +180,95 @@ namespace UI.Popup
             Slot2=2,
             //그 뭐냐 벽? 그거 추가예정
         }
-        private Slots _s=Slots.None;
-        protected void Slot0(PointerEventData _)
+        private Slots _s=Slots.Slot0;
+        private Sprite[] _sprites = new Sprite[3];
+        protected void SlotDown(int index,PointerEventData _)
         {
-            if (_s==Slots.Slot0)
-            {
-                return;
-            }
+            _isPointerDown = true;
+            Managers.Instance.GameManager.IsDragging = false;
+            _pressTime = Time.unscaledTime;
             _rp.Hide();
-            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[0].TowerImgName);
-            _uiSelectTower.gameObject.SetActive(true);
-            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[0].SkillId].AttackPos, _sv, _facing);
-            _s =Slots.Slot0;
+            _selectTower.sprite = _sprites[index];
+            _uiSelectTower.gameObject.SetActive(false);
+            //_rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[index].SkillId].AttackPos, _sv, _facing);
+            _s =(Slots)index;
             SelectedSlot();
         }
-        protected void Slot1(PointerEventData _)
+
+        protected void SlotDragStart()
         {
-            if (_s==Slots.Slot1)
-            {
-                return;
-            }
-            _rp.Hide();
-            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[1].TowerImgName);
-            _uiSelectTower.gameObject.SetActive(true);
-            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[1].SkillId].AttackPos, _sv, _facing);
-            _s = Slots.Slot1;
-            SelectedSlot();
+            Managers.Instance.GameManager.IsDragging = true;
+
+            //드래그로 이동하는건 아직 미구현
+#if UNITY_EDITOR
+            Debug.Log("드래그 시작임 암튼 그럼");
+#endif
+            _selectTower.transform.parent.gameObject.SetActive(true);
         }
-        protected void Slot2(PointerEventData _)
+
+        private void TowerDrag()
         {
-            if (_s==Slots.Slot2)
+            Vector3Int cellPos = _g.WorldToCell(Camera.main.ScreenToWorldPoint(_gh.GetCurrentVector3()));
+            Vector3 worldPos = _g.GetCellCenterWorld(cellPos);
+            Vector3Int wp = Vector3Int.CeilToInt(worldPos);
+            if (wp == _wp)
             {
                 return;
             }
-            _rp.Hide();
-            _selectTower.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
+            _wp = wp;
+            _sv = (Vector2Int)cellPos;
+#if UNITY_EDITOR
+            Debug.Log("드래그중임 암튼 그럼");
+#endif
+            _selectTower.transform.parent.position= wp-new Vector3(0.5f, 0.5f, 0);
+            _gc.SetHighlightAt(cellPos);
+            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId].AttackPos, _sv, _facing);
+        }
+
+        private void HandleClick()
+        {
             _uiSelectTower.gameObject.SetActive(true);
-            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[2].SkillId].AttackPos, _sv, _facing);
-            _s = Slots.Slot2;
-            SelectedSlot();
+            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId].AttackPos, _sv, _facing);
+        }
+        private void SlotUp(PointerEventData _)
+        {
+            if (Managers.Instance.GameManager.IsDragging == false)
+            {
+                HandleClick();
+            }
+            else
+            {
+                Managers.Instance.GameManager.IsDragging = false;
+#if UNITY_EDITOR
+                Debug.Log("드래그 끝임 암튼 그럼");
+#endif
+                float posY = 0.8f;
+                if (_wp.y > Screen.height * 0.5f)
+                {
+                    posY = -0.8f;
+                }
+                _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f + posY, 0);
+                Buy(default(PointerEventData));
+            }
+            _isPointerDown = false;
+        }
+        private void FixedUpdate()
+        {
+
+            if(Managers.Instance.GameManager.IsDragging==true)
+            {
+                TowerDrag();
+            }
+        }
+        private void Update()
+        {
+            if (_isPointerDown==true && Managers.Instance.GameManager.IsDragging ==false)
+            {
+                if (Time.unscaledTime - _pressTime >= _dragThresholdTime)
+                {
+                    SlotDragStart();
+                }
+            }
         }
         private Image[] _images=new Image[3];
         private void SelectedSlot()

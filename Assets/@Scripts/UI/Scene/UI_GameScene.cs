@@ -163,7 +163,7 @@ namespace UI.Scene
             else
             {
                 GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
-                _uis.Set(p);
+                _uis.Set(p,_);
                 GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
                 _uis.ShopOpen = true;
             }

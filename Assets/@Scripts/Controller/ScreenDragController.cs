@@ -27,7 +27,7 @@ namespace Controller
 
         private void Update()
         {
-            if (Manager.Managers.Instance.GameManager.IsGamePaused)
+            if (Manager.Managers.Instance.GameManager.IsGamePaused|| Manager.Managers.Instance.GameManager.IsDragging)
             {
                 return;
             }
