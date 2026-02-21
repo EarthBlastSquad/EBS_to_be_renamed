@@ -55,9 +55,11 @@ namespace ObjectPool
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
-            Itemset();
+
             _rectTransform= GetComponent<RectTransform>();
             _uI_IP = transform.parent.GetComponent<UI_InventoryPopup>();
+
+            Itemset();
             return true;
         }
 
@@ -70,14 +72,17 @@ namespace ObjectPool
                 end = c;
                 transform.parent.GetComponentInChildren<UnityEngine.UI.Slider>().maxValue = end / 9;
             }
+
             for (int i = 0; i < end; i++) //3으로 써놨지만 ui의 인피니티 풀 개수로 들어갈 예정
             {
-                UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Inventory_0_0);
-                b.gameObject.BindUIEvent(SelectItem);
                 //getbutton(i).image=; 샘플이 없네... 몰라 일단 텍스트
-                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{Manager.Managers.Instance.GameManager.OwnedTowers[i].TowerData.TowerName}";
+                var td = Managers.Instance.GameManager.OwnedTowers[i];
+                UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Inventory_0_0);
+                b.transform.GetComponent<ItemCell>().TowerSet(td);
+                b.gameObject.BindUIEvent(SelectItem);
+                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = td.TowerData.TowerName;
                 //GetButton(i + (int)Buttons.Item_0).tag = $"{i}";
-                b.transform.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[i]);
+
                 Items.AddLast(b);
             }
             for(int j=end;j<20;j++)
@@ -109,14 +114,18 @@ namespace ObjectPool
             }
             _topIndex = newIndex;
             _rectTransform.anchoredPosition += new Vector2(0, 150 * delta);
+
             if (delta > 0)
             {
                 int moveCount = 5 * delta;
+
                 for (int n = 0; n < moveCount; n++)
                 {
                     UnityEngine.UI.Button btn = Items.First.Value;
-                    btn.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n]);
-                    btn.GetComponentInChildren<TextMeshProUGUI>().text = Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n].TowerData.TowerName;
+                    var td = Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n];
+
+                    btn.GetComponent<ItemCell>().TowerSet(td);
+                    btn.GetComponentInChildren<TextMeshProUGUI>().text = td.TowerData.TowerName;
                     RectTransform rt = btn.GetComponent<RectTransform>();
                     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -450 - _rectTransform.anchoredPosition.y);
                     Items.RemoveFirst();
@@ -126,11 +135,13 @@ namespace ObjectPool
             else
             {
                 int moveCount = 5 * (-delta);
-                for (int n = moveCount - 1; n >= 0; n--)
+                int c = 0;
+                for (int n = moveCount - 1; n >= c; n--)
                 {
                     UnityEngine.UI.Button btn = Items.Last.Value;
-                    btn.GetComponent<ItemCell>().TowerSet(Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + n]);
-                    btn.GetComponentInChildren<TextMeshProUGUI>().text = Manager.Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + n].TowerData.TowerName;
+                    var td = Managers.Instance.GameManager.OwnedTowers[(_topIndex * 5) + 15 + n];
+                    btn.GetComponent<ItemCell>().TowerSet(td);
+                    btn.GetComponentInChildren<TextMeshProUGUI>().text = td.TowerData.TowerName;
                     RectTransform rt = btn.GetComponent<RectTransform>();
                     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -_rectTransform.anchoredPosition.y);
                     Items.RemoveLast();
