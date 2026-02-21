@@ -38,7 +38,8 @@ namespace UI.Popup
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
             Slotset();
-            GetObject((int)GameObjects.Slider_0).BindUIEvent((_)=>SlideInventory(GetObject((int)GameObjects.Slider_0).GetComponent<UnityEngine.UI.Slider>(),_), Utils.Defines.UIEventTypes.DRAG);
+            UnityEngine.UI.Slider s = GetObject((int)GameObjects.Slider_0).GetComponent<UnityEngine.UI.Slider>();
+            GetObject((int)GameObjects.Slider_0).BindUIEvent((_)=>SlideInventory(s,_), Utils.Defines.UIEventTypes.DRAG);
             _infPool=GetObject((int)GameObjects.Inventorys_0).GetComponent<UI_ItemInfPool>();
             return true;
         }

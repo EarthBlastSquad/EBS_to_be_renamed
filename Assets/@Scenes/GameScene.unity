@@ -3340,7 +3340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0c3b8b0504204fa66347aaa50fcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickAction: {fileID: -1136686076490373881, guid: 3c455e12df1008645a7423b5dcb6094b, type: 3}
+  _clickAction: {fileID: -1136686076490373881, guid: 3c455e12df1008645a7423b5dcb6094b, type: 3}
 --- !u!114 &1695616074
 MonoBehaviour:
   m_ObjectHideFlags: 0

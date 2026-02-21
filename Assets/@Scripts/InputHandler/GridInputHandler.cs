@@ -12,21 +12,21 @@ namespace InputHandler
         public event Action<Vector3> mouseUpGridEvent;
         public event Action<Vector3> mouseDownSubscriberEvent;
         public event Action<Vector3> mouseUpSubscriberEvent;
-        [SerializeField] private InputActionReference clickAction;
+        [SerializeField] private InputActionReference _clickAction;
         private bool _clickDownRequested, _clickUpRequested, _blockedByUI;
         private Vector3 _cachedPos;
         private void OnEnable()
         {
-            clickAction.action.started += OnClickStarted;
-            clickAction.action.canceled += OnClickCanceled;
-            clickAction.action.Enable();
+            _clickAction.action.started += OnClickStarted;
+            _clickAction.action.canceled += OnClickCanceled;
+            _clickAction.action.Enable();
         }
 
         private void OnDisable()
         {
-            clickAction.action.started -= OnClickStarted;
-            clickAction.action.canceled -= OnClickCanceled;
-            clickAction.action.Disable();
+            _clickAction.action.started -= OnClickStarted;
+            _clickAction.action.canceled -= OnClickCanceled;
+            _clickAction.action.Disable();
         }
 
         private void OnClickStarted(InputAction.CallbackContext context)
