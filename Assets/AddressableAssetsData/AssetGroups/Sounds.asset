@@ -161,6 +161,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ddf89eceeda157843aaa852721ca119f
     m_Address: StonesFalling

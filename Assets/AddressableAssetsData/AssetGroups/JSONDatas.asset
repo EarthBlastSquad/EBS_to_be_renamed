@@ -21,6 +21,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5638a16d8d4f727479d36d03cc98dcb7
     m_Address: TowerData
@@ -28,6 +29,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 66cb29dbb77d21f439423bcccc44a3be
     m_Address: EndingData
@@ -35,6 +37,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 72ae0c7ab7954e14bab94da14511326e
     m_Address: SkillData
@@ -42,6 +45,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80a84b3d9d4a124439e8a6bbf4d350fd
     m_Address: WaveData
@@ -49,6 +53,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a7397e181b0c684f973789eafde8e8c
     m_Address: AreaUnlockData
@@ -56,6 +61,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: debfd7f090d37b641b905901339638a9
     m_Address: StageData
@@ -63,6 +69,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - JSONDatas
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
