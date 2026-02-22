@@ -20,6 +20,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AttackObject
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c45398ceb2cf0524d9da3e27c165a1e9
@@ -27,6 +28,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AttackObject
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0

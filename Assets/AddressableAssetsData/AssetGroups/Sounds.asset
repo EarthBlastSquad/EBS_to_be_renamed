@@ -19,6 +19,7 @@ MonoBehaviour:
     m_Address: Laser
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,6 +27,7 @@ MonoBehaviour:
     m_Address: Fire
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -33,6 +35,7 @@ MonoBehaviour:
     m_Address: Absorb
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -40,6 +43,7 @@ MonoBehaviour:
     m_Address: BalloonBurst
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -47,6 +51,7 @@ MonoBehaviour:
     m_Address: Slash
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -54,6 +59,7 @@ MonoBehaviour:
     m_Address: Arrow
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -61,6 +67,7 @@ MonoBehaviour:
     m_Address: ArmorHit
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -68,6 +75,7 @@ MonoBehaviour:
     m_Address: MonsterAttack
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,6 +83,7 @@ MonoBehaviour:
     m_Address: ArrowTwang
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -82,6 +91,7 @@ MonoBehaviour:
     m_Address: GrapGravel
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -89,6 +99,7 @@ MonoBehaviour:
     m_Address: BalloonAirOut
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -96,6 +107,7 @@ MonoBehaviour:
     m_Address: FistPunch
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -103,6 +115,7 @@ MonoBehaviour:
     m_Address: SlapInTheFace
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -110,6 +123,7 @@ MonoBehaviour:
     m_Address: ObjectFallSoft
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -117,6 +131,7 @@ MonoBehaviour:
     m_Address: Pop
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -124,6 +139,7 @@ MonoBehaviour:
     m_Address: PoofOfSmoke
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -131,6 +147,7 @@ MonoBehaviour:
     m_Address: Explosion
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -138,6 +155,7 @@ MonoBehaviour:
     m_Address: SmallCrackShatterSound
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -145,6 +163,7 @@ MonoBehaviour:
     m_Address: Attack2
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -152,6 +171,7 @@ MonoBehaviour:
     m_Address: NullSound
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -167,6 +187,7 @@ MonoBehaviour:
     m_Address: StonesFalling
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -174,6 +195,7 @@ MonoBehaviour:
     m_Address: HammerSmash
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0

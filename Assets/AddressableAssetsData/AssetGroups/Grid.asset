@@ -19,6 +19,7 @@ MonoBehaviour:
     m_Address: CellHighlighter
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,6 +27,7 @@ MonoBehaviour:
     m_Address: LockedAreaShadowSprite
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
@@ -33,6 +35,7 @@ MonoBehaviour:
     m_Address: LockedAreaShadow
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Grid
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -40,6 +43,7 @@ MonoBehaviour:
     m_Address: ClickedCellHighlighter
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Grid
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
