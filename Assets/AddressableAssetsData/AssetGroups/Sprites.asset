@@ -84,6 +84,15 @@ MonoBehaviour:
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50af8f3ae56edff4d83b79bbfab05c76
+    m_Address: spritesbase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Mobs
+    - TestPreLoad
+    - Tower
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51dcdf234ec7d8842bed0222ef61429c
     m_Address: sprite_tower_range_1
     m_ReadOnly: 0
