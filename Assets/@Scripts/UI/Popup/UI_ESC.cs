@@ -37,8 +37,15 @@ namespace UI.Popup
 
         protected void Exit(PointerEventData _)
         {
-            _ugs.ESCClose();
-            Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("LobbySceneLoaded", (key, count, totalCount) =>
+            {
+                if(count == totalCount)
+                {
+                    _ugs.ESCClose();
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                }
+            });
         }
     }
 }

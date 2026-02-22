@@ -21,6 +21,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Diagnostics
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}

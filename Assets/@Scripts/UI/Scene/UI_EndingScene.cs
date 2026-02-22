@@ -76,7 +76,11 @@ namespace UI.Scene
                     GetContents();
                     break;
                 case EndingContentType.TYPE_INVALID:
-                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+                    Managers.Instance.ResourceManager.LoadAsyncAllIn("LobbySceneLoaded", (key, count, totalCount) =>
+                    {
+                        Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+                        Managers.Instance.ResourceManager.ReleaseIn("EndingSceneLoaded");
+                    });
                     return;
             }
         }

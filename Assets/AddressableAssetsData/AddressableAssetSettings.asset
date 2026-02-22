@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: f5245ba4c5aa3284eb8ade3acd99829b
   m_currentHash:
     serializedVersion: 2
-    Hash: 9a4035fca9623a32db3043676654cc1a
+    Hash: be78ae75540b51e04ed8fc8d41a8c388
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -121,6 +121,10 @@ MonoBehaviour:
     - AttackObject
     - Sound
     - UI
+    - TitleSceneLoaded
+    - LobbySceneLoaded
+    - GameSceneLoaded
+    - EndingSceneLoaded
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 859bcf21ff482464289d0088c3fc035d, type: 2}

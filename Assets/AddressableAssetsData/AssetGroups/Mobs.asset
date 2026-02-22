@@ -19,6 +19,7 @@ MonoBehaviour:
     m_Address: AirMobPrefab
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,6 +27,7 @@ MonoBehaviour:
     m_Address: GroundMobPrefab
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
