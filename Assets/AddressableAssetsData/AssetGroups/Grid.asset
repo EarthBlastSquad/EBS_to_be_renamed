@@ -51,6 +51,7 @@ MonoBehaviour:
     m_Address: grid_cell_tile_0
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
@@ -58,6 +59,7 @@ MonoBehaviour:
     m_Address: grid_cell_tile_1
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - TestPreLoad
     - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0

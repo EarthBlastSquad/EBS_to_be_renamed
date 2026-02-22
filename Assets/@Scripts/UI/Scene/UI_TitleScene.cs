@@ -122,27 +122,27 @@ namespace UI.Scene
         }
         private void Start()
         {
-            Managers.Instance.ResourceManager.LoadAsyncAllIn("TestPreLoad", (key, count, totalCount) => //PreLoad를 "지우고" TestPreLoad를 만듬? 야!!!!!!!!!
-            {
-                GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = (float)count / totalCount;
-                if (count == totalCount)
-                {
-                    isPreload = true;
-                    GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
-                    GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
-                    Managers.Instance.DataManager.Init();
-                    Managers.Instance.GameManager.Init();
-                    Managers.Instance.SoundManager.Init();
+            //Managers.Instance.ResourceManager.LoadAsyncAllIn("TestPreLoad", (key, count, totalCount) => //PreLoad를 "지우고" TestPreLoad를 만듬? 야!!!!!!!!!
+            //{
+            //    GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = (float)count / totalCount;
+            //    if (count == totalCount)
+            //    {
+            //        isPreload = true;
+            //        GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
+            //        GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+            //        Managers.Instance.DataManager.Init();
+            //        Managers.Instance.GameManager.Init();
+            //        Managers.Instance.SoundManager.Init();
 
-                    StartButtonAnimation();
-                    GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
-                    if (Managers.Instance.GameManager.SoundSet == true)
-                    {
-                        Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
-                    }
-                }
-            });
-            return;
+            //        StartButtonAnimation();
+            //        GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
+            //        if (Managers.Instance.GameManager.SoundSet == true)
+            //        {
+            //            Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+            //        }
+            //    }
+            //});
+            //return;
             Managers.Instance.ResourceManager.LoadAsyncAllIn("TitleSceneLoaded", (key, count, totalCount) =>
             {
                 GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = (float)count / totalCount;
