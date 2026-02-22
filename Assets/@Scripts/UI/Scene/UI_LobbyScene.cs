@@ -103,8 +103,15 @@ namespace UI.Scene
         #endregion
         protected void GameStart(PointerEventData _)
         {
-            Managers.Instance.StageManager.Init(_stageIdx);
-            Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("GameSceneLoaded", (key, count, totalCount) =>
+            {
+                if(count == totalCount)
+                {
+                    Managers.Instance.StageManager.Init(_stageIdx);
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
+                }
+            });
         }
 
         protected void StageRight(PointerEventData _)

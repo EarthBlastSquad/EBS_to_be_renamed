@@ -44,9 +44,13 @@ namespace Scenes
         {
             if(_waveMgr.DoesReachedEnd() && _unitMgr.GetNowUnitCnt() <= 0)
             {
-                OnGameEnd?.Invoke(GameEndType.WIN);
-                SaveClearData(true);
-                Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
+                {
+                    OnGameEnd?.Invoke(GameEndType.WIN);
+                    SaveClearData(true);
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                });
             }
         }
 
@@ -56,10 +60,14 @@ namespace Scenes
             {
                 if(_gridMgr.TryGetReadonlyVictimList(new Vector2Int(0,i), out var victimList) && victimList.Count > 1)
                 {
-                    OnGameEnd?.Invoke(GameEndType.LOSE);
-                    SaveClearData(false);
-                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
-                    return;
+                    Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
+                    {
+                        OnGameEnd?.Invoke(GameEndType.LOSE);
+                        SaveClearData(false);
+                        Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                        Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                        return;
+                    });
                 }
             }
         }
