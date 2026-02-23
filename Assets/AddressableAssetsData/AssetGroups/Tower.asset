@@ -19,6 +19,7 @@ MonoBehaviour:
     m_Address: TowerPrefab
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
