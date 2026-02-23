@@ -9,16 +9,16 @@ namespace Manager.Core
     //string -> enum으로 방식 바꾸기
     public class ResourceManager
     {
-        private Dictionary<string, ValueTuple<int, UnityEngine.Object>> _resources
-            = new Dictionary<string, ValueTuple<int, UnityEngine.Object>>();
-        private Dictionary<string, bool> _loadStatus = new Dictionary<string, bool>();
-        private List<string> _keysToRemove = new List<string>(64);
+        private Dictionary<int, ValueTuple<int,UnityEngine.Object>> _resources
+            = new Dictionary<int, ValueTuple<int, UnityEngine.Object>>();//리소스 키의 해싱값 / <참조카운트,리소스>
+        private Dictionary<string, List<int>> _lableStatus
+            = new Dictionary<string, List<int>>();//라벨 / 리스트(리소스 키의 해싱값 <= 자기가 로드한 리소스 키들)
 
         public T Load<T>(string key) where T : UnityEngine.Object
         {
 
 
-            if (_resources.TryGetValue(key, out var value))
+            if (_resources.TryGetValue(key.GetHashCode(), out var value))
             {
                 return value.Item2 as T;
             }
@@ -68,48 +68,43 @@ namespace Manager.Core
 
         public void ReleaseIn(string lable)
         {
-            if (_loadStatus[lable] == false)
+            List<int> keys;
+            if(_lableStatus.TryGetValue(lable,out keys) == false)
             {
                 return;
             }
 
-            int hash = lable.GetHashCode();
-
-            foreach (var target in _resources)
+            for(int i = 0;  i < keys.Count; i++)
             {
-                if (target.Value.Item1 == hash)
+                var resource = _resources[keys[i]];
+                Addressables.Release(resource.Item2);
+                resource.Item1--;
+
+                if(resource.Item1<=0)
                 {
-                    _keysToRemove.Add(target.Key);
-                    Addressables.Release(target.Value.Item2);
+                    _resources.Remove(keys[i]);
+                }
+                else
+                {
+                    _resources[keys[i]] = resource;
                 }
             }
 
-            _loadStatus[lable] = false;
-
-            foreach (string key in _keysToRemove)
-            {
-                _resources[key] = default;
-                _resources.Remove(key);
-            }
-
-            _keysToRemove.Clear();
-
+            _lableStatus.Remove(lable);
         }
 
         public void ReleaseAll()
         {
-            foreach (var target in _resources)
+            foreach(var keys in _lableStatus.Values)
             {
-                Addressables.Release(target.Value.Item2);//객체로 넣어도, 내부에서 핸들로 변환해줌
-                //나중에 assets로 바꾸면, 그때는 핸들도 따로 저장해야지
-            }
-
-            foreach(var key in _loadStatus.Keys)
-            {
-                _loadStatus[key] = false;
+                for(int i = 0; i < keys.Count; i++)
+                {
+                    Addressables.Release(_resources[keys[i]].Item2);
+                }
             }
 
             _resources.Clear();
+            _lableStatus.Clear();
         }
 
         private void LoadAsync<T>(string lable, string key, Action<T> callback = null) where T : UnityEngine.Object
@@ -119,31 +114,32 @@ namespace Manager.Core
             asyncOperation.Completed += (op) =>
             {
                 Debug.Log($"resource : {op.Result.name}");
-                _resources.TryAdd(key, new ValueTuple<int, UnityEngine.Object>(lable.GetHashCode(), op.Result));
+
+                int hashCode = key.GetHashCode();
+                if(_resources.ContainsKey(hashCode) == false)
+                {
+                    _resources[hashCode] = (0,op.Result);
+                }
+
+                var resource = _resources[hashCode];
+                resource.Item1++;
+                _resources[hashCode] = resource;
+
                 callback?.Invoke(op.Result);
             };
         }
 
         public void LoadAsyncAllIn(string lable, Action<string, int, int> callback)
         {
-            if (_loadStatus.ContainsKey(lable))
+            if(_lableStatus.ContainsKey(lable))
             {
-                if (_loadStatus[lable])
-                {
-                    callback?.Invoke(lable, 1, 1);
-                    return;
-                }
-            }
-            else
-            {
-                _loadStatus.Add(lable, false);
+                callback?.Invoke(lable,1,1);
+                return;
             }
 
             var asyncHandle = Addressables.LoadResourceLocationsAsync(lable, typeof(UnityEngine.Object));
+            _lableStatus.Add(lable, new List<int>(16));
 
-            _loadStatus[lable] = true;
-
-            //이름만 먼저 dict에 등록하고, 한번에 리소스 로드 후, 그걸 이름에 등록하는 형태로 가면 좋을거같은데 
             asyncHandle.Completed += (handle) =>
             {
                 int loadedCnt = 0;
@@ -171,11 +167,12 @@ namespace Manager.Core
     }
 }
 
-    /*
-    리소스 매니저에서 라벨단위로 내리면, 다른곳에서도 적용시켜야 하는데, 그거 어떻게 하지
-    근데, 씬 전환시에만 로드/언로드 할거같은데, 그러면 런타임에 되는게 아니니까 상관 없거든?
-    근데, 나중에 한번 손보긴 해야될듯
-    */
+//이름만 먼저 dict에 등록하고, 한번에 리소스 로드 후, 그걸 이름에 등록하는 형태로 가면 좋을거같은데 
+/*
+리소스 매니저에서 라벨단위로 내리면, 다른곳에서도 적용시켜야 하는데, 그거 어떻게 하지
+근데, 씬 전환시에만 로드/언로드 할거같은데, 그러면 런타임에 되는게 아니니까 상관 없거든?
+근데, 나중에 한번 손보긴 해야될듯
+*/
 /*
         타입단위로 로드 가능하니까, 그거에 맞춰서 로드 얼마나 됐는지 처리하기
         경로 로드해오고, 라벨단위로 로드해온 다음, 두개 매핑시키기
@@ -188,17 +185,17 @@ namespace Manager.Core
 */
 
 // if (_resources.TryGetValue(key, out UnityEngine.Object resource))
-            // {
-            //     return resource as T;
-            // }
+// {
+//     return resource as T;
+// }
 
-            // //스프라이트 로드할때 항상 .sprite가 붙어 있어야하는데 데이터시트에 .sprite가 붙어있지 않은 데이터가 많음
-            // //임시로 붙임 -드래곤
-            // if (typeof(T) == typeof(Sprite))
-            // {
-            //     key = key + ".sprite";
-            //     if (_resources.TryGetValue(key, out Object temp))
-            //     {
-            //         return temp as T;
-            //     }
-            // }
+// //스프라이트 로드할때 항상 .sprite가 붙어 있어야하는데 데이터시트에 .sprite가 붙어있지 않은 데이터가 많음
+// //임시로 붙임 -드래곤
+// if (typeof(T) == typeof(Sprite))
+// {
+//     key = key + ".sprite";
+//     if (_resources.TryGetValue(key, out Object temp))
+//     {
+//         return temp as T;
+//     }
+// }
