@@ -116,21 +116,17 @@ namespace UI.Scene
 
         protected void StageRight(PointerEventData _)
         {
-            if(++_stageIdx> Managers.Instance.DataManager.StageDic.Count)
-            {
-                _stageIdx = 0;
-            }
-            GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
-            GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
+            StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            GetText((int)Texts.StageName_0).text = data.StageName;
+            GetText((int)Texts.StageDescription_0).text = data.StageDescription;
+            _stageIdx = data.NextIdx;
         }
         protected void StageLeft(PointerEventData _)
         {
-            if(--_stageIdx<0)
-            {
-                _stageIdx = Managers.Instance.DataManager.StageDic.Count;
-            }
-            GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
-            GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
+            StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            GetText((int)Texts.StageName_0).text = data.StageName;
+            GetText((int)Texts.StageDescription_0).text = data.StageDescription;
+            _stageIdx = data.PrevIdx;
         }
         private void Start()
         {
