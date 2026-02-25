@@ -9,7 +9,8 @@
       "StageName": "BCK",
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
-      "StageDescription": "OUR"
+      "StageDescription": "OUR",
+      "GridImgName": "grid_cell_tile_grass"
     },
     {
       "StageIdx": -6667751,
