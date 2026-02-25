@@ -96,7 +96,7 @@ namespace Manager.Contents
 #if UNITY_EDITOR
             Debug.Log(_gridController.name);
 #endif
-            _gridController.SetupGridTiles(_datas);
+            _gridController.SetupGridTiles(_datas, Managers.Instance.StageManager.GetNowStageData().GridImgName);
             _isInit = true;
             CellUpdateEvent?.Invoke(new CellUpdateEventArgs(new Vector3Int((int)ControlValue.INVALID, (int)ControlValue.INVALID, (int)ControlValue.INVALID),false,false));
             return true;
@@ -247,17 +247,6 @@ namespace Manager.Contents
         public int GetLockedAreaWidth()
         {
             return (int)MapMaxCellCnt.MAX_WIDTH - _lockedAreaStartIdx;
-        }
-
-        public int GetCellImgNumAt(Vector2Int pos)
-        {
-            if (IsItValidCellPos(pos) == false)
-            {
-                Debug.LogError("Wrong cell pos");
-                return -1;
-            }
-
-            return _datas[pos.x, pos.y].cellImgNumber;
         }
 
         public bool IsItLocked(Vector2Int pos)

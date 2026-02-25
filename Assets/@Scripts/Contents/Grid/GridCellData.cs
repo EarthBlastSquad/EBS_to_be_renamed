@@ -8,7 +8,6 @@ namespace Contents.Grid
     {
         public GameObject nowHoldingPiece;
         public List<VictimCoordinator> victimList;
-        public int cellImgNumber;
         public bool isLocked;
     }
 }

@@ -43,7 +43,8 @@
       "StageName": "Stage 0",
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
-      "StageDescription": "Tutorial"
+      "StageDescription": "Tutorial",
+      "GridImgName": "grid_cell_tile_grass"
     }
   ]
 }
