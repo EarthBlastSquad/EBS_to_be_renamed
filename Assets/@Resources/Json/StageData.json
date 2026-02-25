@@ -44,7 +44,7 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "Tutorial",
-      "GridImgName": "grid_cell_tile_grass"
+      "GridImgName": "grass_grid_cell_tile"
     }
   ]
 }
