@@ -59,7 +59,6 @@ namespace UI.Scene
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
-            //BindImage(typeof(Images));
 
             _gs = GameObject.Find("GameScene").GetComponent<GameScene>();
             _gs.OnWaveChanged -= WaveUI;
@@ -129,7 +128,7 @@ namespace UI.Scene
 
         protected void CurrencyUI(int c, int cc)
         {
-            GetText((int)Texts.BCK_0).text = $"{cc} BCK";
+            GetText((int)Texts.BCK_0).text = $"{cc}";
         }
 
         protected void ShopUI(Vector3 _)
