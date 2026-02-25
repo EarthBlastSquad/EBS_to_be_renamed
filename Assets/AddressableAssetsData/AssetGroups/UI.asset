@@ -14,7 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: UI
   m_GUID: 77309f8f87c7aa149a9c49cd997f17a1
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 15c5593e891bcf74fa3b94498cf92da0
+    m_Address: volume_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57953f64cfba67b4992f388bd2f4a2fa
+    m_Address: stone_button_short_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60614b7d751695843a5dd5b9d4059a03
+    m_Address: stone_button_short_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2ebf53653b262a47aff6f4279dcfab2
+    m_Address: volume_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
