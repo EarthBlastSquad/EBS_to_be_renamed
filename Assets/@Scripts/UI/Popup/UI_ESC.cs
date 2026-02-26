@@ -16,11 +16,17 @@ namespace UI.Popup
             Back_0,
             Exit_0
         }
+        enum Texts
+        {
+            PauseText_0
+        }
+
         public override bool Init()
         {
             if (base.Init() == false)
                 return false;
             BindButton(typeof(Buttons));
+            BindText(typeof(Texts));
             _ugs=transform.parent.GetComponent<UI_GameScene>();
             GetButton((int)Buttons.Back_0).gameObject.BindUIEvent(Back);
             GetButton((int)Buttons.Exit_0).gameObject.BindUIEvent(Exit);

@@ -14,7 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: UI
   m_GUID: 77309f8f87c7aa149a9c49cd997f17a1
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 04dffb6b4ef556f48aca6be2dcd30c73
+    m_Address: volume_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2115b39c110d1c43a6a8847a70f7523
+    m_Address: volume_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea09977b053a10342a9e9023f9a7de4c
+    m_Address: stone_button_short_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f61008dc8eef5794686e49ff79e8c047
+    m_Address: stone_button_short_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:

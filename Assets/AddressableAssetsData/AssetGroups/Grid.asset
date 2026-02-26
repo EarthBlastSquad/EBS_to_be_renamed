@@ -47,21 +47,12 @@ MonoBehaviour:
     - Grid
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9dd19248eb8315a4c8919ce59b66ffb4
-    m_Address: grid_cell_tile_0
+  - m_GUID: e501b7c5c1e9dc34ca5c6061713a4aad
+    m_Address: grass_grid_cell_tile
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
     - TestPreLoad
-    - Uncategorized
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a13d97144cdaca041b0c5b3ce2477530
-    m_Address: grid_cell_tile_1
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - GameSceneLoaded
-    - TestPreLoad
-    - Uncategorized
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
