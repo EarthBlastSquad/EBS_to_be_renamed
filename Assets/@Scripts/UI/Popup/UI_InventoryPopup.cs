@@ -18,9 +18,9 @@ namespace UI.Popup
         }
         enum Buttons
         {
-            Slot_0,
-            Slot_1, 
-            Slot_2,
+            Slot_0=0,
+            Slot_1=1, 
+            Slot_2=2,
         }
         enum Texts
         {
@@ -73,7 +73,10 @@ namespace UI.Popup
         private UI_ItemInfPool _infPool;
         public TextMeshProUGUI SelectedSlot { get; private set; } //string으로는 옅은 복사가 안되는 것 같음
 
-        
+        public void SlotChange(sbyte index,string s)
+        {
+            GetButton(index).GetComponentInChildren<TextMeshProUGUI>().text = s;
+        }
         public sbyte SelectedSlotIndex { get; private set; }
         protected void SelectSlot(sbyte index, TextMeshProUGUI t, PointerEventData _)
         {

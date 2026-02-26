@@ -1,3 +1,4 @@
+using Contents.Tower;
 using Manager;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,8 +6,11 @@ using TMPro;
 using UI;
 using UI.Popup;
 using UI.Popup.Cell;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
 
@@ -58,7 +62,10 @@ namespace ObjectPool
 
             _rectTransform= GetComponent<RectTransform>();
             _uI_IP = transform.parent.GetComponent<UI_InventoryPopup>();
-
+            _selectedItemSprite = transform.parent.gameObject.GetChild<Image>("SelectedItem_0");
+            _slots[0] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_0").GetComponent<RectTransform>();
+            _slots[1] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_1").GetComponent<RectTransform>();
+            _slots[2] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_2").GetComponent<RectTransform>();
             Itemset();
             return true;
         }
@@ -78,8 +85,10 @@ namespace ObjectPool
                 //getbutton(i).image=; 샘플이 없네... 몰라 일단 텍스트
                 var td = Managers.Instance.GameManager.OwnedTowers[i];
                 UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Inventory_0_0);
-                b.transform.GetComponent<ItemCell>().TowerSet(td);
-                b.gameObject.BindUIEvent(SelectItem);
+                ItemCell ic = b.transform.GetComponent<ItemCell>();
+                ic.TowerSet(td);
+                b.gameObject.BindUIEvent((_) => SelectItemDown(ic.ICTower, _), UIEventTypes.POINTER_DOWN);
+                b.gameObject.BindUIEvent(SelectItemUp,UIEventTypes.POINTER_UP);
                 b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = td.TowerData.TowerName;
                 //GetButton(i + (int)Buttons.Item_0).tag = $"{i}";
 
@@ -91,18 +100,77 @@ namespace ObjectPool
             }
         }
         private UI_InventoryPopup _uI_IP;
-        protected void SelectItem(PointerEventData _)
+        private bool _isPointerDown=false,_isDragging = false;
+        private float _pressTime, _dragThresholdTime = 0.3f;
+        private UnityEngine.UI.Image _selectedItemSprite;
+        private Contents.Tower.Tower _selectedTower;
+        private RectTransform[] _slots=new RectTransform[3];
+        protected void SelectItemDown(Contents.Tower.Tower t,PointerEventData _)
         {
-            Contents.Tower.Tower t = _.pointerPress.GetComponent<ItemCell>().ICTower;
-            if (t is null)
+            _isPointerDown = true;
+            _isDragging = false;
+            _selectedTower = t;
+            _pressTime = Time.unscaledTime;
+        }
+        protected void SelectItemUp(PointerEventData _)
+        {
+            _isPointerDown = false;
+            if (_isDragging==false)
             {
-                return;
+                _uI_IP.OpenTDP(_selectedTower);
             }
-            _uI_IP.OpenTDP(t);
+            else
+            {
+                _isDragging = false;
+                _selectedItemSprite.enabled = false;
+                Vector2 v=Pointer.current.position.ReadValue();
+                sbyte sb=-1;
+                if (RectTransformUtility.RectangleContainsScreenPoint(_slots[0], v))
+                {
+                    sb = 0;
+                }
+                else if(RectTransformUtility.RectangleContainsScreenPoint(_slots[1], v))
+                {
+                    sb = 1;
+                }
+                else if(RectTransformUtility.RectangleContainsScreenPoint(_slots[2], v))
+                {
+                    sb = 2;
+                }
+                if(sb==-1)
+                {
+                    return;
+                }
+                Managers.Instance.GameManager.EquipTower(sb, _selectedTower);
+                _uI_IP.SlotChange(sb, _selectedTower.TowerData.TowerName);
+            }
             //Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, t);
             //_uI_IP.SelectedSlot.text = t.TowerData.TowerName;
         }
+        private void ItemDragging()
+        {
+            _selectedItemSprite.transform.position= Pointer.current.position.ReadValue();
+        }
+        private void FixedUpdate()
+        {
 
+            if (_isDragging==true)
+            {
+                ItemDragging();
+            }
+        }
+        private void Update()
+        {
+            if (_isPointerDown==true&_isDragging == false)
+            {
+                if (Time.unscaledTime - _pressTime >= _dragThresholdTime)
+                {
+                    _isDragging = true;
+                    _selectedItemSprite.enabled = true;
+                    _selectedItemSprite.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_selectedTower.TowerData.TowerImgName);
+                }
+            }
+        }
         private RectTransform _rectTransform;
         public void Slide(int sliderValue)
         {

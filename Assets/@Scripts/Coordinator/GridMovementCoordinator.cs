@@ -1,5 +1,6 @@
 using Actor;
 using ComponentModule;
+using Manager;
 using Manager.Contents;
 using UnityEngine;
 using Utils;
@@ -10,18 +11,19 @@ namespace Coordinator
     public class GridMovementCoordinator : MonoBehaviour
     {
         private GridPosComponentModule _posMoudle;
+        private MovementPathManager _pathMgr;
         private MovementActor _actor;
         private float _movementSpeed = 5;
         private float _lastCalledTime = 0;
         private GridManager _gridMgr;
         private VictimCoordinator _victim;
-
+        public int _remainingStep { get; private set; } = int.MaxValue;
         private void Awake()
         {
             _gridMgr = FindAnyObjectByType<GridManager>();
-            var pathMgr = FindAnyObjectByType<MovementPathManager>();
+            _pathMgr = FindAnyObjectByType<MovementPathManager>();
 
-            if(_gridMgr is null || pathMgr is null )
+            if(_gridMgr is null || _pathMgr is null )
             {
 #if UNITY_EDITOR
                 Debug.LogError("GridManager 또는 MovementPathManager가 존제하지 않습니다.");
@@ -30,16 +32,18 @@ namespace Coordinator
 
             if(LayerMask.NameToLayer("AirMovementMob") == gameObject.layer)
             {
-                _posMoudle = new AirPosComponentModule(pathMgr);
+                _posMoudle = new AirPosComponentModule(_pathMgr);
             }
             else
             {
-                _posMoudle = new GroundPosComponentModule(pathMgr);
+                _posMoudle = new GroundPosComponentModule(_pathMgr);
             }
 
             _actor = new MovementActor(_gridMgr, gameObject.transform);
             _victim = gameObject.GetOrAddComponent<VictimCoordinator>();
             gameObject.GetOrAddComponent<HPCoordinator>().OnDead += OnDead;
+            _pathMgr.OnPathRecalculated -= UpdateRemainingStep;
+            _pathMgr.OnPathRecalculated += UpdateRemainingStep;
         }
 
         public Vector2Int GetNextPos()
@@ -56,6 +60,7 @@ namespace Coordinator
         {
             _movementSpeed = speed;
             _lastCalledTime = Time.time;
+            _remainingStep = int.MaxValue;
             _posMoudle.Init(initialPos);
             _actor.Move(initialPos);
         }
@@ -82,11 +87,16 @@ namespace Coordinator
             }
 
             _actor.Move(pos);
-
+            _remainingStep--;
             _gridMgr.UnplaceMobAt(oldPos,_victim);//방어로직의 필요성이 아직 없다
             _gridMgr.PlaceMobAt(pos,_victim);
 
             return retType;
         }
+        private void UpdateRemainingStep()
+        {
+            _remainingStep = _pathMgr.GetRemainingStep(GetNowPos());
+        }
+
     }
 }

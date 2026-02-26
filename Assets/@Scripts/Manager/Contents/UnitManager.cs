@@ -17,7 +17,21 @@ namespace Manager.Contents
         {
             return _unitCoordinators.Count + _unitBuffer.Count; 
         }
-
+        public Vector2Int GetNowShortestTarget()
+        {
+            int max = int.MaxValue;
+            Vector2Int pos=default(Vector2Int);
+            foreach(UnitCoordinator unit in _unitCoordinators)
+            {
+                int steps = unit.GetGridMovementCoordinator()._remainingStep;
+                if (steps < max)
+                {
+                    max = steps;
+                    pos=unit.GetGridMovementCoordinator().GetNowPos();
+                }
+            }
+            return pos;
+        }
         private void OnUnitDead()
         {
             _deadFlag = true;
