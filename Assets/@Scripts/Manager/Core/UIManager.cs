@@ -75,7 +75,7 @@ namespace Manager.Core
 
             GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}");
             if (parent is not null)
-                go.transform.SetParent(parent);
+                go.transform.SetParent(parent,false);
 
             Canvas canvas = go.GetOrAddComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
@@ -92,7 +92,7 @@ namespace Manager.Core
             }
 
             GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", parent, pooling);
-            go.transform.SetParent(parent);
+            go.transform.SetParent(parent,false);
             return go.GetOrAddComponent<T>();
         }
 
@@ -107,7 +107,7 @@ namespace Manager.Core
             T sceneUI = go.GetOrAddComponent<T>();
             _uiScene = sceneUI;
 
-            go.transform.SetParent(_uiRoot.transform);
+            go.transform.SetParent(_uiRoot.transform,false);
 
             return sceneUI;
         }
@@ -123,7 +123,7 @@ namespace Manager.Core
             T popup = go.GetOrAddComponent<T>();
             _uiPopupStack.Push(popup);
 
-            go.transform.SetParent(_uiRoot.transform);
+            go.transform.SetParent(_uiRoot.transform,false);
 
             //RefreshTimeScale();
             IsPopupUIOn = true;
