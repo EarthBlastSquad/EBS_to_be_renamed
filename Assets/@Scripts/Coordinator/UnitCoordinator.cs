@@ -78,7 +78,10 @@ namespace Coordinator
         {
             return _victim.IsDead();
         }
-
+        public GridMovementCoordinator GetGridMovementCoordinator()
+        {
+            return _gridMovementCoordinator;
+        }
         public void Act()
         {
             if(_module is null)

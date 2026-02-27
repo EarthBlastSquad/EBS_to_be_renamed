@@ -18,6 +18,7 @@ namespace Manager.Contents
         private PriorityQueue _queue = new PriorityQueue();
         private int _steppableLayer = 0;
         private Vector2Int _invalidVector = new Vector2Int((int)ControlValue.INVALID, (int)ControlValue.INVALID);
+        public event Action OnPathRecalculated;
 
         private void Awake()
         {
@@ -109,6 +110,7 @@ namespace Manager.Contents
                 EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y - 1);
                 EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y + 1);
             }
+            OnPathRecalculated?.Invoke();
         }
         /*
          큐에서 뽑아온다
@@ -147,6 +149,25 @@ namespace Manager.Contents
         {
             return _gridManager.IsItValidCellPos(pos) && _calculatedPath[pos.x, pos.y].x != (int)ControlValue.START && _calculatedPath[pos.x, pos.y].x != (int)ControlValue.INVALID;
         }
+        public int GetRemainingStep(Vector2Int pos)
+        {
+            int count;
+            for (count = 0; count < (int)MapMaxCellCnt.MAX_HEIGHT * (int)MapMaxCellCnt.MAX_WIDTH; count++)
+            {
+                Vector2Int next = GetNextPos(pos);
 
+                if (next.x == (int)ControlValue.START)
+                {
+                    break;
+                }
+                if (next.x == (int)ControlValue.INVALID)
+                {
+                    return int.MaxValue;
+                }
+                pos = next;
+            }
+
+            return count;
+        }
     }
 }
