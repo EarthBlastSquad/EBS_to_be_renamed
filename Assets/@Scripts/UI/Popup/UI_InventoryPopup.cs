@@ -4,6 +4,7 @@ using TMPro;
 using UI.Popup.Cell;
 using UnityEngine.EventSystems;
 using Utils;
+using Utils.Defines;
 
 namespace UI.Popup
 {
@@ -80,6 +81,7 @@ namespace UI.Popup
         public sbyte SelectedSlotIndex { get; private set; }
         protected void SelectSlot(sbyte index, TextMeshProUGUI t, PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             SelectedSlot = t;
             SelectedSlotIndex = index;
             SelectedSlot.text = "";
@@ -93,12 +95,14 @@ namespace UI.Popup
         #endregion
         public void OpenTDP(Contents.Tower.Tower t)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(true);
             GetObject((int)GameObjects.Background_0).SetActive(true);
             GetObject((int)GameObjects.TowerDataPopUp_0).GetComponent<UI_TowerDataPopup>().OpenTowerData(t);
         }
         public void CloseTDP()
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(false);
             GetObject((int)GameObjects.Background_0).SetActive(false);
         }

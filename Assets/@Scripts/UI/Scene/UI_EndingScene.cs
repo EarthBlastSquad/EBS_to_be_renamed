@@ -90,6 +90,7 @@ namespace UI.Scene
         #region 바인드용
         protected void NextText(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             if (_tween != null && _tween.IsPlaying())
             {
                 _tween.Kill();

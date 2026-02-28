@@ -38,11 +38,13 @@ namespace UI.Popup
         }
         protected void Back(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _ugs.ESCClose();
         }
 
         protected void Exit(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             Managers.Instance.ResourceManager.LoadAsyncAllIn("LobbySceneLoaded", (key, count, totalCount) =>
             {
                 if(count == totalCount)

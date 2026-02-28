@@ -92,6 +92,7 @@ namespace UI.Scene
         #region 화면 전환
         protected void MainLobby(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetButton((int)Buttons.InventoryOpen_0).gameObject.SetActive(true);
             GetButton((int)Buttons.InventoryClose_0).gameObject.SetActive(false);
             GetButton((int)Buttons.GameStart_0).gameObject.SetActive(true);
@@ -106,6 +107,7 @@ namespace UI.Scene
         {
             //기존거 끄고 키기?
             //팝업으로 할 수 있다지만, 일단 이렇게
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetButton((int)Buttons.InventoryOpen_0).gameObject.SetActive(false);
             GetButton((int)Buttons.InventoryClose_0).gameObject.SetActive(true);
             GetButton((int)Buttons.GameStart_0).gameObject.SetActive(false);
@@ -119,12 +121,14 @@ namespace UI.Scene
 
         private void OpenTutorial(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             var popup = Managers.Instance.UIManager.ShowPopupUI<UI_Tutorial>(GameObjects.Tutorial_0.ToString());
         }
 
         #endregion
         protected void GameStart(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             Managers.Instance.ResourceManager.LoadAsyncAllIn("GameSceneLoaded", (key, count, totalCount) =>
             {
                 if(count == totalCount)
@@ -138,6 +142,7 @@ namespace UI.Scene
 
         protected void StageRight(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
             _stageIdx = data.NextIdx;
             data = Managers.Instance.DataManager.StageDic[_stageIdx];
@@ -148,6 +153,7 @@ namespace UI.Scene
         }
         protected void StageLeft(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
             _stageIdx = data.PrevIdx;
             data = Managers.Instance.DataManager.StageDic[_stageIdx];
