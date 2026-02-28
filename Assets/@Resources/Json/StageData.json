@@ -37,14 +37,28 @@
     {
       "StageIdx": 0,
       "PrevIdx": 0,
-      "NextIdx": 0,
+      "NextIdx": 1,
       "WaveIdx": 0,
       "AreaUnlockIdx": 0,
       "StageName": "Stage 0",
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "Tutorial",
-      "GridImgName": "grass_grid_cell_tile"
+      "GridImgName": "grass_grid_cell_tile",
+      "BackgroundImgName": "sprite_god_2"
+    },
+    {
+      "StageIdx": 1,
+      "PrevIdx": 0,
+      "NextIdx": 1,
+      "WaveIdx": 0,
+      "AreaUnlockIdx": 0,
+      "StageName": "Stage 1",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "TestDummy",
+      "GridImgName": "grass_grid_cell_tile",
+      "BackgroundImgName": "sprite_god_1"
     }
   ]
 }

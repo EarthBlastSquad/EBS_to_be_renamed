@@ -94,6 +94,7 @@ MonoBehaviour:
     m_Address: sprite_god_1
     m_ReadOnly: 0
     m_SerializedLabels:
+    - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 47d4fb9d947632f419db5f6e8fcd43c4
@@ -136,6 +137,7 @@ MonoBehaviour:
     m_Address: test_god_2
     m_ReadOnly: 0
     m_SerializedLabels:
+    - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6991e8845d0d62c46a5f25e190dcb353
@@ -246,6 +248,7 @@ MonoBehaviour:
     m_Address: sprite_god_2
     m_ReadOnly: 0
     m_SerializedLabels:
+    - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec3900868441c604b88d9e31fbfe8772
