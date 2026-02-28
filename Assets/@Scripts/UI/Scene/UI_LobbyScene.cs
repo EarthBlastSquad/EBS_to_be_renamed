@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
+using UI.Popup;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -24,6 +25,7 @@ namespace UI.Scene
         enum GameObjects
         {
             Inventory_0,
+            Tutorial_0
         }
 
         enum Buttons
@@ -32,7 +34,8 @@ namespace UI.Scene
             InventoryClose_0,
             GameStart_0,
             StageChange_0,
-            StageChange_1
+            StageChange_1,
+            TutorialOpen_0
             //임시 방식, 풀링 추가시 교체
             //Item_0,
             //Item_1,
@@ -60,6 +63,7 @@ namespace UI.Scene
             GetButton((int)Buttons.InventoryOpen_0).gameObject.BindUIEvent(InventoryOpen);
             GetButton((int)Buttons.InventoryClose_0).gameObject.BindUIEvent(MainLobby);
             GetButton((int)Buttons.GameStart_0).gameObject.BindUIEvent(GameStart);
+            GetButton((int)Buttons.TutorialOpen_0).gameObject.BindUIEvent(OpenTutorial);
             //SlotSet();
             //ItemSet();
             //GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(TestGetRandomJsons);
@@ -73,6 +77,7 @@ namespace UI.Scene
             MainLobby(default(PointerEventData));
             GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
+            
             return true;
         }
         #region 화면 전환
@@ -84,6 +89,7 @@ namespace UI.Scene
             GetObject((int)GameObjects.Inventory_0).gameObject.SetActive(false);
             GetButton((int)Buttons.StageChange_0).gameObject.SetActive(true);
             GetButton((int)Buttons.StageChange_1).gameObject.SetActive(true);
+            GetButton((int)Buttons.TutorialOpen_0).gameObject.SetActive(true);
             GetText((int)Texts.StageName_0).gameObject.SetActive(true);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(true);
         }
@@ -97,9 +103,16 @@ namespace UI.Scene
             GetObject((int)GameObjects.Inventory_0).gameObject.SetActive(true);
             GetButton((int)Buttons.StageChange_0).gameObject.SetActive(false);
             GetButton((int)Buttons.StageChange_1).gameObject.SetActive(false);
+            GetButton((int)Buttons.TutorialOpen_0).gameObject.SetActive(false);
             GetText((int)Texts.StageName_0).gameObject.SetActive(false);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(false);
         }
+
+        private void OpenTutorial(PointerEventData _)
+        {
+            var popup = Managers.Instance.UIManager.ShowPopupUI<UI_Tutorial>(GameObjects.Tutorial_0.ToString());
+        }
+
         #endregion
         protected void GameStart(PointerEventData _)
         {

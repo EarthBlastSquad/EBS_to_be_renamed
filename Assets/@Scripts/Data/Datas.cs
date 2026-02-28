@@ -234,4 +234,20 @@ namespace Data
 
         public SkillData() { }
     }
+
+    [Serializable]
+    public class TutorialData
+    {
+        public int DataIdx;
+        public List<string> Content;
+
+
+        public TutorialData(TutorialData original)
+        {
+            DataIdx = original.DataIdx;
+            Content = original.Content;
+        }
+
+        public TutorialData() { }
+    }
 }

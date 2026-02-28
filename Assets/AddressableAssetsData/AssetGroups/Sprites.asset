@@ -59,6 +59,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16e9778e97e3b9f4191bfbf2cfee4ec0
+    m_Address: t3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27a6c86e9a838b94d94c1fc38372c2eb
     m_Address: sprite_mob_flying_none_1
     m_ReadOnly: 0
@@ -149,6 +156,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73f33c1837bc46f46bd939ac6793cfe6
+    m_Address: t5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f7d3c45c85f8d34c853be640d140531
     m_Address: TestEndingIMG
     m_ReadOnly: 0
@@ -156,6 +170,20 @@ MonoBehaviour:
     - EndingSceneLoaded
     - TestPreLoad
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 879c6a78309a73345872bcf7c7a23dc6
+    m_Address: t6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aa12003557ce044295266b16c2ab578
+    m_Address: t7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95782622c4b8dba458163ccff551ba94
     m_Address: sprite_attack
@@ -166,6 +194,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0ac9b78f537e24488d8827134ad9b72
+    m_Address: t1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b80f2d91c4c13314388456324edb1844
     m_Address: sprite_wall_1
     m_ReadOnly: 0
@@ -174,6 +209,20 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bcb8a2a7fbb980d44b96fdc5cabed8b2
+    m_Address: t4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c74289225e4ffb04887b17e202cdb576
+    m_Address: t2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2999f2669bc3cc49909c7921ed6ab50
     m_Address: sprite_mob_flying_range_1

@@ -23,6 +23,14 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54f9a2d3c75f46242baedc68459671e5
+    m_Address: TutorialData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - JSONDatas
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5638a16d8d4f727479d36d03cc98dcb7
     m_Address: TowerData
     m_ReadOnly: 0
