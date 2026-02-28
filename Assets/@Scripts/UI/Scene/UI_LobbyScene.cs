@@ -48,6 +48,12 @@ namespace UI.Scene
             StageDescription_0,
 
         }
+
+        enum Images
+        {
+            Background_0
+        }
+
         #endregion
 
 
@@ -59,6 +65,7 @@ namespace UI.Scene
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
+            BindImage(typeof(Images));
 
             GetButton((int)Buttons.InventoryOpen_0).gameObject.BindUIEvent(InventoryOpen);
             GetButton((int)Buttons.InventoryClose_0).gameObject.BindUIEvent(MainLobby);
@@ -77,6 +84,8 @@ namespace UI.Scene
             MainLobby(default(PointerEventData));
             GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
+
+            GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
             
             return true;
         }
@@ -130,16 +139,22 @@ namespace UI.Scene
         protected void StageRight(PointerEventData _)
         {
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            _stageIdx = data.NextIdx;
+            data = Managers.Instance.DataManager.StageDic[_stageIdx];
             GetText((int)Texts.StageName_0).text = data.StageName;
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
-            _stageIdx = data.NextIdx;
+            
+            GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
         }
         protected void StageLeft(PointerEventData _)
         {
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            _stageIdx = data.PrevIdx;
+            data = Managers.Instance.DataManager.StageDic[_stageIdx];
             GetText((int)Texts.StageName_0).text = data.StageName;
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
-            _stageIdx = data.PrevIdx;
+            
+            GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
         }
         private void Start()
         {

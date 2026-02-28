@@ -156,6 +156,7 @@ namespace Data
         public int BadEndingDataIdx;
         public string StageDescription;
         public string GridImgName;
+        public string BackgroundImgName;
 
         public StageData(StageData original)
         {
@@ -170,6 +171,7 @@ namespace Data
             BadEndingDataIdx = original.BadEndingDataIdx;
             StageDescription = original.StageDescription;
             GridImgName = original.GridImgName;
+            BackgroundImgName = original.BackgroundImgName;
         }
 
         public StageData() { }
