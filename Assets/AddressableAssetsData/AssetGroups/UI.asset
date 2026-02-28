@@ -22,6 +22,14 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 838fccb3c442e0648bf04ffe6946233d
+    m_Address: Tutorial_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2115b39c110d1c43a6a8847a70f7523
     m_Address: volume_on
     m_ReadOnly: 0
