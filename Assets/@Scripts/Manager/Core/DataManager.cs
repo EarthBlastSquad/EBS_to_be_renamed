@@ -7,6 +7,8 @@ namespace Manager.Core
 {
     public class DataManager
     {
+       public Dictionary<int, TutorialData> TutorialDic { get; private set; } = new Dictionary<int, TutorialData>();
+
        public Dictionary<int, EndingData> EndingDic { get; private set; } = new Dictionary<int, EndingData>();
 
        public Dictionary<int, StageData> StageDic { get; private set; } = new Dictionary<int, StageData>();
@@ -30,6 +32,8 @@ namespace Manager.Core
         //이제 데이터 클래스 만들고, 그거 dict들 저장해야지
         public void Init()
         {
+            TutorialDic = LoadJson<TutorialDataLoader, int, TutorialData>("TutorialData").MakeDict();
+
             EndingDic = LoadJson<EndingDataLoader, int, EndingData>("EndingData").MakeDict();
 
             StageDic = LoadJson<StageDataLoader, int, StageData>("StageData").MakeDict();

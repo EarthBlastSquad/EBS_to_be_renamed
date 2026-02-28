@@ -121,3 +121,20 @@ public class SkillDataLoader : ILoader<int, SkillData>
 }
 
 
+[Serializable]
+public class TutorialDataLoader : ILoader<int, TutorialData>
+{
+    public List<TutorialData> tutorials = new List<TutorialData>();
+
+    public Dictionary<int, TutorialData> MakeDict()
+    {
+        Dictionary<int, TutorialData> dict = new Dictionary<int, TutorialData>();
+        foreach (TutorialData data in tutorials)
+        {
+            dict.Add(data.DataIdx, data);
+        }
+        return dict;
+    }
+}
+
+
