@@ -3,6 +3,7 @@ using Manager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
+using Utils.Defines;
 
 namespace UI.Popup
 {
@@ -61,12 +62,14 @@ namespace UI.Popup
 
         private void ClickExit(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             Managers.Instance.UIManager.ClosePopupUI();
         }
 
         private void ClickNext(PointerEventData _)
         {
-            if(_readIdx+2 >= _data.Content.Count)
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            if (_readIdx+2 >= _data.Content.Count)
             {
                 return;
             }
@@ -79,6 +82,7 @@ namespace UI.Popup
 
         private void ClickPrev(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             if (_readIdx - 2 < 0)
             {
                 return;

@@ -52,6 +52,7 @@ namespace UI.Scene
 
             GetButton((int)Buttons.StartButton_0).gameObject.BindUIEvent((_) =>
             {
+                Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
                 if (isPreload)
                     Managers.Instance.ResourceManager.LoadAsyncAllIn("LobbySceneLoaded", (key, count, totalCount) =>
                     {
@@ -76,6 +77,7 @@ namespace UI.Scene
         #region ÆË¾÷
         protected void SettingMenu(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
             GetText((int)Texts.Title_0).gameObject.SetActive(false);
@@ -85,6 +87,7 @@ namespace UI.Scene
         }
         protected void TitleMenu(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
             GetText((int)Texts.Title_0).gameObject.SetActive(true);
@@ -106,6 +109,7 @@ namespace UI.Scene
         protected void OnOffVolume(PointerEventData _)
         {
             Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             if (Managers.Instance.GameManager.SoundSet == false)
             {
                 GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");

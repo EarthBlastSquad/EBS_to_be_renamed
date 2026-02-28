@@ -102,6 +102,7 @@ namespace UI.Popup
         }    
         protected void ChangeFacing(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _facing = (Facing)(((int)_facing + 90) % 360);
             _selectTower.transform.parent.DOKill();
             _selectTower.transform.parent.DORotate(Vector3.forward * 90f, 0.1f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
@@ -113,6 +114,7 @@ namespace UI.Popup
 
         protected void Buy(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _tm.PlaceTower(_towerData[(int)_s], _sv, _facing);
             ShopOpen = false;
             CloseSR();
@@ -121,6 +123,7 @@ namespace UI.Popup
 
         protected void Cancel(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             ShopOpen = false;
             _s = Slots.None;
             CloseSR();
@@ -184,6 +187,7 @@ namespace UI.Popup
         private Sprite[] _sprites = new Sprite[3];
         protected void SlotDown(int index,PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _isPointerDown = true;
             Managers.Instance.GameManager.IsDragging = false;
             _pressTime = Time.unscaledTime;

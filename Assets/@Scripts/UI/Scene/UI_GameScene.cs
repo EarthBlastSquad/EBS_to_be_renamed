@@ -106,6 +106,7 @@ namespace UI.Scene
         #region 바인드용
         protected void PauseButton(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             Manager.Managers.Instance.GameManager.IsGamePaused = true;
             GetObject((int)GameObjects.Panel_0).gameObject.SetActive(true);
             GetObject((int)GameObjects.ESC_0).gameObject.SetActive(true);
@@ -115,7 +116,8 @@ namespace UI.Scene
 
         protected void UnlickButton(PointerEventData _)
         {
-            if(_aum.TryUnlock())
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            if (_aum.TryUnlock())
             {
                 GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
             }
@@ -188,6 +190,7 @@ namespace UI.Scene
 
         public void ESCClose()
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.Panel_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.ESC_0).gameObject.SetActive(false);
             Time.timeScale = 1;

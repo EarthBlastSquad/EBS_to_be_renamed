@@ -1,3 +1,4 @@
+using Manager;
 using Manager.Contents;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -42,6 +43,7 @@ namespace UI.Popup
 
         protected void Sell(PointerEventData _)
         {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _tm.RetrieveTower(_v);
             gameObject.SetActive(false);
         }
