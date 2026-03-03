@@ -1,5 +1,6 @@
 using Manager;
 using ObjectPool;
+using System;
 using TMPro;
 using UI.Popup.Cell;
 using UnityEngine;
@@ -83,9 +84,16 @@ namespace UI.Popup
         protected void SelectSlot(sbyte index, Image t, PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+
+            if (SelectedSlot != null)
+            {
+                SelectedSlot.transform.parent.GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_backplate_short");
+            }
+
             SelectedSlot = t;
             SelectedSlotIndex = index;
             SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
+            SelectedSlot.transform.parent.GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
         }
 
         protected void SlideInventory(UnityEngine.UI.Slider slider,PointerEventData _)
