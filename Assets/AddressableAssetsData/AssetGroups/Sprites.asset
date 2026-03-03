@@ -257,6 +257,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec85814c842cc694d9f59a99375bb04d
+    m_Address: Stage0Theme
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f36a876e99b7c9e4f9d3e06a075ce9ff
     m_Address: crack_3
     m_ReadOnly: 0

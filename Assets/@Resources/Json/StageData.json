@@ -45,7 +45,7 @@
       "BadEndingDataIdx": -6667751,
       "StageDescription": "Tutorial",
       "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "sprite_god_2"
+      "BackgroundImgName": "Stage0Theme"
     },
     {
       "StageIdx": 1,
