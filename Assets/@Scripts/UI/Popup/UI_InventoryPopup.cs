@@ -2,7 +2,9 @@ using Manager;
 using ObjectPool;
 using TMPro;
 using UI.Popup.Cell;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
 
@@ -53,38 +55,37 @@ namespace UI.Popup
             {
                 int j = i++ + (int)Buttons.Slot_0;
                 UnityEngine.UI.Button b = GetButton(j);
-                TextMeshProUGUI tmpt = b.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                b.gameObject.BindUIEvent((_)=>SelectSlot((sbyte)j,tmpt,_));
+                Image img = b.transform.GetChild(0).GetComponent<Image>();
+                b.gameObject.BindUIEvent((_)=>SelectSlot((sbyte)j, img, _));
                 b.GetComponent<SlotCell>().Init();
 
-                string s;
                 if(t.key == -1)
                 {
-                    s = "";
+                    img.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
                 }
                 else
                 {
-                    s = t.TowerData.TowerName;
+                    img.sprite = Managers.Instance.ResourceManager.Load<Sprite>(t.TowerData.TowerImgName);
                 }
-                tmpt.text = $"{s}";
+                
             }
         }
         #endregion
         #region UI전용 함수들
         private UI_ItemInfPool _infPool;
-        public TextMeshProUGUI SelectedSlot { get; private set; } //string으로는 옅은 복사가 안되는 것 같음
+        public Image SelectedSlot { get; private set; } //string으로는 옅은 복사가 안되는 것 같음
 
         public void SlotChange(sbyte index,string s)
         {
-            GetButton(index).GetComponentInChildren<TextMeshProUGUI>().text = s;
+            GetButton(index).transform.GetChild(0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(s);
         }
         public sbyte SelectedSlotIndex { get; private set; }
-        protected void SelectSlot(sbyte index, TextMeshProUGUI t, PointerEventData _)
+        protected void SelectSlot(sbyte index, Image t, PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             SelectedSlot = t;
             SelectedSlotIndex = index;
-            SelectedSlot.text = "";
+            SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
         }
 
         protected void SlideInventory(UnityEngine.UI.Slider slider,PointerEventData _)

@@ -74,7 +74,7 @@ namespace UI.Popup
         protected void Change(PointerEventData _)
         {
             Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, _tower);
-            _uI_IP.SelectedSlot.text = _tower.TowerData.TowerName;
+            _uI_IP.SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_tower.TowerData.TowerImgName);
             _uI_IP.CloseTDP();
         }
         #endregion

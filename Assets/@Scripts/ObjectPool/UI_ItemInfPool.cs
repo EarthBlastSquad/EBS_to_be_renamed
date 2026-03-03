@@ -7,6 +7,7 @@ using UI;
 using UI.Popup;
 using UI.Popup.Cell;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -89,7 +90,7 @@ namespace ObjectPool
                 ic.TowerSet(td);
                 b.gameObject.BindUIEvent((_) => SelectItemDown(ic.ICTower, _), UIEventTypes.POINTER_DOWN);
                 b.gameObject.BindUIEvent(SelectItemUp,UIEventTypes.POINTER_UP);
-                b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = td.TowerData.TowerName;
+                b.transform.GetChild(0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(td.TowerData.TowerImgName);
                 //GetButton(i + (int)Buttons.Item_0).tag = $"{i}";
 
                 Items.AddLast(b);
@@ -142,7 +143,7 @@ namespace ObjectPool
                     return;
                 }
                 Managers.Instance.GameManager.EquipTower(sb, _selectedTower);
-                _uI_IP.SlotChange(sb, _selectedTower.TowerData.TowerName);
+                _uI_IP.SlotChange(sb, _selectedTower.TowerData.TowerImgName);
             }
             //Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, t);
             //_uI_IP.SelectedSlot.text = t.TowerData.TowerName;
