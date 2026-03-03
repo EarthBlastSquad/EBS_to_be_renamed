@@ -29,6 +29,7 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6249f612ea3bf4748815f3a71a5cca6f
     m_Address: null_sprite
@@ -37,6 +38,7 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - TestPreLoad
+    - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 838fccb3c442e0648bf04ffe6946233d
     m_Address: Tutorial_0
@@ -57,6 +59,8 @@ MonoBehaviour:
     m_Address: stone_button_short_off
     m_ReadOnly: 0
     m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
