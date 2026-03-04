@@ -34,7 +34,7 @@ namespace UI.Popup
             for (int i = 0; i < 3; i++)
             {
                 _towerData[i] = Managers.Instance.GameManager.EquippedTowers[i].TowerData;
-                GetButton((int)Buttons.Slot_0+i).gameObject.GetComponent<Image>().sprite=Managers.Instance.ResourceManager.Load<Sprite>(_towerData[i].TowerImgName);
+                GetButton((int)Buttons.Slot_0+i).gameObject.GetChildGameObject("PreviewImage").GetComponent<Image>().sprite=Managers.Instance.ResourceManager.Load<Sprite>(_towerData[i].TowerImgName);
                 GetButton((int)Buttons.Slot_0 + i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _towerData[i].DemendedCurrency.ToString();
                 _images[i]= GetButton((int)Buttons.Slot_0 + i).GetComponent<Image>();
             }
