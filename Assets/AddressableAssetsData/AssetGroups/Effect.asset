@@ -31,6 +31,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ee0411cc3684874f9873dfa73435bc5
+    m_Address: PoisonTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0fb8d703cf0d8b74488cb48b87bb81a6
     m_Address: PoisonCloudParticle
     m_ReadOnly: 0
@@ -103,6 +110,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b8bae4164e0f9148871ebc5337ca509
+    m_Address: MineAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7dce54751f1983640b44a7695a74c2ab
     m_Address: StoneDustParticle
     m_ReadOnly: 0
@@ -143,6 +157,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c757fcd79a4d2c0419f113994d7a5047
+    m_Address: DietTrapAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9bbd44ef7099204bac35ac981d6f0de
     m_Address: TestLaunchParticle
     m_ReadOnly: 0
@@ -151,11 +172,25 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbf719864e3455b4cb4b7b420c6e4b37
+    m_Address: LaserTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d0d1ca534bca74246aa1e8699a543733
     m_Address: UniversalParticle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1ca0d4e9cc91034b8cbb58311d1558f
+    m_Address: FireTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
