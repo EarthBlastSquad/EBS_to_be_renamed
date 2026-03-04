@@ -62,6 +62,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1842d7f899a58334b9af4b9c2e8ee616
+    m_Address: SwordAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 356e6a39592ba5146b7caf3cd2fc1af9
     m_Address: TestBoomParticle
     m_ReadOnly: 0
@@ -99,6 +106,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 690fdf2f7f36d064aa6495e51b811085
+    m_Address: FarmerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -189,6 +203,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1ca0d4e9cc91034b8cbb58311d1558f
     m_Address: FireTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef8f1e29ed919a0468a765bd90503f5f
+    m_Address: SmithAnimController
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
