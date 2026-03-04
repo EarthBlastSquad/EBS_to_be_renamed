@@ -91,6 +91,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c197d7a63f102a47b6e817e0f55eed5
+    m_Address: BossAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40477d72b6bc4ac4792a4ffed904877a
     m_Address: TestEntityAnimController
     m_ReadOnly: 0
