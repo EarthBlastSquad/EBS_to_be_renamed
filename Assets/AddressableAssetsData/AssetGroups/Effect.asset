@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Effect
   m_GUID: 847e9b2dd2b18464aa6d70f3207e185b
   m_SerializeEntries:
+  - m_GUID: 035b6d0561ca78b499b075c994199f0a
+    m_Address: BombDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06bcd71f1e8f4c14b9e11a0d2a9911db
     m_Address: MagicParticle
     m_ReadOnly: 0
@@ -69,6 +76,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26e45134b5065df438067e1260f42989
+    m_Address: ArrowDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 356e6a39592ba5146b7caf3cd2fc1af9
     m_Address: TestBoomParticle
     m_ReadOnly: 0
@@ -98,6 +112,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 520bc2d295d2fa34e9cbb942bb57b5fb
+    m_Address: InstantKillDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
