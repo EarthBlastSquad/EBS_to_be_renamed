@@ -23,6 +23,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6fba1510cc860c438e285ed183f164b
+    m_Address: SteppablePrefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
