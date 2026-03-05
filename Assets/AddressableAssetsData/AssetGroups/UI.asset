@@ -22,6 +22,14 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ccff62bf5f9abe4c93b963f73a3f5d9
+    m_Address: poison_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46272f5607cbfcc42a07ca8328389379
     m_Address: stone_backplate_short
     m_ReadOnly: 0
@@ -40,6 +48,14 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6314e3b1e3108b244b8ba903f75e9096
+    m_Address: "\uC9C0\uB8B0_off"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 838fccb3c442e0648bf04ffe6946233d
     m_Address: Tutorial_0
     m_ReadOnly: 0
@@ -47,6 +63,30 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92b09025d85e223498f1623f4c036d33
+    m_Address: wall_normal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93cdc4f2eb8d0264c9e1b210a73817a6
+    m_Address: fire_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca24b78729b1aec4481caa80bdfad205
+    m_Address: "\uB2E4\uC774\uC5B4\uD2B8_0"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2115b39c110d1c43a6a8847a70f7523
     m_Address: volume_on
@@ -70,6 +110,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f82a676dad9c7de42bf5dfeaddff71b7
+    m_Address: laser_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
