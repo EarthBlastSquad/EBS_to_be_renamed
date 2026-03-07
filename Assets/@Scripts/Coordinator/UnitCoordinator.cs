@@ -112,7 +112,7 @@ namespace Coordinator
                         continue;
                     }
 
-                    _projMgr.CreateProjectile(_skillData,nowPos, endPos);
+                    _projMgr.CreateProjectile(_skillData,false,_monsterData.MonsterId,nowPos, endPos);
                     _attackActor.ShowAttackEffect();
                     res = true;
 

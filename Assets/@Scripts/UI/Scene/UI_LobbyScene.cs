@@ -25,7 +25,9 @@ namespace UI.Scene
         enum GameObjects
         {
             Inventory_0,
-            Tutorial_0
+            Tutorial_0,
+            SoundSlider_0,
+            SettingPanel_0
         }
 
         enum Buttons
@@ -35,7 +37,9 @@ namespace UI.Scene
             GameStart_0,
             StageChange_0,
             StageChange_1,
-            TutorialOpen_0
+            TutorialOpen_0,
+            Setting_0,
+            SoundOnOff_0,
             //임시 방식, 풀링 추가시 교체
             //Item_0,
             //Item_1,
@@ -66,7 +70,7 @@ namespace UI.Scene
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
             BindImage(typeof(Images));
-
+            
             GetButton((int)Buttons.InventoryOpen_0).gameObject.BindUIEvent(InventoryOpen);
             GetButton((int)Buttons.InventoryClose_0).gameObject.BindUIEvent(MainLobby);
             GetButton((int)Buttons.GameStart_0).gameObject.BindUIEvent(GameStart);
@@ -78,6 +82,12 @@ namespace UI.Scene
             //GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(TestGetRandomJsons); //이벤트 해제 만들어둬야할까 X
             GetButton((int)Buttons.StageChange_0).gameObject.BindUIEvent(StageLeft);
             GetButton((int)Buttons.StageChange_1).gameObject.BindUIEvent(StageRight);
+            GetButton((int)Buttons.Setting_0).gameObject.BindUIEvent(SettingMenu);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.BindUIEvent(OnOffVolume);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume, UIEventTypes.DRAG);
+            GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
 #if UNITY_EDITOR
             Debug.Log(GetText((int)Texts.StageDescription_0).gameObject.name);
 #endif
@@ -139,7 +149,25 @@ namespace UI.Scene
                 }
             });
         }
-
+        private bool _setting = false;
+        protected void SettingMenu(PointerEventData _)
+        {
+            if(_setting==true)
+            {
+                Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+                GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+                GetObject((int)GameObjects.SoundSlider_0).SetActive(false);
+                GetObject((int)GameObjects.SettingPanel_0).SetActive(false);
+            }
+            else
+            {
+                Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+                GetObject((int)GameObjects.SettingPanel_0).SetActive(true);
+                GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(true);
+                GetObject((int)GameObjects.SoundSlider_0).SetActive(true);
+            }
+            _setting = !_setting;
+        }
         protected void StageRight(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
@@ -161,6 +189,32 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
             
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
+        }
+        protected void SetVolume(PointerEventData _)
+        {
+            Managers.Instance.GameManager.SoundValue = _.pointerDrag.transform.GetComponent<Slider>().value / 15;
+            if (Managers.Instance.GameManager.SoundSet == false)
+            {
+                return;
+            }
+            Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+        }
+        protected void OnOffVolume(PointerEventData _)
+        {
+            Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            if (Managers.Instance.GameManager.SoundSet == false)
+            {
+                GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
+                GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_off");
+                Managers.Instance.SoundManager.StopAll();
+            }
+            else
+            {
+                GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_on");
+                GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_on");
+                Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+            }
         }
         private void Start()
         {

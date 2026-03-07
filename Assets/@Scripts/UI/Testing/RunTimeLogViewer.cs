@@ -93,6 +93,8 @@ namespace UI.Testing
                 text.enableWordWrapping = false;
                 text.overflowMode = TextOverflowModes.Truncate;
                 text.fontSize = fontSize;
+                text.font = Manager.Managers.Instance.ResourceManager.Load<TMP_FontAsset>("Font");
+                text.UpdateFontAsset();
                 text.alignment = TextAlignmentOptions.Left;
                 text.richText = true;
                 text.text = "";

@@ -20,20 +20,20 @@ namespace UI.Scene
         enum GameObjects
         {
             Slider_0,
-            SoundSlider_0
+            //SoundSlider_0
         }
 
         enum Buttons
         {
-            Setting_0,
+            //Setting_0,
             StartButton_0,
-            SoundOnOff_0,
-            Back_0
+            //SoundOnOff_0,
+            //Back_0
         }
 
         enum Texts
         {
-            Title_0
+            //Title_0
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace UI.Scene
             // 오브젝트 바인딩
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
-            BindText(typeof(Texts));
+            //BindText(typeof(Texts));
 
             GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = 0;
 
@@ -63,66 +63,66 @@ namespace UI.Scene
                     });
                 //Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene); //이건 일회성으로 뭐 더 볼일 없기도 할 듯 하여
             });
-            GetButton((int)Buttons.Setting_0).gameObject.BindUIEvent(SettingMenu);
-            GetButton((int)Buttons.SoundOnOff_0).gameObject.BindUIEvent(OnOffVolume);
-            GetButton((int)Buttons.Back_0).gameObject.BindUIEvent(TitleMenu);
-            GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume, UIEventTypes.DRAG);
+            //GetButton((int)Buttons.Setting_0).gameObject.BindUIEvent(SettingMenu);
+            //GetButton((int)Buttons.SoundOnOff_0).gameObject.BindUIEvent(OnOffVolume);
+            //GetButton((int)Buttons.Back_0).gameObject.BindUIEvent(TitleMenu);
+            //GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume, UIEventTypes.DRAG);
             GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
-            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
+            //GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
+            //GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+            //GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
+            //GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
             return true;
         }
         #region 팝업
-        protected void SettingMenu(PointerEventData _)
-        {
-            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
-            GetText((int)Texts.Title_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(true);
-            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(true);
-            GetButton((int)Buttons.Back_0).gameObject.SetActive(true);
-        }
-        protected void TitleMenu(PointerEventData _)
-        {
-            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
-            GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
-            GetText((int)Texts.Title_0).gameObject.SetActive(true);
-            GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
-            GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
-        }
+        //protected void SettingMenu(PointerEventData _)
+        //{
+        //    Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+        //    GetButton((int)Buttons.StartButton_0).gameObject.SetActive(false);
+        //    GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
+        //    GetText((int)Texts.Title_0).gameObject.SetActive(false);
+        //    GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(true);
+        //    GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(true);
+        //    GetButton((int)Buttons.Back_0).gameObject.SetActive(true);
+        //}
+        //protected void TitleMenu(PointerEventData _)
+        //{
+        //    Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+        //    GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
+        //    GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+        //    GetText((int)Texts.Title_0).gameObject.SetActive(true);
+        //    GetButton((int)Buttons.Back_0).gameObject.SetActive(false);
+        //    GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
+        //    GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
+        //}
         #endregion
         #region 바인드용
-        protected void SetVolume(PointerEventData _)
-        {
-            Managers.Instance.GameManager.SoundValue = _.pointerDrag.transform.GetComponent<Slider>().value/15;
-            if(Managers.Instance.GameManager.SoundSet==false)
-            {
-                return;
-            }
-            Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
-        }
-        protected void OnOffVolume(PointerEventData _)
-        {
-            Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
-            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            if (Managers.Instance.GameManager.SoundSet == false)
-            {
-                GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
-                GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_off");
-                Managers.Instance.SoundManager.StopAll();
-            }
-            else
-            {
-                GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_on");
-                GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_on");
-                Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
-            }
-        }
+        //protected void SetVolume(PointerEventData _)
+        //{
+        //    Managers.Instance.GameManager.SoundValue = _.pointerDrag.transform.GetComponent<Slider>().value/15;
+        //    if(Managers.Instance.GameManager.SoundSet==false)
+        //    {
+        //        return;
+        //    }
+        //    Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+        //}
+        //protected void OnOffVolume(PointerEventData _)
+        //{
+        //    Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
+        //    Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+        //    if (Managers.Instance.GameManager.SoundSet == false)
+        //    {
+        //        GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
+        //        GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_off");
+        //        Managers.Instance.SoundManager.StopAll();
+        //    }
+        //    else
+        //    {
+        //        GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_on");
+        //        GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_on");
+        //        Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+        //    }
+        //}
         #endregion
         private void Awake()
         {
@@ -158,13 +158,13 @@ namespace UI.Scene
                 {
                     isPreload = true;
                     GetButton((int)Buttons.StartButton_0).gameObject.SetActive(true);
-                    GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+                    //GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
                     Managers.Instance.DataManager.Init();
                     Managers.Instance.GameManager.Init();
                     Managers.Instance.SoundManager.Init();
 
                     StartButtonAnimation();
-                    GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
+                    //GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
                     if (Managers.Instance.GameManager.SoundSet == true)
                     {
                         Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
@@ -175,7 +175,7 @@ namespace UI.Scene
 
         void StartButtonAnimation()
         {
-            GetText((int)Texts.Title_0).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
+            GetButton((int)Buttons.StartButton_0).GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
         }
     }
 }

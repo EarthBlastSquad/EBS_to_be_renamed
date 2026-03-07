@@ -24,7 +24,8 @@ namespace Coordinator
         private float _delayTime = 1;
         private SkillData _data;
         public event Action OnProjectileArrived;
-        
+        private bool _userAttack;
+        private int _idx;
 
         private void Awake()
         {
@@ -39,7 +40,7 @@ namespace Coordinator
             _actor = gameObject.GetOrAddComponent<ProjectileMovementActor>();
         }
 
-        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr, float delayTime)
+        public void Init(SkillData data, Vector2Int gridCnt, Vector3 startPos, Vector3 endPos,IReadOnlyList<VictimCoordinator> victims , AttackManager attackMgr, float delayTime,bool isTower,int idx)
         {
             _data = data;
             enabled = true;
@@ -53,6 +54,8 @@ namespace Coordinator
             _accumulatedTime = 0;
             _attackMgr = attackMgr;
             _skill.Init(data);
+            _userAttack = isTower;
+            _idx= idx;
         }
 
         public void Act(float dt)
@@ -86,7 +89,7 @@ namespace Coordinator
                         continue;
                     }
 
-                    _attackMgr.RequestAttack((_skill, _victims[i]));
+                    _attackMgr.RequestAttack((_skill, _victims[i],_userAttack,_idx));
 
                     if(_skill.CanAttackMultiple() == false)
                     {

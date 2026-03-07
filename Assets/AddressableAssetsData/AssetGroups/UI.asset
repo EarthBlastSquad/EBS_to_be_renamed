@@ -22,6 +22,13 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09425ce9161883447bb6a01a8ae8047e
+    m_Address: Font
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ccff62bf5f9abe4c93b963f73a3f5d9
     m_Address: poison_off
     m_ReadOnly: 0
