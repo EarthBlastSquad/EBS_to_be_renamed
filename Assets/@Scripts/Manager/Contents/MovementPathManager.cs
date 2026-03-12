@@ -3,6 +3,7 @@ using DataStructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Utils.Defines;
 
@@ -10,6 +11,7 @@ namespace Manager.Contents
 {
     public class MovementPathManager : MonoBehaviour
     {
+        private int[,] _weightMap = new int[(int)MapMaxCellCnt.MAX_WIDTH, (int)MapMaxCellCnt.MAX_HEIGHT];
         //저장하는 데이터는 그 셀의 이전 셀의 좌표
         private Vector2Int[,] _calculatedPath = new Vector2Int[(int)MapMaxCellCnt.MAX_WIDTH, (int)MapMaxCellCnt.MAX_HEIGHT];//접근할 때  x,y 형태로 접근할 것
         private GridManager _gridManager = null;
@@ -62,15 +64,52 @@ namespace Manager.Contents
                 return;
             }
 
-            int weight = (int)Weights.CAN_GO;
+            //int weight = (int)Weights.CAN_GO;
 
-            if(_gridManager.TryGetPlacedPiece(nextVert,out GameObject outPiece) && outPiece.layer != _steppableLayer)
-            {
-                weight = (int)Weights.PIECE;
-            }
+            //if (_gridManager.TryGetPlacedPiece(nextVert, out GameObject outPiece) && outPiece.layer != _steppableLayer)
+            //{
+            //    weight = (int)Weights.PIECE;
+            //}
+            int weight = _weightMap[nextVert.x, nextVert.y];
             _queue.Enqueue(weight + oldWeight,nowVert, nextVert);
         }
-        
+
+        private void SetPieceNearWeight(int x, int y)
+        {
+            var pos = new Vector2Int(x, y);
+            if(_gridManager.IsItValidCellPos(pos) && (_weightMap[x,y] != (int)Weights.PIECE))
+            {
+                _weightMap[pos.x, pos.y] = (int)Weights.PIECE_NEAR;
+            }
+        }
+
+        #if UNITY_EDITOR
+
+        private void OnDrawGizmos()
+        {
+            if (_weightMap == null) return;
+
+            for (int x = 0; x < (int)MapMaxCellCnt.MAX_WIDTH; x++)
+            {
+                for (int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    Vector3 worldPos = _gridManager.GetWorldPos(new Vector2Int(x, y), 0); // 그리드 좌표를 월드 좌표로 변환
+
+                    // 가중치에 따라 색상 변경 (벽 근처는 푸른색, 일반은 흰색, 벽은 붉은색 등)
+                    int w = _weightMap[x, y];
+                    Gizmos.color = (w == (int)Weights.PIECE) ? Color.red :
+                                   (w == (int)Weights.PIECE_NEAR) ? Color.cyan : Color.white;
+
+                    Gizmos.DrawWireCube(worldPos, Vector3.one * 0.9f);
+
+                    // 가중치 수치를 텍스트로 표시
+                    Handles.Label(worldPos, w.ToString());
+                }
+            }
+
+        }
+#endif
+
         private IEnumerator CalculatePath()
         {
             yield return new WaitForEndOfFrame();
@@ -87,10 +126,38 @@ namespace Manager.Contents
                 for(int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
                 {
                     _calculatedPath[x, y] = _invalidVector;
+                    _weightMap[x, y] = (int)ControlValue.INVALID;
                 }
             }
-            
-            foreach(var start in _startPos)
+
+            for (int x = 0; x < (int)MapMaxCellCnt.MAX_WIDTH; x++)
+            {
+                for (int y = 0; y < (int)MapMaxCellCnt.MAX_HEIGHT; y++)
+                {
+                    int w = _weightMap[x, y];
+                    if (w == (int)Weights.PIECE)
+                    {
+                        continue;
+                    }
+                    Vector2Int pos = new Vector2Int(x,y);
+                    if(_gridManager.TryGetPlacedPiece(pos,out var p) == false || p.layer == _steppableLayer)
+                    {
+                        if(w != (int)Weights.PIECE_NEAR)
+                        {
+                            _weightMap[x, y] = (int)Weights.CAN_GO;
+                        }
+                        continue;
+                    }
+
+                    _weightMap[x, y] = (int)Weights.PIECE;
+                    SetPieceNearWeight(x-1,y);
+                    SetPieceNearWeight(x+1,y);
+                    SetPieceNearWeight(x ,y-1);
+                    SetPieceNearWeight(x ,y+1);
+                }
+            }
+
+            foreach (var start in _startPos)
             {
                 _queue.Enqueue(0, new Vector2Int((int)ControlValue.START, (int)ControlValue.START), start);
             }
