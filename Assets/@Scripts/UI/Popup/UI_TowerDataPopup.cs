@@ -73,7 +73,11 @@ namespace UI.Popup
         }
         protected void Change(PointerEventData _)
         {
-            Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, _tower);
+            if(Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, _tower)==false)
+            {
+                _uI_IP.CancelToast();
+                return;
+            }
             if(_uI_IP.SelectedSlot != null)
             {
                 _uI_IP.SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_tower.TowerData.TowerImgName);

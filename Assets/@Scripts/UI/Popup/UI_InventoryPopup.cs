@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Manager;
 using ObjectPool;
 using System;
@@ -18,7 +19,8 @@ namespace UI.Popup
             Slider_0,
             Inventorys_0,
             TowerDataPopUp_0,
-            Background_0
+            Background_0,
+            CantSet_0
         }
         enum Buttons
         {
@@ -43,8 +45,10 @@ namespace UI.Popup
             BindText(typeof(Texts));
             Slotset();
             UnityEngine.UI.Slider s = GetObject((int)GameObjects.Slider_0).GetComponent<UnityEngine.UI.Slider>();
+            _cancelCanvasGroup=GetObject((int)GameObjects.CantSet_0).GetComponent<CanvasGroup>();
             GetObject((int)GameObjects.Slider_0).BindUIEvent((_)=>SlideInventory(s,_), Utils.Defines.UIEventTypes.DRAG);
             _infPool=GetObject((int)GameObjects.Inventorys_0).GetComponent<UI_ItemInfPool>();
+
             return true;
         }
         #region 버튼 세팅
@@ -114,6 +118,12 @@ namespace UI.Popup
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(false);
             GetObject((int)GameObjects.Background_0).SetActive(false);
+        }
+        private CanvasGroup _cancelCanvasGroup;
+        public void CancelToast()
+        {
+            Sequence seq = DOTween.Sequence();
+            seq.Append(_cancelCanvasGroup.DOFade(1, 0.3f)).AppendInterval(1f).Append(_cancelCanvasGroup.DOFade(0, 0.3f));
         }
     }
 }

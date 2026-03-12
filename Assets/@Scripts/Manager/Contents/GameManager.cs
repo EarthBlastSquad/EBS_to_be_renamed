@@ -241,11 +241,11 @@ namespace Manager.Contents
         }
         #endregion
         #region Inventory
-        public void EquipTower(sbyte index, Tower t)
+        public bool EquipTower(sbyte index, Tower t)
         {
-            if (index == -1 || t == null)
+            if (index == -1 || t == null || EquippedTowers.Contains(t) == true)
             {
-                return;
+                return false;
             }
             //ΩΩ∑‘ø° ¿˙¿Â
             EquippedTowers[index] = t;
@@ -253,6 +253,7 @@ namespace Manager.Contents
             _gameData.EquippedTowers[index] = t.TowerData.TowerId;
             t.IsEquipped = true;
             SaveGame();
+            return true;
         }
         public void UnEquipItem(Tower equipment)
         {
