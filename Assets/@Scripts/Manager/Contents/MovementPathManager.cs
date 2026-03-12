@@ -3,9 +3,14 @@ using DataStructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 using Utils.Defines;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 namespace Manager.Contents
 {
@@ -92,7 +97,7 @@ namespace Manager.Contents
             }
         }
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
 
         private void OnDrawGizmos()
         {
