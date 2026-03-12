@@ -51,7 +51,7 @@ namespace Manager.Contents
             StartCoroutine(CalculatePath());
         }
 
-        private void EnqueueVert(int oldWeight, Vector2Int nowVert ,int nextX, int nextY)
+        private void EnqueueVert(int oldWeight,Vector2Int oldVert, Vector2Int nowVert ,int nextX, int nextY)
         {
             Vector2Int nextVert = new Vector2Int(nextX, nextY);
             if(_gridManager.IsItValidCellPos(nextVert) == false)
@@ -71,6 +71,15 @@ namespace Manager.Contents
             //    weight = (int)Weights.PIECE;
             //}
             int weight = _weightMap[nextVert.x, nextVert.y];
+
+            oldVert -= nowVert;
+            var v = nowVert - nextVert;
+
+            if(oldVert != v)
+            {
+                weight += (int)Weights.DIFF_DIR_WEIGHT;
+            }
+
             _queue.Enqueue(weight + oldWeight,nowVert, nextVert);
         }
 
@@ -172,10 +181,10 @@ namespace Manager.Contents
                 }
 
                 _calculatedPath[nowVert.Item3.x, nowVert.Item3.y] = nowVert.Item2;
-                EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x - 1  , nowVert.Item3.y);
-                EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x + 1  , nowVert.Item3.y);
-                EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y - 1);
-                EnqueueVert(nowVert.Item1, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y + 1);
+                EnqueueVert(nowVert.Item1, nowVert.Item2, nowVert.Item3, nowVert.Item3.x - 1  , nowVert.Item3.y);
+                EnqueueVert(nowVert.Item1, nowVert.Item2, nowVert.Item3, nowVert.Item3.x + 1  , nowVert.Item3.y);
+                EnqueueVert(nowVert.Item1, nowVert.Item2, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y - 1);
+                EnqueueVert(nowVert.Item1, nowVert.Item2, nowVert.Item3, nowVert.Item3.x      , nowVert.Item3.y + 1);
             }
             OnPathRecalculated?.Invoke();
         }

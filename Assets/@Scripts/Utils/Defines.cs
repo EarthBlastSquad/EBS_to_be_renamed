@@ -83,7 +83,8 @@ namespace Utils.Defines
 
     public enum Weights
     {
-        PIECE = 1000,
+        PIECE = 5000,
+        DIFF_DIR_WEIGHT = 1,
         CAN_GO= 2,
         PIECE_NEAR=1
     }
