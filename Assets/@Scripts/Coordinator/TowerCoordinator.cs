@@ -118,7 +118,7 @@ namespace Coordinator
                         continue;
                     }
 
-                    _projMgr.CreateProjectile(_skillData, _placedPos, endPos);
+                    _projMgr.CreateProjectile(_skillData,true,_data.TowerId, _placedPos, endPos);
                     _attackActor.ShowAttackEffect();
                     res = true;
 

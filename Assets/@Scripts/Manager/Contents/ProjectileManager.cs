@@ -56,7 +56,7 @@ namespace Manager.Contents
             return false;
         }
 
-        public void CreateProjectile(SkillData skillData,Vector2Int start, Vector2Int end)
+        public void CreateProjectile(SkillData skillData,bool isTower,int idx,Vector2Int start, Vector2Int end)
         {
             IReadOnlyList<VictimCoordinator> victims;
             if (_gridManager.TryGetReadonlyVictimList(end, out victims) == false)
@@ -81,7 +81,9 @@ namespace Manager.Contents
                 _gridManager.GetWorldPos(end,0),
                 victims,
                 _attackMgr,
-                1
+                1,
+                isTower,
+                idx
                 );
             projectile.OnProjectileArrived += OnProjectileArrived;
             _projectiles.Add(projectile);

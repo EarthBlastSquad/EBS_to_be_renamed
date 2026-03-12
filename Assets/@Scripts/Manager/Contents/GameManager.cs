@@ -1,5 +1,6 @@
 using Contents.Tower;
 using Data;
+using Manager.Core;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
@@ -316,6 +317,31 @@ namespace Manager.Contents
         #region GameStatus
         public bool IsGamePaused { get; set; } = false;
         public bool IsDragging { get; set; } = false;
-        #endregion
+        public Dictionary<ValueTuple<bool, int>, int> TotalDamages=new Dictionary<ValueTuple<bool, int>, int>(); //(isTower,id),totalDamage
+        public void GameStart()
+        {
+            IsGamePaused = false;
+            IsDragging = false;
+            TotalDamages=new Dictionary<ValueTuple<bool, int>, int>();
+            foreach(Tower tower in EquippedTowers)
+            {
+                TotalDamages[(true,tower.TowerData.TowerId)] = 0;
+            }
+
+            Dictionary<int,WaveData> dm = Managers.Instance.DataManager.WaveDic;
+            WaveData waveData=dm[Managers.Instance.StageManager.GetNowStageData().WaveIdx];
+            HashSet<int> visits= new HashSet<int>();
+            do
+            {
+                visits.Add(waveData.WaveIdx);
+                foreach (int id in waveData.MobIDs)
+                {
+                    TotalDamages[(false, id)] = 0;
+                }
+            } while (waveData.NextWaveIdx != (int)ControlValue.INVALID && dm.TryGetValue(waveData.NextWaveIdx, out waveData) == true && visits.Contains(waveData.WaveIdx)==false);
+
+        }
+
+#endregion
     }
 }

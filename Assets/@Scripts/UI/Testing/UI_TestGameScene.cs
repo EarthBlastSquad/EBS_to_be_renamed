@@ -1,14 +1,10 @@
-using Data;
-using DG.Tweening;
 using Manager;
-using Manager.Contents;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utils;
-using Utils.Defines;
 
 
 namespace UI.Testing
@@ -27,7 +23,8 @@ namespace UI.Testing
             Logs,
             Cheat,
             Faster,
-            ResetFaster
+            ResetFaster,
+            Totals
         }
 
         enum Texts
@@ -52,6 +49,7 @@ namespace UI.Testing
             GetButton((int)Buttons.Cheat).gameObject.BindUIEvent(Cheat);
             GetButton((int)Buttons.Faster).gameObject.BindUIEvent(Faster);
             GetButton((int)Buttons.ResetFaster).gameObject.BindUIEvent(ResetFaster);
+            GetButton((int)Buttons.Totals).gameObject.BindUIEvent(TotalDamages);
             _fast = GetButton((int)Buttons.Faster).GetComponentInChildren<TextMeshProUGUI>();
             GetObject((int)GameObjects.ScrollRect).SetActive(false);
             return true;
@@ -80,6 +78,22 @@ namespace UI.Testing
         {
             Time.timeScale = 1;
             _fast.text = $"X1";
+        }
+        protected void TotalDamages(PointerEventData _)
+        {
+            Dictionary<(bool, int), int> totalDamages = Managers.Instance.GameManager.TotalDamages;
+            foreach(ValueTuple<bool,int> a in totalDamages.Keys)
+            {
+                if (a.Item1 == true)
+                {
+                    Debug.Log($"TowerID{a.Item2} Total Damage:{totalDamages[(true, a.Item2)]}\n");
+                }
+                else
+                {
+                    Debug.Log($"MonsterID{a.Item2} Total Damage:{totalDamages[(false, a.Item2)]}\n");
+                }
+            }
+
         }
         #endregion
         private void Awake()
