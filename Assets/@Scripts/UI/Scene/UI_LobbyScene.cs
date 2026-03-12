@@ -112,6 +112,7 @@ namespace UI.Scene
             GetButton((int)Buttons.TutorialOpen_0).gameObject.SetActive(true);
             GetText((int)Texts.StageName_0).gameObject.SetActive(true);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(true);
+            GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
         }
         protected void InventoryOpen(PointerEventData _)
         {
@@ -127,6 +128,7 @@ namespace UI.Scene
             GetButton((int)Buttons.TutorialOpen_0).gameObject.SetActive(false);
             GetText((int)Texts.StageName_0).gameObject.SetActive(false);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(false);
+            GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
         }
 
         private void OpenTutorial(PointerEventData _)

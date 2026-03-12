@@ -24,7 +24,8 @@ namespace UI.Popup
         {
             Slot_0=0, 
             Slot_1=1, 
-            Slot_2=2
+            Slot_2=2,
+            Slot_3=3,
         }
         public override bool Init()
         {
@@ -38,13 +39,19 @@ namespace UI.Popup
                 GetButton((int)Buttons.Slot_0 + i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _towerData[i].DemendedCurrency.ToString();
                 _images[i]= GetButton((int)Buttons.Slot_0 + i).GetComponent<Image>();
             }
+            _towerData[3] = Managers.Instance.DataManager.TowerDic[0];
+            GetButton((int)Buttons.Slot_3).gameObject.GetChildGameObject("PreviewImage").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[3].TowerImgName);
+            GetButton((int)Buttons.Slot_3).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _towerData[3].DemendedCurrency.ToString();
+            _images[3] = GetButton((int)Buttons.Slot_3).GetComponent<Image>();
 
             GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_0, _),UIEventTypes.POINTER_DOWN);
             GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_1, _), UIEventTypes.POINTER_DOWN);
             GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_2, _), UIEventTypes.POINTER_DOWN);
+            GetButton((int)Buttons.Slot_3).gameObject.BindUIEvent((_) => SlotDown((int)Buttons.Slot_3, _), UIEventTypes.POINTER_DOWN);
             GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
             GetButton((int)Buttons.Slot_1).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
             GetButton((int)Buttons.Slot_2).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
+            GetButton((int)Buttons.Slot_3).gameObject.BindUIEvent(SlotUp, UIEventTypes.POINTER_UP);
             _tm =FindAnyObjectByType<TowerManager>();
             _selectTower = GameObject.Find("SelectTower").transform.GetComponentInChildren<SpriteRenderer>();
             _uiSelectTower = GameObject.Find("UI_SelectTower").GetComponent<RectTransform>();
@@ -61,6 +68,7 @@ namespace UI.Popup
             _sprites[0] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[0].TowerImgName);
             _sprites[1] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[1].TowerImgName);
             _sprites[2] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
+            _sprites[3] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[3].TowerImgName);
 
             return true;
         }
@@ -70,7 +78,7 @@ namespace UI.Popup
         }
 
         public Vector2Int _sv { get; private set; }
-        private TowerData[] _towerData=new TowerData[3];
+        private TowerData[] _towerData=new TowerData[4];
         private TowerManager _tm;
         private Facing _facing;
         private SpriteRenderer _selectTower;
@@ -181,10 +189,11 @@ namespace UI.Popup
             Slot0=0,
             Slot1=1,
             Slot2=2,
+            Slot3=3
             //그 뭐냐 벽? 그거 추가예정
         }
         private Slots _s=Slots.Slot0;
-        private Sprite[] _sprites = new Sprite[3];
+        private Sprite[] _sprites = new Sprite[4];
         protected void SlotDown(int index,PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
@@ -274,7 +283,7 @@ namespace UI.Popup
                 }
             }
         }
-        private Image[] _images=new Image[3];
+        private Image[] _images=new Image[4];
         private void SelectedSlot()
         {
             for(int i=0;i<3;i++)

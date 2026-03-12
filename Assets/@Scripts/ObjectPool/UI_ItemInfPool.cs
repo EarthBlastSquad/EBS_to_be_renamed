@@ -142,7 +142,11 @@ namespace ObjectPool
                 {
                     return;
                 }
-                Managers.Instance.GameManager.EquipTower(sb, _selectedTower);
+                if(Managers.Instance.GameManager.EquipTower(sb, _selectedTower)==false)
+                {
+                    _uI_IP.CancelToast();
+                    return;
+                }
                 _uI_IP.SlotChange(sb, _selectedTower.TowerData.TowerImgName);
             }
             //Managers.Instance.GameManager.EquipTower(_uI_IP.SelectedSlotIndex, t);
