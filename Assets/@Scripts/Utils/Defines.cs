@@ -83,8 +83,10 @@ namespace Utils.Defines
 
     public enum Weights
     {
-        PIECE = 750,
-        CAN_GO= 1
+        PIECE = 5000,
+        DIFF_DIR_WEIGHT = 1,
+        CAN_GO= 2,
+        PIECE_NEAR=1
     }
 
     public enum MovementReturnTypes
