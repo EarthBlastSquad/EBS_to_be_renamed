@@ -240,6 +240,13 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da52320d6d760684da4a980f220fb7c5
+    m_Address: bad_ending_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2999f2669bc3cc49909c7921ed6ab50
     m_Address: sprite_mob_flying_range_1
     m_ReadOnly: 0
@@ -278,6 +285,13 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1e076335c73f954d8793e0cf6275dbf
+    m_Address: bad_ending_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f36a876e99b7c9e4f9d3e06a075ce9ff
     m_Address: crack_3
     m_ReadOnly: 0
@@ -292,6 +306,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Effect
     - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb1007d9c1eec7d4f9c5a84ffbeda519
+    m_Address: bad_ending_4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd20370d60a9f7d4396a7792a3a2a690
+    m_Address: bad_ending_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
