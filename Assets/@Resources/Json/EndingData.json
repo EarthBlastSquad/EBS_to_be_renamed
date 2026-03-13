@@ -4,13 +4,25 @@
       "EndingIdx": -6667750,
       "BGMName": "TestEndingBGM",
       "TextTypeSFX": "TestTypeBGM",
-      "Contents": ["B","C","K","__play__","TestSound","__load__","TestEndingIMG","TEST"]
+      "Contents": [ "B", "C", "K", "__play__", "TestSound", "__load__", "TestEndingIMG", "TEST" ]
     },
     {
       "EndingIdx": -6667751,
       "BGMName": "TestEndingBGM",
       "TextTypeSFX": "TestTypeBGM",
       "Contents": [ "D", "H", "W", "__play__", "TestSound", "__load__", "TestEndingIMG", "TEST" ]
+    },
+    {
+      "EndingIdx": -1,
+      "BGMName": "",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": ["튜토리얼 승리"]
+    },
+    {
+      "EndingIdx": -2,
+      "BGMName": "",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": ["튜토리얼 방어 실패" ]
     },
     {
       "EndingIdx": 0,
