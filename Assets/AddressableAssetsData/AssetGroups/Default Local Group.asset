@@ -21,6 +21,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acbb46cfa548f0d4b91abfc8683cbdbd
+    m_Address: Assets/@Resources/Textures/Ending/good_ending_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b90173960ed245840b69c6d6c09a6c46
     m_Address: ButtonPress
     m_ReadOnly: 0
