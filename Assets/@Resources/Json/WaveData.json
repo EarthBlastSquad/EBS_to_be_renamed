@@ -165,7 +165,7 @@
       "WaveNumber": 9,
       "WaveIdx": 16,
       "MobSpawnRate": 666,
-      "NextWaveIdx": 0,
+      "NextWaveIdx": -666775,
       "MobIDs": [ 6 ]
     }
   ]

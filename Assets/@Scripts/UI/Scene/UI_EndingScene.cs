@@ -52,6 +52,7 @@ namespace UI.Scene
             _textBar = GetButton((int)Buttons.TextBar_0).GetComponentInChildren<TextMeshProUGUI>();
             _esm=FindAnyObjectByType<EndingSceneManager>();
             GetButton((int)Buttons.TextBar_0).gameObject.BindUIEvent(NextText);
+
             return true;
         }
 

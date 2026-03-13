@@ -83,6 +83,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37817a7b288459d4a862fd90477bddc0
+    m_Address: good_ending_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41705f0a61293204dbeb50573ad3dbce
     m_Address: crack
     m_ReadOnly: 0
@@ -201,6 +208,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a55de8dc2c3cede4a8520a6dc87a21ad
+    m_Address: good_ending_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b80f2d91c4c13314388456324edb1844
