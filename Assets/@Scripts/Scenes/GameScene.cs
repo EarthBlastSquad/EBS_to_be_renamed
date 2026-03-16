@@ -18,6 +18,8 @@ namespace Scenes
         private GridManager _gridMgr;
         private UnitManager _unitMgr;
 
+        private bool _isEndCalled = false;
+
         private void SaveClearData(bool isCleared)
         {
             int stageIdx = Managers.Instance.StageManager.GetNowStageData().StageIdx;
@@ -42,14 +44,18 @@ namespace Scenes
 
         private void CheckWinCondition()
         {
-            if(_waveMgr.DoesReachedEnd() && _unitMgr.GetNowUnitCnt() <= 0)
+            if ((_isEndCalled == false) && _waveMgr.DoesReachedEnd() && _unitMgr.GetNowUnitCnt() <= 0)
             {
+                _isEndCalled = true;
                 Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
                 {
-                    OnGameEnd?.Invoke(GameEndType.WIN);
-                    SaveClearData(true);
-                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
-                    Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                    if(count == totalCount)
+                    {
+                        OnGameEnd?.Invoke(GameEndType.WIN);
+                        SaveClearData(true);
+                        Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                        Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                    }
                 });
             }
         }
@@ -58,15 +64,18 @@ namespace Scenes
         {
             for(int i = 0; i < (int)MapMaxCellCnt.MAX_HEIGHT; i++)
             {
-                if(_gridMgr.TryGetReadonlyVictimList(new Vector2Int(0,i), out var victimList) && victimList.Count > 1)
+                if ((_isEndCalled == false) && _gridMgr.TryGetReadonlyVictimList(new Vector2Int(0,i), out var victimList) && victimList.Count > 1)
                 {
+                    _isEndCalled = true;
                     Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
                     {
-                        OnGameEnd?.Invoke(GameEndType.LOSE);
-                        SaveClearData(false);
-                        Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
-                        Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
-                        return;
+                        if(count == totalCount)
+                        {
+                            OnGameEnd?.Invoke(GameEndType.LOSE);
+                            SaveClearData(false);
+                            Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                            Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                        }
                     });
                 }
             }
