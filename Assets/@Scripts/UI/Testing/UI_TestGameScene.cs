@@ -81,19 +81,17 @@ namespace UI.Testing
         }
         protected void TotalDamages(PointerEventData _)
         {
-            Dictionary<(bool, int), int> totalDamages = Managers.Instance.GameManager.TotalDamages;
-            foreach(ValueTuple<bool,int> a in totalDamages.Keys)
-            {
-                if (a.Item1 == true)
-                {
-                    Debug.Log($"TowerID{a.Item2} Total Damage:{totalDamages[(true, a.Item2)]}\n");
-                }
-                else
-                {
-                    Debug.Log($"MonsterID{a.Item2} Total Damage:{totalDamages[(false, a.Item2)]}\n");
-                }
-            }
+            Dictionary<int, int> totalTowerDamages = Managers.Instance.GameManager.TotalTowerDamages;
+            Dictionary<int, int> totalMonsterDamages = Managers.Instance.GameManager.TotalMonsterDamages;
 
+            foreach (var a in totalTowerDamages)
+            {
+                Debug.Log($"TowerID{a.Key} Total Damage:{a.Value}\n");
+            }
+            foreach (var a in totalMonsterDamages)
+            {
+                Debug.Log($"TowerID{a.Key} Total Damage:{a.Value}\n");
+            }
         }
         #endregion
         private void Awake()

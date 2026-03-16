@@ -318,28 +318,31 @@ namespace Manager.Contents
         #region GameStatus
         public bool IsGamePaused { get; set; } = false;
         public bool IsDragging { get; set; } = false;
-        public Dictionary<ValueTuple<bool, int>, int> TotalDamages=new Dictionary<ValueTuple<bool, int>, int>(); //(isTower,id),totalDamage
+
+        public Dictionary<int, int> TotalTowerDamages=new Dictionary<int, int>(); //id,totalDamage
+        public Dictionary<int, int> TotalMonsterDamages = new Dictionary<int, int>();
         public void GameStart()
         {
             IsGamePaused = false;
             IsDragging = false;
-            TotalDamages=new Dictionary<ValueTuple<bool, int>, int>();
-            foreach(Tower tower in EquippedTowers)
+            TotalTowerDamages = new Dictionary<int, int>();
+            TotalMonsterDamages = new Dictionary<int, int>();
+            foreach (Tower tower in EquippedTowers)
             {
-                TotalDamages[(true,tower.TowerData.TowerId)] = 0;
+                TotalTowerDamages[tower.TowerData.TowerId] = 0;
             }
 
-            Dictionary<int,WaveData> dm = Managers.Instance.DataManager.WaveDic;
-            WaveData waveData=dm[Managers.Instance.StageManager.GetNowStageData().WaveIdx];
-            HashSet<int> visits= new HashSet<int>();
+            Dictionary<int, WaveData> dm = Managers.Instance.DataManager.WaveDic;
+            WaveData waveData = dm[Managers.Instance.StageManager.GetNowStageData().WaveIdx];
+            HashSet<int> visits = new HashSet<int>();
             do
             {
                 visits.Add(waveData.WaveIdx);
                 foreach (int id in waveData.MobIDs)
                 {
-                    TotalDamages[(false, id)] = 0;
+                    TotalMonsterDamages[id] = 0;
                 }
-            } while (waveData.NextWaveIdx != (int)ControlValue.INVALID && dm.TryGetValue(waveData.NextWaveIdx, out waveData) == true && visits.Contains(waveData.WaveIdx)==false);
+            } while (waveData.NextWaveIdx != (int)ControlValue.INVALID && dm.TryGetValue(waveData.NextWaveIdx, out waveData) == true && visits.Contains(waveData.WaveIdx) == false);
 
         }
 

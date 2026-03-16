@@ -30,10 +30,7 @@ namespace Coordinator
         {
             return _skillData.CanAttackMultiple;
         }
-        public int GetSkillDamage()
-        {
-            return _skillData.Damage;
-        }
+        public int SkillDamage=>_skillData.Damage;
         public abstract bool Act(VictimCoordinator victim);
     }
 }

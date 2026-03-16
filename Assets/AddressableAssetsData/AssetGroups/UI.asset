@@ -29,6 +29,22 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f50a67950a535f4ca63bccb900f1d5e
+    m_Address: AllowedBox
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - TutorialGameSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b8e8604b3655da4f9043c958e52247f
+    m_Address: UI_TotalData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ccff62bf5f9abe4c93b963f73a3f5d9
     m_Address: poison_off
     m_ReadOnly: 0
