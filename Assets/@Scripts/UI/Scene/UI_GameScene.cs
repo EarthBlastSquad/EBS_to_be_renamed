@@ -90,7 +90,11 @@ namespace UI.Scene
             _hpBar = GameObject.Find("HPBar").GetComponentInChildren<Slider>();
             _hpBarText = _hpBar.GetComponentInChildren<TextMeshProUGUI>();
 
-            FindAnyObjectByType<TowerManager>().OnTowerDeadEvent += () => _hpBar.transform.parent.gameObject.SetActive(false);
+            FindAnyObjectByType<TowerManager>().OnTowerDeadEvent += () =>
+            {
+                _hpBar.transform.parent.gameObject.SetActive(false);
+                _rp.gameObject.SetActive(false);
+            };
 
             return true;
         }

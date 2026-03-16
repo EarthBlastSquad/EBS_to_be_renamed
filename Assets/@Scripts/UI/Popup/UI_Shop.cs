@@ -70,6 +70,8 @@ namespace UI.Popup
             _sprites[2] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
             _sprites[3] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[3].TowerImgName);
 
+            _selectTower.sprite = _sprites[0];
+
             return true;
         }
         private void Awake()
