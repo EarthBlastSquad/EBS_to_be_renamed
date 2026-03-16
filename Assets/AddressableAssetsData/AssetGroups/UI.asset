@@ -79,6 +79,14 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 698d388c4ccafaa45aa9d127eab6b49d
+    m_Address: TutorialHelper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - TutorialGameSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 838fccb3c442e0648bf04ffe6946233d
     m_Address: Tutorial_0
     m_ReadOnly: 0

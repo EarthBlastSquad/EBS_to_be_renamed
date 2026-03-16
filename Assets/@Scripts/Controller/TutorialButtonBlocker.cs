@@ -16,6 +16,7 @@ namespace Controller
 
         private void Start()
         {
+            transform.SetParent(GameObject.Find("@UI_Root").transform,false);
             transform.SetAsLastSibling();
             if (_allowedBox is null)
             {
