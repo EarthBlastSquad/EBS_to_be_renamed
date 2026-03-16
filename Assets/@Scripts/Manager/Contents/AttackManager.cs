@@ -39,7 +39,15 @@ namespace Manager.Contents
                 if(request.Item2.CanAttack())
                 {
                     request.Item1.Act(request.Item2);//딱 공격만 하고, 체력 까임에 따른 이벤트는 각자가 알아서 처리할 것
-                    Managers.Instance.GameManager.TotalDamages[(request.Item3, request.Item4)] += request.Item1.GetSkillDamage();
+                    if(request.Item3==true)
+                    {
+                        Managers.Instance.GameManager.TotalTowerDamages[request.Item4] += request.Item1.SkillDamage;
+                    }
+                    else
+                    {
+                        Managers.Instance.GameManager.TotalMonsterDamages[request.Item4] += request.Item1.SkillDamage;
+                    }
+
                 }
             }
         }

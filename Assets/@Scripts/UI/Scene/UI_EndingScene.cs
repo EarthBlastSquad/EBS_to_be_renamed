@@ -18,16 +18,17 @@ namespace UI.Scene
         private Tween _tween;
         private int _total;
         private string _currentText;
-
+        private bool _isTotal=false;
         #region Enum
         enum GameObjects
         {
-
+            Totals_0
         }
 
         enum Buttons
         {
-            TextBar_0
+            TextBar_0,
+            TotalButton_0
         }
 
         enum Texts
@@ -52,7 +53,8 @@ namespace UI.Scene
             _textBar = GetButton((int)Buttons.TextBar_0).GetComponentInChildren<TextMeshProUGUI>();
             _esm=FindAnyObjectByType<EndingSceneManager>();
             GetButton((int)Buttons.TextBar_0).gameObject.BindUIEvent(NextText);
-
+            GetButton((int)Buttons.TotalButton_0).gameObject.BindUIEvent(TotalPopup);
+            GetObject((int)GameObjects.Totals_0).SetActive(false);
             return true;
         }
 
@@ -99,6 +101,11 @@ namespace UI.Scene
                 return;
             }
             GetContents();
+        }
+        protected void TotalPopup(PointerEventData _)
+        {
+            _isTotal = !_isTotal;
+            GetObject((int)GameObjects.Totals_0).SetActive(_isTotal);
         }
         #endregion
         private void Awake()
