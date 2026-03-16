@@ -150,8 +150,10 @@ namespace Coordinator
             {
                 if (_gridManager.TryGetReadonlyVictimList(_placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], _facing), out var list) == false || list.Count <= 1)
                 {
-                    return false;
+                    continue;// 중간에 안보이면 return떄리니까 바로 앞에거만 검사하지
                 }
+
+                Debug.Log(_skillData.AttackPos[i]);
 
                 for(int k = 0; k < list.Count; k++)
                 {
