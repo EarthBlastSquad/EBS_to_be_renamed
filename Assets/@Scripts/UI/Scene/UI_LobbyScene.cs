@@ -55,7 +55,8 @@ namespace UI.Scene
 
         enum Images
         {
-            Background_0
+            Background_0,
+            TextBackground_0
         }
 
         #endregion
@@ -113,6 +114,7 @@ namespace UI.Scene
             GetText((int)Texts.StageName_0).gameObject.SetActive(true);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(true);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
+            GetImage((int)Images.TextBackground_0).gameObject.SetActive(true);
         }
         protected void InventoryOpen(PointerEventData _)
         {
@@ -129,6 +131,7 @@ namespace UI.Scene
             GetText((int)Texts.StageName_0).gameObject.SetActive(false);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
+            GetImage((int)Images.TextBackground_0).gameObject.SetActive(false);
         }
 
         private void OpenTutorial(PointerEventData _)
