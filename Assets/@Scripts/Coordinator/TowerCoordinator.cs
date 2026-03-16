@@ -74,7 +74,7 @@ namespace Coordinator
 
             for(int i = 0; i < _skillData.AttackableLayers.Count; i++)
             {
-                _attackableLayer |= _skillData.AttackableLayers[i];
+                _attackableLayer |= (1<< _skillData.AttackableLayers[i]);
             } 
         }
 
@@ -107,21 +107,23 @@ namespace Coordinator
             }
             if(_isAttackState && _module.IsCooldownEnded())
             {
+                Debug.Log(_skillData.AttackPos.Count);
                 bool res = false;
                 for (int i = 0; i < _skillData.AttackPos.Count; i++)
                 {
+                    Debug.Log("test1");
                     Vector2Int endPos = _placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i],_facing);
 
                     //if(_skillData.CanAttackMultiple == false && (_projMgr.IsTargetIn(_attackableLayer,endPos) == false))
                     if((_skillData.CanAttackMultiple || _projMgr.IsTargetIn(_attackableLayer,endPos)) == false)
                     {
+                        Debug.Log("test2");
                         continue;
                     }
 
                     _projMgr.CreateProjectile(_skillData,true,_data.TowerId, _placedPos, endPos);
                     _attackActor.ShowAttackEffect();
                     res = true;
-
                     if(_skillData.CanAttackMultiple == false)
                     {
                         break;
@@ -146,9 +148,17 @@ namespace Coordinator
         {
             for(int i = 0; i < _skillData.AttackPos.Count; i++)
             {
-                if (_gridManager.TryGetReadonlyVictimList(_placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], _facing), out var list) && list.Count > 1)
+                if (_gridManager.TryGetReadonlyVictimList(_placedPos + AreaUtils.CalculateRotation(_skillData.AttackPos[i], _facing), out var list) == false || list.Count <= 1)
                 {
-                    return true;
+                    return false;
+                }
+
+                for(int k = 0; k < list.Count; k++)
+                {
+                    if (((1 << list[k].gameObject.layer) & _attackableLayer) != 0)
+                    {
+                        return true;
+                    }
                 }
             }
 

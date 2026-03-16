@@ -55,7 +55,7 @@ namespace Coordinator
 
             for(int i =0; i < _skillData.AttackableLayers.Count; i++)
             {
-                _attackableLayer |= _skillData.AttackableLayers[i];
+                _attackableLayer |= (1<< _skillData.AttackableLayers[i]);
             }
         }
 

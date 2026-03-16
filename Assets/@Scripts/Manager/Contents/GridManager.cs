@@ -26,6 +26,7 @@ namespace Manager.Contents
         public event Action<CellUpdateEventArgs> CellUpdateEvent;
         public event Action OnMobMovementEvent;
         private VictimCoordinator _nullVictim;
+        private const int _steppableLayer = 9;
 
         private void Awake()
         {
@@ -179,7 +180,21 @@ namespace Manager.Contents
 
         public bool PlaceMobAt(Vector2Int pos, VictimCoordinator mob)//생각해보니까, 공중몹도 있었지
         {
-            if(IsItValidCellPos(pos) == false || (_datas[pos.x, pos.y].nowHoldingPiece is not null && mob.gameObject.layer != _airMovementMobLayer) || mob is null)
+            if(IsItValidCellPos(pos) == false || mob is null)
+            {
+                return false;
+            }
+
+
+            var piece = _datas[pos.x, pos.y].nowHoldingPiece;
+            //기물이 null이 아니면서, steppable이 아니면서 mob이 air가 아니면
+            /*
+             mob != air && piece != steppable => not
+             mob == air => always
+
+             
+             */
+            if (piece != null && mob.gameObject.layer != _airMovementMobLayer && piece.layer != _steppableLayer)
             {
                 return false;
             }
