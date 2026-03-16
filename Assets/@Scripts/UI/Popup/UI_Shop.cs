@@ -5,11 +5,9 @@ using InputHandler;
 using Manager;
 using Manager.Contents;
 using ObjectPool;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
@@ -194,11 +192,12 @@ namespace UI.Popup
         }
         private Slots _s=Slots.Slot0;
         private Sprite[] _sprites = new Sprite[4];
+        private bool _drag=false;
         protected void SlotDown(int index,PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _isPointerDown = true;
-            Managers.Instance.GameManager.IsDragging = false;
+            Managers.Instance.GameManager.IsDragging = true;
             _pressTime = Time.unscaledTime;
             _rp.Hide();
             _selectTower.sprite = _sprites[index];
@@ -210,8 +209,7 @@ namespace UI.Popup
 
         protected void SlotDragStart()
         {
-            Managers.Instance.GameManager.IsDragging = true;
-
+            _drag = true;
             //드래그로 이동하는건 아직 미구현
 #if UNITY_EDITOR
             Debug.Log("드래그 시작임 암튼 그럼");
@@ -221,6 +219,7 @@ namespace UI.Popup
 
         private void TowerDrag()
         {
+
             Vector3Int cellPos = _g.WorldToCell(Camera.main.ScreenToWorldPoint(_gh.GetCurrentVector3()));
             Vector3 worldPos = _g.GetCellCenterWorld(cellPos);
             Vector3Int wp = Vector3Int.CeilToInt(worldPos);
@@ -245,13 +244,14 @@ namespace UI.Popup
         }
         private void SlotUp(PointerEventData _)
         {
-            if (Managers.Instance.GameManager.IsDragging == false)
+            Managers.Instance.GameManager.IsDragging = false;
+            if (_drag == false)
             {
                 HandleClick();
             }
             else
             {
-                Managers.Instance.GameManager.IsDragging = false;
+                _drag = false;
 #if UNITY_EDITOR
                 Debug.Log("드래그 끝임 암튼 그럼");
 #endif
@@ -268,14 +268,14 @@ namespace UI.Popup
         private void FixedUpdate()
         {
 
-            if(Managers.Instance.GameManager.IsDragging==true)
+            if(_drag==true)
             {
                 TowerDrag();
             }
         }
         private void Update()
         {
-            if (_isPointerDown==true && Managers.Instance.GameManager.IsDragging ==false)
+            if (_isPointerDown==true && _drag ==false)
             {
                 if (Time.unscaledTime - _pressTime >= _dragThresholdTime)
                 {
