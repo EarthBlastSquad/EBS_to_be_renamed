@@ -108,6 +108,8 @@ namespace UI.Popup
                 CloseSR();
                 _rp.Hide();
                 gameObject.SetActive(false);
+                _selectTower.DOKill();
+                _selectTower.color = Color.white;
             }
         }    
         protected void ChangeFacing(PointerEventData _)
