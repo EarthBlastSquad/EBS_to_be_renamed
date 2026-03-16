@@ -33,31 +33,32 @@ namespace Controller
             }
 
             Vector3 nowCamPos = _cam.transform.position;
-
-            if(nowCamPos.x < _screenLeftBoundary || nowCamPos.x > _screenRightBoundary)
+            Vector2 mouse = Pointer.current.position.ReadValue();
+            Vector3 mouse3 = new Vector3(mouse.x, mouse.y, -_cam.transform.position.z);
+            if (nowCamPos.x < _screenLeftBoundary || nowCamPos.x > _screenRightBoundary)
             {
                 nowCamPos.x = Mathf.Clamp(nowCamPos.x, _screenLeftBoundary, _screenRightBoundary);
                 _cam.transform.position = nowCamPos;
                 _camOrigin = nowCamPos;
-                _clickedXOrigin = _cam.ScreenToWorldPoint(Input.mousePosition).x;
+                _clickedXOrigin = _cam.ScreenToWorldPoint(mouse3).x;
                 return;
             }
 
-            if (Input.GetMouseButton(0) == false)
+            if (Pointer.current.press.isPressed == false)
             {
                 return;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Pointer.current.press.wasPressedThisFrame)
             {
                 _camOrigin = nowCamPos;
-                _clickedXOrigin = _cam.ScreenToWorldPoint(Input.mousePosition).x;
+                _clickedXOrigin = _cam.ScreenToWorldPoint(mouse3).x;
             }
 
             _cam.transform.position = _camOrigin;
-            float xPos = _cam.ScreenToWorldPoint(Input.mousePosition).x;
+            float xPos = _cam.ScreenToWorldPoint(mouse3).x;
             xPos -= _clickedXOrigin;
-            _cam.transform.position = new Vector3(_camOrigin.x - xPos, _camOrigin.y, _camOrigin.z);
+            _cam.transform.position = new Vector3(_camOrigin.x - xPos, _camOrigin.y, -10);
         }
     }
 }
