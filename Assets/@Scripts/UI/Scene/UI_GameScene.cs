@@ -24,6 +24,7 @@ namespace UI.Scene
         private UI_TowerDatasMini _uitdm;
         private AreaUnlockManager _aum;
         private RangePreview _rp;
+        private HPCoordinator _hpc;
 
         #region Enum
         enum GameObjects
@@ -88,6 +89,9 @@ namespace UI.Scene
             _rp= FindAnyObjectByType<RangePreview>();
             _hpBar = GameObject.Find("HPBar").GetComponentInChildren<Slider>();
             _hpBarText = _hpBar.GetComponentInChildren<TextMeshProUGUI>();
+
+            FindAnyObjectByType<TowerManager>().OnTowerDeadEvent += () => _hpBar.transform.parent.gameObject.SetActive(false);
+
             return true;
         }
 
@@ -99,6 +103,12 @@ namespace UI.Scene
             _hpBar.value = Mathf.Clamp01(c / m);
             _hpBarText.text = c.ToString();
         }
+
+        private void OnHPChangedCallback(int old,int now ,int max)
+        {
+            SetHP(now, max);
+        }
+
         #endregion
         #region ÆË¾÷
 
@@ -135,6 +145,10 @@ namespace UI.Scene
 
         protected void ShopUI(Vector3 _)
         {
+            if(_hpc != null)
+            {
+                _hpc.OnHPChanged -= OnHPChangedCallback;
+            }
             Vector2Int p = _gm.GetLastSelectedPos();
             if (p == new Vector2(-1, -1))
             {
@@ -160,6 +174,11 @@ namespace UI.Scene
                 _hpBar.transform.parent.gameObject.SetActive(true);
                 SetHP(datas.Item2,datas.Item1.TowerHP);
                 _hpBar.transform.parent.position= ((Vector3Int)(p-new Vector2Int(6,3)));
+
+                if(outTower.TryGetComponent<HPCoordinator>(out _hpc))
+                {
+                    _hpc.OnHPChanged += OnHPChangedCallback;
+                }
             }
             else
             {

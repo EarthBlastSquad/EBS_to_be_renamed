@@ -1,6 +1,7 @@
 using Contents.Grid;
 using Coordinator;
 using Data;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils.Defines;
@@ -15,8 +16,11 @@ namespace Manager.Contents
         private GridManager _gridMgr;
         private bool _rangeDirty = false;
 
+        public event Action OnTowerDeadEvent;
+
         private void Awake()
         {
+            OnTowerDeadEvent = null;
             _gridMgr = FindAnyObjectByType<GridManager>();
             _gridMgr.OnMobMovementEvent += OnMobMove;
         }
@@ -29,6 +33,7 @@ namespace Manager.Contents
         private void OnTowerDead()
         {
             _deadFlag = true;
+            OnTowerDeadEvent?.Invoke();
         }
 
         public bool RetrieveTower(Vector2Int pos)
