@@ -163,6 +163,8 @@ namespace UI.Scene
             }
             else if (_gm.TryGetPlacedPiece(p, out GameObject outTower) && outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
             {
+                _hpBar.gameObject.SetActive(true);
+
                 _uis.CheckButton(_);
 
                 var pos = tc.GetAttackRangeArgs();
@@ -190,6 +192,7 @@ namespace UI.Scene
                 _uis.Set(p,_);
                 GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
                 _uis.ShopOpen = true;
+                _hpBar.gameObject.SetActive(false);
             }
         }
 
