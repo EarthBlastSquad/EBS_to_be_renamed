@@ -137,7 +137,7 @@ namespace UI.Popup
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             ShopOpen = false;
-            _s = Slots.None;
+         
             CloseSR();
             _rp.Hide();
             SelectedSlot();
@@ -161,6 +161,8 @@ namespace UI.Popup
             _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f+posY, 0);
             if (ShopOpen == false)
             {
+                _selectTower.DOKill();
+                _selectTower.color = Color.white;
                 _selectTower.transform.parent.rotation = Quaternion.identity;
                 _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
                 SelectedSlot();
