@@ -45,23 +45,23 @@
       "WaveTimeLimit": 90,
       "WaveNumber": 1,
       "WaveIdx": 1,
-      "MobSpawnRate": 6,
+      "MobSpawnRate": 3,
       "NextWaveIdx": 2,
       "MobIDs": [ 0 ]
     },
     {
-      "WaveTimeLimit": 0,
+      "WaveTimeLimit": 20,
       "WaveNumber": 1,
       "WaveIdx": 2,
-      "MobSpawnRate": 6,
+      "MobSpawnRate": 666775,
       "NextWaveIdx": 3,
       "MobIDs": [  ]
     },
     {
-      "WaveTimeLimit": 30,
+      "WaveTimeLimit": 45,
       "WaveNumber": 1,
       "WaveIdx": 3,
-      "MobSpawnRate": 3,
+      "MobSpawnRate": 4,
       "NextWaveIdx": 4,
       "MobIDs": [ 2 ]
     },

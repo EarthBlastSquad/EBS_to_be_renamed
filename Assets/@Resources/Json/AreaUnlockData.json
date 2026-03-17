@@ -27,13 +27,13 @@
     },
     {
       "IDX": 2,
-      "DemendedCurrency": 500,
+      "DemendedCurrency": 400,
       "UnlockXSize": 3,
       "NextUnlockData": 3
     },
     {
       "IDX": 3,
-      "DemendedCurrency": 900,
+      "DemendedCurrency": 600,
       "UnlockXSize": 6,
       "NextUnlockData": 4
     },
@@ -63,7 +63,7 @@
     },
     {
       "IDX": 8,
-      "DemendedCurrency": 1000,
+      "DemendedCurrency": 2000,
       "UnlockXSize": 3,
       "NextUnlockData": -666775
     }
