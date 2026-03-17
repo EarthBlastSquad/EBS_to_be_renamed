@@ -133,7 +133,7 @@ namespace Manager.Core
 
         public void ClosePopupUI(UIPopup popup)
         {
-            if (_uiPopupStack.Count == 0)
+            if (_uiPopupStack.Count <= 0)
             {
                 IsPopupUIOn = false;
                 return;
@@ -151,7 +151,7 @@ namespace Manager.Core
 
         public void ClosePopupUI()
         {
-            if (_uiPopupStack.Count == 0)
+            if (_uiPopupStack.Count <= 0)
             {
                 IsPopupUIOn = false;
                 return;
@@ -162,6 +162,11 @@ namespace Manager.Core
             Managers.Instance.ResourceManager.Destroy(popup.gameObject);
             popup = null;
             _order--;
+
+            if(_uiPopupStack.Count <= 0)
+            {
+                IsPopupUIOn = false;
+            }
             //RefreshTimeScale();
         }
 

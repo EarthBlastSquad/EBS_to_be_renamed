@@ -361,7 +361,7 @@
         }
       ],
       "Damage": 7,
-      "Cooldown": 0.0,
+      "Cooldown": 0.5,
       "AttackableLayers": [
         7
       ],
@@ -435,7 +435,7 @@
         }
       ],
       "Damage": 3,
-      "Cooldown": 0.0,
+      "Cooldown": 10.0,
       "AttackableLayers": [
         7
       ],

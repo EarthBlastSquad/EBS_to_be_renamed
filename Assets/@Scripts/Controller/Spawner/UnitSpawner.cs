@@ -73,7 +73,7 @@ namespace Controller.Spawner
 
         public void OnWaveChanged(WaveData waveData)
         {
-            _accumulatedTime = 0;
+            _accumulatedTime = waveData.MobSpawnRate;
             _mobIDs = waveData.MobIDs;
             _mobSpawnInterval = waveData.MobSpawnRate;
         }

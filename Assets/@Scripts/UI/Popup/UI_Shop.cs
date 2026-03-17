@@ -68,6 +68,8 @@ namespace UI.Popup
             _sprites[2] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[2].TowerImgName);
             _sprites[3] = Managers.Instance.ResourceManager.Load<Sprite>(_towerData[3].TowerImgName);
 
+            _selectTower.sprite = _sprites[0];
+
             return true;
         }
         private void Awake()
@@ -104,6 +106,8 @@ namespace UI.Popup
                 CloseSR();
                 _rp.Hide();
                 gameObject.SetActive(false);
+                _selectTower.DOKill();
+                _selectTower.color = Color.white;
             }
         }    
         protected void ChangeFacing(PointerEventData _)
@@ -131,7 +135,7 @@ namespace UI.Popup
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             ShopOpen = false;
-            _s = Slots.None;
+         
             CloseSR();
             _rp.Hide();
             SelectedSlot();
@@ -155,6 +159,8 @@ namespace UI.Popup
             _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f+posY, 0);
             if (ShopOpen == false)
             {
+                _selectTower.DOKill();
+                _selectTower.color = Color.white;
                 _selectTower.transform.parent.rotation = Quaternion.identity;
                 _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
                 SelectedSlot();

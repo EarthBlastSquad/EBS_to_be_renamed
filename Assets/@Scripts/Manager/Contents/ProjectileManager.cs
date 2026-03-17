@@ -47,7 +47,7 @@ namespace Manager.Contents
 
             for(int i = 0;  i < victims.Count; i++)
             {
-                if ((victims[i].gameObject.layer & attackableMask) != 0)
+                if (((1<< victims[i].gameObject.layer) & attackableMask) != 0)
                 {
                     return true;
                 }
