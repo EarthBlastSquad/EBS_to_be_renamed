@@ -55,6 +55,7 @@ namespace Scenes
                         SaveClearData(true);
                         Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
                         Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                        Managers.Instance.ResourceManager.ReleaseIn("TutorialGameSceneLoaded"); //어차피 로드된게 없으면 return 바로 받으니 여기서 추가
                     }
                 });
             }
@@ -75,6 +76,7 @@ namespace Scenes
                             SaveClearData(false);
                             Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
                             Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                            Managers.Instance.ResourceManager.ReleaseIn("TutorialGameSceneLoaded");
                         }
                     });
                 }

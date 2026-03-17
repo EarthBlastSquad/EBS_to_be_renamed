@@ -96,6 +96,10 @@ namespace UI.Scene
                 _rp.gameObject.SetActive(false);
             };
 
+            if(Managers.Instance.StageManager.GetNowStageData().StageIdx == 0)
+            {
+                Managers.Instance.ResourceManager.Instantiate("TutorialHelper", transform, false, false);
+            }
             return true;
         }
 
@@ -179,7 +183,7 @@ namespace UI.Scene
                 _uitdm.Set(datas.Item1.TowerName,datas.Item3.Damage,datas.Item3.Cooldown,p);
                 _hpBar.transform.parent.gameObject.SetActive(true);
                 SetHP(datas.Item2,datas.Item1.TowerHP);
-                _hpBar.transform.parent.position= ((Vector3Int)(p-new Vector2Int(6,3)));
+                _hpBar.transform.parent.position= ((Vector3)(p-new Vector2(6,2.55f)));
 
                 if(outTower.TryGetComponent<HPCoordinator>(out _hpc))
                 {

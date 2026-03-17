@@ -52,6 +52,7 @@ namespace UI.Popup
                     _ugs.ESCClose();
                     Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
                     Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                    Managers.Instance.ResourceManager.ReleaseIn("TutorialGameSceneLoaded"); //어차피 로드된게 없으면 내부적으로 바로 return하므로 여기서 추가.
                 }
             });
         }
