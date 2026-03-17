@@ -31,7 +31,7 @@ namespace Manager.Core
         }
 
         //저장했던 프리팹 중 하나 꺼내서 인스턴스화 해서 리턴
-        public GameObject Instantiate(string key, Transform parent = null, bool pooling = false)
+        public GameObject Instantiate(string key, Transform parent = null, bool worldPositionStays = true, bool pooling = false )
         {
             GameObject prefab = Load<GameObject>($"{key}");
             if (prefab == null)
@@ -45,7 +45,7 @@ namespace Manager.Core
                 return Managers.Instance.ObjectPoolManager.GetFromPool(prefab);
             }
 
-            GameObject go = UnityEngine.Object.Instantiate(prefab, parent);
+            GameObject go = UnityEngine.Object.Instantiate(prefab, parent, worldPositionStays);
 
             go.name = prefab.name;
             return go;

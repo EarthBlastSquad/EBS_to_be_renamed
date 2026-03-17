@@ -20,7 +20,7 @@ namespace Controller
             transform.SetAsLastSibling();
             if (_allowedBox is null)
             {
-                GameObject go=Instantiate(Managers.Instance.ResourceManager.Load<GameObject>("AllowedBox"), transform.parent, false);
+                GameObject go= Managers.Instance.ResourceManager.Instantiate("AllowedBox", transform.parent, false, false);
                 go.transform.SetSiblingIndex(transform.GetSiblingIndex()-1);
                 _allowedBox = go.GetComponent<RectTransform>();
             }

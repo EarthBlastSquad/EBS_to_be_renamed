@@ -98,7 +98,7 @@ namespace UI.Scene
 
             if(Managers.Instance.StageManager.GetNowStageData().StageIdx == 0)
             {
-                Instantiate(Managers.Instance.ResourceManager.Load<GameObject>("TutorialHelper"), transform, false);
+                Managers.Instance.ResourceManager.Instantiate("TutorialHelper", transform, false, false);
             }
             return true;
         }

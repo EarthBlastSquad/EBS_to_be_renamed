@@ -91,7 +91,7 @@ namespace Manager.Core
                 name = typeof(T).Name;
             }
 
-            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", parent, pooling);
+            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", parent, worldPositionStays: false, pooling: pooling);
             go.transform.SetParent(parent,false);
             return go.GetOrAddComponent<T>();
         }
@@ -187,7 +187,7 @@ namespace Manager.Core
         public UIToast ShowToast(string msg)
         {
             string name = typeof(UIToast).Name;
-            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", pooling: true);
+            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}",worldPositionStays:false, pooling: true);
             UIToast popup = go.GetOrAddComponent<UIToast>();
             popup.SetInfo(msg);
             _uiToastStack.Push(popup);
