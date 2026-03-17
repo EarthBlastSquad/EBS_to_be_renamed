@@ -16,36 +16,54 @@
     {
       "IDX": 0,
       "DemendedCurrency": 100,
-      "UnlockXSize": 10,
+      "UnlockXSize": 7,
       "NextUnlockData": 1
     },
     {
       "IDX": 1,
-      "DemendedCurrency": 100,
-      "UnlockXSize": 10,
+      "DemendedCurrency": 306,
+      "UnlockXSize": 4,
       "NextUnlockData": 2
     },
     {
       "IDX": 2,
-      "DemendedCurrency": 100,
-      "UnlockXSize": 8,
+      "DemendedCurrency": 500,
+      "UnlockXSize": 3,
       "NextUnlockData": 3
     },
     {
       "IDX": 3,
-      "DemendedCurrency": 100,
+      "DemendedCurrency": 900,
       "UnlockXSize": 6,
       "NextUnlockData": 4
     },
     {
       "IDX": 4,
-      "DemendedCurrency": 100,
-      "UnlockXSize": 3,
+      "DemendedCurrency": 1000,
+      "UnlockXSize": 7,
       "NextUnlockData": 5
     },
     {
       "IDX": 5,
-      "DemendedCurrency": 100,
+      "DemendedCurrency": 1400,
+      "UnlockXSize": 4,
+      "NextUnlockData": 6
+    },
+    {
+      "IDX": 6,
+      "DemendedCurrency": 2400,
+      "UnlockXSize": 3,
+      "NextUnlockData": 7
+    },
+    {
+      "IDX": 7,
+      "DemendedCurrency": 2000,
+      "UnlockXSize": 3,
+      "NextUnlockData": 8
+    },
+    {
+      "IDX": 8,
+      "DemendedCurrency": 1000,
       "UnlockXSize": 3,
       "NextUnlockData": -666775
     }
