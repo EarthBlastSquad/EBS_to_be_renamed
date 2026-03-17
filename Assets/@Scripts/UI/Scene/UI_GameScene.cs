@@ -81,7 +81,8 @@ namespace UI.Scene
             GetObject((int)GameObjects.TowerDatas_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Unlock_0).gameObject.SetActive(true);
 
-            Managers.Instance.CurrencyManager.AddCurrency(0500);
+            //Managers.Instance.CurrencyManager.AddCurrency(0500);
+            Managers.Instance.CurrencyManager.SetCurrency(Managers.Instance.StageManager.GetNowStageData().InitialCurrency);
             _gm = FindAnyObjectByType<GridManager>();
             _uis = GetObject((int)GameObjects.Shop_0).GetComponent<UI_Shop>();
             _uitdm = GetObject((int)GameObjects.TowerDatas_0).GetComponent<UI_TowerDatasMini>();
@@ -166,10 +167,15 @@ namespace UI.Scene
                 GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
                 _uis.CheckButton(_);
                 _hpBar.transform.parent.gameObject.SetActive(false);
+                if(_aum.DoesReachedEnd() == false)
+                {
+                    GetButton((int)Buttons.Unlock_0).gameObject.SetActive(true);
+                }
                 return;
             }
             else if (_gm.TryGetPlacedPiece(p, out GameObject outTower) && outTower.TryGetComponent<TowerCoordinator>(out TowerCoordinator tc))
             {
+                GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
                 _hpBar.gameObject.SetActive(true);
 
                 _uis.CheckButton(_);
@@ -195,6 +201,7 @@ namespace UI.Scene
             }
             else
             {
+                GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
                 GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
                 _uis.Set(p,_);
                 GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);

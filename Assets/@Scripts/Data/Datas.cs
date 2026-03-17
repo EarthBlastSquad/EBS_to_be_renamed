@@ -157,6 +157,7 @@ namespace Data
         public string StageDescription;
         public string GridImgName;
         public string BackgroundImgName;
+        public int InitialCurrency;
 
         public StageData(StageData original)
         {
@@ -172,6 +173,7 @@ namespace Data
             StageDescription = original.StageDescription;
             GridImgName = original.GridImgName;
             BackgroundImgName = original.BackgroundImgName;
+            InitialCurrency = original.InitialCurrency;
         }
 
         public StageData() { }

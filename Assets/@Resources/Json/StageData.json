@@ -45,7 +45,8 @@
       "BadEndingDataIdx": 1,
       "StageDescription": "Tutorial",
       "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "Stage0Theme"
+      "BackgroundImgName": "Stage0Theme",
+      "InitialCurrency": 666775
     },
     {
       "StageIdx": 1,
@@ -58,7 +59,8 @@
       "BadEndingDataIdx": 1,
       "StageDescription": "first stage",
       "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "Stage0Theme"
+      "BackgroundImgName": "Stage0Theme",
+      "InitialCurrency": 500
     }
   ]
 }
