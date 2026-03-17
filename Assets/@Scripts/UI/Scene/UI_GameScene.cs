@@ -135,7 +135,10 @@ namespace UI.Scene
         protected void UnlickButton(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            if (_aum.TryUnlock())
+
+            _aum.TryUnlock();
+
+            if (_aum.DoesReachedEnd())
             {
                 GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
             }

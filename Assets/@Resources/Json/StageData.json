@@ -54,9 +54,9 @@
       "WaveIdx": 0,
       "AreaUnlockIdx": 0,
       "StageName": "Stage 1",
-      "GoodEndingDataIdx": -6667750,
-      "BadEndingDataIdx": -6667751,
-      "StageDescription": "TestDummy",
+      "GoodEndingDataIdx": 0,
+      "BadEndingDataIdx": 1,
+      "StageDescription": "first stage",
       "GridImgName": "grass_grid_cell_tile",
       "BackgroundImgName": "Stage0Theme"
     }
