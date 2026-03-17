@@ -32,6 +32,8 @@ namespace UI.Scene
             TutorialOpen_0,
             Setting_0,
             SoundOnOff_0,
+            CreditOpen_0,
+            LicenseOpen_0
             //임시 방식, 풀링 추가시 교체
             //Item_0,
             //Item_1,
@@ -68,6 +70,8 @@ namespace UI.Scene
             GetButton((int)Buttons.InventoryClose_0).gameObject.BindUIEvent(MainLobby);
             GetButton((int)Buttons.GameStart_0).gameObject.BindUIEvent(GameStart);
             GetButton((int)Buttons.TutorialOpen_0).gameObject.BindUIEvent(OpenTutorial);
+            GetButton((int)Buttons.CreditOpen_0).gameObject.BindUIEvent(OnCredit);
+            GetButton((int)Buttons.LicenseOpen_0).gameObject.BindUIEvent(OnLicense);
             //SlotSet();
             //ItemSet();
             //GetButton((int)Buttons.Slot_0).gameObject.BindUIEvent(TestGetRandomJsons);
@@ -134,6 +138,18 @@ namespace UI.Scene
         }
 
         #endregion
+
+        private void OnCredit(PointerEventData _)
+        {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            var popup = Managers.Instance.UIManager.ShowPopupUI<UI_Credit>("Credit_0");
+        }
+
+        private void OnLicense(PointerEventData _)
+        {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            var popup = Managers.Instance.UIManager.ShowPopupUI<UI_License>("License_0");
+        }
         protected void GameStart(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
