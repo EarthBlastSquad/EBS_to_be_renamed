@@ -58,7 +58,7 @@
       "BadEndingDataIdx": -6667751,
       "StageDescription": "TestDummy",
       "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "sprite_god_1"
+      "BackgroundImgName": "Stage0Theme"
     }
   ]
 }
