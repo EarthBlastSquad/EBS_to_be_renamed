@@ -1,20 +1,12 @@
-using Contents.Tower;
 using Data;
-using DG.Tweening;
 using Manager;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using TMPro;
 using UI.Popup;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
-using static UnityEngine.InputSystem.InputControlScheme.MatchResult;
+
 namespace UI.Scene
 {
     public class UI_LobbyScene : UIScene
@@ -146,11 +138,26 @@ namespace UI.Scene
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             Managers.Instance.ResourceManager.LoadAsyncAllIn("GameSceneLoaded", (key, count, totalCount) =>
             {
-                if(count == totalCount)
+                if (count == totalCount)
                 {
-                    Managers.Instance.StageManager.Init(_stageIdx);
-                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
-                    Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
+                    if(_stageIdx==0)
+                    {
+                        Managers.Instance.ResourceManager.LoadAsyncAllIn("TutorialGameSceneLoaded", (key2, count2, totalCount2) =>
+                        {
+                            if (count2 == totalCount2)
+                            {
+                                Managers.Instance.StageManager.Init(_stageIdx);
+                                Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
+                                Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
+                            }
+                        });
+                    }
+                    else
+                    {
+                        Managers.Instance.StageManager.Init(_stageIdx);
+                        Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
+                        Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
+                    }
                 }
             });
         }

@@ -16,6 +16,7 @@ namespace Controller
 
         private void Start()
         {
+            transform.SetParent(GameObject.Find("@UI_Root").transform, false);
             transform.SetAsLastSibling();
             if (_allowedBox is null)
             {
@@ -80,7 +81,7 @@ namespace Controller
                     Time.timeScale = 0;
                     break;
                 case 1:
-                    SetGrid(new Vector3(-150, 50, 0));
+                    SetGrid(new Vector3(-150, -0.05f, 0));
                     Managers.Instance.GameManager.IsGamePaused = false;
                     break;
                 case 2:
@@ -89,6 +90,8 @@ namespace Controller
 
                 case 3:
                     Time.timeScale = 1;
+                    _allowedBox.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
                     break;
             }
 #if UNITY_EDITOR

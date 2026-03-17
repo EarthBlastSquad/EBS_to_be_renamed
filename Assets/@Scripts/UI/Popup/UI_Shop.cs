@@ -238,7 +238,7 @@ namespace UI.Popup
 #if UNITY_EDITOR
             Debug.Log("드래그중임 암튼 그럼");
 #endif
-            _selectTower.transform.parent.position= wp-new Vector3(0.5f, 0.5f, 0);
+            _selectTower.transform.parent.position= wp-new Vector3(0.5f, 0.05f, 0);
             _gc.SetHighlightAt(cellPos);
             _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId].AttackPos, _sv, _facing);
         }
