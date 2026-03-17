@@ -100,13 +100,6 @@ MonoBehaviour:
     - Effect
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 452a9bc46f73b5a409f86bb74718a9a5
-    m_Address: sprite_god_1
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LobbySceneLoaded
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 47d4fb9d947632f419db5f6e8fcd43c4
     m_Address: sprite_mob_single_2
     m_ReadOnly: 0
@@ -150,13 +143,6 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - Mobs
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5592869d771be6f44b12502b6b572864
-    m_Address: test_god_2
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 57e391d1ae1e10b4ca84f18001474199
@@ -325,19 +311,6 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - Mobs
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb63ad94d9f7cb34b96d7f8741b45716
-    m_Address: sprite_god_2
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LobbySceneLoaded
-    - TestPreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ec3900868441c604b88d9e31fbfe8772
-    m_Address: test_god
-    m_ReadOnly: 0
-    m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec85814c842cc694d9f59a99375bb04d
