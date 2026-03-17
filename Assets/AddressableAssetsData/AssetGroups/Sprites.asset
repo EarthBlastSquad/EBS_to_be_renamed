@@ -116,6 +116,14 @@ MonoBehaviour:
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ae86ff21af91b240acd431cfb5bad35
+    m_Address: stg_0_bomb_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50af8f3ae56edff4d83b79bbfab05c76
     m_Address: spritesbase
     m_ReadOnly: 0
@@ -149,6 +157,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57e391d1ae1e10b4ca84f18001474199
+    m_Address: stg_0_boss_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6991e8845d0d62c46a5f25e190dcb353
@@ -185,6 +201,22 @@ MonoBehaviour:
     - TestPreLoad
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 802b1348105f2c04e9d6a42de76b81de
+    m_Address: stg_0_inst_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82d705b82ef227847827f6b0c06e8372
+    m_Address: stg_0_arrow_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 879c6a78309a73345872bcf7c7a23dc6
     m_Address: t6
     m_ReadOnly: 0
@@ -197,6 +229,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bc62a651a275cf43b12454e9fca19bf
+    m_Address: stg_0_farmer_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95782622c4b8dba458163ccff551ba94
@@ -239,6 +279,14 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bddbe1eeb64144144b5798f073dfa464
+    m_Address: stg_0_smith_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c74289225e4ffb04887b17e202cdb576
     m_Address: t2
     m_ReadOnly: 0
@@ -260,6 +308,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e652d83b5dd8b334b97d82783f29a2a9
+    m_Address: stg_0_knight_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e917e1fb293686c4d9a75349e7e17b9d
