@@ -90,6 +90,7 @@ namespace UI.Scene
 
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
             UpdateStageChangeArrowState();
+            UpdateVolumeIcon();
             return true;
         }
         #region 화면 전환
@@ -226,6 +227,11 @@ namespace UI.Scene
         {
             Managers.Instance.GameManager.SoundSet = !Managers.Instance.GameManager.SoundSet;
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            UpdateVolumeIcon();
+        }
+
+        private void UpdateVolumeIcon()
+        {
             if (Managers.Instance.GameManager.SoundSet == false)
             {
                 GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");

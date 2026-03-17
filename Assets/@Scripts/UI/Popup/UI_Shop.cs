@@ -292,7 +292,7 @@ namespace UI.Popup
         private Image[] _images=new Image[4];
         private void SelectedSlot()
         {
-            for(int i=0;i<3;i++)
+            for(int i=0;i<4;i++)
             {
                 if(i==(int)_s)
                 {
