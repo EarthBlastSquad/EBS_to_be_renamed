@@ -57,7 +57,15 @@ namespace UI.Popup
                 GetText((int)Texts.TutorialDescription_0).text = "";
             }
 
+            UpdateTutorialTextChangeArrowState();
             return true;
+        }
+
+
+        private void UpdateTutorialTextChangeArrowState()
+        {
+            GetButton((int)Buttons.Next_0).gameObject.SetActive(_readIdx + 2 < _data.Content.Count);
+            GetButton((int)Buttons.Prev_0).gameObject.SetActive(_readIdx - 2 >= 0);
         }
 
         private void ClickExit(PointerEventData _)
@@ -78,6 +86,7 @@ namespace UI.Popup
             
             GetImage((int)Images.ExampleImg_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(_data.Content[_readIdx]);
             GetText((int)Texts.TutorialDescription_0).text = _data.Content[_readIdx + 1];
+            UpdateTutorialTextChangeArrowState();
         }
 
         private void ClickPrev(PointerEventData _)
@@ -92,6 +101,7 @@ namespace UI.Popup
 
             GetImage((int)Images.ExampleImg_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(_data.Content[_readIdx]);
             GetText((int)Texts.TutorialDescription_0).text = _data.Content[_readIdx + 1];
+            UpdateTutorialTextChangeArrowState();
         }
     }
 }

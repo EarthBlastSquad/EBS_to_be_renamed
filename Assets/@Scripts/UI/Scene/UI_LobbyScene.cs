@@ -89,7 +89,7 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
 
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
-            
+            UpdateStageChangeArrowState();
             return true;
         }
         #region 화면 전환
@@ -180,6 +180,14 @@ namespace UI.Scene
             }
             _setting = !_setting;
         }
+
+        private void UpdateStageChangeArrowState()
+        {
+            var data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            GetButton((int)Buttons.StageChange_0).gameObject.SetActive(data.PrevIdx != _stageIdx);
+            GetButton((int)Buttons.StageChange_1).gameObject.SetActive(data.NextIdx != _stageIdx);
+        }
+
         protected void StageRight(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
@@ -190,6 +198,7 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
             
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
+            UpdateStageChangeArrowState();
         }
         protected void StageLeft(PointerEventData _)
         {
@@ -201,6 +210,8 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
             
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
+            GetButton((int)Buttons.StageChange_1).gameObject.SetActive(data.NextIdx == _stageIdx);
+            UpdateStageChangeArrowState();
         }
         protected void SetVolume(PointerEventData _)
         {
