@@ -68,5 +68,11 @@ namespace Manager.Contents
             OnCurrencyChangedEvent?.Invoke(_currency, _currency + amountToAdd);
             _currency += amountToAdd;
         }
+
+        public void SetCurrency(int currency)
+        {
+            OnCurrencyChangedEvent?.Invoke(_currency, currency);
+            _currency = currency;
+        }
     }
 }

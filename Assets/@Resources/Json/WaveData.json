@@ -32,6 +32,7 @@
       "NextWaveIdx": -666775,
       "MobIDs": []
     },
+
     {
       "WaveTimeLimit": 0,
       "WaveNumber": 0,
@@ -41,26 +42,26 @@
       "MobIDs": []
     },
     {
-      "WaveTimeLimit": 60,
+      "WaveTimeLimit": 90,
       "WaveNumber": 1,
       "WaveIdx": 1,
-      "MobSpawnRate": 6,
+      "MobSpawnRate": 3,
       "NextWaveIdx": 2,
       "MobIDs": [ 0 ]
     },
     {
-      "WaveTimeLimit": 30,
+      "WaveTimeLimit": 20,
       "WaveNumber": 1,
       "WaveIdx": 2,
-      "MobSpawnRate": 6,
+      "MobSpawnRate": 666775,
       "NextWaveIdx": 3,
-      "MobIDs": [ 0 ]
+      "MobIDs": [  ]
     },
     {
-      "WaveTimeLimit": 30,
+      "WaveTimeLimit": 45,
       "WaveNumber": 1,
       "WaveIdx": 3,
-      "MobSpawnRate": 3,
+      "MobSpawnRate": 4,
       "NextWaveIdx": 4,
       "MobIDs": [ 2 ]
     },
@@ -161,12 +162,28 @@
       "MobIDs": [ 5 ]
     },
     {
-      "WaveTimeLimit": 666,
+      "WaveTimeLimit": 60,
       "WaveNumber": 9,
       "WaveIdx": 16,
+      "MobSpawnRate": 1,
+      "NextWaveIdx": 17,
+      "MobIDs": [ 3,4,5 ]
+    },
+    {
+      "WaveTimeLimit": 1,
+      "WaveNumber": 10,
+      "WaveIdx": 17,
+      "MobSpawnRate": 666,
+      "NextWaveIdx": 18,
+      "MobIDs": [ 6 ]
+    },
+    {
+      "WaveTimeLimit": 6666,
+      "WaveNumber": 10,
+      "WaveIdx": 18,
       "MobSpawnRate": 666,
       "NextWaveIdx": -666775,
-      "MobIDs": [ 6 ]
+      "MobIDs": []
     }
   ]
 }
