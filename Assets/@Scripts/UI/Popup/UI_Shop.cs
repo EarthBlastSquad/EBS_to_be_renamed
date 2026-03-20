@@ -5,6 +5,7 @@ using InputHandler;
 using Manager;
 using Manager.Contents;
 using ObjectPool;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -90,6 +91,7 @@ namespace UI.Popup
         private bool _isPointerDown;
         private float _pressTime, _dragThresholdTime = 0.3f;
         private Vector3Int _wp;
+        public event Action BuyAction;
         public void CheckButton(Vector3 _)
         {
             bool b = false;
@@ -129,6 +131,7 @@ namespace UI.Popup
             ShopOpen = false;
             CloseSR();
             _rp.Hide();
+            BuyAction?.Invoke();
         }
 
         protected void Cancel(PointerEventData _)

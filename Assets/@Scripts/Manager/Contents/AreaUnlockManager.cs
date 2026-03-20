@@ -32,7 +32,10 @@ namespace Manager.Contents
         {
             return _doesReachedEnd;
         }
-
+        public int GetDemendedCurrency()
+        {
+            return _data.DemendedCurrency;
+        }
         public bool TryUnlock()
         {
             if(DoesReachedEnd() || Managers.Instance.CurrencyManager.CanAfford(_data.DemendedCurrency) == false)
