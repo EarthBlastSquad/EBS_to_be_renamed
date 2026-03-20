@@ -25,7 +25,7 @@ namespace UI.Scene
         private AreaUnlockManager _aum;
         private RangePreview _rp;
         private HPCoordinator _hpc;
-
+        private TextMeshProUGUI _unlockBCK;
         #region Enum
         enum GameObjects
         {
@@ -67,7 +67,7 @@ namespace UI.Scene
             Managers.Instance.CurrencyManager.OnCurrencyChangedEvent -= CurrencyUI;
             Managers.Instance.CurrencyManager.OnCurrencyChangedEvent += CurrencyUI;
             GetButton((int)Buttons.Pause_0).gameObject.BindUIEvent(PauseButton);
-            GetButton((int)Buttons.Unlock_0).gameObject.BindUIEvent(UnlickButton);
+            GetButton((int)Buttons.Unlock_0).gameObject.BindUIEvent(UnlockButton);
 
             GridInputHandler gh = FindAnyObjectByType<GridInputHandler>();
             gh.mouseUpSubscriberEvent -= ShopUI;
@@ -90,7 +90,8 @@ namespace UI.Scene
             _rp= FindAnyObjectByType<RangePreview>();
             _hpBar = GameObject.Find("HPBar").GetComponentInChildren<Slider>();
             _hpBarText = _hpBar.GetComponentInChildren<TextMeshProUGUI>();
-
+            _unlockBCK=GetButton((int)Buttons.Unlock_0).gameObject.GetChild<TextMeshProUGUI>("UnlockBCK");
+            _unlockBCK.text=_aum.GetDemendedCurrency().ToString();
             FindAnyObjectByType<TowerManager>().OnTowerDeadEvent += () =>
             {
                 _hpBar.transform.parent.gameObject.SetActive(false);
@@ -133,11 +134,14 @@ namespace UI.Scene
 
         }
 
-        protected void UnlickButton(PointerEventData _)
+        protected void UnlockButton(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
 
-            _aum.TryUnlock();
+            if(_aum.TryUnlock()==true)
+            {
+                _unlockBCK.text = _aum.GetDemendedCurrency().ToString();
+            }
 
             if (_aum.DoesReachedEnd())
             {
