@@ -22,7 +22,7 @@ namespace Data
         #endregion
 
         #region ÀçÈ­
-        public int Currency=100;
+        //public int Currency=100;
         #endregion
     }
 }

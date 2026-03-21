@@ -167,7 +167,7 @@ namespace UI.Scene
                     //GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
                     if (Managers.Instance.GameManager.SoundSet == true)
                     {
-                        Managers.Instance.SoundManager.Play(0, "TestSound", true, Managers.Instance.GameManager.SoundValue);
+                        Managers.Instance.SoundManager.Play(0, "TitleBGM", true, Managers.Instance.GameManager.SoundValue);
                     }
                 }
             });
