@@ -19,6 +19,7 @@ namespace Scenes
         private void OnEnable()
         {
             _backAction.action.Enable();
+            _backAction.action.performed -= OnBack;
             _backAction.action.performed += OnBack;
         }
 
@@ -40,7 +41,7 @@ namespace Scenes
             else
             {
                 _lastBackTime = Time.time;
-                CloseGame("ÇÑ ¹ø ´õ ´©¸£¸é Á¾·áµË´Ï´Ù");
+                CloseGame("í•œ ë²ˆ ë” ëˆ„ë¥´ë©´ ì¢…ë£Œë©ë‹ˆë‹¤");
             }
         }
         private void CloseGame(string message)
