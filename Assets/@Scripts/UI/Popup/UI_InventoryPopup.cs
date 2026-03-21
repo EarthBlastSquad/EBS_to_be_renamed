@@ -82,7 +82,9 @@ namespace UI.Popup
 
         public void SlotChange(sbyte index,string s)
         {
-            GetButton(index).transform.GetChild(0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>(s);
+            Image image = GetButton(index).transform.GetChild(0).GetComponent<Image>();
+            image.sprite = Managers.Instance.ResourceManager.Load<Sprite>(s);
+            SelectSlot(index, image, null);
         }
         public sbyte SelectedSlotIndex { get; private set; }
         protected void SelectSlot(sbyte index, Image t, PointerEventData _)
@@ -96,7 +98,7 @@ namespace UI.Popup
 
             SelectedSlot = t;
             SelectedSlotIndex = index;
-            SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
+            //SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
             SelectedSlot.transform.parent.GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
         }
 
