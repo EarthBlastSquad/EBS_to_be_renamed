@@ -28,7 +28,8 @@ namespace UI.Scene
         enum Buttons
         {
             TextBar_0,
-            TotalButton_0
+            TotalButton_0,
+            SkipButton_0
         }
 
         enum Texts
@@ -54,6 +55,7 @@ namespace UI.Scene
             _esm=FindAnyObjectByType<EndingSceneManager>();
             GetButton((int)Buttons.TextBar_0).gameObject.BindUIEvent(NextText);
             GetButton((int)Buttons.TotalButton_0).gameObject.BindUIEvent(TotalPopup);
+            GetButton((int)Buttons.SkipButton_0).gameObject.BindUIEvent(SkipEnding);
             GetObject((int)GameObjects.Totals_0).SetActive(false);
             //GetContents();
             return true;
@@ -95,6 +97,15 @@ namespace UI.Scene
 
         #endregion
         #region 바인드용
+
+        private void SkipEnding(PointerEventData _)
+        {
+            Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
+            string buffer="";
+            while (_esm.GetNowContent(ref buffer) != EndingContentType.TYPE_INVALID) { }
+            GetContents();
+        }
+
         protected void NextText(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
