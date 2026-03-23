@@ -55,6 +55,7 @@ namespace UI.Scene
             GetButton((int)Buttons.TextBar_0).gameObject.BindUIEvent(NextText);
             GetButton((int)Buttons.TotalButton_0).gameObject.BindUIEvent(TotalPopup);
             GetObject((int)GameObjects.Totals_0).SetActive(false);
+            //GetContents();
             return true;
         }
 

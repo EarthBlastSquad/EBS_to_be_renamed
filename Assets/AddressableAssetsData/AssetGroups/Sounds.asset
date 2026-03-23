@@ -39,6 +39,14 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a9434140c69f9e4f8c68760f1ea38df
+    m_Address: GameBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 28eee349159cba74cb938145d96fb802
     m_Address: BalloonBurst
     m_ReadOnly: 0
@@ -52,6 +60,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d2a8be1cae78ab4a9d22986717b1187
+    m_Address: LobbyBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -119,11 +135,27 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ec194389e8eea64aa0c829541fe7a79
+    m_Address: TitleBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 936e4f4c87c683d408d9c39fdc54f676
     m_Address: ObjectFallSoft
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 940195e9c06d33d42b3386f24e71e81a
+    m_Address: LoseBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -156,6 +188,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - Sound
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9491226e170c57468cf0f54a118aca2
+    m_Address: WinBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0

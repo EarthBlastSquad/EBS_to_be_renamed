@@ -172,7 +172,7 @@ namespace Manager.Contents
         private string _path; //SaveData.Json은 Addressables로 관리하는게 아님
         public void SaveGame()
         {
-            _gameData.Currency = Managers.Instance.CurrencyManager.GetCurrency;
+            //_gameData.Currency = Managers.Instance.CurrencyManager.GetCurrency;
             File.WriteAllText(_path, JsonConvert.SerializeObject(_gameData, Formatting.Indented));
         }
         public bool LoadGame()
@@ -196,7 +196,7 @@ namespace Manager.Contents
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
-            Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
+            //Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
             //TowerFetch();
             if (OwnedTowers.Count() < Managers.Instance.DataManager.TowerDic.Count())
             {

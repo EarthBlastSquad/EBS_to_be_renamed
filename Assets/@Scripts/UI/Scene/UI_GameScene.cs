@@ -102,6 +102,7 @@ namespace UI.Scene
             {
                 Managers.Instance.ResourceManager.Instantiate("TutorialHelper", transform, false, false);
             }
+            Managers.Instance.SoundManager.Play(0, "GameBGM", true, Managers.Instance.GameManager.SoundValue);
             return true;
         }
 
