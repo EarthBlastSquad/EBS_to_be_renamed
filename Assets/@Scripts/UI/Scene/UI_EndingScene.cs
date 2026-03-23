@@ -101,9 +101,14 @@ namespace UI.Scene
         private void SkipEnding(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            string buffer="";
-            while (_esm.GetNowContent(ref buffer) != EndingContentType.TYPE_INVALID) { }
-            GetContents();
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("LobbySceneLoaded", (key, count, totalCount) =>
+            {
+                if (count == totalCount)
+                {
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.LobbyScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("EndingSceneLoaded");
+                }
+            });
         }
 
         protected void NextText(PointerEventData _)
