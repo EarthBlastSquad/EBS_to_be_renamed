@@ -187,6 +187,8 @@ namespace UI.Scene
                 GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
                 GetObject((int)GameObjects.SoundSlider_0).SetActive(false);
                 GetObject((int)GameObjects.SettingPanel_0).SetActive(false);
+                GetButton((int)Buttons.LicenseOpen_0).gameObject.SetActive(false);
+                GetButton((int)Buttons.CreditOpen_0).gameObject.SetActive(false);
             }
             else
             {
@@ -194,6 +196,8 @@ namespace UI.Scene
                 GetObject((int)GameObjects.SettingPanel_0).SetActive(true);
                 GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(true);
                 GetObject((int)GameObjects.SoundSlider_0).SetActive(true);
+                GetButton((int)Buttons.LicenseOpen_0).gameObject.SetActive(true);
+                GetButton((int)Buttons.CreditOpen_0).gameObject.SetActive(true);
             }
             _setting = !_setting;
         }
