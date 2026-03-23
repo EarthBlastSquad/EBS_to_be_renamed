@@ -131,5 +131,41 @@ namespace Scenes
             Managers.Instance.TimerManager.StartTimer(OnSecondEnd, _waveMgr.GetNowWaveData().WaveTimeLimit, 1f);
             OnWaveChanged?.Invoke(_waveMgr.GetNowWaveData());
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("test_lose")]
+        void _Test_Func_Ending_Lose()
+        {
+            _isEndCalled = true;
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
+            {
+                if (count == totalCount)
+                {
+                    OnGameEnd?.Invoke(GameEndType.LOSE);
+                    SaveClearData(false);
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                    Managers.Instance.ResourceManager.ReleaseIn("TutorialGameSceneLoaded");
+                }
+            });
+        }
+
+        [ContextMenu("test_win")]
+        void _Test_Func_Ending_Win()
+        {
+            _isEndCalled = true;
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("EndingSceneLoaded", (key, count, totalCount) =>
+            {
+                if (count == totalCount)
+                {
+                    OnGameEnd?.Invoke(GameEndType.WIN);
+                    SaveClearData(true);
+                    Managers.Instance.SceneManagerEx.LoadScene(SceneNames.EndingScene);
+                    Managers.Instance.ResourceManager.ReleaseIn("GameSceneLoaded");
+                    Managers.Instance.ResourceManager.ReleaseIn("TutorialGameSceneLoaded"); //어차피 로드된게 없으면 return 바로 받으니 여기서 추가
+                }
+            });
+        }
+#endif
     }
 }
