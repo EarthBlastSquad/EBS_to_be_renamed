@@ -23,7 +23,7 @@
       "CrackSpriteNameBase": "crack_",
       "InvincibilityTime": 0,
       "TowerHP": 11,
-      "DemendedCurrency": 33,
+      "DemendedCurrency": 12,
       "TowerDescription": "평범한 벽인듯 하다.",
       "HitSound": "SmallCrackShatterSound",
       "AnimatorControllerName": "TestEntityAnimController",
