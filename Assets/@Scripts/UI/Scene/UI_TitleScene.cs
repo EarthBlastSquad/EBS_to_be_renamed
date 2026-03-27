@@ -151,6 +151,15 @@ namespace UI.Scene
             //    }
             //});
             //return;
+#if UNITY_EDITOR
+            Managers.Instance.ResourceManager.LoadAsyncAllIn("TestPreLoad", (key, count, totalCount) =>
+            {
+                if (count == totalCount)
+                {
+                    Debug.Log("TestPreLoaded È®ÀÎ¿ë");
+                }
+            });
+#endif
             Managers.Instance.ResourceManager.LoadAsyncAllIn("TitleSceneLoaded", (key, count, totalCount) =>
             {
                 GetObject((int)GameObjects.Slider_0).GetComponent<Slider>().value = (float)count / totalCount;
@@ -167,7 +176,7 @@ namespace UI.Scene
                     //GetObject((int)GameObjects.SoundSlider_0).transform.GetComponent<Slider>().value = Managers.Instance.GameManager.SoundValue * 15;
                     if (Managers.Instance.GameManager.SoundSet == true)
                     {
-                        Managers.Instance.SoundManager.Play(0, "TitleBGM", true, Managers.Instance.GameManager.SoundValue);
+                        Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, "TitleBGM", true, Managers.Instance.GameManager.SoundValue);
                     }
                 }
             });

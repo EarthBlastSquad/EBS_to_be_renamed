@@ -241,7 +241,7 @@ namespace UI.Scene
             {
                 return;
             }
-            Managers.Instance.SoundManager.Play(0, "LobbyBGM", true, Managers.Instance.GameManager.SoundValue);
+            Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, "LobbyBGM", true, Managers.Instance.GameManager.SoundValue);
         }
         protected void OnOffVolume(PointerEventData _)
         {
@@ -262,7 +262,7 @@ namespace UI.Scene
             {
                 GetButton((int)Buttons.SoundOnOff_0).GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_on");
                 GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_on");
-                Managers.Instance.SoundManager.Play(0, "LobbyBGM", true, Managers.Instance.GameManager.SoundValue);
+                Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, "LobbyBGM", true, Managers.Instance.GameManager.SoundValue);
             }
         }
         private void Start()

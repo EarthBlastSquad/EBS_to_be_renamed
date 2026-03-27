@@ -1,6 +1,7 @@
 
 using Coordinator;
 using Data;
+using DG.Tweening;
 using InputHandler;
 using Manager;
 using Manager.Contents;
@@ -26,6 +27,8 @@ namespace UI.Scene
         private RangePreview _rp;
         private HPCoordinator _hpc;
         private TextMeshProUGUI _unlockBCK;
+        private WaveFlags _thisWave;
+
         #region Enum
         enum GameObjects
         {
@@ -102,7 +105,14 @@ namespace UI.Scene
             {
                 Managers.Instance.ResourceManager.Instantiate("TutorialHelper", transform, false, false);
             }
-            Managers.Instance.SoundManager.Play(0, "GameBGM", true, Managers.Instance.GameManager.SoundValue);
+            Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, "GameBGM", true, Managers.Instance.GameManager.SoundValue);
+            Managers.Instance.SoundManager.FadeType(Utils.Defines.SoundChannelTypes.BGM, Managers.Instance.GameManager.SoundValue, 2f);
+            _thisWave = WaveFlags.Default;
+            _gs.OnWaveChanged -= WaveTheme;
+            _gs.OnWaveChanged += WaveTheme;
+#if UNITY_EDITOR
+            Managers.Instance.ResourceManager.Instantiate("@UI_Test",transform, false, false);
+#endif
             return true;
         }
 
@@ -232,7 +242,32 @@ namespace UI.Scene
         }
         #endregion
         #endregion
+        protected void WaveTheme(WaveData wd) //사운드도 일종의 User Interface이므로 여기에 추가함.
+        {
+            if (_thisWave == wd.WaveFlags)
+            {
+                return;
+            }
+            _thisWave = wd.WaveFlags;
+            switch(wd.WaveFlags)
+            {
+                case WaveFlags.Default:
+                    Managers.Instance.SoundManager.CrossFadeType(Utils.Defines.SoundChannelTypes.SUBBGM, Utils.Defines.SoundChannelTypes.BGM, 2.5f);
+                    DOVirtual.DelayedCall(2.5f, () =>
+                    {
+                        Managers.Instance.SoundManager.StopAllOf(Utils.Defines.SoundChannelTypes.SUBBGM);
+                    });
+                    break;
+                case WaveFlags.Boss:
+                    Managers.Instance.SoundManager.StopAllOf(Utils.Defines.SoundChannelTypes.SUBBGM);
+                    Managers.Instance.SoundManager.PlayBGMInIdleChannel(Utils.Defines.SoundChannelTypes.SUBBGM, "BossBGM", true, Managers.Instance.GameManager.SoundValue);
+                    Managers.Instance.SoundManager.CrossFadeType(Utils.Defines.SoundChannelTypes.BGM, Utils.Defines.SoundChannelTypes.SUBBGM, 2.5f);
+                    break;
+                case WaveFlags.Event:
 
+                    break;
+            }
+        }
         public void ESCClose()
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);

@@ -117,4 +117,10 @@ namespace Utils.Defines
         TYPE_IMAGE=4,
         TYPE_INVALID=-666775
     }
+    public enum WaveFlags
+    {
+        Default = 0,
+        Boss = 1,
+        Event = 2
+    }
 }

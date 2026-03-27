@@ -109,7 +109,7 @@ namespace Data
         public float MobSpawnRate;
         public int NextWaveIdx;
         public List<int> MobIDs;
-
+        public Utils.Defines.WaveFlags WaveFlags;
         //각종 파라미터들
         public WaveData(WaveData original)
         {
@@ -119,6 +119,7 @@ namespace Data
             MobIDs = original.MobIDs;
             MobSpawnRate = original.MobSpawnRate;
             NextWaveIdx = original.NextWaveIdx;
+            WaveFlags = original.WaveFlags;
         }
         public WaveData() { }
     }
