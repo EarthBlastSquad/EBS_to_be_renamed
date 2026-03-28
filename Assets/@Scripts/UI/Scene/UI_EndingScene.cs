@@ -78,7 +78,7 @@ namespace UI.Scene
                     _tween = DOTween.To(() => _textBar.maxVisibleCharacters,x => _textBar.maxVisibleCharacters = x,_total, _total * 0.05f).SetEase(Ease.Linear); //함수화 해둘 이유가 없는거라 람다씀
                     break;
                 case EndingContentType.TYPE_SOUND:
-                    Managers.Instance.SoundManager.Play(0, s, true, Managers.Instance.GameManager.SoundValue);
+                    Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, s, true, Managers.Instance.GameManager.SoundValue);
                     GetContents();
                     break;
                 case EndingContentType.TYPE_INVALID:
