@@ -127,6 +127,14 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a223727948bf304baf12bfc6b00d149
+    m_Address: TitleBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6de0efd65d8b05344ac45be4b717183e
     m_Address: BalloonAirOut
     m_ReadOnly: 0

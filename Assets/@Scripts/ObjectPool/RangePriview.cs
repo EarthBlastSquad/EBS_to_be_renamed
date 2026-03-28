@@ -7,7 +7,7 @@ namespace ObjectPool
     public class RangePreview : MonoBehaviour
     {
         private Mesh _mesh;
-        private RectInt _gridRect = new RectInt(0, 0, 120, 6);
+        private RectInt _gridRect = new RectInt(0, 0, (int)Utils.Defines.MapMaxCellCnt.MAX_WIDTH, (int)Utils.Defines.MapMaxCellCnt.MAX_HEIGHT);
 
         void Awake()
         {
