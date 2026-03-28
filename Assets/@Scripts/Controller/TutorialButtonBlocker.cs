@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Manager;
 using System.Collections;
+using TMPro;
 using UI.Popup;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Controller
     {
         private RectTransform _allowedBox;
         private RectTransform _helper;
+        private TextMeshProUGUI _textMeshProUGUI;
         private float _cellSize;
         //private Image _image;
         private int _step = 0;
@@ -37,7 +39,7 @@ namespace Controller
             _clickAction.action.performed += OnClickStarted;
             _clickAction.action.Enable();
             _cellSize = 100f;//_allowedBox.GetComponentInParent<Canvas>().scaleFactor;
-
+            _textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
 
             UI_Shop uis = FindAnyObjectByType<UI_Shop>(FindObjectsInactive.Include);
             uis.BuyAction -= DragEnd;
@@ -111,22 +113,26 @@ namespace Controller
             {
                 case 0:
                     SetStep(FindObject("Unlock_0")); //임시
+                    _textMeshProUGUI.text = "이 버튼이 확장입니다.";
                     Managers.Instance.GameManager.IsGamePaused = true;
                     Time.timeScale = 0;
                     break;
                 case 1:
                     SetGrid(new Vector3(-150, -5, 0));
+                    _textMeshProUGUI.text = "이 그리드를 클릭해주세요";
                     Managers.Instance.GameManager.IsGamePaused = false;
                     Managers.Instance.GameManager.IsDragging = true;
                     break;
                 case 2:
                     SetStep(FindObject("Slot_0"));
+                    _textMeshProUGUI.text = "이 타워를 클릭해주세요";
                     Managers.Instance.GameManager.IsDragging = true;
                     break;
                 case 3:
                     Time.timeScale = 0.1f;
                     _isDrag = true;
                     SetDrag(new Vector3(-150, -5, 0));
+                    _textMeshProUGUI.text = "드래그하여 끌어 놓아 봅시다.";
                     Managers.Instance.GameManager.IsDragging = true;
                     break;
                 case 4:
@@ -159,11 +165,11 @@ namespace Controller
             _allowedBox.sizeDelta = target.sizeDelta;
             if (target.position.y < Screen.height / 2)
             {
-                _helper.transform.position = target.position + new Vector3(0, 150, 0);
+                _helper.transform.position = target.position + new Vector3(0, 300, 0);
             }
             else
             {
-                _helper.transform.position = target.position + new Vector3(0, -150, 0);
+                _helper.transform.position = target.position + new Vector3(0, -300, 0);
             }
 
         }
@@ -173,11 +179,11 @@ namespace Controller
             _allowedBox.sizeDelta = new Vector2(_cellSize, _cellSize);
             if (pos.y < 0)
             {
-                _helper.transform.position = _allowedBox.position + new Vector3(0, 150, 0);
+                _helper.transform.position = _allowedBox.position + new Vector3(0, 300, 0);
             }
             else
             {
-                _helper.transform.position = _allowedBox.position + new Vector3(0, -150, 0);
+                _helper.transform.position = _allowedBox.position + new Vector3(0, -300, 0);
             }
         }
 
