@@ -23,6 +23,12 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f68a12afca105e54f84970dfba073944
+    m_Address: '@UI_Test'
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:
