@@ -21,14 +21,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6a223727948bf304baf12bfc6b00d149
-    m_Address: TitleBGM
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Sound
-    - TestPreLoad
-    - TitleSceneLoaded
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acbb46cfa548f0d4b91abfc8683cbdbd
     m_Address: Assets/@Resources/Textures/Ending/good_ending_1.png
     m_ReadOnly: 0

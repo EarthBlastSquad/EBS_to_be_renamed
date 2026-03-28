@@ -18,7 +18,7 @@ namespace UI.Popup
         {
             Slider_0,
             Inventorys_0,
-            TowerDataPopUp_0,
+            TowerData_0,
             Background_0,
             CantSet_0
         }
@@ -111,14 +111,14 @@ namespace UI.Popup
         public void OpenTDP(Contents.Tower.Tower t)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(true);
+            GetObject((int)GameObjects.TowerData_0).SetActive(true);
             GetObject((int)GameObjects.Background_0).SetActive(true);
-            GetObject((int)GameObjects.TowerDataPopUp_0).GetComponent<UI_TowerDataPopup>().OpenTowerData(t);
+            GetObject((int)GameObjects.TowerData_0).GetComponent<UI_TowerData>().OpenTowerData(t);
         }
         public void CloseTDP()
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            GetObject((int)GameObjects.TowerDataPopUp_0).SetActive(false);
+            GetObject((int)GameObjects.TowerData_0).SetActive(false);
             GetObject((int)GameObjects.Background_0).SetActive(false);
         }
         private CanvasGroup _cancelCanvasGroup;
