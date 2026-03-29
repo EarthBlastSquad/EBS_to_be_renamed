@@ -7,8 +7,6 @@ using TMPro;
 using UI;
 using UI.Popup;
 using UI.Popup.Cell;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
