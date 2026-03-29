@@ -15,7 +15,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
-using static UnityEditor.PlayerSettings;
 
 namespace ObjectPool
 {
@@ -87,9 +86,9 @@ namespace ObjectPool
                 transform.parent.GetComponentInChildren<UnityEngine.UI.Slider>().maxValue = end / 9;
             }
 
-            for (int i = 0; i < end; i++) //3¿∏∑Œ Ω·≥˘¡ˆ∏∏ ui¿« ¿Œ««¥œ∆º «Æ ∞≥ºˆ∑Œ µÈæÓ∞• øπ¡§
+            for (int i = 0; i < end; i++) //3ÏúºÎ°ú Ïç®ÎÜ®ÏßÄÎßå uiÏùò Ïù∏ÌîºÎãàÌã∞ ÌíÄ Í∞úÏàòÎ°ú Îì§Ïñ¥Í∞à ÏòàÏ†ï
             {
-                //getbutton(i).image=; ª˘«√¿Ã æ¯≥◊... ∏Ù∂Û ¿œ¥‹ ≈ÿΩ∫∆Æ
+                //getbutton(i).image=; ÏÉòÌîåÏù¥ ÏóÜÎÑ§... Î™∞Îùº ÏùºÎã® ÌÖçÏä§Ìä∏
                 var td = Managers.Instance.GameManager.OwnedTowers[i];
                 UnityEngine.UI.Button b = GetButton(i + (int)Buttons.Inventory_0_0);
                 ItemCell ic = b.transform.GetComponent<ItemCell>();
@@ -106,7 +105,7 @@ namespace ObjectPool
                 GetButton(j + (int)Buttons.Inventory_0_0).gameObject.SetActive(false);
             }
         }
-        #region ∞¢ πˆ∆∞ ±‚¥…
+        #region Í∞Å Î≤ÑÌäº Í∏∞Îä•
         private UI_InventoryPopup _uI_IP;
         private bool _isPointerDown=false,_isDragging = false;
         private float _pressTime, _dragThresholdTime = 0.3f;
