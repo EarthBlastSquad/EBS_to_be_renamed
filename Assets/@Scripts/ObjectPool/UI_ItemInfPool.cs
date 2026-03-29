@@ -1,4 +1,5 @@
 using Contents.Tower;
+using Data;
 using Manager;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Utils;
 using Utils.Defines;
+using static UnityEditor.PlayerSettings;
 
 namespace ObjectPool
 {
@@ -63,7 +65,11 @@ namespace ObjectPool
 
             _rectTransform= GetComponent<RectTransform>();
             _uI_IP = transform.parent.GetComponent<UI_InventoryPopup>();
-            _selectedItemSprite = transform.parent.gameObject.GetChild<Image>("SelectedItem_0");
+            _selectedItemSprite = transform.parent.parent.gameObject.GetChild<Image>("SelectedItem_0");
+            _selectedItemRect= _selectedItemSprite.GetComponent<RectTransform>();
+            _rootCanvas = _selectedItemRect.GetComponentInParent<Canvas>().rootCanvas;
+            _towerData = FindAnyObjectByType<UI_TowerData>();
+            //_selectedItemRect.pivot = new Vector2(0.5f, 0.5f);
             _slots[0] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_0").GetComponent<RectTransform>();
             _slots[1] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_1").GetComponent<RectTransform>();
             _slots[2] = _uI_IP.gameObject.GetChild<SlotCell>("Slot_2").GetComponent<RectTransform>();
@@ -100,31 +106,36 @@ namespace ObjectPool
                 GetButton(j + (int)Buttons.Inventory_0_0).gameObject.SetActive(false);
             }
         }
+        #region 각 버튼 기능
         private UI_InventoryPopup _uI_IP;
         private bool _isPointerDown=false,_isDragging = false;
         private float _pressTime, _dragThresholdTime = 0.3f;
         private UnityEngine.UI.Image _selectedItemSprite;
+        private RectTransform _selectedItemRect;
         private Contents.Tower.Tower _selectedTower;
         private RectTransform[] _slots=new RectTransform[3];
+        private Canvas _rootCanvas;
+        private UI_TowerData _towerData;
         protected void SelectItemDown(Contents.Tower.Tower t,PointerEventData _)
         {
             _isPointerDown = true;
             _isDragging = false;
             _selectedTower = t;
             _pressTime = Time.unscaledTime;
+            _uI_IP.OpenTDP(_selectedTower);
         }
         protected void SelectItemUp(PointerEventData _)
         {
             _isPointerDown = false;
             if (_isDragging==false)
             {
-                _uI_IP.OpenTDP(_selectedTower);
+                return;
             }
             else
             {
                 _isDragging = false;
                 _selectedItemSprite.enabled = false;
-                Vector2 v=Pointer.current.position.ReadValue();
+                Vector2 v=_selectedItemRect.position;
                 sbyte sb=-1;
                 if (RectTransformUtility.RectangleContainsScreenPoint(_slots[0], v))
                 {
@@ -155,7 +166,10 @@ namespace ObjectPool
         }
         private void ItemDragging()
         {
-            _selectedItemSprite.transform.position= Pointer.current.position.ReadValue();
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_rootCanvas.transform as RectTransform,Pointer.current.position.ReadValue(), _rootCanvas.worldCamera, out pos);
+
+            _selectedItemRect.anchoredPosition = pos;
         }
         private void FixedUpdate()
         {
@@ -174,9 +188,11 @@ namespace ObjectPool
                     _isDragging = true;
                     _selectedItemSprite.enabled = true;
                     _selectedItemSprite.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_selectedTower.TowerData.TowerImgName);
+                    //_towerData.OpenTowerData();
                 }
             }
         }
+        #endregion
         private RectTransform _rectTransform;
         public void Slide(int sliderValue)
         {
