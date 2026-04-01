@@ -63,7 +63,7 @@ namespace Manager.Contents
             {
                 return;
             }
-            var go = Managers.Instance.ResourceManager.Instantiate(skillData.PrefabName, pooling: true);
+            var go = Managers.Instance.ResourceManager.Instantiate(skillData.PrefabName, worldPositionStays: false, pooling: true);
 
             if(go is null)
             {
