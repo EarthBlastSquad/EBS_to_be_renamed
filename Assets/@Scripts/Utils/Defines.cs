@@ -65,7 +65,7 @@ namespace Utils.Defines
 
     public enum MapMaxCellCnt
     {
-        MAX_WIDTH = 40,
+        MAX_WIDTH = 41,
         MAX_HEIGHT = 6
     }
 
