@@ -1,15 +1,11 @@
 using Contents.Tower;
 using Data;
-using Manager.Core;
 using Newtonsoft.Json;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Utils.Defines;
 
 namespace Manager.Contents
@@ -67,17 +63,34 @@ namespace Manager.Contents
 
         public bool TryGetClearData(int stageIdx, out ValueTuple<int, bool> clearData)
         {
-            if (_gameData.StageClearData.TryGetValue(stageIdx, out clearData))
+            for (int i = 0; i < _gameData.StageClearData.Count; i++)
             {
-                return true;
+                if (_gameData.StageClearData[i].StageId == stageIdx)
+                {
+                    clearData = new ValueTuple<int, bool>(_gameData.StageClearData[i].Wave, _gameData.StageClearData[i].Cleared);
+                    return true;
+                }
             }
-
+            clearData = default;
             return false;
         }
 
         public void SetClearData(int stageIdx, ValueTuple<int, bool> clearData)
         {
-            _gameData.StageClearData[stageIdx] = clearData;
+            bool successed = false;
+            for (int i = 0; i < _gameData.StageClearData.Count; i++)
+            {
+                if (_gameData.StageClearData[i].StageId == stageIdx)
+                {
+                    _gameData.StageClearData[i].Wave = clearData.Item1;
+                    _gameData.StageClearData[i].Cleared = clearData.Item2;
+                    successed = true;
+                }
+            }
+            if(successed == false)
+            {
+                _gameData.StageClearData.Add(new StageClearData(stageIdx, clearData.Item1,clearData.Item2));
+            }
             LastGameEndStatus = clearData;
             SaveGame();
         }
@@ -107,73 +120,13 @@ namespace Manager.Contents
             //SaveGame(); //Init()인 만큼 없을때 생성하게 하는 의도도 있음.
 
         }
-        private void TowerFetch()
-        {
-            foreach (Tower t in OwnedTowers)
-            {
-#if UNITY_EDITOR
-                Debug.Log(t.TowerData.TowerName);
-#endif
-                if (Managers.Instance.DataManager.TowerDic.TryGetValue(t.TowerData.TowerId, out TowerData td) == true)
-                {
-#if UNITY_EDITOR
-                    Debug.Log("패치");
-#endif
-                    var tFields = t.TowerData.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                    var tProps = t.TowerData.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-                    var dFields = td.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                    var dProps = td.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-                    foreach (var tf in tFields)
-                    {
-                        foreach (var df in dFields)
-                        {
-                            if (tf.Name == df.Name && tf.FieldType == df.FieldType)
-                            {
-                                tf.SetValue(t.TowerData, df.GetValue(td));
-                                for (int i = 0; i < EquippedTowers.Count(); i++)
-                                {
-                                    if (EquippedTowers[i].key == t.key)
-                                    {
-                                        EquippedTowers[i] = t;
-                                    }
-                                }
-                                break;
-                            }
-                        }
-                    }
-                    foreach (var tp in tProps)
-                    {
-                        if (tp.CanWrite)
-                        {
-                            foreach (var dp in dProps)
-                            {
-
-                                if (dp.CanRead && tp.Name == dp.Name && tp.PropertyType == dp.PropertyType)
-                                {
-                                    tp.SetValue(t.TowerData, dp.GetValue(td));
-                                    for (int i = 0; i < EquippedTowers.Count(); i++)
-                                    {
-                                        if (EquippedTowers[i].key == t.key)
-                                        {
-                                            EquippedTowers[i] = t;
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        
         #region Save,Load
         private string _path; //SaveData.Json은 Addressables로 관리하는게 아님
         public void SaveGame()
         {
             //_gameData.Currency = Managers.Instance.CurrencyManager.GetCurrency;
-            File.WriteAllText(_path, JsonConvert.SerializeObject(_gameData, Formatting.Indented));
+            File.WriteAllText(_path, JsonConvert.SerializeObject(_gameData));
         }
         public bool LoadGame()
         {
@@ -183,16 +136,18 @@ namespace Manager.Contents
             }
             if (File.Exists(_path) == false)
             {
-                OwnedTowers.Clear();
                 _gameData.OwnedTowers.Clear();
-                for (int i = 1; i < 6; i++)
-                {
-                    GetTower(i);
-                }
+
                 EquippedTowers = new Tower[3] { new Tower(1), new Tower(2), new Tower(3) };
                 EquippedTowers[0].Slot = 0;
                 EquippedTowers[1].Slot = 1;
                 EquippedTowers[2].Slot = 2;
+                for (int i = 1; i < 6; i++)
+                {
+                    _gameData.OwnedTowers.Add(i);
+                }
+                //_gameData.EquippedTowers = new int[3] { -1, -1, -1 };
+
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
@@ -225,6 +180,7 @@ namespace Manager.Contents
             Debug.Log(OwnedTowers[0]);
             Debug.Log(Manager.Managers.Instance.CurrencyManager.GetCurrency);
 #endif
+
             for (int i = 0; i < 3; i++)
             {
                 if (_gameData.EquippedTowers[i] != -1)
@@ -276,6 +232,10 @@ namespace Manager.Contents
             }
             Tower t = new Tower(towerID);
             if (t.TowerData is null)
+            {
+                return;
+            }
+            if(_gameData.OwnedTowers.Contains(towerID))
             {
                 return;
             }

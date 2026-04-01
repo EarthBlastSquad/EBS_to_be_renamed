@@ -125,17 +125,13 @@ namespace Controller
                     break;
                 case 2:
                     SetStep(FindObject("Slot_0"));
-                    _textMeshProUGUI.text = "이 타워를 클릭해주세요";
-                    Managers.Instance.GameManager.IsDragging = true;
-                    break;
-                case 3:
                     Time.timeScale = 0.1f;
                     _isDrag = true;
                     SetDrag(new Vector3(-150, -5, 0));
-                    _textMeshProUGUI.text = "드래그하여 끌어 놓아 봅시다.";
+                    _textMeshProUGUI.text = "드래그하여 끌어 놓아 주세요.";
                     Managers.Instance.GameManager.IsDragging = true;
                     break;
-                case 4:
+                case 3:
                     Managers.Instance.GameManager.IsDragging = false;
                     _allowedBox.gameObject.SetActive(false);
                     gameObject.SetActive(false);

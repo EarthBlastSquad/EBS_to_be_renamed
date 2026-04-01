@@ -25,25 +25,25 @@ namespace Controller
         {
             Transform t;
             float clf = _camera.transform.position.x - _lastX;
-            if (-20.32602f < clf&& clf < 20.32602f)
+            if (-19.59f < clf&& clf < 19.59f)
             {
                 return;
             }
-            else if (clf >= 20.32602f)
+            else if (clf >= 19.59f)
             {
                 t = _backgrounds.First.Value;
-                t.transform.position += new Vector3(60.97806f, 0, 0);
+                t.transform.position += new Vector3(19.59f * 3, 0, 0);
                 _backgrounds.RemoveFirst();
                 _backgrounds.AddLast(t);
-                _lastX += 20.32602f;
+                _lastX += 19.59f;
             }
             else
             {
                 t = _backgrounds.Last.Value;
-                t.transform.position -= new Vector3(60.97806f, 0, 0);
+                t.transform.position -= new Vector3(19.59f*3, 0, 0);
                 _backgrounds.RemoveLast();
                 _backgrounds.AddFirst(t);
-                _lastX -= 20.32602f;
+                _lastX -= 19.59f;
             }
         }
     }
