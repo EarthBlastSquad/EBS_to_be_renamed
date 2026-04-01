@@ -37,6 +37,14 @@ namespace Manager
         public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
         public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }
         public Contents.CooldownManager CooldownManager { get { return Instance?._cooldownMgr; } }
+
+        private void OnDestroy()
+        {
+            _sInstance._timerMgr = null;
+            _sInstance._cooldownMgr = null;
+            _sInstance = null;
+        }
+
         #endregion
         private static void Init()
         {
