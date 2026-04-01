@@ -12,6 +12,7 @@ namespace UI.Scene
     public class UI_LobbyScene : UIScene
     {
         private int _stageIdx = 0;
+        private Slider _soundSlider;
 
         #region Enum
         enum GameObjects
@@ -82,6 +83,7 @@ namespace UI.Scene
             GetButton((int)Buttons.Setting_0).gameObject.BindUIEvent(SettingMenu);
             GetButton((int)Buttons.SoundOnOff_0).gameObject.BindUIEvent(OnOffVolume);
             GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume, UIEventTypes.DRAG);
+            GetObject((int)GameObjects.SoundSlider_0).gameObject.BindUIEvent(SetVolume);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
             GetButton((int)Buttons.SoundOnOff_0).gameObject.SetActive(false);
             GetObject((int)GameObjects.SoundSlider_0).gameObject.SetActive(false);
@@ -93,6 +95,8 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
 
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
+            _soundSlider=GetObject((int)GameObjects.SoundSlider_0).GetComponent<Slider>();
+            _soundSlider.value = Managers.Instance.GameManager.SoundValue * 15;
             UpdateStageChangeArrowState();
             UpdateVolumeIcon();
             return true;
@@ -105,13 +109,12 @@ namespace UI.Scene
             GetButton((int)Buttons.InventoryClose_0).gameObject.SetActive(false);
             GetButton((int)Buttons.GameStart_0).gameObject.SetActive(true);
             GetObject((int)GameObjects.Inventory_0).gameObject.SetActive(false);
-            GetButton((int)Buttons.StageChange_0).gameObject.SetActive(true);
-            GetButton((int)Buttons.StageChange_1).gameObject.SetActive(true);
             GetButton((int)Buttons.TutorialOpen_0).gameObject.SetActive(true);
             GetText((int)Texts.StageName_0).gameObject.SetActive(true);
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(true);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(true);
             GetImage((int)Images.TextBackground_0).gameObject.SetActive(true);
+            UpdateStageChangeArrowState();
         }
         protected void InventoryOpen(PointerEventData _)
         {
@@ -236,7 +239,7 @@ namespace UI.Scene
         }
         protected void SetVolume(PointerEventData _)
         {
-            Managers.Instance.GameManager.SoundValue = _.pointerDrag.transform.GetComponent<Slider>().value / 15;
+            Managers.Instance.GameManager.SoundValue = _soundSlider.value / 15;
             if (Managers.Instance.GameManager.SoundSet == false)
             {
                 return;
