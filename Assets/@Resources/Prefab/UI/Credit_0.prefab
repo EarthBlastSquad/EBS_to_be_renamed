@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6856393593630745145}
   - component: {fileID: 5634424658440379184}
   m_Layer: 5
-  m_Name: "\uD14C\uC2A4\uD2B8 (1)"
+  m_Name: PM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: d
+  m_text: "\uC774\uC0C1\uC900"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09425ce9161883447bb6a01a8ae8047e, type: 2}
   m_sharedMaterial: {fileID: -6373670440612486636, guid: 09425ce9161883447bb6a01a8ae8047e, type: 2}
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2314399650065487487
 MonoBehaviour:
   m_ObjectHideFlags: 0
