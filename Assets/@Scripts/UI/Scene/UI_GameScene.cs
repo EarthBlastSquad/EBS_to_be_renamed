@@ -162,7 +162,7 @@ namespace UI.Scene
 
         protected void WaveUI(WaveData wd)
         {
-            GetText((int)Texts.Waves_0).text = $"{wd.WaveNumber}/9 Waves";
+            GetText((int)Texts.Waves_0).text = $"{wd.WaveNumber}/10 Waves";
         }
 
         protected void CurrencyUI(int c, int cc)
@@ -216,12 +216,12 @@ namespace UI.Scene
             }
             else
             {
-                GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
-                GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
-                _uis.Set(p,_);
-                GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
-                _uis.ShopOpen = true;
-                _hpBar.gameObject.SetActive(false);
+                if(_uis.ShopOpen==false)
+                {
+                    ShopOpen();
+                }
+                _uis.Set(p, _);
+
             }
         }
 
@@ -276,7 +276,13 @@ namespace UI.Scene
             Time.timeScale = 1;
             Manager.Managers.Instance.GameManager.IsGamePaused = false;
         }
-
-
+        public void ShopOpen()
+        {
+            GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
+            GetObject((int)GameObjects.TowerDatas_0).SetActive(false);
+            GetObject((int)GameObjects.Shop_0).gameObject.SetActive(true);
+            _uis.ShopOpen = true;
+            _hpBar.gameObject.SetActive(false);
+        }
     }
 }

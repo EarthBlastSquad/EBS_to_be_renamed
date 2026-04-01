@@ -7,6 +7,7 @@ using Manager.Contents;
 using ObjectPool;
 using System;
 using TMPro;
+using UI.Scene;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -71,6 +72,7 @@ namespace UI.Popup
 
             _selectTower.sprite = _sprites[0];
 
+            _uiTowerDatasMini=FindAnyObjectByType<UI_TowerDatasMini>();
             return true;
         }
         private void Awake()
@@ -92,6 +94,7 @@ namespace UI.Popup
         private float _pressTime, _dragThresholdTime = 0.3f;
         private Vector3Int _wp;
         public event Action BuyAction;
+        private UI_TowerDatasMini _uiTowerDatasMini;
         public void CheckButton(Vector3 _)
         {
             bool b = false;
@@ -128,7 +131,7 @@ namespace UI.Popup
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             _tm.PlaceTower(_towerData[(int)_s], _sv, _facing);
-            ShopOpen = false;
+            //ShopOpen = false;
             CloseSR();
             _rp.Hide();
             BuyAction?.Invoke();
@@ -137,11 +140,13 @@ namespace UI.Popup
         protected void Cancel(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
-            ShopOpen = false;
-         
+            //ShopOpen = false;
+
             CloseSR();
             _rp.Hide();
             SelectedSlot();
+            gameObject.SetActive(true);
+            _uiTowerDatasMini.gameObject.SetActive(false);
         }
 
         private void Arrows()
@@ -249,7 +254,10 @@ namespace UI.Popup
         private void HandleClick()
         {
             _uiSelectTower.gameObject.SetActive(true);
-            _rp.ShowAttackRange(Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId].AttackPos, _sv, _facing);
+            SkillData sd=Managers.Instance.DataManager.SkillDic[_towerData[(int)_s].SkillId];
+            _rp.ShowAttackRange(sd.AttackPos, _sv, _facing);
+            _uiTowerDatasMini.DontSellSet(_towerData[(int)_s].TowerName,sd.Damage,sd.Cooldown);
+            gameObject.SetActive(false);
         }
         private void SlotUp(PointerEventData _)
         {
