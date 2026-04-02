@@ -94,6 +94,7 @@ namespace Manager.Contents
                     _datas[x, y].victimList.Add(_nullVictim);
                 }
             }
+
 #if UNITY_EDITOR
             Debug.Log(_gridController.name);
 #endif
@@ -110,6 +111,10 @@ namespace Manager.Contents
 
         public bool CanPlacePiece(Vector2Int pos)
         {
+            if(pos.x <= 0)
+            {
+                return false;
+            }
             return (IsItLocked(pos) == false) && (_datas[pos.x, pos.y].nowHoldingPiece is null) && (_datas[pos.x,pos.y].victimList.Count <= 1); // IsItValidCellPos를 이미 IsItLocked에서 수행중
         }
 
@@ -312,7 +317,7 @@ namespace Manager.Contents
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             Vector3Int mouseCellPos = _grid.WorldToCell(mouseWorldPos);
             Vector2Int mouseCellPosVec2 = new Vector2Int(mouseCellPos.x, mouseCellPos.y);
-            if (IsItValidCellPos(mouseCellPosVec2) == false || IsItLocked(mouseCellPosVec2))
+            if (mouseCellPosVec2.x <= 0 || IsItValidCellPos(mouseCellPosVec2) == false || IsItLocked(mouseCellPosVec2))
             {
                 _gridController.SetHighlightAt(new Vector3Int(-100, -100, 0));
                 _lastSelectedPos = new Vector2Int(-1, -1);
