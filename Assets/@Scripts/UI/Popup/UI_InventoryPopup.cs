@@ -19,7 +19,7 @@ namespace UI.Popup
             Slider_0,
             Inventorys_0,
             TowerData_0,
-            Background_0,
+            //Background_0,
             CantSet_0
         }
         enum Buttons
@@ -48,7 +48,7 @@ namespace UI.Popup
             _cancelCanvasGroup=GetObject((int)GameObjects.CantSet_0).GetComponent<CanvasGroup>();
             GetObject((int)GameObjects.Slider_0).BindUIEvent((_)=>SlideInventory(s,_), Utils.Defines.UIEventTypes.DRAG);
             _infPool=GetObject((int)GameObjects.Inventorys_0).GetComponent<UI_ItemInfPool>();
-
+            _uiTowerData = GetObject((int)GameObjects.TowerData_0).GetComponent<UI_TowerData>();
             return true;
         }
         #region 버튼 세팅
@@ -79,7 +79,7 @@ namespace UI.Popup
         #region UI전용 함수들
         private UI_ItemInfPool _infPool;
         public Image SelectedSlot { get; private set; } //string으로는 옅은 복사가 안되는 것 같음
-
+        private UI_TowerData _uiTowerData;
         public void SlotChange(sbyte index,string s)
         {
             Image image = GetButton(index).transform.GetChild(0).GetComponent<Image>();
@@ -98,6 +98,7 @@ namespace UI.Popup
 
             SelectedSlot = t;
             SelectedSlotIndex = index;
+            OpenTDP(Managers.Instance.GameManager.EquippedTowers[index]);
             //SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>("null_sprite");
             SelectedSlot.transform.parent.GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("stone_button_short_off");
         }
@@ -112,14 +113,14 @@ namespace UI.Popup
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.TowerData_0).SetActive(true);
-            GetObject((int)GameObjects.Background_0).SetActive(true);
-            GetObject((int)GameObjects.TowerData_0).GetComponent<UI_TowerData>().OpenTowerData(t);
+            //GetObject((int)GameObjects.Background_0).SetActive(true);
+            _uiTowerData.OpenTowerData(t);
         }
         public void CloseTDP()
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             GetObject((int)GameObjects.TowerData_0).SetActive(false);
-            GetObject((int)GameObjects.Background_0).SetActive(false);
+            //GetObject((int)GameObjects.Background_0).SetActive(false);
         }
         private CanvasGroup _cancelCanvasGroup;
         public void CancelToast()

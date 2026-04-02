@@ -1,5 +1,6 @@
 using Manager;
 using ObjectPool;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Utils;
@@ -56,9 +57,13 @@ namespace UI
             GetButton((int)Buttons.StateChange_0).gameObject.BindUIEvent(StateChange);
             GetImage((int)Images.RangePreview_0).gameObject.SetActive(false);
             _spriteRenderer.enabled = false;
+
             return true;
         }
-
+        private void OnEnable()
+        {
+            OpenTowerData(Managers.Instance.GameManager.OwnedTowers[0]);
+        }
         public void OpenTowerData(Contents.Tower.Tower t)
         {
             _tower = t;
