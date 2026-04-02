@@ -37,6 +37,11 @@ namespace Manager.Core
 
         public void Play(Utils.Defines.SoundChannels channel, string key, bool loop, float? volume = null, float pitch = 1.0f)
         {
+            if(Managers.Instance.GameManager.SoundSet == false)
+            {
+                return;
+            }
+
             if (channel < Utils.Defines.SoundChannels.BGM_0 || channel >= Utils.Defines.SoundChannels.MAX_CHANNELS)
             {
 #if UNITY_EDITOR

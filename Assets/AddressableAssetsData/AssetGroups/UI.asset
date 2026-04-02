@@ -29,12 +29,33 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0c3b2d3f3f858429b9dd61ae339ad1
+    m_Address: inventory_slots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1f50a67950a535f4ca63bccb900f1d5e
     m_Address: AllowedBox
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestPreLoad
     - TutorialGameSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25316040023f4674488f274b9817c84e
+    m_Address: game_status
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fadf84283cc184449dbabbc5c1da080
+    m_Address: ending
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b8e8604b3655da4f9043c958e52247f
     m_Address: UI_TotalData
@@ -61,6 +82,13 @@ MonoBehaviour:
     - TestPreLoad
     - TitleSceneLoaded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b820d79570587048b665913913b5f2f
+    m_Address: game_placed_towers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6249f612ea3bf4748815f3a71a5cca6f
     m_Address: null_sprite
     m_ReadOnly: 0
@@ -75,6 +103,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6602d1ac56b34cc449096a6b628a029e
+    m_Address: game_activate_placing_mode
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -117,11 +152,46 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b63555c6d9eeaac419ab2fd15db4037e
+    m_Address: game_unlock_button
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca24b78729b1aec4481caa80bdfad205
     m_Address: "\uB2E4\uC774\uC5B4\uD2B8_0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccbd2f6104fb7f942a4010c30892c5a6
+    m_Address: game_tower_data
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ceab52b5b23c2b541b8f6b8585426135
+    m_Address: game_mob_alert
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7f7d966fb9d30743aa635721b6f076d
+    m_Address: inventory_items
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8bced3a22fc98d46a289ce3e947e89f
+    m_Address: game_BCK
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -134,6 +204,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e463b087b0fa6cb4cbfdd6e2d0a3a18d
     m_Address: License_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e75cf881fcfe9a64bab22d661897b309
+    m_Address: game_placing_mode
     m_ReadOnly: 0
     m_SerializedLabels:
     - LobbySceneLoaded
@@ -160,6 +237,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa8ecdcd6b8446c44b6bc9c7ba6d4396
+    m_Address: game_retrive
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
