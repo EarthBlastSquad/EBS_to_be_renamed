@@ -51,6 +51,15 @@ namespace Manager.Contents
                 SaveGame();
             }
         }
+        public int LastStageIdx //입장만 하고 강제 종료한다거나 그러는 경우도 있으며, 킬 때 이 스테이지로 맞춰주려고 별도 변수 생성함.
+        {
+            get { return _gameData.LastStageIdx; }
+            set
+            {
+                _gameData.LastStageIdx = value;
+                SaveGame();
+            }
+        }
 
         private ValueTuple<int, bool> _lastGameEndStatus = ((int)ControlValue.INVALID, false);
 
@@ -291,7 +300,7 @@ namespace Manager.Contents
             {
                 TotalTowerDamages[tower.TowerData.TowerId] = 0;
             }
-
+            LastStageIdx = Managers.Instance.StageManager.GetNowStageData().StageIdx;
             Dictionary<int, WaveData> dm = Managers.Instance.DataManager.WaveDic;
             WaveData waveData = dm[Managers.Instance.StageManager.GetNowStageData().WaveIdx];
             HashSet<int> visits = new HashSet<int>();

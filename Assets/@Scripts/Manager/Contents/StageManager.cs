@@ -52,6 +52,9 @@ namespace Manager.Contents
             _nowStage = Managers.Instance.DataManager.StageDic[_nowStage.PrevIdx];
             return true;
         }
-
+        public int GetTotalWaveCount()
+        {
+            return _nowStage.TotalWaveCnt;
+        }
     }
 }

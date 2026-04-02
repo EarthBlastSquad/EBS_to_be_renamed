@@ -10,7 +10,8 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "OUR",
-      "GridImgName": "grid_cell_tile_grass"
+      "GridImgName": "grid_cell_tile_grass",
+      "IsOneTimeClear": false
     },
     {
       "StageIdx": -6667751,
@@ -21,7 +22,8 @@
       "StageName": "LYS",
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
-      "StageDescription": "LYS♥BCK"
+      "StageDescription": "LYS♥BCK",
+      "IsOneTimeClear": false
     },
     {
       "StageIdx": -6667752,
@@ -32,7 +34,8 @@
       "StageName": "KDH",
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
-      "StageDescription": "RUO"
+      "StageDescription": "RUO",
+      "IsOneTimeClear": false
     },
     {
       "StageIdx": 0,
@@ -46,7 +49,9 @@
       "StageDescription": "Tutorial",
       "GridImgName": "grass_grid_cell_tile",
       "BackgroundImgName": "Stage0Theme",
-      "InitialCurrency": 666775
+      "InitialCurrency": 666775,
+      "IsOneTimeClear": true,
+      "TotalWaveCnt": 10
     },
     {
       "StageIdx": 1,
@@ -60,7 +65,9 @@
       "StageDescription": "first stage",
       "GridImgName": "grass_grid_cell_tile",
       "BackgroundImgName": "Stage0Theme",
-      "InitialCurrency": 500
+      "InitialCurrency": 500,
+      "IsOneTimeClear": false,
+      "TotalWaveCnt": 10
     }
   ]
 }

@@ -16,6 +16,7 @@ namespace Data
 
         public List<StageClearData> StageClearData = new List<StageClearData>();
 
+        public int LastStageIdx = 0;
         #region »ç¿îµå
 
         public bool SoundSet = true;

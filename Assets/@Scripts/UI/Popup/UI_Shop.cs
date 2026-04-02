@@ -149,25 +149,23 @@ namespace UI.Popup
             _uiTowerDatasMini.gameObject.SetActive(false);
         }
 
-        private void Arrows()
-        {
-
-        }
         public void Set(Vector2Int p,Vector3 _)
         {
             _sv = p;
             _selectTower.transform.parent.gameObject.SetActive(true);
             _gc.PlacePieceAt(new Vector3Int(p.x, p.y, 0), _selectTower.transform.parent);
             _selectTower.transform.parent.position += new Vector3(0.5f, 0.5f, 0);
+            _selectTower.transform.parent.DOKill();
+            _selectTower.transform.parent.rotation = Quaternion.Euler(0, 0, (int)_facing);
             float posY = 0.8f;
             if(_.y>Screen.height * 0.5f)
             {
                 posY = -0.8f;
             }
-            _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, -0.25f+posY, 0);
+            _uiSelectTower.position = _selectTower.transform.parent.position + new Vector3(0, posY, 0);
             if (ShopOpen == false)
             {
-                _selectTower.DOKill();
+                _selectTower.transform.parent.DOKill();
                 _selectTower.color = Color.white;
                 _selectTower.transform.parent.rotation = Quaternion.identity;
                 _selectTower.DOFade(0.3f, 0.15f).SetLoops(-1, LoopType.Yoyo);
@@ -228,6 +226,8 @@ namespace UI.Popup
 #if UNITY_EDITOR
             Debug.Log("드래그 시작임 암튼 그럼");
 #endif
+            _selectTower.transform.parent.DOKill();
+            _selectTower.transform.parent.rotation = Quaternion.Euler(0, 0, (int)_facing);
             _selectTower.transform.parent.gameObject.SetActive(true);
         }
 
