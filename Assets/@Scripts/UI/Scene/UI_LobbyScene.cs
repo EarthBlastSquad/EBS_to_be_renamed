@@ -132,6 +132,7 @@ namespace UI.Scene
             GetText((int)Texts.StageDescription_0).gameObject.SetActive(false);
             GetButton((int)Buttons.Setting_0).gameObject.SetActive(false);
             GetImage((int)Images.TextBackground_0).gameObject.SetActive(false);
+
         }
 
         private void OpenTutorial(PointerEventData _)
