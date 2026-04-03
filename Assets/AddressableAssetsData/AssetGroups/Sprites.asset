@@ -71,6 +71,14 @@ MonoBehaviour:
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 290ae970f40ee794490c4ba1b75e957b
+    m_Address: Fast_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
     m_Address: crack_2
     m_ReadOnly: 0
@@ -213,6 +221,14 @@ MonoBehaviour:
     - EndingSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af3bd464e2fe08e4694c6c450c479bb0
+    m_Address: Fast_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b80f2d91c4c13314388456324edb1844
     m_Address: sprite_wall_1
     m_ReadOnly: 0
@@ -222,6 +238,14 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9ac6af5abd7bfd4794a9b371f85bc48
+    m_Address: Fast_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - UI
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bddbe1eeb64144144b5798f073dfa464
     m_Address: stg_0_smith_sprite

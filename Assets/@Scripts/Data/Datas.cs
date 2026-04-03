@@ -159,6 +159,7 @@ namespace Data
         public string GridImgName;
         public string BackgroundImgName;
         public int InitialCurrency;
+        public bool IsOneTimeClear;
 
         public StageData(StageData original)
         {
@@ -175,6 +176,7 @@ namespace Data
             GridImgName = original.GridImgName;
             BackgroundImgName = original.BackgroundImgName;
             InitialCurrency = original.InitialCurrency;
+            IsOneTimeClear = original.IsOneTimeClear;
         }
 
         public StageData() { }

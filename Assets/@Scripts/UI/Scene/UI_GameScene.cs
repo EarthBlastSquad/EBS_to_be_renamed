@@ -28,7 +28,10 @@ namespace UI.Scene
         private HPCoordinator _hpc;
         private TextMeshProUGUI _unlockBCK;
         private WaveFlags _thisWave;
-
+        private int _totalWaveCnt;
+        private int _fastCount=0;
+        private Sprite[] _fastSprites = new Sprite[3];
+        private Image _fastImage;
         #region Enum
         enum GameObjects
         {
@@ -41,14 +44,16 @@ namespace UI.Scene
         enum Buttons
         {
             Pause_0,
-            Unlock_0
+            Unlock_0,
+            Fast_0
         }
 
         enum Texts
         {
             Waves_0,
             Timer_0,
-            BCK_0
+            BCK_0,
+            Monsters_0
         }
 
         //enum Images
@@ -63,7 +68,7 @@ namespace UI.Scene
             BindObject(typeof(GameObjects));
             BindButton(typeof(Buttons));
             BindText(typeof(Texts));
-
+            _totalWaveCnt = Managers.Instance.StageManager.GetTotalWaveCount();
             _gs = GameObject.Find("GameScene").GetComponent<GameScene>();
             _gs.OnWaveChanged -= WaveUI;
             _gs.OnWaveChanged += WaveUI;
@@ -71,6 +76,7 @@ namespace UI.Scene
             Managers.Instance.CurrencyManager.OnCurrencyChangedEvent += CurrencyUI;
             GetButton((int)Buttons.Pause_0).gameObject.BindUIEvent(PauseButton);
             GetButton((int)Buttons.Unlock_0).gameObject.BindUIEvent(UnlockButton);
+            GetButton((int)Buttons.Fast_0).gameObject.BindUIEvent(FastButton);
 
             GridInputHandler gh = FindAnyObjectByType<GridInputHandler>();
             gh.mouseUpSubscriberEvent -= ShopUI;
@@ -110,6 +116,14 @@ namespace UI.Scene
             _thisWave = WaveFlags.Default;
             _gs.OnWaveChanged -= WaveTheme;
             _gs.OnWaveChanged += WaveTheme;
+            UnitManager um=FindAnyObjectByType<UnitManager>();
+            um.OnUnitCountChangeEvent -= MonsterCountUI;
+            um.OnUnitCountChangeEvent += MonsterCountUI;
+            for (int i=0;i<3;i++)
+            {
+                _fastSprites[i] = Managers.Instance.ResourceManager.Load<Sprite>($"Fast_{i}");
+            }
+            _fastImage = GetButton((int)Buttons.Fast_0).gameObject.GetChild<Image>("Fast_0_0");
 #if UNITY_EDITOR
             Managers.Instance.ResourceManager.Instantiate("@UI_Test",transform, false, false);
 #endif
@@ -159,10 +173,16 @@ namespace UI.Scene
                 GetButton((int)Buttons.Unlock_0).gameObject.SetActive(false);
             }
         }
+        protected void FastButton(PointerEventData _)
+        {
+            _fastCount = ++_fastCount % 3;
+            _fastImage.sprite = _fastSprites[_fastCount];
+            Time.timeScale = _fastCount + 1;
+        }
 
         protected void WaveUI(WaveData wd)
         {
-            GetText((int)Texts.Waves_0).text = $"{wd.WaveNumber}/10 Waves";
+            GetText((int)Texts.Waves_0).text = $"Wave:{wd.WaveNumber}/{_totalWaveCnt}";
         }
 
         protected void CurrencyUI(int c, int cc)
@@ -224,7 +244,10 @@ namespace UI.Scene
 
             }
         }
-
+        protected void MonsterCountUI(int count)
+        {
+            GetText((int)Texts.Monsters_0).text=count.ToString();
+        }
         #region ≈∏¿Ã∏”
         private int _m=0, _s=0;
 

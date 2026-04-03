@@ -1,5 +1,6 @@
 using Data;
 using Manager;
+using System;
 using UI.Popup;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -91,6 +92,39 @@ namespace UI.Scene
             Debug.Log(GetText((int)Texts.StageDescription_0).gameObject.name);
 #endif
             MainLobby(default(PointerEventData));
+            _stageIdx=Managers.Instance.GameManager.LastStageIdx;
+            StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
+
+            if (_stageIdx == data.NextIdx)
+            {
+                while (data.IsOneTimeClear == true && Managers.Instance.GameManager.TryGetClearData(_stageIdx, out ValueTuple<int, bool> clear) == true && clear.Item2 == true)
+                {
+
+                    _stageIdx = data.PrevIdx;
+                    data = Managers.Instance.DataManager.StageDic[_stageIdx];
+                    if (_stageIdx == data.PrevIdx)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                while (data.IsOneTimeClear == true && Managers.Instance.GameManager.TryGetClearData(_stageIdx, out ValueTuple<int, bool> clear) == true && clear.Item2 == true)
+                {
+
+                    _stageIdx = data.NextIdx;
+                    data = Managers.Instance.DataManager.StageDic[_stageIdx];
+                    if (_stageIdx == data.NextIdx)
+                    {
+                        break;
+                    }
+                }
+            }
+#if UNITY_EDITOR
+            Debug.Log($"NowStage:{_stageIdx}");
+#endif
+            Managers.Instance.GameManager.LastStageIdx = _stageIdx;
             GetText((int)Texts.StageName_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageName;
             GetText((int)Texts.StageDescription_0).text = Managers.Instance.DataManager.StageDic[_stageIdx].StageDescription;
 
@@ -206,37 +240,43 @@ namespace UI.Scene
             _setting = !_setting;
         }
 
-        private void UpdateStageChangeArrowState()
+        private void UpdateStageChangeArrowState(bool? left = null, bool? right = null)
         {
-            var data = Managers.Instance.DataManager.StageDic[_stageIdx];
-            GetButton((int)Buttons.StageChange_0).gameObject.SetActive(data.PrevIdx != _stageIdx);
-            GetButton((int)Buttons.StageChange_1).gameObject.SetActive(data.NextIdx != _stageIdx);
+            bool canLeft = left ?? CanMovePrev(_stageIdx);
+            bool canRight = right ?? CanMoveNext(_stageIdx);
+
+            GetButton((int)Buttons.StageChange_0).gameObject.SetActive(canLeft);
+            GetButton((int)Buttons.StageChange_1).gameObject.SetActive(canRight);
         }
 
         protected void StageRight(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
-            _stageIdx = data.NextIdx;
-            data = Managers.Instance.DataManager.StageDic[_stageIdx];
+
+            //_stageIdx = data.NextIdx;
+            //data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            bool right = TryCheckNextStage(ref data, ref _stageIdx);
             GetText((int)Texts.StageName_0).text = data.StageName;
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
             
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
-            UpdateStageChangeArrowState();
+            UpdateStageChangeArrowState(left:true,right: right);
         }
         protected void StageLeft(PointerEventData _)
         {
             Managers.Instance.SoundManager.Play(SoundChannels.EFFECT_0, "ButtonPress", false);
             StageData data = Managers.Instance.DataManager.StageDic[_stageIdx];
-            _stageIdx = data.PrevIdx;
-            data = Managers.Instance.DataManager.StageDic[_stageIdx];
+
+            //_stageIdx = data.PrevIdx;
+            //data = Managers.Instance.DataManager.StageDic[_stageIdx];
+            bool left = TryCheckPrevStage(ref data, ref _stageIdx);
             GetText((int)Texts.StageName_0).text = data.StageName;
             GetText((int)Texts.StageDescription_0).text = data.StageDescription;
             
             GetImage((int)Images.Background_0).sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.StageDic[_stageIdx].BackgroundImgName);
             GetButton((int)Buttons.StageChange_1).gameObject.SetActive(data.NextIdx == _stageIdx);
-            UpdateStageChangeArrowState();
+            UpdateStageChangeArrowState(left:left,right:true);
         }
         protected void SetVolume(PointerEventData _)
         {
@@ -268,6 +308,114 @@ namespace UI.Scene
                 GetButton((int)Buttons.SoundOnOff_0).gameObject.GetChildGameObject("SoundOnOff_0_0").GetComponent<Image>().sprite = Managers.Instance.ResourceManager.Load<Sprite>("volume_on");
                 Managers.Instance.SoundManager.Play(Utils.Defines.SoundChannels.BGM_0, "LobbyBGM", true, Managers.Instance.GameManager.SoundValue);
             }
+        }
+        private bool CanMoveNext(int stageIdx)
+        {
+            var data = Managers.Instance.DataManager.StageDic[stageIdx];
+
+            if (stageIdx == data.NextIdx)
+            {
+                return false;
+            }
+
+            int nextIdx = data.NextIdx;
+            var nextData = Managers.Instance.DataManager.StageDic[nextIdx];
+
+            while (nextData.IsOneTimeClear && Managers.Instance.GameManager.TryGetClearData(nextIdx, out var clear) && clear.Item2)
+            {
+                nextIdx = nextData.NextIdx;
+                nextData = Managers.Instance.DataManager.StageDic[nextIdx];
+
+                if (nextIdx == nextData.NextIdx)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool CanMovePrev(int stageIdx)
+        {
+            var data = Managers.Instance.DataManager.StageDic[stageIdx];
+
+            if (stageIdx == data.PrevIdx)
+            {
+                return false;
+            }
+
+            int prevIdx = data.PrevIdx;
+            var prevData = Managers.Instance.DataManager.StageDic[prevIdx];
+
+            while (prevData.IsOneTimeClear && Managers.Instance.GameManager.TryGetClearData(prevIdx, out var clear) && clear.Item2)
+            {
+                prevIdx = prevData.PrevIdx;
+                prevData = Managers.Instance.DataManager.StageDic[prevIdx];
+
+                if (prevIdx == prevData.PrevIdx)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        private bool TryCheckNextStage(ref StageData data, ref int stageIdx)
+        {
+            if(stageIdx == data.NextIdx)
+            {
+                return false;
+            }
+            else
+            {
+                stageIdx = data.NextIdx;
+                data = Managers.Instance.DataManager.StageDic[stageIdx];
+                if (stageIdx == data.NextIdx)
+                {
+                    return false;
+                }
+                while (data.IsOneTimeClear == true && Managers.Instance.GameManager.TryGetClearData(stageIdx, out ValueTuple<int, bool> clear) == true && clear.Item2 == true)
+                {
+
+                    stageIdx = data.NextIdx;
+                    data = Managers.Instance.DataManager.StageDic[stageIdx];
+                    if (stageIdx == data.NextIdx)
+                    {
+                        //stageIdx = data.PrevIdx;
+                        //data = Managers.Instance.DataManager.StageDic[stageIdx];
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool TryCheckPrevStage(ref StageData data, ref int stageIdx)
+        {
+            if (stageIdx == data.PrevIdx)
+            {
+                return false;
+            }
+            else
+            {
+                stageIdx = data.PrevIdx;
+                data = Managers.Instance.DataManager.StageDic[stageIdx];
+                if (stageIdx == data.PrevIdx)
+                {
+                    return false;
+                }
+                while (data.IsOneTimeClear == true && Managers.Instance.GameManager.TryGetClearData(stageIdx, out ValueTuple<int, bool> clear) == true && clear.Item2 == true)
+                {
+
+                    stageIdx = data.PrevIdx;
+                    data = Managers.Instance.DataManager.StageDic[stageIdx];
+                    if (stageIdx == data.PrevIdx)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         private void Start()
         {

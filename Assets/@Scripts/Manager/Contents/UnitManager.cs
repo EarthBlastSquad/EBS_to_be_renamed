@@ -11,7 +11,7 @@ namespace Manager.Contents
         private Queue<UnitCoordinator> _unitBuffer = new Queue<UnitCoordinator>(8);
         private bool _deadFlag = false;
         public event Action OnUnitDeadEvent;
-
+        public event Action<int> OnUnitCountChangeEvent;
 
         public int GetNowUnitCnt()
         {
@@ -78,6 +78,7 @@ namespace Manager.Contents
                 }
 
                 OnUnitDeadEvent?.Invoke();
+                OnUnitCountChangeEvent?.Invoke(_unitCoordinators.Count);
                 _deadFlag = false;
             }
 
@@ -86,6 +87,7 @@ namespace Manager.Contents
                 var tmp = _unitBuffer.Dequeue();
                 tmp.SubscribeOnDead(OnUnitDead);
                 _unitCoordinators.Add(tmp);
+                OnUnitCountChangeEvent?.Invoke(_unitCoordinators.Count);
             }
         }
 

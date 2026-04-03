@@ -1,7 +1,4 @@
 using Manager.Contents;
-using System.Collections;
-using System.Collections.Generic;
-using System.Resources;
 using UnityEngine;
 using Utils;
 
@@ -40,6 +37,9 @@ namespace Manager
 
         private void OnDestroy()
         {
+#if UNITY_EDITOR
+            Debug.Log($"SceneName: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+#endif
             _sInstance._timerMgr = null;
             _sInstance._cooldownMgr = null;
             _sInstance = null;
