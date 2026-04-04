@@ -13,8 +13,30 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_GUID: c7806b619aaf4c0438932703effe5671
-  m_SerializeEntries: []
+  m_GUID: f5245ba4c5aa3284eb8ade3acd99829b
+  m_SerializeEntries:
+  - m_GUID: 011d7e571013bae45a4f48df63e55715
+    m_Address: 666775MAT
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acbb46cfa548f0d4b91abfc8683cbdbd
+    m_Address: Assets/@Resources/Textures/Ending/good_ending_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b90173960ed245840b69c6d6c09a6c46
+    m_Address: ButtonPress
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - Sound
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
   m_SchemaSet:

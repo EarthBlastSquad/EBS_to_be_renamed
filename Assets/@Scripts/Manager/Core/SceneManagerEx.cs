@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scenes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Manager.Core
@@ -43,6 +45,17 @@ namespace Manager.Core
         string GetSceneName(Utils.Defines.SceneNames type)
         {
             return System.Enum.GetName(typeof(Utils.Defines.SceneNames), type);
+        }
+
+        public void SubscribeSceneUnloadedEvent(UnityAction<Scene> callback)
+        {
+            SceneManager.sceneUnloaded -= callback;
+            SceneManager.sceneUnloaded += callback;
+        }
+
+        public void UnsubscribeSceneUnloadedEvent(UnityAction<Scene> callback)
+        {
+            SceneManager.sceneUnloaded -= callback;
         }
     }
 

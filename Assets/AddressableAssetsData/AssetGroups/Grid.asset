@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Grid
+  m_EditorClassIdentifier: 
+  m_GroupName: Grid
+  m_GUID: e052ff9100f46fa468e7773273b7ccca
+  m_SerializeEntries:
+  - m_GUID: 14dcff71eb4078e47a9bd1dd038f9a13
+    m_Address: CellHighlighter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - Uncategorized
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 460d16d5f1784404cac2f3fa45b83a2d
+    m_Address: LockedAreaShadowSprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    - Uncategorized
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dde1a92c9f4c8a4b8f10fdb78634cee
+    m_Address: LockedAreaShadow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - Grid
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f823b29cb895d54ab8367933f6d9748
+    m_Address: ClickedCellHighlighter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - Grid
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e501b7c5c1e9dc34ca5c6061713a4aad
+    m_Address: grass_grid_cell_tile
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e2bed66d7651d9949802ad684ddc7483, type: 2}
+    - {fileID: 11400000, guid: 110ba3aa69cc8d1419b1d76990dd34e6, type: 2}

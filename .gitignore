@@ -12,6 +12,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/Assets/Testings
+/Assets/@Scripts/Testings
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -165,7 +167,7 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.meta
+#*.meta
 *.obj
 *.iobj
 *.pch
@@ -183,7 +185,7 @@ StyleCopReport.xml
 *.tlog
 *.vspscc
 *.vssscc
-.builds
+#.builds
 *.svclog
 *.scc
 

@@ -8,7 +8,10 @@ namespace Utils.Defines
     public enum SceneNames
     {
         Unknown = -1,
-        Title = 1,
+        TitleScene = 1,
+        LobbyScene = 2,
+        GameScene = 3,
+        EndingScene = 4,
         Test = 60
     }
 
@@ -22,6 +25,14 @@ namespace Utils.Defines
         EFFECT_1 = 5,
         MAX_CHANNELS = 6,
         UNKNOWN = -1
+    }
+
+    public enum Facing
+    {
+        RIGHT = 0,
+        UP = 90,
+        LEFT = 180,
+        DOWN = 270
     }
     public enum SoundChannelTypes
     {
@@ -52,4 +63,64 @@ namespace Utils.Defines
 
     }
 
+    public enum MapMaxCellCnt
+    {
+        MAX_WIDTH = 41,
+        MAX_HEIGHT = 6
+    }
+
+    public enum PieceCommandTypes
+    {
+        PLACE   = 1,
+        UNPLACE = 2
+    }
+
+    public enum ControlValue
+    {
+        INVALID = -666775,
+        START = -666776
+    }
+
+    public enum Weights
+    {
+        PIECE = 5000,
+        DIFF_DIR_WEIGHT = 1,
+        CAN_GO= 2,
+        PIECE_NEAR=1
+    }
+
+    public enum MovementReturnTypes
+    {
+        SUCCESS=1,
+        CANT_GO=2,
+        COOLDOWN_FAILED=3,
+        SUCCESS_AND_BLOCKED=4
+    }
+
+    public enum VictimType
+    {
+        PIECE = 1,
+        MOB = 2
+    }
+
+    public enum GameEndType
+    {
+        WIN = 1,
+        LOSE =2,
+        SHUT_DOWN=3
+    }
+
+    public enum  EndingContentType
+    {
+        TYPE_TEXT=1,
+        TYPE_SOUND=2,
+        TYPE_IMAGE=4,
+        TYPE_INVALID=-666775
+    }
+    public enum WaveFlags
+    {
+        Default = 0,
+        Boss = 1,
+        Event = 2
+    }
 }

@@ -1,0 +1,255 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_GUID: 77309f8f87c7aa149a9c49cd997f17a1
+  m_SerializeEntries:
+  - m_GUID: 04dffb6b4ef556f48aca6be2dcd30c73
+    m_Address: volume_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09425ce9161883447bb6a01a8ae8047e
+    m_Address: Font
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0c3b2d3f3f858429b9dd61ae339ad1
+    m_Address: inventory_slots
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f50a67950a535f4ca63bccb900f1d5e
+    m_Address: AllowedBox
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TutorialGameSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25316040023f4674488f274b9817c84e
+    m_Address: game_status
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fadf84283cc184449dbabbc5c1da080
+    m_Address: ending
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b8e8604b3655da4f9043c958e52247f
+    m_Address: UI_TotalData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ccff62bf5f9abe4c93b963f73a3f5d9
+    m_Address: poison_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46272f5607cbfcc42a07ca8328389379
+    m_Address: stone_backplate_short
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b820d79570587048b665913913b5f2f
+    m_Address: game_placed_towers
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6249f612ea3bf4748815f3a71a5cca6f
+    m_Address: null_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6314e3b1e3108b244b8ba903f75e9096
+    m_Address: "\uC9C0\uB8B0_off"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6602d1ac56b34cc449096a6b628a029e
+    m_Address: game_activate_placing_mode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 698d388c4ccafaa45aa9d127eab6b49d
+    m_Address: TutorialHelper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TutorialGameSceneLoaded
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 838fccb3c442e0648bf04ffe6946233d
+    m_Address: Tutorial_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92b09025d85e223498f1623f4c036d33
+    m_Address: wall_normal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93cdc4f2eb8d0264c9e1b210a73817a6
+    m_Address: fire_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab87216e457153f4a86fba922dc0a4ac
+    m_Address: Credit_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b63555c6d9eeaac419ab2fd15db4037e
+    m_Address: game_unlock_button
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca24b78729b1aec4481caa80bdfad205
+    m_Address: "\uB2E4\uC774\uC5B4\uD2B8_0"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccbd2f6104fb7f942a4010c30892c5a6
+    m_Address: game_tower_data
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ceab52b5b23c2b541b8f6b8585426135
+    m_Address: game_mob_alert
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7f7d966fb9d30743aa635721b6f076d
+    m_Address: inventory_items
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8bced3a22fc98d46a289ce3e947e89f
+    m_Address: game_BCK
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2115b39c110d1c43a6a8847a70f7523
+    m_Address: volume_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e463b087b0fa6cb4cbfdd6e2d0a3a18d
+    m_Address: License_0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e75cf881fcfe9a64bab22d661897b309
+    m_Address: game_placing_mode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea09977b053a10342a9e9023f9a7de4c
+    m_Address: stone_button_short_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f61008dc8eef5794686e49ff79e8c047
+    m_Address: stone_button_short_on
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestPreLoad
+    - TitleSceneLoaded
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f82a676dad9c7de42bf5dfeaddff71b7
+    m_Address: laser_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa8ecdcd6b8446c44b6bc9c7ba6d4396
+    m_Address: game_retrive
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 453be4aedc4a5954ca7441ce1db960ec, type: 2}
+    - {fileID: 11400000, guid: 5513fdf27e097684db3ca5aa5396c563, type: 2}

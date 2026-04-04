@@ -22,13 +22,15 @@ namespace Manager.Core
         {
             if (_uiRoot == null)
             {
-                _uiRoot = GameObject.Find("@UIRoot");
+                _uiRoot = GameObject.Find("@UI_Root");
                 if (_uiRoot == null)
                 {
-                    _uiRoot = new GameObject { name = "@UIRoot" };
+                    _uiRoot = new GameObject { name = "@UI_Root" };
                 }
             }
         }
+
+        public bool IsPopupUIOn { get; private set; } = false;
 
         public void SetCanvas(GameObject go, bool sort = true, int sortOrder = 0, bool isToast = false)
         {
@@ -73,7 +75,7 @@ namespace Manager.Core
 
             GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}");
             if (parent is not null)
-                go.transform.SetParent(parent);
+                go.transform.SetParent(parent,false);
 
             Canvas canvas = go.GetOrAddComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
@@ -89,8 +91,8 @@ namespace Manager.Core
                 name = typeof(T).Name;
             }
 
-            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", parent, pooling);
-            go.transform.SetParent(parent);
+            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", parent, worldPositionStays: false, pooling: pooling);
+            go.transform.SetParent(parent,false);
             return go.GetOrAddComponent<T>();
         }
 
@@ -105,7 +107,7 @@ namespace Manager.Core
             T sceneUI = go.GetOrAddComponent<T>();
             _uiScene = sceneUI;
 
-            go.transform.SetParent(_uiRoot.transform);
+            go.transform.SetParent(_uiRoot.transform,false);
 
             return sceneUI;
         }
@@ -121,17 +123,19 @@ namespace Manager.Core
             T popup = go.GetOrAddComponent<T>();
             _uiPopupStack.Push(popup);
 
-            go.transform.SetParent(_uiRoot.transform);
+            go.transform.SetParent(_uiRoot.transform,false);
 
             //RefreshTimeScale();
+            IsPopupUIOn = true;
 
             return popup;
         }
 
         public void ClosePopupUI(UIPopup popup)
         {
-            if (_uiPopupStack.Count == 0)
+            if (_uiPopupStack.Count <= 0)
             {
+                IsPopupUIOn = false;
                 return;
             }
 
@@ -147,8 +151,9 @@ namespace Manager.Core
 
         public void ClosePopupUI()
         {
-            if (_uiPopupStack.Count == 0)
+            if (_uiPopupStack.Count <= 0)
             {
+                IsPopupUIOn = false;
                 return;
             }
 
@@ -157,6 +162,11 @@ namespace Manager.Core
             Managers.Instance.ResourceManager.Destroy(popup.gameObject);
             popup = null;
             _order--;
+
+            if(_uiPopupStack.Count <= 0)
+            {
+                IsPopupUIOn = false;
+            }
             //RefreshTimeScale();
         }
 
@@ -177,7 +187,7 @@ namespace Manager.Core
         public UIToast ShowToast(string msg)
         {
             string name = typeof(UIToast).Name;
-            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}", pooling: true);
+            GameObject go = Managers.Instance.ResourceManager.Instantiate($"{name}",worldPositionStays:false, pooling: true);
             UIToast popup = go.GetOrAddComponent<UIToast>();
             popup.SetInfo(msg);
             _uiToastStack.Push(popup);

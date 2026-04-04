@@ -1,0 +1,73 @@
+{
+  "stages": [
+    {
+      "StageIdx": -6667750,
+      "PrevIdx": -666775,
+      "NextIdx": -666775,
+      "WaveIdx": -6667750,
+      "AreaUnlockIdx": -6667751,
+      "StageName": "BCK",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "OUR",
+      "GridImgName": "grid_cell_tile_grass",
+      "IsOneTimeClear": false
+    },
+    {
+      "StageIdx": -6667751,
+      "PrevIdx": -666775,
+      "NextIdx": -666775,
+      "WaveIdx": -6667750,
+      "AreaUnlockIdx": -6667752,
+      "StageName": "LYS",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "LYS♥BCK",
+      "IsOneTimeClear": false
+    },
+    {
+      "StageIdx": -6667752,
+      "PrevIdx": -666775,
+      "NextIdx": -666775,
+      "WaveIdx": -6667750,
+      "AreaUnlockIdx": -6667753,
+      "StageName": "KDH",
+      "GoodEndingDataIdx": -6667750,
+      "BadEndingDataIdx": -6667751,
+      "StageDescription": "RUO",
+      "IsOneTimeClear": false
+    },
+    {
+      "StageIdx": 0,
+      "PrevIdx": 0,
+      "NextIdx": 1,
+      "WaveIdx": 0,
+      "AreaUnlockIdx": 0,
+      "StageName": "Stage 0",
+      "GoodEndingDataIdx": 0,
+      "BadEndingDataIdx": 1,
+      "StageDescription": "Tutorial",
+      "GridImgName": "grass_grid_cell_tile",
+      "BackgroundImgName": "Stage0Theme",
+      "InitialCurrency": 666775,
+      "IsOneTimeClear": true,
+      "TotalWaveCnt": 10
+    },
+    {
+      "StageIdx": 1,
+      "PrevIdx": 0,
+      "NextIdx": 1,
+      "WaveIdx": 0,
+      "AreaUnlockIdx": 0,
+      "StageName": "Stage 1",
+      "GoodEndingDataIdx": 0,
+      "BadEndingDataIdx": 1,
+      "StageDescription": "first stage",
+      "GridImgName": "grass_grid_cell_tile",
+      "BackgroundImgName": "Stage0Theme",
+      "InitialCurrency": 500,
+      "IsOneTimeClear": false,
+      "TotalWaveCnt": 10
+    }
+  ]
+}

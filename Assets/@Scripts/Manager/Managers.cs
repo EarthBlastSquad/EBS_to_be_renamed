@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Resources;
+using Manager.Contents;
 using UnityEngine;
 using Utils;
 
@@ -25,7 +23,29 @@ namespace Manager
         public Core.ObjectPoolManager ObjectPoolManager { get { return Instance?._poolMgr; } }
         public Core.DataManager DataManager { get { return Instance?._dataMgr; } }
         #endregion
+        #region Contents
+        private Contents.StageManager _stageMgr = new Contents.StageManager();
+        private Contents.GameManager _gameMgr = new Contents.GameManager();
+        private Contents.CurrencyManager _currencyMgr;
+        private Contents.TimerManager _timerMgr;
+        private Contents.CooldownManager _cooldownMgr;
+        public Contents.StageManager StageManager { get { return Instance?._stageMgr; }  }
+        public Contents.GameManager GameManager { get { return Instance?._gameMgr; } }
+        public Contents.CurrencyManager CurrencyManager { get { return Instance?._currencyMgr; }  }
+        public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }
+        public Contents.CooldownManager CooldownManager { get { return Instance?._cooldownMgr; } }
 
+        private void OnDestroy()
+        {
+#if UNITY_EDITOR
+            Debug.Log($"SceneName: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+#endif
+            _sInstance._timerMgr = null;
+            _sInstance._cooldownMgr = null;
+            _sInstance = null;
+        }
+
+        #endregion
         private static void Init()
         {
             if (_sInstance is null)
@@ -36,17 +56,20 @@ namespace Manager
                     go = new GameObject("@Managers");
                 }
                 DontDestroyOnLoad(go);
+                
                 _sInstance = go.GetOrAddComponent<Managers>();
+                _sInstance._timerMgr = go.GetOrAddComponent<TimerManager>();
+                _sInstance._cooldownMgr = go.GetOrAddComponent<CooldownManager>();
                 _sInstance._soundMgr.Init();
+                _sInstance._currencyMgr = new Contents.CurrencyManager();
             }
 
-            
         }
 
 
         public void ClearManagers()
         {
-            
+            _timerMgr.Cleanup();
             _uiMgr.Clear();
             _poolMgr.Clear();
             _soundMgr.Clear();

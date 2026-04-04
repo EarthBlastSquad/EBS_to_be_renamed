@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Effect
+  m_EditorClassIdentifier: 
+  m_GroupName: Effect
+  m_GUID: 847e9b2dd2b18464aa6d70f3207e185b
+  m_SerializeEntries:
+  - m_GUID: 035b6d0561ca78b499b075c994199f0a
+    m_Address: BombDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06bcd71f1e8f4c14b9e11a0d2a9911db
+    m_Address: MagicParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0db097f809721fc4fbadebb24e297e6d
+    m_Address: NullParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ee0411cc3684874f9873dfa73435bc5
+    m_Address: PoisonTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fb8d703cf0d8b74488cb48b87bb81a6
+    m_Address: PoisonCloudParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fb92bf9161b2134e90eb8859f1c6534
+    m_Address: EntityAnimControllerBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1185ac07d05e47b498a1a48811b668f2
+    m_Address: CrackEffectPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1842d7f899a58334b9af4b9c2e8ee616
+    m_Address: SwordAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26e45134b5065df438067e1260f42989
+    m_Address: ArrowDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 356e6a39592ba5146b7caf3cd2fc1af9
+    m_Address: TestBoomParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c197d7a63f102a47b6e817e0f55eed5
+    m_Address: BossAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40477d72b6bc4ac4792a4ffed904877a
+    m_Address: TestEntityAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41ef4e346e66b2747816f2cbe65ed3dd
+    m_Address: HPDrainParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d202d3299302df4d820338d332c113e
+    m_Address: ExplosionParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 520bc2d295d2fa34e9cbb942bb57b5fb
+    m_Address: InstantKillDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
+    m_Address: TestAttackAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 690fdf2f7f36d064aa6495e51b811085
+    m_Address: FarmerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 744fc4c73d8d4bc47b91d407cc09e3e9
+    m_Address: AttackAnimControllerBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b8bae4164e0f9148871ebc5337ca509
+    m_Address: MineAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dce54751f1983640b44a7695a74c2ab
+    m_Address: StoneDustParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 818327bbb5c1769428fcc5c97729b908
+    m_Address: YellowSparkParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 867c83a66402f8b4bb81c9a7a9a0771b
+    m_Address: DustParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab7e05622041d2242ab7ffd118426d2d
+    m_Address: BurningParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5bdb0fce6aa146469503f14f01ac738
+    m_Address: TestDeadParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c757fcd79a4d2c0419f113994d7a5047
+    m_Address: DietTrapAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9bbd44ef7099204bac35ac981d6f0de
+    m_Address: TestLaunchParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbf719864e3455b4cb4b7b420c6e4b37
+    m_Address: LaserTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0d1ca534bca74246aa1e8699a543733
+    m_Address: UniversalParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1ca0d4e9cc91034b8cbb58311d1558f
+    m_Address: FireTowerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef8f1e29ed919a0468a765bd90503f5f
+    m_Address: SmithAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a51a2d6d085b92d40938d36aa13bab54, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 87c175df40e32a146b866b63d545c5c2, type: 2}
+    - {fileID: 11400000, guid: 6a6f2780dd0548f4db6c25a80ce71b3e, type: 2}

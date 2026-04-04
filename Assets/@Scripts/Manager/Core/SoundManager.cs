@@ -1,5 +1,6 @@
 
 
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Manager.Core
@@ -34,8 +35,13 @@ namespace Manager.Core
             }
         }
 
-        public void Play(Utils.Defines.SoundChannels channel, string key, bool loop, float volume = 1.0f, float pitch = 1.0f)
+        public void Play(Utils.Defines.SoundChannels channel, string key, bool loop, float? volume = null, float pitch = 1.0f)
         {
+            if(Managers.Instance.GameManager.SoundSet == false)
+            {
+                return;
+            }
+
             if (channel < Utils.Defines.SoundChannels.BGM_0 || channel >= Utils.Defines.SoundChannels.MAX_CHANNELS)
             {
 #if UNITY_EDITOR
@@ -43,7 +49,7 @@ namespace Manager.Core
 #endif  
                 return;
             }
-
+            float finalVolume = volume ?? Managers.Instance.GameManager.SoundValue;
             AudioSource audioSource = _audioSources[(int)channel];
             AudioClip clip = LoadAudioClip(key);
 
@@ -53,7 +59,7 @@ namespace Manager.Core
             }
 
             audioSource.pitch = pitch;
-            audioSource.volume = volume;
+            audioSource.volume = finalVolume;
 
             if (channel < Utils.Defines.SoundChannels.EFFECT_0)
             {
@@ -64,12 +70,14 @@ namespace Manager.Core
             }
             else
             {
+#if UNITY_EDITOR
                 Debug.Log("eff");
-                audioSource.PlayOneShot(clip);
+#endif
+                audioSource.PlayOneShot(clip, 1 - Mathf.Exp(-5 * finalVolume));
             }
         }
 
-        public void PlayBGMInIdleChannel(Utils.Defines.SoundChannelTypes type, string key, bool loop, float volume = 1.0f, float pitch = 1.0f)
+        public void PlayBGMInIdleChannel(Utils.Defines.SoundChannelTypes type, string key, bool loop, float? volume = null, float pitch = 1.0f)
         {
             Utils.Defines.SoundChannels channelName = Utils.Defines.SoundChannels.UNKNOWN;
             int channelCnt = GetChannelCnt(type);
@@ -83,8 +91,8 @@ namespace Manager.Core
                     break;
                 }
             }
-
-            Play(channelName, key, loop, volume, pitch);
+            float finalVolume = volume ?? Managers.Instance.GameManager.SoundValue;
+            Play(channelName, key, loop, finalVolume, pitch);
         }
 
         public void Stop(Utils.Defines.SoundChannels channelName)
@@ -149,6 +157,55 @@ namespace Manager.Core
                     return (int)Utils.Defines.SoundChannelCounts.EFFECT_CNT;
             }
             return -1;
+        }
+
+        public void FadeType(Utils.Defines.SoundChannelTypes type, float target, float duration)
+        {
+            int channelIdxStart = (int)type;
+            int channelCnt = GetChannelCnt(type);
+
+            for (int i = channelIdxStart; i < channelIdxStart + channelCnt; i++)
+            {
+                var source = _audioSources[i];
+                if (source is null)
+                {
+                    continue;
+                }
+                source.volume = 0f;
+                source.DOKill();
+                source.DOFade(target, duration);
+            }
+        }
+
+        public void CrossFadeType(Utils.Defines.SoundChannelTypes from, Utils.Defines.SoundChannelTypes to, float duration)
+        {
+            int fromStart = (int)from;
+            int fromCount = GetChannelCnt(from);
+
+            int toStart = (int)to;
+            int toCount = GetChannelCnt(to);
+
+            for (int i = toStart; i < toStart + toCount; i++)
+            {
+                var source = _audioSources[i];
+                if (!source.isPlaying)
+                {
+                    source.Play();
+                }
+                source.volume = 0f;
+                source.DOKill();
+                DOVirtual.DelayedCall(duration, () =>
+                {
+                    source.DOFade(Managers.Instance.GameManager.SoundValue, duration).SetEase(Ease.InOutSine);
+                });
+            }
+
+            for (int i = fromStart; i < fromStart + fromCount; i++)
+            {
+                var source = _audioSources[i];
+                source.DOKill();
+                source.DOFade(0f, duration).SetEase(Ease.InOutSine);
+            }
         }
     }
     
