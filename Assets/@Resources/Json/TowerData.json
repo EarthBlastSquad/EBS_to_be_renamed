@@ -104,6 +104,45 @@
       "AnimatorControllerName": "PoisonTowerAnimController",
       "DeadParticleName": "StoneDustParticle",
       "SkillId": 5
+    },
+
+
+
+    {
+      "TowerId": 6,
+      "TowerName": "place_holder_1",
+      "PrefabName": "TowerPrefab",
+      "TowerImgName": "fire_off",
+      "CrackSpriteNameBase": "crack_",
+      "InvincibilityTime": 0,
+      "TowerHP": 7,
+      "DemendedCurrency": 61,
+      "TowerDescription": "불을 뿜는 타워다.",
+      "HitSound": "SmallCrackShatterSound",
+      "AnimatorControllerName": "FireTowerAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillId": 6
+    },
+    {
+      "TowerId": 7,
+      "TowerName": "place_holder_2",
+      "PrefabName": "TowerPrefab",
+      "TowerImgName": "poison_off",
+      "CrackSpriteNameBase": "crack_",
+      "InvincibilityTime": 0,
+      "TowerHP": 4,
+      "DemendedCurrency": 54,
+      "TowerDescription": "독을 방출하는 타워다. 마왕군은 이 독을 즐긴다는 풍문이 있다.",
+      "HitSound": "SmallCrackShatterSound",
+      "AnimatorControllerName": "PoisonTowerAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillId": 7
     }
+
+
+
+
+
+
   ]
 }

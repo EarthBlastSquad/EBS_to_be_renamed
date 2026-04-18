@@ -16,13 +16,13 @@
       "EndingIdx": -1,
       "BGMName": "",
       "TextTypeSFX": "TestTypeBGM",
-      "Contents": ["튜토리얼 승리"]
+      "Contents": [ "튜토리얼 승리" ]
     },
     {
       "EndingIdx": -2,
       "BGMName": "",
       "TextTypeSFX": "TestTypeBGM",
-      "Contents": ["튜토리얼 방어 실패" ]
+      "Contents": [ "튜토리얼 방어 실패" ]
     },
     {
       "EndingIdx": 0,
@@ -68,6 +68,31 @@
         "역시 성은 지을 때보다, \n부실공사 뒷감당과 타워 할부금을 갚을 때가 훨씬 더 무서운 법인가 봅니다.",
         "-끝-"
       ]
+    },
+
+
+    {
+      "EndingIdx": 2,
+      "BGMName": "",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": [
+        "__play__",
+        "WinBGM",
+        "스테이지2 엔딩 승리 임시"
+      ]
+    },
+    {
+      "EndingIdx": 3,
+      "BGMName": "",
+      "TextTypeSFX": "TestTypeBGM",
+      "Contents": [
+        "__play__",
+        "LoseBGM",
+        "스테이지2 엔딩 패배 임시"
+      ]
     }
+
+
+
   ]
 }

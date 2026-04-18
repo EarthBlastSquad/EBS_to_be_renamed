@@ -56,7 +56,7 @@
     {
       "StageIdx": 1,
       "PrevIdx": 0,
-      "NextIdx": 1,
+      "NextIdx": 2,
       "WaveIdx": 0,
       "AreaUnlockIdx": 0,
       "StageName": "Stage 1",
@@ -66,6 +66,22 @@
       "GridImgName": "grass_grid_cell_tile",
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 500,
+      "IsOneTimeClear": false,
+      "TotalWaveCnt": 10
+    },
+    {
+      "StageIdx": 2,
+      "PrevIdx": 1,
+      "NextIdx": 2,
+      "WaveIdx": 20,
+      "AreaUnlockIdx": 0,
+      "StageName": "Stage 2",
+      "GoodEndingDataIdx": 2,
+      "BadEndingDataIdx": 3,
+      "StageDescription": "machine stage",
+      "GridImgName": "grass_grid_cell_tile",
+      "BackgroundImgName": "Stage0Theme",
+      "InitialCurrency": 700,
       "IsOneTimeClear": false,
       "TotalWaveCnt": 10
     }
