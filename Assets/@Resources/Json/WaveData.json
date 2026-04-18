@@ -264,7 +264,7 @@
       "WaveIdx": 21,
       "MobSpawnRate": 3,
       "NextWaveIdx": 22,
-      "MobIDs": [ 0 ],
+      "MobIDs": [ 7 ],
       "WaveFlags": 0
     },
     {
@@ -282,7 +282,7 @@
       "WaveIdx": 23,
       "MobSpawnRate": 4,
       "NextWaveIdx": 24,
-      "MobIDs": [ 2 ],
+      "MobIDs": [ 9 ],
       "WaveFlags": 0
     },
     {
@@ -291,7 +291,7 @@
       "WaveIdx": 24,
       "MobSpawnRate": 5,
       "NextWaveIdx": 25,
-      "MobIDs": [ 3 ],
+      "MobIDs": [ 10 ],
       "WaveFlags": 0
     },
     {
@@ -300,7 +300,7 @@
       "WaveIdx": 25,
       "MobSpawnRate": 5,
       "NextWaveIdx": 26,
-      "MobIDs": [ 3 ],
+      "MobIDs": [ 10 ],
       "WaveFlags": 0
     },
     {
@@ -309,7 +309,7 @@
       "WaveIdx": 26,
       "MobSpawnRate": 2.5,
       "NextWaveIdx": 27,
-      "MobIDs": [ 4 ],
+      "MobIDs": [ 11 ],
       "WaveFlags": 0
     },
     {
@@ -318,7 +318,7 @@
       "WaveIdx": 27,
       "MobSpawnRate": 1.5,
       "NextWaveIdx": 28,
-      "MobIDs": [ 0, 2, 3, 4 ],
+      "MobIDs": [ 7, 9, 10, 11 ],
       "WaveFlags": 0
     },
     {
@@ -327,7 +327,7 @@
       "WaveIdx": 28,
       "MobSpawnRate": 2.25,
       "NextWaveIdx": 29,
-      "MobIDs": [ 5 ],
+      "MobIDs": [ 12 ],
       "WaveFlags": 0
     },
     {
@@ -336,7 +336,7 @@
       "WaveIdx": 29,
       "MobSpawnRate": 0.75,
       "NextWaveIdx": 30,
-      "MobIDs": [ 0, 1, 2 ],
+      "MobIDs": [ 7, 8, 9 ],
       "WaveFlags": 0
     },
     {
@@ -345,7 +345,7 @@
       "WaveIdx": 30,
       "MobSpawnRate": 0.625,
       "NextWaveIdx": 31,
-      "MobIDs": [ 0, 1 ],
+      "MobIDs": [ 7, 8 ],
       "WaveFlags": 0
     },
     {
@@ -354,7 +354,7 @@
       "WaveIdx": 31,
       "MobSpawnRate": 0.625,
       "NextWaveIdx": 32,
-      "MobIDs": [ 2 ],
+      "MobIDs": [ 9 ],
       "WaveFlags": 0
     },
     {
@@ -363,7 +363,7 @@
       "WaveIdx": 32,
       "MobSpawnRate": 0.625,
       "NextWaveIdx": 33,
-      "MobIDs": [ 0, 1, 2 ],
+      "MobIDs": [ 7, 8, 9 ],
       "WaveFlags": 0
     },
     {
@@ -372,7 +372,7 @@
       "WaveIdx": 33,
       "MobSpawnRate": 0.666,
       "NextWaveIdx": 34,
-      "MobIDs": [ 3 ],
+      "MobIDs": [ 10 ],
       "WaveFlags": 0
     },
     {
@@ -381,7 +381,7 @@
       "WaveIdx": 34,
       "MobSpawnRate": 0.666,
       "NextWaveIdx": 35,
-      "MobIDs": [ 4 ],
+      "MobIDs": [ 11 ],
       "WaveFlags": 0
     },
     {
@@ -390,7 +390,7 @@
       "WaveIdx": 35,
       "MobSpawnRate": 0.666,
       "NextWaveIdx": 36,
-      "MobIDs": [ 5 ],
+      "MobIDs": [ 12 ],
       "WaveFlags": 0
     },
     {
@@ -399,7 +399,7 @@
       "WaveIdx": 36,
       "MobSpawnRate": 1,
       "NextWaveIdx": 37,
-      "MobIDs": [ 3, 4, 5 ],
+      "MobIDs": [ 10, 11, 12 ],
       "WaveFlags": 0
     },
     {
@@ -417,7 +417,7 @@
       "WaveIdx": 38,
       "MobSpawnRate": 666,
       "NextWaveIdx": 39,
-      "MobIDs": [ 6 ],
+      "MobIDs": [ 13 ],
       "WaveFlags": 1
     },
     {
