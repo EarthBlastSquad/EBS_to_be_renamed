@@ -38,6 +38,34 @@
     },
 
     {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 5,
+      "WaveIdx": -3,
+      "MobSpawnRate": 3,
+      "NextWaveIdx": -2,
+      "MobIDs": [ 0 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 10,
+      "WaveIdx": -2,
+      "MobSpawnRate": 3,
+      "NextWaveIdx": -1,
+      "MobIDs": [ 3 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 0,
+      "WaveNumber": 10,
+      "WaveIdx": -1,
+      "MobSpawnRate": 666775,
+      "NextWaveIdx": -666775,
+      "MobIDs": [ ],
+      "WaveFlags": 0
+    },
+
+    {
       "WaveTimeLimit": 0,
       "WaveNumber": 0,
       "WaveIdx": 0,
