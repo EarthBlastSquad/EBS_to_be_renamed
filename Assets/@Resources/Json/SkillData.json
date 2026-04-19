@@ -1187,12 +1187,12 @@
       "CanAttackMultiple": false,
       "SpeedPerCell": 0.01,
       "FiringSFX": "NullSound",
-      "SFXName": "HammerSmash",
+      "SFXName": "Slash",
       "SkillAnimationControllerName": "AttackAnimControllerBase",
       "AttackObjectImgName": "sprite_attack",
       "PrefabName": "Attack",
       "SkillBOOMParticleName": "YellowSparkParticle",
-      "SkillLaunchParticleName": "DustParticle",
+      "SkillLaunchParticleName": "NullParticle",
       "SkillDescription": "this is stage2_mob_single_2"
     },
     {
