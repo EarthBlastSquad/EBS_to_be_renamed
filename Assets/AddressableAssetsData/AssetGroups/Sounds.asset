@@ -159,6 +159,13 @@ MonoBehaviour:
     - Sound
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 879c108a74b358940b73aed9cc24c0b8
+    m_Address: metal_impact
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 936e4f4c87c683d408d9c39fdc54f676
     m_Address: ObjectFallSoft
     m_ReadOnly: 0

@@ -120,9 +120,9 @@
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "stg_0_farmer_sprite",
       "RewardCurrency": 59,
-      "HitSound": "ObjectFallSoft",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "FarmerAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "YellowSparkParticle",
       "SkillID": -7
     },
     {
@@ -132,9 +132,9 @@
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "stg_0_smith_sprite",
       "RewardCurrency": 68,
-      "HitSound": "ObjectFallSoft",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "SmithAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "YellowSparkParticle",
       "SkillID": -8
     },
     {
@@ -144,9 +144,9 @@
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "stg_0_knight_sprite",
       "RewardCurrency": 75,
-      "HitSound": "ObjectFallSoft",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "SwordAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "YellowSparkParticle",
       "SkillID": -9
     },
     {
@@ -156,9 +156,9 @@
       "PrefabName": "AirMobPrefab",
       "MonsterImgName": "stg_0_arrow_drone_sprite",
       "RewardCurrency": 48,
-      "HitSound": "BalloonAirOut",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "ArrowDroneAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "YellowSparkParticle",
       "SkillID": -10
     },
     {
@@ -168,9 +168,9 @@
       "PrefabName": "AirMobPrefab",
       "MonsterImgName": "stg_0_bomb_drone_sprite",
       "RewardCurrency": 60,
-      "HitSound": "BalloonAirOut",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "BombDroneAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "ExplosionParticle",
       "SkillID": -11
     },
     {
@@ -180,9 +180,9 @@
       "PrefabName": "AirMobPrefab",
       "MonsterImgName": "stg_0_inst_drone_sprite",
       "RewardCurrency": 41,
-      "HitSound": "BalloonAirOut",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "InstantKillDroneAnimController",
-      "DeadParticleName": "StoneDustParticle",
+      "DeadParticleName": "ExplosionParticle",
       "SkillID": 0
     },
     {
@@ -192,7 +192,7 @@
       "PrefabName": "GroundMobPrefab",
       "MonsterImgName": "stg_0_boss_sprite",
       "RewardCurrency": 279,
-      "HitSound": "ArmorHit",
+      "HitSound": "metal_impact",
       "AnimatorControllerName": "BossAnimController",
       "DeadParticleName": "StoneDustParticle",
       "SkillID": -12
