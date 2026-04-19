@@ -1121,6 +1121,248 @@
       "SkillBOOMParticleName": "PoisonCloudParticle",
       "SkillLaunchParticleName": "UniversalParticle",
       "SkillDescription": "this is tower_mult_2"
+    },
+
+
+
+
+
+
+
+    {
+      "SkillID": -14,
+      "AttackPos": [
+        {
+          "x": 1,
+          "y": 0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        }
+      ],
+      "Damage": 4,
+      "Cooldown": 0.7,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": false,
+      "SpeedPerCell": 0.01,
+      "FiringSFX": "NullSound",
+      "SFXName": "Slash",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "YellowSparkParticle",
+      "SkillLaunchParticleName": "DustParticle",
+      "SkillDescription": "this is stage2_mob_single_1"
+    },
+    {
+      "SkillID": -15,
+      "AttackPos": [
+        {
+          "x": 1,
+          "y": 0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        },
+        {
+          "x": 1,
+          "y": -1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        }
+      ],
+      "Damage": 6,
+      "Cooldown": 0.6,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": false,
+      "SpeedPerCell": 0.01,
+      "FiringSFX": "NullSound",
+      "SFXName": "HammerSmash",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "YellowSparkParticle",
+      "SkillLaunchParticleName": "DustParticle",
+      "SkillDescription": "this is stage2_mob_single_2"
+    },
+    {
+      "SkillID": -16,
+      "AttackPos": [
+        {
+          "x": 1,
+          "y": 0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        },
+        {
+          "x": 1,
+          "y": -1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        }
+      ],
+      "Damage": 4,
+      "Cooldown": 0.6,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": true,
+      "SpeedPerCell": 0.01,
+      "FiringSFX": "NullSound",
+      "SFXName": "Slash",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "YellowSparkParticle",
+      "SkillLaunchParticleName": "UniversalParticle",
+      "SkillDescription": "this is stage2_mob_range_2"
+    },
+    {
+      "SkillID": -17,
+      "AttackPos": [
+        {
+          "x": 0,
+          "y": 0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0
+        }
+      ],
+      "Damage": 6,
+      "Cooldown": 0.8,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": false,
+      "SpeedPerCell": 0.1,
+      "FiringSFX": "Arrow",
+      "SFXName": "ArrowTwang",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "UniversalParticle",
+      "SkillLaunchParticleName": "NullParticle",
+      "SkillDescription": "this is stage2_flying_single_1"
+    },
+    {
+      "SkillID": -18,
+      "AttackPos": [
+        {
+          "x": 0,
+          "y": -1,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "magnitude": 0.0,
+          "sqrMagnitude": 0
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 1,
+          "y": -1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        }
+      ],
+      "Damage": 4,
+      "Cooldown": 0.8,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": true,
+      "SpeedPerCell": 0.01,
+      "FiringSFX": "NullSound",
+      "SFXName": "Explosion",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "ExplosionParticle",
+      "SkillLaunchParticleName": "NullParticle",
+      "SkillDescription": "this is stage2_flying_range_1"
+    },
+    {
+      "SkillID": -20,
+      "AttackPos": [
+        {
+          "x": 1,
+          "y": -1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "magnitude": 1.41421354,
+          "sqrMagnitude": 2
+        }
+      ],
+      "Damage": 6,
+      "Cooldown": 0.7,
+      "AttackableLayers": [
+        8,
+        9
+      ],
+      "CanAttackMultiple": false,
+      "SpeedPerCell": 0.1,
+      "FiringSFX": "NullSound",
+      "SFXName": "FistPunch",
+      "SkillAnimationControllerName": "AttackAnimControllerBase",
+      "AttackObjectImgName": "sprite_attack",
+      "PrefabName": "Attack",
+      "SkillBOOMParticleName": "YellowSparkParticle",
+      "SkillLaunchParticleName": "UniversalParticle",
+      "SkillDescription": "this is stage2_boss_1"
     }
+
+
+
+
+
+
+
   ]
 }

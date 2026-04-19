@@ -428,7 +428,203 @@
       "NextWaveIdx": -666775,
       "MobIDs": [],
       "WaveFlags": 1
+    },
+
+
+
+
+
+    {
+      "WaveTimeLimit": 0,
+      "WaveNumber": 0,
+      "WaveIdx": 40,
+      "MobSpawnRate": 0,
+      "NextWaveIdx": 41,
+      "MobIDs": [],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 90,
+      "WaveNumber": 1,
+      "WaveIdx": 41,
+      "MobSpawnRate": 3,
+      "NextWaveIdx": 42,
+      "MobIDs": [ 14 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 20,
+      "WaveNumber": 1,
+      "WaveIdx": 42,
+      "MobSpawnRate": 666775,
+      "NextWaveIdx": 43,
+      "MobIDs": [],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 45,
+      "WaveNumber": 1,
+      "WaveIdx": 43,
+      "MobSpawnRate": 4,
+      "NextWaveIdx": 44,
+      "MobIDs": [ 16 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 2,
+      "WaveIdx": 44,
+      "MobSpawnRate": 5,
+      "NextWaveIdx": 45,
+      "MobIDs": [ 17 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 3,
+      "WaveIdx": 45,
+      "MobSpawnRate": 5,
+      "NextWaveIdx": 46,
+      "MobIDs": [ 17 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 30,
+      "WaveNumber": 3,
+      "WaveIdx": 46,
+      "MobSpawnRate": 2.5,
+      "NextWaveIdx": 47,
+      "MobIDs": [ 18 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 4,
+      "WaveIdx": 47,
+      "MobSpawnRate": 1.5,
+      "NextWaveIdx": 48,
+      "MobIDs": [ 14, 16, 17, 18 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 45,
+      "WaveNumber": 5,
+      "WaveIdx": 48,
+      "MobSpawnRate": 2.25,
+      "NextWaveIdx": 49,
+      "MobIDs": [ 19 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 45,
+      "WaveNumber": 6,
+      "WaveIdx": 49,
+      "MobSpawnRate": 0.75,
+      "NextWaveIdx": 50,
+      "MobIDs": [ 14, 15, 16 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 50,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 51,
+      "MobIDs": [ 14, 15 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 51,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 52,
+      "MobIDs": [ 16 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 7,
+      "WaveIdx": 52,
+      "MobSpawnRate": 0.625,
+      "NextWaveIdx": 53,
+      "MobIDs": [ 14, 15, 16 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 53,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 54,
+      "MobIDs": [ 17 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 54,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 55,
+      "MobIDs": [ 18 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 25,
+      "WaveNumber": 8,
+      "WaveIdx": 55,
+      "MobSpawnRate": 0.666,
+      "NextWaveIdx": 56,
+      "MobIDs": [ 19 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 60,
+      "WaveNumber": 9,
+      "WaveIdx": 56,
+      "MobSpawnRate": 1,
+      "NextWaveIdx": 57,
+      "MobIDs": [ 17, 18, 19 ],
+      "WaveFlags": 0
+    },
+    {
+      "WaveTimeLimit": 5,
+      "WaveNumber": 10,
+      "WaveIdx": 57,
+      "MobSpawnRate": 666,
+      "NextWaveIdx": 58,
+      "MobIDs": [],
+      "WaveFlags": 1
+    },
+    {
+      "WaveTimeLimit": 1,
+      "WaveNumber": 10,
+      "WaveIdx": 58,
+      "MobSpawnRate": 666,
+      "NextWaveIdx": 59,
+      "MobIDs": [ 20 ],
+      "WaveFlags": 1
+    },
+    {
+      "WaveTimeLimit": 666,
+      "WaveNumber": 10,
+      "WaveIdx": 59,
+      "MobSpawnRate": 666,
+      "NextWaveIdx": -666775,
+      "MobIDs": [],
+      "WaveFlags": 1
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
