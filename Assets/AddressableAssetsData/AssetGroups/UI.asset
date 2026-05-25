@@ -113,6 +113,14 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 680246dbd50e2cc4aa67398c44029792
+    m_Address: supermine_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 698d388c4ccafaa45aa9d127eab6b49d
     m_Address: TutorialHelper
     m_ReadOnly: 0
@@ -156,6 +164,14 @@ MonoBehaviour:
     m_Address: game_unlock_button
     m_ReadOnly: 0
     m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c141b21a85b6f1947a88052d2647aa6c
+    m_Address: electric_off
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
     - LobbySceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
