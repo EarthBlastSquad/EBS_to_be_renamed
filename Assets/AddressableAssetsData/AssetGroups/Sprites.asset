@@ -69,6 +69,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 124447d387d3ec4429b6cb7345cd7d7a
+    m_Address: s2_theme
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 18b6301c7bb72814eba11d413150de13
     m_Address: stg_2_boss_sprite
     m_ReadOnly: 0
@@ -179,6 +186,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 515622c6fe38c3e40929a3f2179363a9
+    m_Address: s3_theme
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51dcdf234ec7d8842bed0222ef61429c
     m_Address: sprite_tower_range_1
