@@ -910,52 +910,10 @@
       "SkillID": 7,
       "AttackPos": [
         {
-          "x": -3,
-          "y": -1,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": -3,
-          "y": 0,
-          "magnitude": 3.0,
-          "sqrMagnitude": 9
-        },
-        {
-          "x": -3,
-          "y": 1,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": -2,
-          "y": -1,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
           "x": -2,
           "y": 0,
           "magnitude": 2.0,
           "sqrMagnitude": 4
-        },
-        {
-          "x": -2,
-          "y": 1,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
-          "x": -1,
-          "y": -3,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": -1,
-          "y": -2,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
         },
         {
           "x": -1,
@@ -974,24 +932,6 @@
           "y": 1,
           "magnitude": 1.41421354,
           "sqrMagnitude": 2
-        },
-        {
-          "x": -1,
-          "y": 2,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
-          "x": -1,
-          "y": 3,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": 0,
-          "y": -3,
-          "magnitude": 3.0,
-          "sqrMagnitude": 9
         },
         {
           "x": 0,
@@ -1024,24 +964,6 @@
           "sqrMagnitude": 4
         },
         {
-          "x": 0,
-          "y": 3,
-          "magnitude": 3.0,
-          "sqrMagnitude": 9
-        },
-        {
-          "x": 1,
-          "y": -3,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": 1,
-          "y": -2,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
           "x": 1,
           "y": -1,
           "magnitude": 1.41421354,
@@ -1060,57 +982,15 @@
           "sqrMagnitude": 2
         },
         {
-          "x": 1,
-          "y": 2,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
-          "x": 1,
-          "y": 3,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": 2,
-          "y": -1,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
           "x": 2,
           "y": 0,
           "magnitude": 2.0,
           "sqrMagnitude": 4
-        },
-        {
-          "x": 2,
-          "y": 1,
-          "magnitude": 2.236068,
-          "sqrMagnitude": 5
-        },
-        {
-          "x": 3,
-          "y": -1,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
-        },
-        {
-          "x": 3,
-          "y": 0,
-          "magnitude": 3.0,
-          "sqrMagnitude": 9
-        },
-        {
-          "x": 3,
-          "y": 1,
-          "magnitude": 3.1622777,
-          "sqrMagnitude": 10
         }
       ],
       "Damage": 4,
       "Cooldown": 0.8,
-      "AttackableLayers": [],
+      "AttackableLayers": [6,7],
       "CanAttackMultiple": true,
       "SpeedPerCell": 0.01,
       "FiringSFX": "NullSound",
