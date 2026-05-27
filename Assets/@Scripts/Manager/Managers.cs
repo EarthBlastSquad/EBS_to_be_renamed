@@ -35,6 +35,12 @@ namespace Manager
         public Contents.TimerManager TimerManager { get { return Instance?._timerMgr; } }
         public Contents.CooldownManager CooldownManager { get { return Instance?._cooldownMgr; } }
 
+        private void OnApplicationQuit()
+        {
+            Debug.Log("quit");
+            _sInstance._gameMgr.SaveGame();
+        }
+
         private void OnDestroy()
         {
 #if UNITY_EDITOR

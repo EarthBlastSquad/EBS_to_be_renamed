@@ -39,7 +39,7 @@ namespace Manager.Contents
             set
             {
                 _gameData.SoundSet = value;
-                SaveGame();
+                
             }
         }
         public float SoundValue
@@ -48,7 +48,7 @@ namespace Manager.Contents
             set
             {
                 _gameData.SoundValue = value;
-                SaveGame();
+                
             }
         }
         public int LastStageIdx //입장만 하고 강제 종료한다거나 그러는 경우도 있으며, 킬 때 이 스테이지로 맞춰주려고 별도 변수 생성함.
@@ -57,7 +57,7 @@ namespace Manager.Contents
             set
             {
                 _gameData.LastStageIdx = value;
-                SaveGame();
+                
             }
         }
 
@@ -101,7 +101,7 @@ namespace Manager.Contents
                 _gameData.StageClearData.Add(new StageClearData(stageIdx, clearData.Item1,clearData.Item2));
             }
             LastGameEndStatus = clearData;
-            SaveGame();
+            
         }
 
 #if UNITY_EDITOR
@@ -129,12 +129,28 @@ namespace Manager.Contents
             //SaveGame(); //Init()인 만큼 없을때 생성하게 하는 의도도 있음.
 
         }
+
+        
         
         #region Save,Load
         private string _path; //SaveData.Json은 Addressables로 관리하는게 아님
         public void SaveGame()
         {
             //_gameData.Currency = Managers.Instance.CurrencyManager.GetCurrency;
+
+            for(int i = 0; i < 3; i++)
+            {
+                _gameData.EquippedTowers[i] = EquippedTowers[i].TowerData.TowerId;
+            }
+
+            foreach(var ot in OwnedTowers)
+            {
+                if(_gameData.OwnedTowers.Contains(ot.TowerData.TowerId) == false)
+                {
+                    _gameData.OwnedTowers.Add(ot.TowerData.TowerId);
+                }
+            }
+
             File.WriteAllText(_path, JsonConvert.SerializeObject(_gameData));
         }
         public bool LoadGame()
@@ -213,7 +229,7 @@ namespace Manager.Contents
             } //보유 타워 중 장착되었나? 로 체크하는 구조
 
             IsLoaded = true;
-            SaveGame();
+            
             return true;
         }
         #endregion
@@ -229,7 +245,7 @@ namespace Manager.Contents
             EquippedTowers[index].Slot = index;
             _gameData.EquippedTowers[index] = t.TowerData.TowerId;
             t.IsEquipped = true;
-            SaveGame();
+            
             return true;
         }
         public void UnEquipItem(Tower equipment)
@@ -242,7 +258,7 @@ namespace Manager.Contents
                 equipment.Slot = -1;
                 equipment.IsEquipped = false;
             }
-            SaveGame();
+            
             //장비 해제 관련 이벤트 추가할거 있으면 말하고
         }
         public void GetTower(int towerID = -1) //enum을 안 쓰고 하길래 그대로 일단 구조는 따라함, 딱히 갓챠나 그런건 우선순위에 없어서 void로 해둠
@@ -262,7 +278,7 @@ namespace Manager.Contents
             }
             OwnedTowers.Add(t);
             _gameData.OwnedTowers.Add(towerID);
-            SaveGame();
+            
         }
         #endregion
         //public bool LoadGame()
