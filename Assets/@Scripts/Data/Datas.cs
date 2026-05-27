@@ -160,6 +160,7 @@ namespace Data
         public string BackgroundImgName;
         public int InitialCurrency;
         public bool IsOneTimeClear;
+        public List<int> UnlockTowerData;
 
         public StageData(StageData original)
         {
@@ -177,6 +178,7 @@ namespace Data
             BackgroundImgName = original.BackgroundImgName;
             InitialCurrency = original.InitialCurrency;
             IsOneTimeClear = original.IsOneTimeClear;
+            UnlockTowerData = original.UnlockTowerData;
         }
 
         public StageData() { }

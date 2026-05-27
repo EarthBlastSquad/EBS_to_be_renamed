@@ -35,7 +35,8 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "RUO",
-      "IsOneTimeClear": false
+      "IsOneTimeClear": false,
+      "UnlockTowerData": []
     },
     {
       "StageIdx": 0,
@@ -51,7 +52,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 666775,
       "IsOneTimeClear": true,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": []
     },
     {
       "StageIdx": 1,
@@ -67,7 +69,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 500,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": [6]
     },
     {
       "StageIdx": 2,
@@ -83,7 +86,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 700,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": [7]
     },
     {
       "StageIdx": 3,
@@ -99,7 +103,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 700,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": []
     }
   ]
 }
