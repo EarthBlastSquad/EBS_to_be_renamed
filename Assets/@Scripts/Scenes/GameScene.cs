@@ -39,7 +39,7 @@ namespace Scenes
             }
 
             Managers.Instance.GameManager.SetClearData(stageIdx, (reachedWave,false));
-            
+            Managers.Instance.GameManager.SaveGame();
         }
 
         private void CheckWinCondition()
@@ -94,9 +94,30 @@ namespace Scenes
             OnWaveChanged?.Invoke(_waveMgr.GetNowWaveData());
         }
 
+        private void UnlockTower(GameEndType end)
+        {
+            if(end != GameEndType.WIN)
+            {
+                return;
+            }
+
+            var nowStageData = Managers.Instance.StageManager.GetNowStageData();
+
+            if(Managers.Instance.GameManager.TryGetClearData(nowStageData.StageIdx,out var data) == false || data.Item2 == false)
+            {
+                var ownedTower = Managers.Instance.GameManager.OwnedTowers;
+
+                foreach(var towerIdx in nowStageData.UnlockTowerData)
+                {
+                    ownedTower.Add(new Contents.Tower.Tower(towerIdx));
+                }
+            }
+        }
+
         protected override void Init()
         {
             base.Init();
+            OnGameEnd += UnlockTower;
             SceneType = Utils.Defines.SceneNames.GameScene;
             _waveMgr = FindAnyObjectByType<WaveManager>();
             _gridMgr = FindAnyObjectByType<GridManager>();

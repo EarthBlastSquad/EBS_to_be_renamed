@@ -35,7 +35,8 @@
       "GoodEndingDataIdx": -6667750,
       "BadEndingDataIdx": -6667751,
       "StageDescription": "RUO",
-      "IsOneTimeClear": false
+      "IsOneTimeClear": false,
+      "UnlockTowerData": []
     },
     {
       "StageIdx": 0,
@@ -51,7 +52,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 666775,
       "IsOneTimeClear": true,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": []
     },
     {
       "StageIdx": 1,
@@ -67,7 +69,8 @@
       "BackgroundImgName": "Stage0Theme",
       "InitialCurrency": 500,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": [6]
     },
     {
       "StageIdx": 2,
@@ -79,11 +82,12 @@
       "GoodEndingDataIdx": 2,
       "BadEndingDataIdx": 3,
       "StageDescription": "machine stage",
-      "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "Stage0Theme",
+      "GridImgName": "s2_tile_cell",
+      "BackgroundImgName": "s2_theme",
       "InitialCurrency": 700,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": [ 7 ]
     },
     {
       "StageIdx": 3,
@@ -96,10 +100,11 @@
       "BadEndingDataIdx": 5,
       "StageDescription": "third stage",
       "GridImgName": "grass_grid_cell_tile",
-      "BackgroundImgName": "Stage0Theme",
+      "BackgroundImgName": "s3_theme",
       "InitialCurrency": 700,
       "IsOneTimeClear": false,
-      "TotalWaveCnt": 10
+      "TotalWaveCnt": 10,
+      "UnlockTowerData": []
     }
   ]
 }

@@ -201,6 +201,7 @@ namespace UI.Scene
                         {
                             if (count2 == totalCount2)
                             {
+                                Managers.Instance.GameManager.SaveGame();
                                 Managers.Instance.StageManager.Init(_stageIdx);
                                 Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
                                 Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
@@ -209,6 +210,7 @@ namespace UI.Scene
                     }
                     else
                     {
+                        Managers.Instance.GameManager.SaveGame();
                         Managers.Instance.StageManager.Init(_stageIdx);
                         Managers.Instance.SceneManagerEx.LoadScene(SceneNames.GameScene);
                         Managers.Instance.ResourceManager.ReleaseIn("LobbySceneLoaded");
