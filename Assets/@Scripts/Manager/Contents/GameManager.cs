@@ -160,9 +160,14 @@ namespace Manager.Contents
                 SaveGame();
             }
             _gameData = JsonConvert.DeserializeObject<GameData>(File.ReadAllText(_path)); //게임 진행도 데이터 불러오기
+            for(int i=0;i <_gameData.OwnedTowers.Count();i++)
+            {
+                OwnedTowers.Add(new Tower(_gameData.OwnedTowers[i]));
+            } //하단 내용 삭제에 따라, OwnedTowers 생성 별도 진행
+
             //Manager.Managers.Instance.CurrencyManager.RestoreCurrency(_gameData.Currency, typeof(GameManager));
             //TowerFetch();
-            if (OwnedTowers.Count() < Managers.Instance.DataManager.TowerDic.Count())
+            /*if (OwnedTowers.Count() < Managers.Instance.DataManager.TowerDic.Count())
             {
 #if UNITY_EDITOR
                 Debug.Log("패치");
@@ -183,7 +188,7 @@ namespace Manager.Contents
                     }
                     _gameData.EquippedTowers = new int[3] { -1, -1, -1 };
                 }
-            }
+            }*/ //타워를 이후 얻는 종류가 생겼으므로, 삭제 처리.
 #if UNITY_EDITOR
             Debug.Log("불러왔다");
             Debug.Log(OwnedTowers[0]);
@@ -192,11 +197,18 @@ namespace Manager.Contents
 
             for (int i = 0; i < 3; i++)
             {
+#if UNITY_EDITOR
+                Debug.Log(_gameData.EquippedTowers[i]);
+#endif
                 if (_gameData.EquippedTowers[i] != -1)
                 {
-
-                    EquipTower((sbyte)i, OwnedTowers[i]);
-
+                    for (int j = 0; j < OwnedTowers.Count(); j++)
+                    {
+                        if (OwnedTowers[j].key == _gameData.EquippedTowers[i])
+                        { 
+                            EquipTower((sbyte)i, OwnedTowers[j]);
+                        }
+                    }
                 }
             } //보유 타워 중 장착되었나? 로 체크하는 구조
 
