@@ -42,6 +42,13 @@ MonoBehaviour:
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0aa4e17f1cabf9c4ea99488efb5f38f2
+    m_Address: s2_good_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0e2ad15c1fb9a6e4085b8b1c3fa1dd04
     m_Address: sprite_trap_single_1
     m_ReadOnly: 0
@@ -78,6 +85,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2330ae0e95cd4404db7baa78c700ac9e
+    m_Address: s2_bad_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27a6c86e9a838b94d94c1fc38372c2eb
     m_Address: sprite_mob_flying_none_1
     m_ReadOnly: 0
@@ -101,6 +115,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - EndingSceneLoaded
     - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b448f0ec61a9064f9e17870e681ec17
+    m_Address: s2_bad_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
@@ -228,6 +249,13 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 729851812824fed47add3a7fc3e8d441
+    m_Address: s2_good_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f7d3c45c85f8d34c853be640d140531
     m_Address: TestEndingIMG
