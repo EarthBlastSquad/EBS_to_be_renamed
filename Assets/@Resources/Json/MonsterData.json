@@ -108,6 +108,187 @@
       "AnimatorControllerName": "BossAnimController",
       "DeadParticleName": "StoneDustParticle",
       "SkillID": -6
+    },
+
+
+
+
+    {
+      "MonsterId": 7,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 19,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_2_humanoid_sprite",
+      "RewardCurrency": 59,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "HumanoidAnimController",
+      "DeadParticleName": "YellowSparkParticle",
+      "SkillID": -7
+    },
+    {
+      "MonsterId": 8,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 120,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_2_guard_sprite",
+      "RewardCurrency": 68,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "GuardAnimController",
+      "DeadParticleName": "YellowSparkParticle",
+      "SkillID": -8
+    },
+    {
+      "MonsterId": 9,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 75,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_2_tank_sprite",
+      "RewardCurrency": 75,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "TankAnimController",
+      "DeadParticleName": "YellowSparkParticle",
+      "SkillID": -9
+    },
+    {
+      "MonsterId": 10,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 68,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_2_razer_drone_sprite",
+      "RewardCurrency": 48,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "RazerDroneAnimController",
+      "DeadParticleName": "YellowSparkParticle",
+      "SkillID": -10
+    },
+    {
+      "MonsterId": 11,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 90,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_2_flamethrower_drone_sprite",
+      "RewardCurrency": 60,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "FlameThrowerDroneAnimController",
+      "DeadParticleName": "ExplosionParticle",
+      "SkillID": -11
+    },
+    {
+      "MonsterId": 12,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 63,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_2_nuclearbomb_drone_sprite",
+      "RewardCurrency": 41,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "NuclearBombDroneAnimController",
+      "DeadParticleName": "ExplosionParticle",
+      "SkillID": 0
+    },
+    {
+      "MonsterId": 13,
+      "MonsterSpeed": 1,
+      "MonsterHP": 1800,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_2_boss_sprite",
+      "RewardCurrency": 279,
+      "HitSound": "metal_impact",
+      "AnimatorControllerName": "CrusherAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -12
+    },
+
+
+
+
+    {
+      "MonsterId": 14,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 20,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_3_fighter_sprite",
+      "RewardCurrency": 55,
+      "HitSound": "ObjectFallSoft",
+      "AnimatorControllerName": "FighterAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -14
+    },
+    {
+      "MonsterId": 15,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 140,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_3_thief_sprite",
+      "RewardCurrency": 60,
+      "HitSound": "ObjectFallSoft",
+      "AnimatorControllerName": "ThiefAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -15
+    },
+    {
+      "MonsterId": 16,
+      "MonsterSpeed": 0.8,
+      "MonsterHP": 90,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_3_warrior_sprite",
+      "RewardCurrency": 65,
+      "HitSound": "ObjectFallSoft",
+      "AnimatorControllerName": "WarriorAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -16
+    },
+    {
+      "MonsterId": 17,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 70,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_3_airship_sprite",
+      "RewardCurrency": 40,
+      "HitSound": "BalloonAirOut",
+      "AnimatorControllerName": "AirshipAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -17
+    },
+    {
+      "MonsterId": 18,
+      "MonsterSpeed": 0.7,
+      "MonsterHP": 95,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_3_wizard_sprite",
+      "RewardCurrency": 48,
+      "HitSound": "BalloonAirOut",
+      "AnimatorControllerName": "WizardAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -18
+    },
+    {
+      "MonsterId": 19,
+      "MonsterSpeed": 0.805,
+      "MonsterHP": 60,
+      "PrefabName": "AirMobPrefab",
+      "MonsterImgName": "stg_3_elf_sprite",
+      "RewardCurrency": 38,
+      "HitSound": "BalloonAirOut",
+      "AnimatorControllerName": "ElfAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": 0
+    },
+    {
+      "MonsterId": 20,
+      "MonsterSpeed": 1,
+      "MonsterHP": 2500,
+      "PrefabName": "GroundMobPrefab",
+      "MonsterImgName": "stg_3_boss_sprite",
+      "RewardCurrency": 250,
+      "HitSound": "ObjectFallSoft",
+      "AnimatorControllerName": "HEroAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillID": -20
     }
+
+
+
+
+
   ]
 }

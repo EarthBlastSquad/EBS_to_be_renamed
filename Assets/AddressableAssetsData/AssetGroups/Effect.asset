@@ -30,6 +30,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 073cab5c86d45b6479f26f818802b87f
+    m_Address: HumanoidAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0db097f809721fc4fbadebb24e297e6d
     m_Address: NullParticle
     m_ReadOnly: 0
@@ -83,6 +90,20 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 300bbdc3b8504a243be2b2a6066bb3eb
+    m_Address: GuardAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31c5065208d3f744fb155ceea651f811
+    m_Address: TankAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 356e6a39592ba5146b7caf3cd2fc1af9
     m_Address: TestBoomParticle
     m_ReadOnly: 0
@@ -93,6 +114,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3c197d7a63f102a47b6e817e0f55eed5
     m_Address: BossAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d86f489a60e0414a8063200d340d005
+    m_Address: RazerDroneAnimController
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
@@ -114,6 +142,13 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 496df970c4b9ec94c9d84816fcf41a42
+    m_Address: WarriorAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d202d3299302df4d820338d332c113e
     m_Address: ExplosionParticle
     m_ReadOnly: 0
@@ -129,6 +164,20 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 554234808c63d7943babee8117cfda70
+    m_Address: FlameThrowerDroneAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56daf60f3acc8624ba116a199042c31f
+    m_Address: FighterAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58fd16108dcdc584cbf8be9febf7b617
     m_Address: TestAttackAnimController
     m_ReadOnly: 0
@@ -139,6 +188,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 690fdf2f7f36d064aa6495e51b811085
     m_Address: FarmerAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d3f5f9ce7b4a6a4795f137230ed2efc
+    m_Address: ElectricTowerAnimController
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded
@@ -183,11 +239,25 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8937a9ca4e99bd84c9335ecc62e446bc
+    m_Address: WizardAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ab7e05622041d2242ab7ffd118426d2d
     m_Address: BurningParticle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af1f3a284847e544b8f5ce07c7d67c6d
+    m_Address: CrusherAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -236,8 +306,43 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6b5ea80678ddb34ebb329fab06072fe
+    m_Address: HEroAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd7bb5087580ea14a808a476b9ddea22
+    m_Address: AirshipAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de5d3d6a03c3b5d4da827ac3648c189c
+    m_Address: ThiefAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed98d2291846a294f977a0f04d8a242f
+    m_Address: SuperMineAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef8f1e29ed919a0468a765bd90503f5f
     m_Address: SmithAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5b78afe287c91740b37620094afe4cf
+    m_Address: NuclearBombDroneAnimController
     m_ReadOnly: 0
     m_SerializedLabels:
     - GameSceneLoaded

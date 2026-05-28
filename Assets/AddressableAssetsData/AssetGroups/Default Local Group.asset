@@ -21,6 +21,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ef244c59ea49b243a543a46b667be14
+    m_Address: ElfAnimController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acbb46cfa548f0d4b91abfc8683cbdbd
     m_Address: Assets/@Resources/Textures/Ending/good_ending_1.png
     m_ReadOnly: 0

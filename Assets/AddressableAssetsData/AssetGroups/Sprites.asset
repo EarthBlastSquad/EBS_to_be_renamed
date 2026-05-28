@@ -42,6 +42,13 @@ MonoBehaviour:
     - Mobs
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0aa4e17f1cabf9c4ea99488efb5f38f2
+    m_Address: s2_good_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0e2ad15c1fb9a6e4085b8b1c3fa1dd04
     m_Address: sprite_trap_single_1
     m_ReadOnly: 0
@@ -62,6 +69,36 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 124447d387d3ec4429b6cb7345cd7d7a
+    m_Address: s2_theme
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18b6301c7bb72814eba11d413150de13
+    m_Address: stg_2_boss_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c6b0eb8b3df33a4ba147ab753443c50
+    m_Address: stg_3_elf_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2330ae0e95cd4404db7baa78c700ac9e
+    m_Address: s2_bad_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27a6c86e9a838b94d94c1fc38372c2eb
     m_Address: sprite_mob_flying_none_1
     m_ReadOnly: 0
@@ -79,11 +116,34 @@ MonoBehaviour:
     - TestPreLoad
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2aa7029374ce9024e8ee17f8bcb59041
+    m_Address: stg_3_fighter_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b448f0ec61a9064f9e17870e681ec17
+    m_Address: s2_bad_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3091df9bee0fde24b9a00aef6b3065f5
     m_Address: crack_2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Effect
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3613c980745b6514babc8c3d17cd4933
+    m_Address: stg_2_nuclearbomb_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
@@ -118,6 +178,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f723e40a958c19468f31f5b71719b01
+    m_Address: stg_2_guard_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50af8f3ae56edff4d83b79bbfab05c76
     m_Address: spritesbase
     m_ReadOnly: 0
@@ -126,6 +194,13 @@ MonoBehaviour:
     - TestPreLoad
     - Tower
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 515622c6fe38c3e40929a3f2179363a9
+    m_Address: s3_theme
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LobbySceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51dcdf234ec7d8842bed0222ef61429c
     m_Address: sprite_tower_range_1
@@ -154,6 +229,22 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5951eb1df93b4e04d8d7ea16f151a64a
+    m_Address: stg_3_wizard_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c0d8c1b89d08f74b9457a89c8dbad14
+    m_Address: stg_2_flamethrower_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6991e8845d0d62c46a5f25e190dcb353
     m_Address: sprite_mob_range_1
     m_ReadOnly: 0
@@ -161,6 +252,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f52c01346f5f23418ffcd2ff84c195d
+    m_Address: stg_2_razer_drone_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6fb662011fb78ab4d9511e0d1f4ea6b0
@@ -172,6 +271,13 @@ MonoBehaviour:
     - LobbySceneLoaded
     - TestPreLoad
     - Tower
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 729851812824fed47add3a7fc3e8d441
+    m_Address: s2_good_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f7d3c45c85f8d34c853be640d140531
     m_Address: TestEndingIMG
@@ -205,6 +311,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c9293ece98142643a7e539f0f43a3cb
+    m_Address: stg_3_airship_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95782622c4b8dba458163ccff551ba94
     m_Address: sprite_attack
     m_ReadOnly: 0
@@ -221,6 +335,14 @@ MonoBehaviour:
     - EndingSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a890d1dfdd0ec694895bb7390e7078d0
+    m_Address: stg_3_warrior_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: af3bd464e2fe08e4694c6c450c479bb0
     m_Address: Fast_1
     m_ReadOnly: 0
@@ -228,6 +350,22 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b016958c83192ef49ad3535aaa471ef5
+    m_Address: stg_3_boss_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3bc990e10e33ec4686f5740e7ab0846
+    m_Address: stg_2_tank_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b80f2d91c4c13314388456324edb1844
     m_Address: sprite_wall_1
@@ -255,6 +393,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6ec2899eedb14240a9291bab2630189
+    m_Address: stg_2_humanoid_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: da52320d6d760684da4a980f220fb7c5
     m_Address: bad_ending_1
     m_ReadOnly: 0
@@ -269,6 +415,14 @@ MonoBehaviour:
     - GameSceneLoaded
     - LobbySceneLoaded
     - Mobs
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3d2b9f1be267724daa6100f286da6eb
+    m_Address: stg_3_thief_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndingSceneLoaded
+    - GameSceneLoaded
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e652d83b5dd8b334b97d82783f29a2a9

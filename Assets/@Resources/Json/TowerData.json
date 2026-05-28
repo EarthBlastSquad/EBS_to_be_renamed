@@ -104,6 +104,45 @@
       "AnimatorControllerName": "PoisonTowerAnimController",
       "DeadParticleName": "StoneDustParticle",
       "SkillId": 5
+    },
+
+
+
+    {
+      "TowerId": 6,
+      "TowerName": "강화형 지뢰",
+      "PrefabName": "SteppablePrefab",
+      "TowerImgName": "supermine_off",
+      "CrackSpriteNameBase": "crack_",
+      "InvincibilityTime": 0,
+      "TowerHP": 6,
+      "DemendedCurrency": 69,
+      "TowerDescription": "성능이 좋아졌지만, 여전히 공중은 타격을 못한다.",
+      "HitSound": "NullSound",
+      "AnimatorControllerName": "SuperMineAnimController",
+      "DeadParticleName": "NullParticle",
+      "SkillId": 6
+    },
+    {
+      "TowerId": 7,
+      "TowerName": "전기 타워",
+      "PrefabName": "TowerPrefab",
+      "TowerImgName": "electric_off",
+      "CrackSpriteNameBase": "crack_",
+      "InvincibilityTime": 0,
+      "TowerHP": 6,
+      "DemendedCurrency": 71,
+      "TowerDescription": "전기를 방출하는 타워다. 안전에 주의하며 사용하자.",
+      "HitSound": "SmallCrackShatterSound",
+      "AnimatorControllerName": "ElectricTowerAnimController",
+      "DeadParticleName": "StoneDustParticle",
+      "SkillId": 7
     }
+
+
+
+
+
+
   ]
 }

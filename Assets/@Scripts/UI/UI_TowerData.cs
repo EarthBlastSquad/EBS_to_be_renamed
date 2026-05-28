@@ -103,6 +103,7 @@ namespace UI
             if(_uI_IP.SelectedSlot != null)
             {
                 _uI_IP.SelectedSlot.sprite = Managers.Instance.ResourceManager.Load<Sprite>(_tower.TowerData.TowerImgName);
+                Managers.Instance.GameManager.SaveGame();
             }
             
             //_uI_IP.CloseTDP();

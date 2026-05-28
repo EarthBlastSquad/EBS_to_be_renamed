@@ -30,9 +30,9 @@ namespace UI.Popup
             Dictionary<int, int> ttd = Managers.Instance.GameManager.TotalTowerDamages;
             GameObject getUI = Managers.Instance.ResourceManager.Load<GameObject>("UI_TotalData");
             int towerCount = ttd.Count;
-            float towerSlotScale = 1000f / (towerCount - 1);
+            float towerSlotScale = 750f / (towerCount - 1);
             float towerSlotScale2 = 2f / (towerCount - 1);
-            float towerLeft = 500f;
+            float towerLeft = 150f;
             int maxTowerDamage = 1;
             foreach (int tid in ttd.Values)
             {
@@ -45,9 +45,9 @@ namespace UI.Popup
             {
                 GameObject ui = Instantiate(getUI, transform, false);
                 float x = towerLeft;
-                towerLeft += towerSlotScale;
                 RectTransform rect = ui.GetComponent<RectTransform>();
                 rect.position += new Vector3(x, 0, 0);
+                towerLeft += towerSlotScale;
                 rect.localScale *= towerSlotScale2;
                 UnityEngine.UI.Image uiImage = ui.GetComponent<UnityEngine.UI.Image>();
                 uiImage.sprite = Managers.Instance.ResourceManager.Load<Sprite>(Managers.Instance.DataManager.TowerDic[tid.Key].TowerImgName);

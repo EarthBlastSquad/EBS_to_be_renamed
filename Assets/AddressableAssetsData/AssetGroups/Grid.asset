@@ -47,6 +47,13 @@ MonoBehaviour:
     - Grid
     - TestPreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f5c5e2f7b6e764479bc316867a04c8b
+    m_Address: s2_tile_cell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameSceneLoaded
+    - TestPreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e501b7c5c1e9dc34ca5c6061713a4aad
     m_Address: grass_grid_cell_tile
     m_ReadOnly: 0
